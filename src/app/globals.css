@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08090f;
+  --surface: #0d1021;
+  --surface-2: #141b36;
+  --border-soft: #1e2540;
+  --foreground: #dde4ff;
+  --muted: #6070a0;
+  --accent: #6cc8ff;
+  --accent-2: #c89a28;
+  --gold: #f0c040;
+  --danger: #ff4d6d;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-soft: var(--border-soft);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-gold: var(--gold);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-cinzel);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(240, 192, 64, 0.14), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(108, 200, 255, 0.1), transparent),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-glow {
+  text-shadow: 0 0 24px rgba(240, 192, 64, 0.4), 0 0 48px rgba(108, 200, 255, 0.2);
+}
+
+.brand {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: 0.18em;
+}
+
+.card-surface {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border-soft);
 }

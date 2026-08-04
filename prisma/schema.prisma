@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  PENDING_LINK // esperando que el usuario vincule su cuenta in-game con el código
+  PENDING_PAYMENT // cuenta vinculada, esperando confirmación de Mercado Pago
+  PAID // pago confirmado, todavía no entregado en el server
+  DELIVERED // el GameServer confirmó la entrega de puntos/perks
+  FAILED
+  CANCELED
+}
+
+model DonationPackage {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  priceArsCents Int
+  points        Int
+  perks         String[]
+  highlight     Boolean  @default(false)
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  orders DonationOrder[]
+}
+
+// La verificación del código in-game (.donatecode) vive del lado del GameServer/MySQL,
+// no acá: esta orden solo guarda el account_name ya confirmado por esa verificación.
+model DonationOrder {
+  id                String          @id @default(cuid())
+  packageId         String
+  package           DonationPackage @relation(fields: [packageId], references: [id])
+  gameAccountName   String
+  accountVerifiedAt DateTime?
+  status            OrderStatus     @default(PENDING_LINK)
+  mpPreferenceId    String?
+  mpPaymentId       String?         @unique
+  amountArsCents    Int
+  pointsGranted     Int
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  paidAt            DateTime?
+  deliveredAt       DateTime?
+
+  @@index([gameAccountName])
+  @@index([status])
+}
