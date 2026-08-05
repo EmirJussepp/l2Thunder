@@ -33,7 +33,7 @@ export default function Navbar() {
 
         <Link
           href="/donar"
-          className="rounded-full bg-gradient-to-r from-gold to-accent-2 px-5 py-2 text-sm font-semibold text-background shadow-lg shadow-gold/20 transition hover:brightness-110"
+          className="rounded-none bg-gradient-to-r from-gold to-accent-2 px-5 py-2 text-sm font-semibold text-background shadow-lg shadow-gold/20 transition hover:brightness-110"
         >
           Donar
         </Link>

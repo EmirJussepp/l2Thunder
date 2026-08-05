@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pt-20 pb-24 text-center">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-6">
-        <span className="rounded-full border border-accent-2/40 bg-accent-2/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-accent-2">
+        <span className="rounded-none border border-accent-2/40 bg-accent-2/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-accent-2">
           Beta abierta — entrá a testear
         </span>
 
@@ -24,13 +24,13 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#jugar"
-            className="rounded-full bg-gradient-to-r from-gold to-accent-2 px-7 py-3 font-semibold text-background shadow-lg shadow-gold/30 transition hover:brightness-110"
+            className="rounded-none bg-gradient-to-r from-gold to-accent-2 px-7 py-3 font-semibold text-background shadow-lg shadow-gold/30 transition hover:brightness-110"
           >
             Jugar la beta
           </Link>
           <Link
             href="/donar"
-            className="rounded-full border border-border-soft px-7 py-3 font-semibold text-foreground transition hover:border-gold hover:text-gold"
+            className="rounded-none border border-border-soft px-7 py-3 font-semibold text-foreground transition hover:border-gold hover:text-gold"
           >
             Apoyar el proyecto
           </Link>

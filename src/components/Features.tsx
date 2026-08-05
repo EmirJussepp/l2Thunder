@@ -48,7 +48,7 @@ export default function Features() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="card-surface rounded-2xl p-6 transition hover:border-accent/50"
+            className="card-surface rounded-none p-6 transition hover:border-accent/50"
           >
             <h3 className="font-display text-lg font-bold text-foreground">
               {feature.title}

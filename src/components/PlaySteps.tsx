@@ -29,7 +29,7 @@ export default function PlaySteps() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.step} className="card-surface rounded-2xl p-6 text-center">
+            <div key={s.step} className="card-surface rounded-none p-6 text-center">
               <span className="font-display text-3xl font-black text-accent">{s.step}</span>
               <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
               <p className="mt-2 text-sm text-muted">{s.description}</p>

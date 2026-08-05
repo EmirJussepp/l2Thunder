@@ -12,7 +12,7 @@ export default function DonarPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-20">
       <div className="mx-auto mb-14 max-w-2xl text-center">
-        <span className="rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
+        <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Sin pay-to-win
         </span>
         <h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">

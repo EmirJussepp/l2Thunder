@@ -18,7 +18,7 @@ const steps = [
 
 export default function AccountLinkExplainer() {
   return (
-    <div className="card-surface mx-auto max-w-3xl rounded-2xl p-8">
+    <div className="card-surface mx-auto max-w-3xl rounded-none p-8">
       <h3 className="font-display text-xl font-bold">¿Cómo se vincula tu cuenta?</h3>
       <p className="mt-2 text-sm text-muted">
         Por seguridad, la web nunca te pide la contraseña de tu cuenta de juego. Usamos un
@@ -28,7 +28,7 @@ export default function AccountLinkExplainer() {
       <ol className="mt-6 space-y-4">
         {steps.map((s) => (
           <li key={s.step} className="flex gap-4">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 font-display font-bold text-accent">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-none bg-accent/15 font-display font-bold text-accent">
               {s.step}
             </span>
             <div>

@@ -18,12 +18,12 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
       {tiers.map((tier) => (
         <div
           key={tier.id}
-          className={`card-surface flex flex-col rounded-2xl p-6 ${
+          className={`card-surface flex flex-col rounded-none p-6 ${
             tier.highlight ? "border-gold/60 ring-1 ring-gold/30" : ""
           }`}
         >
           {tier.highlight && (
-            <span className="mb-3 self-start rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold">
+            <span className="mb-3 self-start rounded-none bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold">
               Más elegido
             </span>
           )}
@@ -41,7 +41,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
 
           <button
             onClick={() => setSelected(tier.name)}
-            className={`mt-6 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+            className={`mt-6 rounded-none px-5 py-2.5 text-sm font-semibold transition ${
               tier.highlight
                 ? "bg-gradient-to-r from-gold to-accent-2 text-background hover:brightness-110"
                 : "border border-border-soft text-foreground hover:border-accent hover:text-accent"
@@ -54,7 +54,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
 
       {selected && (
         <div className="sm:col-span-3">
-          <div className="card-surface mt-2 rounded-2xl border-accent/40 p-6 text-center">
+          <div className="card-surface mt-2 rounded-none border-accent/40 p-6 text-center">
             <p className="text-sm text-muted">
               Elegiste el paquete <span className="text-foreground">{selected}</span>. El
               checkout de Mercado Pago todavía no está conectado en esta maqueta — cuando
