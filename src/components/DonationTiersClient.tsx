@@ -8,7 +8,6 @@ export type TierView = {
   priceLabel: string;
   perks: string[];
   highlight: boolean;
-  bestValue: boolean;
 };
 
 export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
@@ -26,11 +25,6 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
           {tier.highlight && (
             <span className="mb-3 self-start rounded-none bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold">
               Más elegido
-            </span>
-          )}
-          {tier.bestValue && (
-            <span className="mb-3 self-start rounded-none bg-accent-2/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-2">
-              Mejor precio por coin
             </span>
           )}
           <h3 className="font-display text-xl font-bold">{tier.name}</h3>

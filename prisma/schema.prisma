@@ -20,7 +20,7 @@ enum OrderStatus {
 }
 
 enum PackageKind {
-  COINS // paquete de Donate Coins, se gastan en la tienda de cosméticos
+  BOX // caja de skin de una rareza fija (Normal/Épica/Legendaria)
   VIP // pase temporal con boost de progreso, no de poder
 }
 
@@ -28,9 +28,8 @@ model DonationPackage {
   id            String      @id @default(cuid())
   slug          String      @unique
   name          String
-  kind          PackageKind @default(COINS)
+  kind          PackageKind @default(BOX)
   priceArsCents Int
-  points        Int // coins otorgados (en VIP, los que vienen de regalo)
   durationDays  Int? // sólo para kind = VIP
   perks         String[]
   highlight     Boolean     @default(false)
@@ -53,7 +52,6 @@ model DonationOrder {
   mpPreferenceId    String?
   mpPaymentId       String?         @unique
   amountArsCents    Int
-  pointsGranted     Int
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
   paidAt            DateTime?

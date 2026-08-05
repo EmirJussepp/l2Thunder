@@ -12,8 +12,8 @@ export default function DonateTeaser() {
         </h2>
         <p className="max-w-xl text-muted">
           Tu aporte financia hosting y desarrollo. El VIP da un empujón chico de EXP y Drop
-          (5%) más una caja de skin de regalo, y los Donate Coins se gastan en cosméticos —
-          nunca vendemos daño ni items que te hagan invencible en PvP.
+          (5%) más una caja de skin de regalo, y las Cajas de Skins te dejan elegir la rareza
+          exacta — nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>
         <Link
           href="/donar"

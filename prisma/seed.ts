@@ -4,32 +4,26 @@ import { PrismaClient } from "../src/generated/prisma/client";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-// 1 Coin of Luck = $1.000 ARS, precio plano (sin descuento por volumen)
-const ARS_PER_COIN = 1000;
-
 const packages = [
   {
-    slug: "coins-500",
-    name: "500 Coins of Luck",
-    priceArsCents: 500 * ARS_PER_COIN * 100,
-    points: 500,
-    perks: ["Se canjean por skins en el NPC de canje"],
+    slug: "caja-normal",
+    name: "Caja Normal",
+    priceArsCents: 4_000 * 100,
+    perks: ["Sale cualquier skin de rareza Normal"],
     highlight: false,
   },
   {
-    slug: "coins-1400",
-    name: "1400 Coins of Luck",
-    priceArsCents: 1400 * ARS_PER_COIN * 100,
-    points: 1400,
-    perks: ["Se canjean por skins en el NPC de canje"],
+    slug: "caja-epica",
+    name: "Caja Épica",
+    priceArsCents: 9_000 * 100,
+    perks: ["Sale cualquier skin de rareza Épica"],
     highlight: true,
   },
   {
-    slug: "coins-3000",
-    name: "3000 Coins of Luck",
-    priceArsCents: 3000 * ARS_PER_COIN * 100,
-    points: 3000,
-    perks: ["Se canjean por skins en el NPC de canje"],
+    slug: "caja-legendaria",
+    name: "Caja Legendaria",
+    priceArsCents: 22_000 * 100,
+    perks: ["Sale cualquier skin de rareza Legendaria"],
     highlight: false,
   },
   {
@@ -37,12 +31,11 @@ const packages = [
     name: "VIP Thunder",
     kind: "VIP" as const,
     priceArsCents: 10_000 * 100,
-    points: 0,
     durationDays: 15,
     perks: [
       "5% de EXP extra durante 15 días",
       "5% de Drop extra durante 15 días",
-      "1 caja de skin de regalo (rareza al azar: común, épica o legendaria)",
+      "1 caja de skin de regalo (rareza al azar: Normal, Épica o Legendaria)",
     ],
     highlight: true,
   },

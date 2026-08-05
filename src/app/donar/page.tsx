@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import DonationTiers from "@/components/DonationTiers";
 import VipPass from "@/components/VipPass";
-import SkinPrices from "@/components/SkinPrices";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
 
 export const metadata: Metadata = {
@@ -22,8 +21,8 @@ export default function DonarPage() {
         </h1>
         <p className="mt-4 text-muted">
           Tu aporte financia el desarrollo. El VIP da un empujón chico de EXP y Drop (5%) más
-          una caja de skin de regalo, y los Donate Coins se gastan en cosméticos — nunca
-          vendemos daño ni items que te hagan invencible en PvP.
+          una caja de skin de regalo, y las Cajas de Skins te dejan elegir la rareza exacta —
+          nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>
       </div>
 
@@ -33,9 +32,8 @@ export default function DonarPage() {
       </section>
 
       <section>
-        <h2 className="mb-6 text-center font-display text-2xl font-bold">Donate Coins</h2>
+        <h2 className="mb-6 text-center font-display text-2xl font-bold">Cajas de Skins</h2>
         <DonationTiers />
-        <SkinPrices />
       </section>
 
       <div className="mt-20">
