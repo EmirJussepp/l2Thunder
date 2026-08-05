@@ -13,9 +13,11 @@ export default async function DonationTiers() {
     orderBy: { priceArsCents: "asc" },
   });
 
-  const bestArsPerCoin = packages.length
-    ? Math.min(...packages.map((p) => p.priceArsCents / p.points))
-    : null;
+  const rates = packages.map((p) => p.priceArsCents / p.points);
+  const bestArsPerCoin = rates.length ? Math.min(...rates) : null;
+  const worstArsPerCoin = rates.length ? Math.max(...rates) : null;
+  // sólo tiene sentido destacar "mejor precio" si los packs realmente tienen tarifas distintas
+  const ratesVary = bestArsPerCoin !== null && worstArsPerCoin !== null && bestArsPerCoin < worstArsPerCoin;
 
   const tiers = packages.map((pkg) => ({
     id: pkg.id,
@@ -23,7 +25,7 @@ export default async function DonationTiers() {
     priceLabel: priceFormatter.format(pkg.priceArsCents / 100),
     perks: pkg.perks,
     highlight: pkg.highlight,
-    bestValue: bestArsPerCoin !== null && pkg.priceArsCents / pkg.points === bestArsPerCoin,
+    bestValue: ratesVary && pkg.priceArsCents / pkg.points === bestArsPerCoin,
   }));
 
   return <DonationTiersClient tiers={tiers} />;

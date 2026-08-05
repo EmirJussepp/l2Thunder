@@ -4,11 +4,14 @@ import { PrismaClient } from "../src/generated/prisma/client";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
+// 1 Coin of Luck = $1.500 ARS, precio plano (sin descuento por volumen)
+const ARS_PER_COIN = 1500;
+
 const packages = [
   {
     slug: "coins-500",
     name: "500 Coins of Luck",
-    priceArsCents: 200_000,
+    priceArsCents: 500 * ARS_PER_COIN * 100,
     points: 500,
     perks: ["Se canjean por skins en el NPC de canje"],
     highlight: false,
@@ -16,7 +19,7 @@ const packages = [
   {
     slug: "coins-1400",
     name: "1400 Coins of Luck",
-    priceArsCents: 500_000,
+    priceArsCents: 1400 * ARS_PER_COIN * 100,
     points: 1400,
     perks: ["Se canjean por skins en el NPC de canje"],
     highlight: true,
@@ -24,7 +27,7 @@ const packages = [
   {
     slug: "coins-3000",
     name: "3000 Coins of Luck",
-    priceArsCents: 1_000_000,
+    priceArsCents: 3000 * ARS_PER_COIN * 100,
     points: 3000,
     perks: ["Se canjean por skins en el NPC de canje"],
     highlight: false,
@@ -33,7 +36,7 @@ const packages = [
     slug: "vip-thunder",
     name: "VIP Thunder",
     kind: "VIP" as const,
-    priceArsCents: 800_000,
+    priceArsCents: 700_000 * 100,
     points: 600,
     durationDays: 15,
     perks: [
