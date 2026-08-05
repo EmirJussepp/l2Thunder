@@ -35,9 +35,24 @@ const packages = [
       "3000 puntos para cosméticos",
       "Título exclusivo de Fundador",
       "Acceso a NPC de skins/monturas cosméticas",
-      "30 días de Premium Thunder (cola prioritaria y warehouse extra — sin bonus de daño ni experiencia)",
     ],
     highlight: false,
+  },
+  {
+    slug: "vip-thunder",
+    name: "VIP Thunder",
+    kind: "VIP" as const,
+    priceArsCents: 900_000,
+    points: 300,
+    durationDays: 15,
+    perks: [
+      "x2 EXP y SP durante 15 días",
+      "1 caja de skins sorpresa de regalo",
+      "300 puntos de cosméticos de regalo",
+      "Cola prioritaria de ingreso",
+      "No toca drop, spoil ni daño: el gareo y el PvP siguen parejos para todos",
+    ],
+    highlight: true,
   },
 ];
 

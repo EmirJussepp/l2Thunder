@@ -11,9 +11,9 @@ export default function DonateTeaser() {
           Convertite en Fundador de L2Thunder
         </h2>
         <p className="max-w-xl text-muted">
-          Tu aporte financia hosting y desarrollo. A cambio, sumás puntos que se acreditan
-          directo en tu cuenta in-game para cosméticos y comodidad. Nada de pay-to-win: nunca
-          vendemos daño, experiencia ni ítems que rompan el PvP.
+          Tu aporte financia hosting y desarrollo. El VIP te da un boost de nivelado y los
+          Donate Coins se gastan en cosméticos — pero nunca tocamos drop, spoil ni daño: el
+          gareo y el PvP siguen igual de parejos para todos.
         </p>
         <Link
           href="/donar"

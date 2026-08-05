@@ -9,7 +9,7 @@ const priceFormatter = new Intl.NumberFormat("es-AR", {
 
 export default async function DonationTiers() {
   const packages = await prisma.donationPackage.findMany({
-    where: { active: true },
+    where: { active: true, kind: "COINS" },
     orderBy: { priceArsCents: "asc" },
   });
 
