@@ -11,9 +11,9 @@ export default function DonateTeaser() {
           Convertite en Fundador de L2Thunder
         </h2>
         <p className="max-w-xl text-muted">
-          Tu aporte financia hosting y desarrollo. El VIP te da un boost de nivelado y los
-          Donate Coins se gastan en cosméticos — pero nunca tocamos drop, spoil ni daño: el
-          gareo y el PvP siguen igual de parejos para todos.
+          Tu aporte financia hosting y desarrollo. El VIP da un empujón chico de EXP y Drop
+          (5%) más una caja de skin de regalo, y los Donate Coins se gastan en cosméticos —
+          nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>
         <Link
           href="/donar"

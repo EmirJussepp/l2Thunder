@@ -4,8 +4,8 @@ import { PrismaClient } from "../src/generated/prisma/client";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-// 1 Coin of Luck = $1.500 ARS, precio plano (sin descuento por volumen)
-const ARS_PER_COIN = 1500;
+// 1 Coin of Luck = $1.000 ARS, precio plano (sin descuento por volumen)
+const ARS_PER_COIN = 1000;
 
 const packages = [
   {
@@ -36,15 +36,13 @@ const packages = [
     slug: "vip-thunder",
     name: "VIP Thunder",
     kind: "VIP" as const,
-    priceArsCents: 700_000 * 100,
-    points: 600,
+    priceArsCents: 10_000 * 100,
+    points: 0,
     durationDays: 15,
     perks: [
-      "x2 EXP y SP durante 15 días",
-      "1 caja de skins sorpresa de regalo",
-      "600 Coins of Luck de regalo",
-      "Cola prioritaria de ingreso",
-      "No toca drop, spoil ni daño: el gareo y el PvP siguen parejos para todos",
+      "5% de EXP extra durante 15 días",
+      "5% de Drop extra durante 15 días",
+      "1 caja de skin de regalo (rareza al azar: común, épica o legendaria)",
     ],
     highlight: true,
   },

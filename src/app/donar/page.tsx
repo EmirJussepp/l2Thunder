@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import DonationTiers from "@/components/DonationTiers";
 import VipPass from "@/components/VipPass";
+import SkinPrices from "@/components/SkinPrices";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function DonarPage() {
           Convertite en Fundador de Thunder
         </h1>
         <p className="mt-4 text-muted">
-          Tu aporte financia el desarrollo. El VIP acelera tu nivelado y los Donate Coins se
-          gastan en cosméticos — pero nunca tocan drop, spoil ni daño: el gareo y el PvP siguen
-          igual de parejos para todos.
+          Tu aporte financia el desarrollo. El VIP da un empujón chico de EXP y Drop (5%) más
+          una caja de skin de regalo, y los Donate Coins se gastan en cosméticos — nunca
+          vendemos daño ni items que te hagan invencible en PvP.
         </p>
       </div>
 
@@ -34,6 +35,7 @@ export default function DonarPage() {
       <section>
         <h2 className="mb-6 text-center font-display text-2xl font-bold">Donate Coins</h2>
         <DonationTiers />
+        <SkinPrices />
       </section>
 
       <div className="mt-20">
