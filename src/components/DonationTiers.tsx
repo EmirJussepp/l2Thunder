@@ -13,12 +13,17 @@ export default async function DonationTiers() {
     orderBy: { priceArsCents: "asc" },
   });
 
+  const bestArsPerCoin = packages.length
+    ? Math.min(...packages.map((p) => p.priceArsCents / p.points))
+    : null;
+
   const tiers = packages.map((pkg) => ({
     id: pkg.id,
     name: pkg.name,
     priceLabel: priceFormatter.format(pkg.priceArsCents / 100),
     perks: pkg.perks,
     highlight: pkg.highlight,
+    bestValue: bestArsPerCoin !== null && pkg.priceArsCents / pkg.points === bestArsPerCoin,
   }));
 
   return <DonationTiersClient tiers={tiers} />;

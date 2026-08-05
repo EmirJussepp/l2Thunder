@@ -8,6 +8,8 @@ export type VipView = {
   priceLabel: string;
   durationDays: number | null;
   perks: string[];
+  includedCoins: number;
+  includedCoinsValueLabel: string | null;
 };
 
 export default function VipPassClient({ vip }: { vip: VipView | null }) {
@@ -32,6 +34,14 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
             </li>
           ))}
         </ul>
+
+        {vip.includedCoinsValueLabel && (
+          <p className="mt-4 max-w-md border-l-2 border-accent-2 pl-3 text-sm text-accent-2">
+            Los {vip.includedCoins} Coins of Luck que incluye ya valen{" "}
+            {vip.includedCoinsValueLabel} comprados sueltos al mejor precio — el resto del VIP
+            (caja de skin, boost y cola prioritaria) va de yapa.
+          </p>
+        )}
       </div>
 
       <div className="shrink-0">
