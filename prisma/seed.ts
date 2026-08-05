@@ -6,36 +6,27 @@ const prisma = new PrismaClient({ adapter });
 
 const packages = [
   {
-    slug: "fundador-bronce",
-    name: "Fundador Bronce",
+    slug: "coins-500",
+    name: "500 Coins of Luck",
     priceArsCents: 200_000,
     points: 500,
-    perks: ["500 puntos para cosméticos", "Título exclusivo de Fundador", "Tag de color en el chat"],
+    perks: ["Se canjean por skins en el NPC de canje"],
     highlight: false,
   },
   {
-    slug: "fundador-plata",
-    name: "Fundador Plata",
+    slug: "coins-1400",
+    name: "1400 Coins of Luck",
     priceArsCents: 500_000,
     points: 1400,
-    perks: [
-      "1400 puntos para cosméticos",
-      "Título exclusivo de Fundador",
-      "Tag de color",
-      "Acceso a NPC de skins/monturas cosméticas",
-    ],
+    perks: ["Se canjean por skins en el NPC de canje"],
     highlight: true,
   },
   {
-    slug: "fundador-oro",
-    name: "Fundador Oro",
+    slug: "coins-3000",
+    name: "3000 Coins of Luck",
     priceArsCents: 1_000_000,
     points: 3000,
-    perks: [
-      "3000 puntos para cosméticos",
-      "Título exclusivo de Fundador",
-      "Acceso a NPC de skins/monturas cosméticas",
-    ],
+    perks: ["Se canjean por skins en el NPC de canje"],
     highlight: false,
   },
   {
@@ -48,7 +39,7 @@ const packages = [
     perks: [
       "x2 EXP y SP durante 15 días",
       "1 caja de skins sorpresa de regalo",
-      "300 puntos de cosméticos de regalo",
+      "300 Coins of Luck de regalo",
       "Cola prioritaria de ingreso",
       "No toca drop, spoil ni daño: el gareo y el PvP siguen parejos para todos",
     ],
@@ -64,6 +55,10 @@ async function main() {
       create: pkg,
     });
   }
+
+  await prisma.donationPackage.deleteMany({
+    where: { slug: { notIn: packages.map((pkg) => pkg.slug) } },
+  });
 }
 
 main()

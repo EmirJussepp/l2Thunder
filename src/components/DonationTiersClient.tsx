@@ -65,13 +65,8 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
         </div>
       )}
 
-      <p className="mx-auto max-w-2xl text-center text-sm text-muted sm:col-span-3">
-        Los primeros Fundadores quedarán inmortalizados en un NPC conmemorativo dentro del
-        server, en reconocimiento a quienes hicieron posible el proyecto desde el día uno.
-      </p>
-
       <p className="text-center text-xs text-muted/70 sm:col-span-3">
-        Precios, puntos y beneficios de ejemplo — se ajustan antes de lanzar el checkout real.
+        Precios y cantidades de ejemplo — se ajustan antes de lanzar el checkout real.
       </p>
     </div>
   );
