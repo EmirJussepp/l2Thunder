@@ -6,6 +6,7 @@ export type VipView = {
   id: string;
   name: string;
   priceLabel: string;
+  subLabel?: string | null;
   durationDays: number | null;
   perks: string[];
 };
@@ -23,6 +24,7 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
         </span>
         <h3 className="mt-3 font-display text-2xl font-bold">{vip.name}</h3>
         <p className="mt-1 text-3xl font-black text-gold">{vip.priceLabel}</p>
+        {vip.subLabel && <p className="text-xs text-muted/70">{vip.subLabel}</p>}
 
         <ul className="mt-4 space-y-2 text-sm text-muted">
           {vip.perks.map((perk) => (
@@ -45,9 +47,8 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
 
       {selected && (
         <div className="basis-full border-t border-border-soft pt-4 text-sm text-muted">
-          El checkout de Mercado Pago todavía no está conectado en esta maqueta — cuando
-          tengamos las credenciales, este botón te va a pedir vincular tu cuenta in-game
-          (código de un solo uso) antes de cobrar.
+          Esto se paga con tu saldo de Coins of Luck, no con Mercado Pago directo — si no te
+          alcanzan, primero comprás más coins más arriba.
         </div>
       )}
     </div>

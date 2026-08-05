@@ -6,11 +6,18 @@ export type TierView = {
   id: string;
   name: string;
   priceLabel: string;
+  subLabel?: string | null;
   perks: string[];
   highlight: boolean;
 };
 
-export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
+export default function DonationTiersClient({
+  tiers,
+  paidWith = "money",
+}: {
+  tiers: TierView[];
+  paidWith?: "money" | "coins";
+}) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
@@ -29,6 +36,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
           )}
           <h3 className="font-display text-xl font-bold">{tier.name}</h3>
           <p className="mt-1 text-2xl font-black text-accent">{tier.priceLabel}</p>
+          {tier.subLabel && <p className="text-xs text-muted/70">{tier.subLabel}</p>}
 
           <ul className="mt-4 flex-1 space-y-2 text-sm text-muted">
             {tier.perks.map((perk) => (
@@ -56,10 +64,20 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
         <div className="sm:col-span-3">
           <div className="card-surface mt-2 rounded-none border-accent/40 p-6 text-center">
             <p className="text-sm text-muted">
-              Elegiste el paquete <span className="text-foreground">{selected}</span>. El
-              checkout de Mercado Pago todavía no está conectado en esta maqueta — cuando
-              tengamos las credenciales, este botón te va a pedir vincular tu cuenta in-game
-              (código de un solo uso) y después te va a llevar al pago.
+              {paidWith === "money" ? (
+                <>
+                  Elegiste <span className="text-foreground">{selected}</span>. El checkout de
+                  Mercado Pago todavía no está conectado en esta maqueta — cuando tengamos las
+                  credenciales, este botón te va a pedir vincular tu cuenta in-game (código de
+                  un solo uso) y después te va a llevar al pago.
+                </>
+              ) : (
+                <>
+                  Elegiste <span className="text-foreground">{selected}</span>. Esto se paga
+                  con tu saldo de Coins of Luck, no con Mercado Pago directo — si no te
+                  alcanzan, primero comprás más coins más arriba.
+                </>
+              )}
             </p>
           </div>
         </div>

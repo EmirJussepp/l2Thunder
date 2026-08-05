@@ -20,17 +20,20 @@ enum OrderStatus {
 }
 
 enum PackageKind {
-  BOX // caja de skin de una rareza fija (Normal/Épica/Legendaria)
-  VIP // pase temporal con boost de progreso, no de poder
+  COIN_PACK // se compra con pesos reales, otorga Coins of Luck
+  BOX // caja de skin de una rareza fija (Normal/Épica/Legendaria), se paga en coins
+  VIP // pase temporal con boost de progreso, se paga en coins
 }
 
 model DonationPackage {
   id            String      @id @default(cuid())
   slug          String      @unique
   name          String
-  kind          PackageKind @default(BOX)
-  priceArsCents Int
-  durationDays  Int? // sólo para kind = VIP
+  kind          PackageKind @default(COIN_PACK)
+  priceArsCents Int? // sólo COIN_PACK: precio real en pesos
+  coinsGranted  Int? // sólo COIN_PACK: coins que otorga
+  priceCoins    Int? // sólo VIP/BOX: costo en Coins of Luck
+  durationDays  Int? // sólo VIP
   perks         String[]
   highlight     Boolean     @default(false)
   active        Boolean     @default(true)
@@ -51,7 +54,8 @@ model DonationOrder {
   status            OrderStatus     @default(PENDING_LINK)
   mpPreferenceId    String?
   mpPaymentId       String?         @unique
-  amountArsCents    Int
+  amountArsCents    Int? // sólo si el paquete es COIN_PACK (pago real)
+  coinsSpent        Int? // sólo si el paquete es VIP/BOX (pago con saldo de coins)
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
   paidAt            DateTime?

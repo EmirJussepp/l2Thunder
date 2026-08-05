@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { getArsPerCoin } from "@/lib/economy";
 import DonationTiersClient from "./DonationTiersClient";
 
 const priceFormatter = new Intl.NumberFormat("es-AR", {
@@ -8,18 +9,25 @@ const priceFormatter = new Intl.NumberFormat("es-AR", {
 });
 
 export default async function DonationTiers() {
-  const packages = await prisma.donationPackage.findMany({
-    where: { active: true, kind: "BOX" },
-    orderBy: { priceArsCents: "asc" },
-  });
+  const [packages, arsPerCoin] = await Promise.all([
+    prisma.donationPackage.findMany({
+      where: { active: true, kind: "BOX" },
+      orderBy: { priceCoins: "asc" },
+    }),
+    getArsPerCoin(),
+  ]);
 
   const tiers = packages.map((pkg) => ({
     id: pkg.id,
     name: pkg.name,
-    priceLabel: priceFormatter.format(pkg.priceArsCents / 100),
+    priceLabel: `${pkg.priceCoins} Coins of Luck`,
+    subLabel:
+      arsPerCoin && pkg.priceCoins
+        ? `≈ ${priceFormatter.format((pkg.priceCoins * arsPerCoin) / 100)}`
+        : null,
     perks: pkg.perks,
     highlight: pkg.highlight,
   }));
 
-  return <DonationTiersClient tiers={tiers} />;
+  return <DonationTiersClient tiers={tiers} paidWith="coins" />;
 }

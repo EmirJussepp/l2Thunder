@@ -4,25 +4,58 @@ import { PrismaClient } from "../src/generated/prisma/client";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
+// 1 Coin of Luck = $1.000 ARS, precio plano (sin descuento por volumen)
+const ARS_PER_COIN = 1000;
+
 const packages = [
+  {
+    slug: "coins-10",
+    name: "10 Coins of Luck",
+    kind: "COIN_PACK" as const,
+    priceArsCents: 10 * ARS_PER_COIN * 100,
+    coinsGranted: 10,
+    perks: ["Alcanza justo para la Caja Normal o para arrancar a juntar para más"],
+    highlight: false,
+  },
+  {
+    slug: "coins-25",
+    name: "25 Coins of Luck",
+    kind: "COIN_PACK" as const,
+    priceArsCents: 25 * ARS_PER_COIN * 100,
+    coinsGranted: 25,
+    perks: ["Alcanza para el VIP Thunder o la Caja Épica, con vuelto"],
+    highlight: true,
+  },
+  {
+    slug: "coins-60",
+    name: "60 Coins of Luck",
+    kind: "COIN_PACK" as const,
+    priceArsCents: 60 * ARS_PER_COIN * 100,
+    coinsGranted: 60,
+    perks: ["Alcanza para la Caja Legendaria, con coins de sobra"],
+    highlight: false,
+  },
   {
     slug: "caja-normal",
     name: "Caja Normal",
-    priceArsCents: 4_000 * 100,
+    kind: "BOX" as const,
+    priceCoins: 4,
     perks: ["Sale cualquier skin de rareza Normal"],
     highlight: false,
   },
   {
     slug: "caja-epica",
     name: "Caja Épica",
-    priceArsCents: 9_000 * 100,
+    kind: "BOX" as const,
+    priceCoins: 9,
     perks: ["Sale cualquier skin de rareza Épica"],
     highlight: true,
   },
   {
     slug: "caja-legendaria",
     name: "Caja Legendaria",
-    priceArsCents: 22_000 * 100,
+    kind: "BOX" as const,
+    priceCoins: 22,
     perks: ["Sale cualquier skin de rareza Legendaria"],
     highlight: false,
   },
@@ -30,7 +63,7 @@ const packages = [
     slug: "vip-thunder",
     name: "VIP Thunder",
     kind: "VIP" as const,
-    priceArsCents: 10_000 * 100,
+    priceCoins: 10,
     durationDays: 15,
     perks: [
       "5% de EXP extra durante 15 días",
