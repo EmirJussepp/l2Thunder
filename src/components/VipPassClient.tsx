@@ -49,8 +49,9 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
 
       {selected && (
         <div className="mt-6 border-t border-border-soft pt-4 text-sm text-muted">
-          Esto se paga con tu saldo de Coins of Luck, no con Mercado Pago directo — si no te
-          alcanzan, primero comprás más coins más arriba.
+          El checkout de Mercado Pago todavía no está conectado en esta maqueta — cuando
+          tengamos las credenciales, este botón te va a pedir vincular tu cuenta in-game
+          (código de un solo uso) antes de cobrar.
         </div>
       )}
     </div>

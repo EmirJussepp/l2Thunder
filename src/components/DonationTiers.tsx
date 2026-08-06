@@ -29,5 +29,5 @@ export default async function DonationTiers() {
     highlight: pkg.highlight,
   }));
 
-  return <DonationTiersClient tiers={tiers} paidWith="coins" />;
+  return <DonationTiersClient tiers={tiers} />;
 }

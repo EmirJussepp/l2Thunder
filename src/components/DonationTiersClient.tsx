@@ -11,13 +11,7 @@ export type TierView = {
   highlight: boolean;
 };
 
-export default function DonationTiersClient({
-  tiers,
-  paidWith = "money",
-}: {
-  tiers: TierView[];
-  paidWith?: "money" | "coins";
-}) {
+export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
@@ -64,20 +58,10 @@ export default function DonationTiersClient({
         <div className="sm:col-span-3">
           <div className="card-surface mt-2 rounded-none border-accent/40 p-6 text-center">
             <p className="text-sm text-muted">
-              {paidWith === "money" ? (
-                <>
-                  Elegiste <span className="text-foreground">{selected}</span>. El checkout de
-                  Mercado Pago todavía no está conectado en esta maqueta — cuando tengamos las
-                  credenciales, este botón te va a pedir vincular tu cuenta in-game (código de
-                  un solo uso) y después te va a llevar al pago.
-                </>
-              ) : (
-                <>
-                  Elegiste <span className="text-foreground">{selected}</span>. Esto se paga
-                  con tu saldo de Coins of Luck, no con Mercado Pago directo — si no te
-                  alcanzan, primero comprás más coins más arriba.
-                </>
-              )}
+              Elegiste <span className="text-foreground">{selected}</span>. El checkout de
+              Mercado Pago todavía no está conectado en esta maqueta — cuando tengamos las
+              credenciales, este botón te va a pedir vincular tu cuenta in-game (código de un
+              solo uso) y después te va a llevar al pago.
             </p>
           </div>
         </div>
