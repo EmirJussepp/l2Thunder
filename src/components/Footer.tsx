@@ -22,7 +22,14 @@ export default function Footer() {
           <Link href="/donar" className="hover:text-foreground">
             Donar
           </Link>
-          <span className="cursor-not-allowed opacity-60">Discord (próximamente)</span>
+          <a
+            href="https://discord.gg/6W6EJjXSa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground"
+          >
+            Discord
+          </a>
           <span className="cursor-not-allowed opacity-60">Foro (próximamente)</span>
         </div>
 
