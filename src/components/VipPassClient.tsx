@@ -23,7 +23,7 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
           <span className="rounded-none bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold">
             {vip.durationDays} días de boost
           </span>
-          <h3 className="mt-3 font-display text-2xl font-bold">{vip.name}</h3>
+          <h2 className="mt-3 font-display text-2xl font-bold">{vip.name}</h2>
           <p className="mt-1 text-3xl font-black text-gold">{vip.priceLabel}</p>
           {vip.subLabel && <p className="text-xs text-muted/70">{vip.subLabel}</p>}
 

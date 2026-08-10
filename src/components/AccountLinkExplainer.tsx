@@ -11,15 +11,15 @@ const steps = [
   },
   {
     step: "3",
-    title: "Pagás y recibís los puntos al instante",
-    description: "El servidor te acredita los puntos apenas se confirma el pago.",
+    title: "Pagás y recibís tu compra al instante",
+    description: "El servidor la acredita en tu cuenta apenas se confirma el pago.",
   },
 ];
 
 export default function AccountLinkExplainer() {
   return (
     <div className="card-surface mx-auto max-w-3xl rounded-none p-8">
-      <h3 className="font-display text-xl font-bold">¿Cómo se vincula tu cuenta?</h3>
+      <h2 className="font-display text-xl font-bold">¿Cómo se vincula tu cuenta?</h2>
       <p className="mt-2 text-sm text-muted">
         Por seguridad, la web nunca te pide la contraseña de tu cuenta de juego. Usamos un
         código temporal que generás vos mismo desde adentro del server.

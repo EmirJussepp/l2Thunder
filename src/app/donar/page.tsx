@@ -27,7 +27,6 @@ export default function DonarPage() {
       </div>
 
       <section className="mb-16">
-        <h2 className="mb-6 text-center font-display text-2xl font-bold">VIP Thunder</h2>
         <VipPass />
       </section>
 
