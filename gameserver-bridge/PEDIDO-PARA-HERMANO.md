@@ -28,17 +28,33 @@ SELECT * FROM account_data LIMIT 5;
 Si por algún motivo esa tabla no existe o el server ya tiene su propio sistema de puntos
 de donación armado de antes, avisame — mejor reusar eso que inventar uno nuevo.
 
+**UPDATE — esto ya lo confirmaron**: `account_data` existe pero está vacía y ningún
+script del datapack la lee (`AccountVariables` está en el jar pero no se usa en ningún
+lado). Escribir ahí no le entrega nada al jugador. Antes de seguir con la Parte 1,
+necesito esto:
+
+**¿El L2jMobius que usan trae algo ya armado de donate shop / webshop / correo in-game**
+(aunque esté apagado)? Revisar `config/` por algo tipo `PcCafe`, `DonateShop`, `Store`, o
+carpetas en `data/scripts/custom/` con nombres relacionados. Si hay algo así, lo
+reusamos. Si no hay nada, la entrega real de Coin of Luck (ítem **4037**) va a necesitar
+un pedacito de código del lado del datapack — no hay forma de evitarlo si queremos que el
+jugador reciba algo de verdad. Lo vemos juntos en cuanto tengas esta respuesta.
+
 ### 1.2 — Un usuario de MySQL para este servicio
 
-Necesito un usuario de MySQL con permiso de lectura/escritura sobre la base
-`l2jmobius_login` (solo esa, no hace falta que toque `l2jmobius` ni nada del juego en sí).
-Puede ser nuevo, así este servicio no tiene más permisos de los que necesita:
+Necesito un usuario de MySQL con permiso de lectura/escritura **solo sobre la tabla que
+vayamos a usar para la cola de entregas** (a definir — ver más abajo, todavía no es
+`account_data` a secas). Nada de acceso a `accounts` ni al resto de la base: esa tabla
+tiene passwords, email e IPs de todos los jugadores.
 
 ```sql
 CREATE USER 'l2thunder_bridge'@'localhost' IDENTIFIED BY 'ELEGIR-UNA-CONTRASEÑA-FUERTE';
-GRANT SELECT, INSERT, UPDATE ON l2jmobius_login.* TO 'l2thunder_bridge'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON l2jmobius_login.account_data TO 'l2thunder_bridge'@'localhost';
 FLUSH PRIVILEGES;
 ```
+
+(si terminamos usando otra tabla para la cola, ajustar el `GRANT` a esa tabla nomás, con
+el mismo criterio de mínimo privilegio)
 
 Pasame el usuario y la contraseña que elegiste (por un canal privado, no por acá en texto
 plano si podés — WhatsApp está bien, pero evitá dejarlo en un chat grupal o algo público).
