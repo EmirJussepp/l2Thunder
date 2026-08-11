@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Proyecto Node aparte que corre en el VPS del gameserver, no en Vercel.
+    "gameserver-bridge/**",
   ]),
 ]);
 

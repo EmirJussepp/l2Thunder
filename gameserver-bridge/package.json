@@ -1,0 +1,15 @@
+{
+  "name": "l2thunder-gameserver-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servicio chico que corre en el VPS del gameserver y acredita Coins of Luck en la base MySQL cuando la web confirma un pago.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
+  }
+}

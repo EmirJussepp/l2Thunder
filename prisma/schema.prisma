@@ -11,10 +11,9 @@ datasource db {
 }
 
 enum OrderStatus {
-  PENDING_LINK // esperando que el usuario vincule su cuenta in-game con el código
-  PENDING_PAYMENT // cuenta vinculada, esperando confirmación de Mercado Pago
-  PAID // pago confirmado, todavía no entregado en el server
-  DELIVERED // el GameServer confirmó la entrega de puntos/perks
+  PENDING_PAYMENT // orden creada, esperando confirmación de Mercado Pago
+  PAID // pago confirmado, todavía no acreditado en el gameserver
+  DELIVERED // el script puente confirmó la acreditación de coins en la cuenta
   FAILED
   CANCELED
 }
@@ -43,23 +42,24 @@ model DonationPackage {
   orders DonationOrder[]
 }
 
-// La verificación del código in-game (.donatecode) vive del lado del GameServer/MySQL,
-// no acá: esta orden solo guarda el account_name ya confirmado por esa verificación.
+// Sin verificación de cuenta por código: el account_name lo tipea el jugador
+// en el checkout y se acredita tal cual. El error a corregir manualmente si
+// se equivoca es más barato que forzar un comando nuevo en el gameserver.
 model DonationOrder {
-  id                String          @id @default(cuid())
-  packageId         String
-  package           DonationPackage @relation(fields: [packageId], references: [id])
-  gameAccountName   String
-  accountVerifiedAt DateTime?
-  status            OrderStatus     @default(PENDING_LINK)
-  mpPreferenceId    String?
-  mpPaymentId       String?         @unique
-  amountArsCents    Int? // sólo si el paquete es COIN_PACK (pago real)
-  coinsSpent        Int? // sólo si el paquete es VIP/BOX (pago con saldo de coins)
-  createdAt         DateTime        @default(now())
-  updatedAt         DateTime        @updatedAt
-  paidAt            DateTime?
-  deliveredAt       DateTime?
+  id              String          @id @default(cuid())
+  packageId       String
+  package         DonationPackage @relation(fields: [packageId], references: [id])
+  gameAccountName String
+  status          OrderStatus     @default(PENDING_PAYMENT)
+  mpPreferenceId  String?
+  mpPaymentId     String?         @unique
+  amountArsCents  Int // monto real cobrado por Mercado Pago
+  coinsCredited   Int // Coins of Luck que se acreditan a la cuenta
+  bridgeError     String? // motivo si falló la acreditación en el gameserver
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  paidAt          DateTime?
+  deliveredAt     DateTime?
 
   @@index([gameAccountName])
   @@index([status])

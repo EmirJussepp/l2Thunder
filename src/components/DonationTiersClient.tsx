@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import BuyButton from "./BuyButton";
 
 export type TierView = {
   id: string;
@@ -12,8 +10,6 @@ export type TierView = {
 };
 
 export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
-  const [selected, setSelected] = useState<string | null>(null);
-
   return (
     <div className="grid gap-6 sm:grid-cols-3">
       {tiers.map((tier) => (
@@ -41,31 +37,20 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
             ))}
           </ul>
 
-          <button
-            onClick={() => setSelected(tier.name)}
-            className={`mt-6 rounded-none px-5 py-2.5 text-sm font-semibold transition ${
-              tier.highlight
-                ? "bg-gradient-to-r from-gold to-accent-2 text-background hover:brightness-110"
-                : "border border-border-soft text-foreground hover:border-accent hover:text-accent"
-            }`}
-          >
-            Elegir {tier.name}
-          </button>
-        </div>
-      ))}
-
-      {selected && (
-        <div className="sm:col-span-3">
-          <div className="card-surface mt-2 rounded-none border-accent/40 p-6 text-center">
-            <p className="text-sm text-muted">
-              Elegiste <span className="text-foreground">{selected}</span>. El checkout de
-              Mercado Pago todavía no está conectado en esta maqueta — cuando tengamos las
-              credenciales, este botón te va a pedir vincular tu cuenta in-game (código de un
-              solo uso) y después te va a llevar al pago.
-            </p>
+          <div className="mt-6">
+            <BuyButton
+              packageId={tier.id}
+              label={`Elegir ${tier.name}`}
+              fullWidthButton
+              buttonClassName={`rounded-none px-5 py-2.5 text-sm font-semibold transition ${
+                tier.highlight
+                  ? "bg-gradient-to-r from-gold to-accent-2 text-background hover:brightness-110"
+                  : "border border-border-soft text-foreground hover:border-accent hover:text-accent"
+              }`}
+            />
           </div>
         </div>
-      )}
+      ))}
 
       <p className="text-center text-xs text-muted/70 sm:col-span-3">
         Precios y cantidades de ejemplo — se ajustan antes de lanzar el checkout real.

@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import BuyButton from "./BuyButton";
 
 export type VipView = {
   id: string;
@@ -12,8 +10,6 @@ export type VipView = {
 };
 
 export default function VipPassClient({ vip }: { vip: VipView | null }) {
-  const [selected, setSelected] = useState(false);
-
   if (!vip) return null;
 
   return (
@@ -37,23 +33,14 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
           </ul>
         </div>
 
-        <div className="shrink-0">
-          <button
-            onClick={() => setSelected(true)}
-            className="w-full rounded-none bg-gradient-to-r from-gold to-accent-2 px-8 py-3 text-sm font-semibold text-background transition hover:brightness-110 md:w-auto"
-          >
-            Activar {vip.name}
-          </button>
+        <div className="shrink-0 md:w-72">
+          <BuyButton
+            packageId={vip.id}
+            label={`Activar ${vip.name}`}
+            buttonClassName="rounded-none bg-gradient-to-r from-gold to-accent-2 px-8 py-3 text-sm font-semibold text-background transition hover:brightness-110 md:w-auto"
+          />
         </div>
       </div>
-
-      {selected && (
-        <div className="mt-6 border-t border-border-soft pt-4 text-sm text-muted">
-          El checkout de Mercado Pago todavía no está conectado en esta maqueta — cuando
-          tengamos las credenciales, este botón te va a pedir vincular tu cuenta in-game
-          (código de un solo uso) antes de cobrar.
-        </div>
-      )}
     </div>
   );
 }
