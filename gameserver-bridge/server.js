@@ -1,23 +1,21 @@
 require("dotenv/config");
-const crypto = require("crypto");
-const express = require("express");
-const rateLimit = require("express-rate-limit");
 const mysql = require("mysql2/promise");
 
-const PORT = process.env.PORT || 4001;
+const WEB_BASE_URL = process.env.WEB_BASE_URL;
 const BRIDGE_SECRET = process.env.BRIDGE_SECRET;
+const POLL_INTERVAL_MS = Number(process.env.POLL_INTERVAL_MS) || 30_000;
 const COIN_OF_LUCK_ITEM_ID = 4037;
-// Tope de seguridad por pedido: aunque se filtre el secreto, un solo pedido no puede
-// pedir más de esto. Ajustar según el paquete más caro que vendan.
-const MAX_COINS_PER_REQUEST = Number(process.env.MAX_COINS_PER_REQUEST) || 100;
+// Sanity check por las dudas — nunca debería llegar algo fuera de rango si la web
+// está bien, pero es gratis chequearlo antes de mandar el correo.
+const MAX_COINS_PER_ORDER = Number(process.env.MAX_COINS_PER_ORDER) || 100;
 
-if (!BRIDGE_SECRET) {
-  console.error("Falta BRIDGE_SECRET en .env — no arranco sin eso.");
+if (!WEB_BASE_URL || !BRIDGE_SECRET) {
+  console.error("Faltan WEB_BASE_URL / BRIDGE_SECRET en .env — no arranco sin eso.");
   process.exit(1);
 }
 
-// Se conecta SOLO a l2jmobius (la base del juego) — ya no hace falta tocar
-// l2jmobius_login/accounts para nada, la entrega es por personaje.
+// Se conecta SOLO a l2jmobius (la base del juego), solo lee characters e inserta
+// en custom_mail — nunca toca accounts ni l2jmobius_login.
 const pool = mysql.createPool({
   host: process.env.DB_HOST || "127.0.0.1",
   port: Number(process.env.DB_PORT) || 3306,
@@ -28,118 +26,97 @@ const pool = mysql.createPool({
   connectionLimit: 5,
 });
 
-function safeEqual(a, b) {
-  const bufA = Buffer.from(a);
-  const bufB = Buffer.from(b);
-  if (bufA.length !== bufB.length) return false;
-  return crypto.timingSafeEqual(bufA, bufB);
+async function fetchPending() {
+  const res = await fetch(`${WEB_BASE_URL}/api/bridge/pending`, {
+    headers: { "X-Bridge-Secret": BRIDGE_SECRET },
+  });
+  if (!res.ok) throw new Error(`/api/bridge/pending respondió ${res.status}`);
+  const data = await res.json();
+  return data.orders || [];
 }
 
-const app = express();
-app.use(express.json());
-
-// Límite global (no por IP: el único caller esperado es nuestro propio webhook,
-// así que un pico de pedidos ya es sospechoso en sí mismo). Segunda barrera además
-// del tope por pedido, para que un secreto filtrado no permita spam ilimitado.
-app.use(
-  rateLimit({
-    windowMs: 60_000,
-    limit: 20,
-    standardHeaders: true,
-    legacyHeaders: false,
-  }),
-);
-
-app.post("/credit-coins", async (req, res) => {
-  const secret = req.header("X-Bridge-Secret") || "";
-  if (!safeEqual(secret, BRIDGE_SECRET)) {
-    return res.status(401).json({ error: "unauthorized" });
+async function ack(orderId, status, error) {
+  try {
+    await fetch(`${WEB_BASE_URL}/api/bridge/ack`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Bridge-Secret": BRIDGE_SECRET },
+      body: JSON.stringify({ orderId, status, error }),
+    });
+  } catch (err) {
+    // Si el ack no llega, la orden queda PROCESSING y /pending la vuelve a ofrecer
+    // sola después de un rato (ver STALE_PROCESSING_MS del lado de la web).
+    console.error(`No se pudo mandar el ack de ${orderId}:`, err);
   }
+}
 
-  const { characterName, coins, orderId } = req.body || {};
-
-  if (
-    typeof characterName !== "string" ||
-    !characterName.trim() ||
-    typeof coins !== "number" ||
-    !Number.isInteger(coins) ||
-    coins <= 0 ||
-    coins > MAX_COINS_PER_REQUEST ||
-    typeof orderId !== "string" ||
-    !orderId.trim()
-  ) {
-    return res.status(400).json({ error: "invalid_payload" });
+async function deliverOrder({ orderId, characterName, coins }) {
+  if (!Number.isInteger(coins) || coins <= 0 || coins > MAX_COINS_PER_ORDER) {
+    console.error(`Orden ${orderId}: coins fuera de rango (${coins}), no se entrega`);
+    await ack(orderId, "FAILED", "coins fuera de rango");
+    return;
   }
-
-  const charName = characterName.trim();
 
   let conn;
   try {
     conn = await pool.getConnection();
 
-    // Idempotencia: si esta orden ya se procesó antes, no mandamos un segundo correo.
-    // La tabla l2thunder_bridge_log se crea una sola vez a mano (ver README), este
-    // servicio no tiene ni necesita permiso de CREATE TABLE.
-    const [already] = await conn.query(
-      "SELECT 1 FROM l2thunder_bridge_log WHERE order_id = ? LIMIT 1",
-      [orderId],
-    );
-    if (already.length > 0) {
-      return res.json({ ok: true, alreadySent: true });
-    }
-
-    // AJUSTAR ACÁ si el nombre real de las columnas es distinto (confirmar con
-    // `DESCRIBE characters;` — asumimos charId como PK y char_name como el nombre).
+    // AJUSTAR ACÁ si characters.char_name/charId no coinciden con el schema real.
     const [charRows] = await conn.query(
       "SELECT charId FROM characters WHERE char_name = ? LIMIT 1",
-      [charName],
+      [characterName],
     );
     if (charRows.length === 0) {
-      return res.status(404).json({ error: "character_not_found" });
+      console.error(`Orden ${orderId}: personaje "${characterName}" no encontrado`);
+      await ack(orderId, "FAILED", "character_not_found");
+      return;
     }
-    const receiverId = charRows[0].charId;
 
-    // CustomMailManager entrega esto solo (poll cada DatabaseQueryDelay segundos),
-    // manda un susurro con el asunto, y borra la fila. Formato de items: "id cantidad".
+    // CustomMailManager entrega esto solo (cada DatabaseQueryDelay segundos), manda
+    // un susurro con el subject y borra la fila. Nada de tildes ni rayas largas acá
+    // adentro — el cliente Interlude no renderiza fuera de ASCII.
+    // OJO: date NO va en el INSERT, la columna tiene DEFAULT CURRENT_TIMESTAMP y
+    // MySQL en modo estricto rechaza un epoch en milisegundos ahí.
     await conn.query(
-      "INSERT INTO custom_mail (date, receiver, subject, message, items) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO custom_mail (receiver, subject, message, items) VALUES (?, ?, ?, ?)",
       [
-        Date.now(),
-        receiverId,
-        "L2Thunder — Gracias por tu aporte",
+        charRows[0].charId,
+        "L2Thunder - Gracias por tu aporte",
         "Se acreditaron tus Coins of Luck. Gracias por bancar el server!",
         `${COIN_OF_LUCK_ITEM_ID} ${coins}`,
       ],
     );
 
-    await conn.query(
-      "INSERT INTO l2thunder_bridge_log (order_id, character_name, coins) VALUES (?, ?, ?)",
-      [orderId, charName, coins],
-    );
-
-    return res.json({ ok: true, alreadySent: false });
+    console.log(`Orden ${orderId}: ${coins} Coins of Luck enviados a "${characterName}"`);
+    await ack(orderId, "DELIVERED");
   } catch (err) {
-    console.error("Error mandando el correo de coins:", err);
-    return res.status(500).json({ error: "internal_error" });
+    console.error(`Orden ${orderId}: error entregando:`, err);
+    await ack(orderId, "FAILED", err instanceof Error ? err.message : String(err));
   } finally {
     if (conn) conn.release();
   }
-});
+}
 
-app.get("/health", (_req, res) => res.json({ ok: true }));
+let polling = false;
 
-// Red de seguridad: un error que se nos escape no debería tirar el proceso entero
-// abajo y cortar la entrega de TODAS las donaciones hasta que pm2 lo reinicie.
-process.on("unhandledRejection", (err) => {
-  console.error("unhandledRejection:", err);
-});
-process.on("uncaughtException", (err) => {
-  console.error("uncaughtException:", err);
-});
+async function pollOnce() {
+  if (polling) return; // evita pasadas superpuestas si una tanda tarda más que el intervalo
+  polling = true;
+  try {
+    const orders = await fetchPending();
+    for (const order of orders) {
+      await deliverOrder(order);
+    }
+  } catch (err) {
+    console.error("No se pudo consultar /api/bridge/pending:", err);
+  } finally {
+    polling = false;
+  }
+}
 
-// Escucha en todas las interfaces porque Vercel le tiene que pegar desde afuera.
-// OBLIGATORIO: poner esto detrás de HTTPS (ver README) antes de usarlo con pagos reales —
-// sin TLS el BRIDGE_SECRET viaja en texto plano.
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Bridge escuchando en 0.0.0.0:${PORT}`);
-});
+process.on("unhandledRejection", (err) => console.error("unhandledRejection:", err));
+process.on("uncaughtException", (err) => console.error("uncaughtException:", err));
+
+console.log(`Bridge iniciado. Consultando ${WEB_BASE_URL} cada ${POLL_INTERVAL_MS / 1000}s.`);
+
+pollOnce();
+setInterval(pollOnce, POLL_INTERVAL_MS);

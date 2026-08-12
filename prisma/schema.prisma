@@ -12,8 +12,9 @@ datasource db {
 
 enum OrderStatus {
   PENDING_PAYMENT // orden creada, esperando confirmación de Mercado Pago
-  PAID // pago confirmado, todavía no acreditado en el gameserver
-  DELIVERED // el script puente confirmó la acreditación de coins en la cuenta
+  PAID // pago confirmado, esperando que el bridge la levante
+  PROCESSING // el bridge la levantó en /api/bridge/pending, procesándola (con lease/timeout)
+  DELIVERED // el bridge confirmó el envío del correo in-game
   FAILED
   CANCELED
 }
