@@ -1,11 +1,12 @@
 // Llama al servicio puente que corre en el VPS del gameserver (ver /gameserver-bridge).
-// Ese servicio escribe el balance de Coins of Luck directo en la base MySQL del juego.
+// Ese servicio encola la entrega de Coins of Luck (ítem 4037) vía custom_mail, para
+// el personaje indicado — no la cuenta, custom_mail entrega por objectId de personaje.
 export async function creditCoins({
-  accountName,
+  characterName,
   coins,
   orderId,
 }: {
-  accountName: string;
+  characterName: string;
   coins: number;
   orderId: string;
 }) {
@@ -24,7 +25,7 @@ export async function creditCoins({
       "Content-Type": "application/json",
       "X-Bridge-Secret": secret,
     },
-    body: JSON.stringify({ accountName, coins, orderId }),
+    body: JSON.stringify({ characterName, coins, orderId }),
   });
 
   if (!res.ok) {

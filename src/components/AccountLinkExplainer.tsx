@@ -1,28 +1,29 @@
 const steps = [
   {
     step: "1",
-    title: "Escribí .donatecode en el juego",
-    description: "Tu personaje recibe un código de 6 dígitos por chat, válido por unos minutos.",
+    title: "Escribí el nombre exacto de tu personaje",
+    description: "No tu cuenta — el personaje que va a recibir los Coins of Luck.",
   },
   {
     step: "2",
-    title: "Pegalo acá antes de pagar",
-    description: "Así vinculamos la compra a tu cuenta sin pedirte nunca tu contraseña de L2.",
+    title: "Pagás con Mercado Pago",
+    description: "Nunca te pedimos la contraseña de tu cuenta de L2, en ningún paso.",
   },
   {
     step: "3",
-    title: "Pagás y recibís tu compra al instante",
-    description: "El servidor la acredita en tu cuenta apenas se confirma el pago.",
+    title: "Te llega por correo in-game",
+    description:
+      "Cuando confirmamos el pago, tu personaje recibe un correo con los Coins of Luck. Tiene que estar online para recibirlo — si no, te espera hasta que entres.",
   },
 ];
 
 export default function AccountLinkExplainer() {
   return (
     <div className="card-surface mx-auto max-w-3xl rounded-none p-8">
-      <h2 className="font-display text-xl font-bold">¿Cómo se vincula tu cuenta?</h2>
+      <h2 className="font-display text-xl font-bold">¿Cómo llega mi compra?</h2>
       <p className="mt-2 text-sm text-muted">
-        Por seguridad, la web nunca te pide la contraseña de tu cuenta de juego. Usamos un
-        código temporal que generás vos mismo desde adentro del server.
+        Por seguridad, la web nunca te pide la contraseña de tu cuenta de juego — ni acá ni
+        en ningún otro paso.
       </p>
 
       <ol className="mt-6 space-y-4">

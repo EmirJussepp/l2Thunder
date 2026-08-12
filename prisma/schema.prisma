@@ -42,25 +42,25 @@ model DonationPackage {
   orders DonationOrder[]
 }
 
-// Sin verificación de cuenta por código: el account_name lo tipea el jugador
-// en el checkout y se acredita tal cual. El error a corregir manualmente si
-// se equivoca es más barato que forzar un comando nuevo en el gameserver.
+// Sin verificación por código: el nombre lo tipea el jugador en el checkout y se
+// acredita tal cual. Es el nombre del PERSONAJE, no de la cuenta — la entrega en el
+// juego (custom_mail) es por objectId de personaje, y una cuenta puede tener varios.
 model DonationOrder {
-  id              String          @id @default(cuid())
-  packageId       String
-  package         DonationPackage @relation(fields: [packageId], references: [id])
-  gameAccountName String
-  status          OrderStatus     @default(PENDING_PAYMENT)
-  mpPreferenceId  String?
-  mpPaymentId     String?         @unique
-  amountArsCents  Int // monto real cobrado por Mercado Pago
-  coinsCredited   Int // Coins of Luck que se acreditan a la cuenta
-  bridgeError     String? // motivo si falló la acreditación en el gameserver
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-  paidAt          DateTime?
-  deliveredAt     DateTime?
+  id             String          @id @default(cuid())
+  packageId      String
+  package        DonationPackage @relation(fields: [packageId], references: [id])
+  characterName  String
+  status         OrderStatus     @default(PENDING_PAYMENT)
+  mpPreferenceId String?
+  mpPaymentId    String?         @unique
+  amountArsCents Int // monto real cobrado por Mercado Pago
+  coinsCredited  Int // Coins of Luck que se acreditan al personaje
+  bridgeError    String? // motivo si falló la acreditación en el gameserver
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  paidAt         DateTime?
+  deliveredAt    DateTime?
 
-  @@index([gameAccountName])
+  @@index([characterName])
   @@index([status])
 }

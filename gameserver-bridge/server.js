@@ -1,13 +1,14 @@
 require("dotenv/config");
 const crypto = require("crypto");
 const express = require("express");
+const rateLimit = require("express-rate-limit");
 const mysql = require("mysql2/promise");
 
 const PORT = process.env.PORT || 4001;
 const BRIDGE_SECRET = process.env.BRIDGE_SECRET;
-// Tope de seguridad: aunque se filtre el secreto, un solo pedido no puede pedir
-// más de esto. Ajustar según el paquete más caro que vendan (hoy el más caro
-// son 22 coins, dejamos margen).
+const COIN_OF_LUCK_ITEM_ID = 4037;
+// Tope de seguridad por pedido: aunque se filtre el secreto, un solo pedido no puede
+// pedir más de esto. Ajustar según el paquete más caro que vendan.
 const MAX_COINS_PER_REQUEST = Number(process.env.MAX_COINS_PER_REQUEST) || 100;
 
 if (!BRIDGE_SECRET) {
@@ -15,33 +16,17 @@ if (!BRIDGE_SECRET) {
   process.exit(1);
 }
 
+// Se conecta SOLO a l2jmobius (la base del juego) — ya no hace falta tocar
+// l2jmobius_login/accounts para nada, la entrega es por personaje.
 const pool = mysql.createPool({
   host: process.env.DB_HOST || "127.0.0.1",
   port: Number(process.env.DB_PORT) || 3306,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME || "l2jmobius_login",
+  database: process.env.DB_NAME || "l2jmobius",
   waitForConnections: true,
   connectionLimit: 5,
 });
-
-// Cola de entregas pendientes. Este servicio SOLO encola — la entrega real
-// (dar el ítem Coin of Luck, id 4037, o lo que se decida) la hace un proceso
-// del lado del datapack (Java) que lee esta tabla y marca DELIVERED. Ver
-// PEDIDO-PARA-HERMANO.md: escribir directo en account_data no sirve, nada la lee.
-async function ensureQueueTable() {
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS l2thunder_donation_queue (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      order_id VARCHAR(64) NOT NULL UNIQUE,
-      account_name VARCHAR(64) NOT NULL,
-      coins INT NOT NULL,
-      status ENUM('PENDING', 'DELIVERED') NOT NULL DEFAULT 'PENDING',
-      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      delivered_at DATETIME NULL
-    )
-  `);
-}
 
 function safeEqual(a, b) {
   const bufA = Buffer.from(a);
@@ -53,17 +38,29 @@ function safeEqual(a, b) {
 const app = express();
 app.use(express.json());
 
+// Límite global (no por IP: el único caller esperado es nuestro propio webhook,
+// así que un pico de pedidos ya es sospechoso en sí mismo). Segunda barrera además
+// del tope por pedido, para que un secreto filtrado no permita spam ilimitado.
+app.use(
+  rateLimit({
+    windowMs: 60_000,
+    limit: 20,
+    standardHeaders: true,
+    legacyHeaders: false,
+  }),
+);
+
 app.post("/credit-coins", async (req, res) => {
   const secret = req.header("X-Bridge-Secret") || "";
   if (!safeEqual(secret, BRIDGE_SECRET)) {
     return res.status(401).json({ error: "unauthorized" });
   }
 
-  const { accountName, coins, orderId } = req.body || {};
+  const { characterName, coins, orderId } = req.body || {};
 
   if (
-    typeof accountName !== "string" ||
-    !accountName.trim() ||
+    typeof characterName !== "string" ||
+    !characterName.trim() ||
     typeof coins !== "number" ||
     !Number.isInteger(coins) ||
     coins <= 0 ||
@@ -74,48 +71,75 @@ app.post("/credit-coins", async (req, res) => {
     return res.status(400).json({ error: "invalid_payload" });
   }
 
-  const login = accountName.trim();
+  const charName = characterName.trim();
 
-  const conn = await pool.getConnection();
+  let conn;
   try {
-    const [accountRows] = await conn.query(
-      "SELECT login FROM accounts WHERE login = ? LIMIT 1",
-      [login],
+    conn = await pool.getConnection();
+
+    // Idempotencia: si esta orden ya se procesó antes, no mandamos un segundo correo.
+    // La tabla l2thunder_bridge_log se crea una sola vez a mano (ver README), este
+    // servicio no tiene ni necesita permiso de CREATE TABLE.
+    const [already] = await conn.query(
+      "SELECT 1 FROM l2thunder_bridge_log WHERE order_id = ? LIMIT 1",
+      [orderId],
     );
-    if (accountRows.length === 0) {
-      return res.status(404).json({ error: "account_not_found" });
+    if (already.length > 0) {
+      return res.json({ ok: true, alreadySent: true });
     }
 
-    // order_id es UNIQUE: si la web reintenta la misma orden, esto no duplica
-    // la fila, así que tampoco se duplica la entrega del lado del juego.
+    // AJUSTAR ACÁ si el nombre real de las columnas es distinto (confirmar con
+    // `DESCRIBE characters;` — asumimos charId como PK y char_name como el nombre).
+    const [charRows] = await conn.query(
+      "SELECT charId FROM characters WHERE char_name = ? LIMIT 1",
+      [charName],
+    );
+    if (charRows.length === 0) {
+      return res.status(404).json({ error: "character_not_found" });
+    }
+    const receiverId = charRows[0].charId;
+
+    // CustomMailManager entrega esto solo (poll cada DatabaseQueryDelay segundos),
+    // manda un susurro con el asunto, y borra la fila. Formato de items: "id cantidad".
     await conn.query(
-      `INSERT INTO l2thunder_donation_queue (order_id, account_name, coins)
-       VALUES (?, ?, ?)
-       ON DUPLICATE KEY UPDATE order_id = order_id`,
-      [orderId, login, coins],
+      "INSERT INTO custom_mail (date, receiver, subject, message, items) VALUES (?, ?, ?, ?, ?)",
+      [
+        Date.now(),
+        receiverId,
+        "L2Thunder — Gracias por tu aporte",
+        "Se acreditaron tus Coins of Luck. Gracias por bancar el server!",
+        `${COIN_OF_LUCK_ITEM_ID} ${coins}`,
+      ],
     );
 
-    return res.json({ ok: true, queued: true });
+    await conn.query(
+      "INSERT INTO l2thunder_bridge_log (order_id, character_name, coins) VALUES (?, ?, ?)",
+      [orderId, charName, coins],
+    );
+
+    return res.json({ ok: true, alreadySent: false });
   } catch (err) {
-    console.error("Error encolando la entrega:", err);
+    console.error("Error mandando el correo de coins:", err);
     return res.status(500).json({ error: "internal_error" });
   } finally {
-    conn.release();
+    if (conn) conn.release();
   }
 });
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
+// Red de seguridad: un error que se nos escape no debería tirar el proceso entero
+// abajo y cortar la entrega de TODAS las donaciones hasta que pm2 lo reinicie.
+process.on("unhandledRejection", (err) => {
+  console.error("unhandledRejection:", err);
+});
+process.on("uncaughtException", (err) => {
+  console.error("uncaughtException:", err);
+});
+
 // Escucha en todas las interfaces porque Vercel le tiene que pegar desde afuera.
 // OBLIGATORIO: poner esto detrás de HTTPS (ver README) antes de usarlo con pagos reales —
 // sin TLS el BRIDGE_SECRET viaja en texto plano.
-ensureQueueTable()
-  .then(() => {
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`Bridge escuchando en 0.0.0.0:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("No se pudo preparar la tabla de cola:", err);
-    process.exit(1);
-  });
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Bridge escuchando en 0.0.0.0:${PORT}`);
+});

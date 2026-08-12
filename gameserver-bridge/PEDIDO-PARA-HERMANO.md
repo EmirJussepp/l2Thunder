@@ -1,67 +1,72 @@
 # L2Thunder — Lo que necesito del VPS y de Mercado Pago
 
-Hola! Estamos conectando la web de donaciones (l2thunder) con el server para que cuando
-alguien done por Mercado Pago, se le acrediten Coins of Luck en su cuenta automáticamente.
+Antes que nada: gracias por el audit, encontraste el problema de fondo (`account_data`
+vacía, sin lectores) antes de que instaláramos algo que no iba a funcionar. Y encontrar
+`CustomMailManager` ya armado nos ahorró escribir código Java de cero. Cambié el diseño
+según lo que encontraste — este documento ya está actualizado, no hace falta que
+releas el anterior.
 
-Para eso necesito dos cosas de tu lado: **acceso al VPS del gameserver** (o que instales
-vos un servicio chico que ya tengo armado) y **las credenciales de Mercado Pago** de tu
-cuenta, que es la que vamos a usar para cobrar.
-
-No hace falta tocar nada del motor del juego (Java) para esto — es un servicio aparte,
-chiquito, que solo escribe en la base de datos.
+Para conectar los pagos con la entrega en el juego necesito **acceso al VPS del
+gameserver** (o que instales vos un servicio chico que ya tengo armado) y **las
+credenciales de Mercado Pago** de tu cuenta. El bridge no toca el motor del juego para
+nada — es un servicio aparte que solo inserta filas en `custom_mail`, que ya existe.
 
 ---
 
 ## Parte 1 — VPS del gameserver
 
-### 1.1 — Contame la base de puntos/cuenta que ya existe
+### 1.1 — Confirmar CustomMailManager y el esquema exacto
 
-Corré esto en la base y pasame el resultado (tal cual, para saber si ya existe algo
-armado o hay que crear la tabla):
-
-```sql
-USE l2jmobius_login;
-DESCRIBE account_data;
-SELECT * FROM account_data LIMIT 5;
+```ini
+# config/Custom/CustomMailManager.ini
+CustomMailManagerEnabled = True
 ```
 
-Si por algún motivo esa tabla no existe o el server ya tiene su propio sistema de puntos
-de donación armado de antes, avisame — mejor reusar eso que inventar uno nuevo.
-
-**UPDATE — esto ya lo confirmaron**: `account_data` existe pero está vacía y ningún
-script del datapack la lee (`AccountVariables` está en el jar pero no se usa en ningún
-lado). Escribir ahí no le entrega nada al jugador. Antes de seguir con la Parte 1,
-necesito esto:
-
-**¿El L2jMobius que usan trae algo ya armado de donate shop / webshop / correo in-game**
-(aunque esté apagado)? Revisar `config/` por algo tipo `PcCafe`, `DonateShop`, `Store`, o
-carpetas en `data/scripts/custom/` con nombres relacionados. Si hay algo así, lo
-reusamos. Si no hay nada, la entrega real de Coin of Luck (ítem **4037**) va a necesitar
-un pedacito de código del lado del datapack — no hay forma de evitarlo si queremos que el
-jugador reciba algo de verdad. Lo vemos juntos en cuanto tengas esta respuesta.
-
-### 1.2 — Un usuario de MySQL para este servicio
-
-Necesito un usuario de MySQL con permiso de lectura/escritura **solo sobre la tabla que
-vayamos a usar para la cola de entregas** (a definir — ver más abajo, todavía no es
-`account_data` a secas). Nada de acceso a `accounts` ni al resto de la base: esa tabla
-tiene passwords, email e IPs de todos los jugadores.
+Y confirmame estas dos con `DESCRIBE`:
 
 ```sql
+USE l2jmobius;
+DESCRIBE characters;
+DESCRIBE custom_mail;
+```
+
+El código que armé asume `charId` (PK) y `char_name` en `characters`, y
+`(date, receiver, subject, message, items)` en `custom_mail` — si algún nombre de
+columna es distinto, avisame antes de instalar nada (es un ajuste de una línea, pero
+mejor confirmarlo antes que después de que falle en producción).
+
+### 1.2 — Preparar la base (esto reemplaza el paso viejo de `account_data`)
+
+Correr esto una vez, como el usuario admin de MySQL — crea la tabla propia que el
+servicio usa para no mandar el mismo correo dos veces, y un usuario nuevo con el mínimo
+permiso posible (nada de `accounts`, nada de `l2jmobius_login`):
+
+```sql
+USE l2jmobius;
+
+CREATE TABLE IF NOT EXISTS l2thunder_bridge_log (
+  order_id VARCHAR(64) PRIMARY KEY,
+  character_name VARCHAR(64) NOT NULL,
+  coins INT NOT NULL,
+  sent_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE USER 'l2thunder_bridge'@'localhost' IDENTIFIED BY 'ELEGIR-UNA-CONTRASEÑA-FUERTE';
-GRANT SELECT, INSERT, UPDATE ON l2jmobius_login.account_data TO 'l2thunder_bridge'@'localhost';
+
+GRANT SELECT (charId, char_name) ON l2jmobius.characters TO 'l2thunder_bridge'@'localhost';
+GRANT INSERT ON l2jmobius.custom_mail TO 'l2thunder_bridge'@'localhost';
+GRANT SELECT, INSERT ON l2jmobius.l2thunder_bridge_log TO 'l2thunder_bridge'@'localhost';
+
 FLUSH PRIVILEGES;
 ```
 
-(si terminamos usando otra tabla para la cola, ajustar el `GRANT` a esa tabla nomás, con
-el mismo criterio de mínimo privilegio)
-
-Pasame el usuario y la contraseña que elegiste (por un canal privado, no por acá en texto
-plano si podés — WhatsApp está bien, pero evitá dejarlo en un chat grupal o algo público).
+Pasame el usuario y la contraseña que elegiste (por un canal privado si podés — WhatsApp
+está bien, pero evitá dejarlo en un chat grupal o algo público).
 
 ### 1.3 — ¿Tenés Node.js instalado en el VPS?
 
-Corré `node -v`. Si no da nada, hay que instalarlo (Node 20 o superior):
+Corré `node -v`. Si no da nada (ya sabemos que no estaba instalado la última vez que
+revisamos), instalar Node 20:
 
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -70,28 +75,14 @@ sudo apt-get install -y nodejs
 
 ### 1.4 — Instalar el servicio
 
-Te paso la carpeta `gameserver-bridge/` (está en el repo de la web, `l2-web`). Los pasos
-son:
+Te paso la carpeta `gameserver-bridge/` (mismo repo de la web, `l2-web`):
 
 ```bash
 cd gameserver-bridge
 npm install
 cp .env.example .env
-nano .env   # completar con los datos de 1.2
+nano .env   # completar con el usuario/contraseña de 1.2 y generar el BRIDGE_SECRET
 ```
-
-En el `.env`, además del usuario/contraseña de MySQL, hay que generar un secreto random
-para `BRIDGE_SECRET` (esto es la "clave" que va a usar la web para autenticarse con este
-servicio — sin ella nadie puede pegarle):
-
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
-
-Pegá ese valor en `BRIDGE_SECRET=` del `.env`, y pasámelo a mí también (lo voy a
-necesitar como variable de entorno del lado de la web, en Vercel).
-
-Para dejarlo corriendo siempre (se reinicia solo si se cae o si reiniciás el VPS):
 
 ```bash
 npm i -g pm2
@@ -100,25 +91,24 @@ pm2 save
 pm2 startup
 ```
 
-Probar que arrancó:
+Probar:
 
 ```bash
 curl http://127.0.0.1:4001/health
-# tiene que devolver {"ok":true}
+# {"ok":true}
 ```
 
-### 1.5 — HTTPS (importante, no saltear)
+El detalle técnico completo (formato del endpoint, por qué las decisiones de seguridad
+que tomamos) está en `gameserver-bridge/README.md`.
 
-Este servicio tiene que quedar accesible desde internet (la web corre en Vercel, no en
-este VPS), pero **nunca sin HTTPS** — si no, el `BRIDGE_SECRET` viaja sin cifrar y
-cualquiera en el medio de la red lo podría leer y acreditarse coins gratis.
+### 1.5 — HTTPS (obligatorio antes de conectar pagos reales)
 
-**¿Tenés algún dominio o subdominio que apunte a este VPS?** Si sí, lo más simple es
-[Caddy](https://caddyserver.com/) (un solo binario, certificado HTTPS automático, sin
-tocar certbot a mano):
+Sin esto, el `BRIDGE_SECRET` viaja sin cifrar. **¿Tenés algún dominio o subdominio que
+apunte a este VPS?** Si sí, lo más simple es
+[Caddy](https://caddyserver.com/) (certificado automático, sin tocar certbot a mano):
 
 ```bash
-sudo apt install -y caddy   # o el método de instalación que prefieras
+sudo apt install -y caddy
 ```
 
 ```
@@ -132,28 +122,27 @@ bridge.tudominio.com {
 sudo systemctl reload caddy
 ```
 
-Si no tenés dominio para esto, avisame y vemos otra forma (por ejemplo, agregar HTTPS
-con un certificado autofirmado + IP fija, aunque es menos prolijo).
+Si no tenés dominio para esto, avisame y vemos otra forma.
 
 ### 1.6 — Firewall
 
-El servicio escucha en el puerto **4001** internamente, pero con Caddy delante, lo único
-que necesita estar abierto al público son los puertos **80 y 443** (HTTP/HTTPS estándar)
-si no los tenés ya abiertos. El 4001 en sí NO hace falta exponerlo — Caddy habla con él
-por localhost.
+Con Caddy delante, lo único que hace falta abierto al público son **80 y 443**. El 4001
+en sí NO hace falta exponerlo — Caddy le habla por localhost.
 
 ```bash
 sudo ufw allow 80
 sudo ufw allow 443
 ```
 
-(ajustá el comando si usás otro firewall que no sea `ufw`)
+(la última vez que revisamos tenían abiertos 22, 2106, 7777 y 8080 — 80/443 están
+cerrados, hay que abrirlos)
 
 ### Lo que necesito que me pases de vuelta (Parte 1)
 
-- [ ] Resultado del `DESCRIBE account_data` (paso 1.1)
-- [ ] Usuario y contraseña de MySQL que creaste (paso 1.2)
-- [ ] Confirmación de que el servicio quedó corriendo (`pm2 status` o el `curl` de 1.4)
+- [ ] Resultado del `DESCRIBE characters` y `DESCRIBE custom_mail` (paso 1.1)
+- [ ] Confirmación de que `CustomMailManagerEnabled = True` (paso 1.1)
+- [ ] Usuario y contraseña de MySQL que creaste en 1.2
+- [ ] Confirmación de que el servicio quedó corriendo (`curl` de 1.4)
 - [ ] La URL final con HTTPS, por ejemplo `https://bridge.tudominio.com` (paso 1.5)
 - [ ] El `BRIDGE_SECRET` que generaste (paso 1.4)
 
@@ -164,32 +153,26 @@ sudo ufw allow 443
 Vamos a usar tu cuenta de Mercado Pago para cobrar las donaciones. Necesito el
 **Access Token** de producción de una aplicación creada en el panel de desarrolladores.
 
+Ya quedó claro que esto lo manejás vos directo con quien lleva la web — no hace falta que
+lo gestiones ni lo mandes por acá.
+
 ### 2.1 — Crear la aplicación (si no tenés una ya)
 
-1. Entrá a [mercadopago.com.ar/developers/panel](https://www.mercadopago.com.ar/developers/panel)
-   con tu cuenta.
+1. Entrá a [mercadopago.com.ar/developers/panel](https://www.mercadopago.com.ar/developers/panel).
 2. "Tus integraciones" → "Crear aplicación".
 3. Nombre: algo tipo "L2Thunder Web". Tipo de solución: **Pagos online** → **Checkout Pro**.
 
 ### 2.2 — Sacar las credenciales
 
-Dentro de la aplicación, andá a "Credenciales de producción" (no las de test, ya que
-vamos a cobrar de verdad) y copiá:
+"Credenciales de producción" (no las de test) → copiar el **Access Token**
+(`APP_USR-...`).
 
-- **Access Token** (empieza con `APP_USR-...`) — esto es lo importante, lo necesito.
-- Public Key (por si la necesitamos más adelante para algo del lado del navegador).
+### 2.3 — Cómo pasarlo
 
-### 2.3 — Cómo pasármelo
-
-El Access Token es sensible (con eso se pueden mover los pagos de tu cuenta) — si podés,
-mejor pasámelo por un canal privado y no dejarlo escrito en ningún lado público. Yo lo
-voy a cargar directo como variable de entorno en Vercel, nunca va a quedar en el código
-ni en el repositorio de GitHub.
-
-### Lo que necesito que me pases de vuelta (Parte 2)
-
-- [ ] Access Token de producción (`APP_USR-...`)
+Es sensible — mejor por un canal privado, nunca en un chat grupal ni pegado en código.
+Se carga directo como variable de entorno en Vercel, nunca queda en el repositorio.
 
 ---
 
-Cualquier duda con algún paso, me preguntás. Gracias!
+Cualquier duda con algún paso, preguntá. Gracias de nuevo por el audit — nos salvó de
+instalar algo que no iba a funcionar.

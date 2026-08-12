@@ -14,7 +14,7 @@ export default function BuyButton({
   fullWidthButton?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [accountName, setAccountName] = useState("");
+  const [characterName, setCharacterName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +27,7 @@ export default function BuyButton({
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ packageId, gameAccountName: accountName }),
+        body: JSON.stringify({ packageId, characterName }),
       });
       const data = await res.json();
 
@@ -57,22 +57,23 @@ export default function BuyButton({
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-3 text-left">
       <label className="block text-xs text-muted">
-        Nombre de tu cuenta en el juego
+        Nombre de tu personaje en el juego
         <input
-          value={accountName}
-          onChange={(e) => setAccountName(e.target.value)}
+          value={characterName}
+          onChange={(e) => setCharacterName(e.target.value)}
           required
           minLength={3}
           maxLength={40}
           pattern="[a-zA-Z0-9_]{3,40}"
-          placeholder="tu_cuenta"
+          placeholder="tu_personaje"
           autoFocus
           className="mt-1 w-full border border-border-soft bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-gold"
         />
       </label>
 
       <p className="text-xs text-muted/70">
-        Revisá que esté bien escrito — ahí se acreditan los Coins of Luck.
+        Tiene que ser el personaje exacto (no la cuenta) — ahí llegan los Coins of Luck
+        por correo in-game. Revisá que esté bien escrito.
       </p>
 
       {error && <p className="text-xs text-danger">{error}</p>}

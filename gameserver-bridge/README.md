@@ -1,15 +1,33 @@
 # L2Thunder — Bridge del gameserver
 
-Servicio chico que corre **en el VPS del gameserver** (no en Vercel). Recibe un aviso de la
-web cuando se confirma un pago y acredita Coins of Luck directo en la base MySQL del juego.
-No toca el motor del juego (Java) para nada — es un proceso aparte que solo escribe en
-`account_data`.
+Servicio chico que corre **en el VPS del gameserver** (no en Vercel). Recibe un aviso de
+la web cuando se confirma un pago y le manda al personaje un correo in-game con sus Coins
+of Luck. No toca el motor del juego (Java) — usa **CustomMailManager**, que ya viene con
+L2jMobius (hoy desactivado), solo hay que prenderlo.
 
 ## Por qué existe
 
 MySQL está (bien) atado a `127.0.0.1` en el VPS del juego, y la web vive en Vercel. Este
 servicio es el único que necesita estar expuesto a internet, y solo expone UN endpoint
 protegido por secreto compartido — así no hay que abrir el puerto 3306 de la base a nadie.
+
+## Cómo entrega — CustomMailManager
+
+L2jMobius trae un sistema de correo in-game que ya hace exactamente lo que necesitamos:
+lee la tabla `custom_mail` cada `DatabaseQueryDelay` segundos, entrega los ítems al
+personaje (`receiver`, el `charId`) si está online, manda un susurro con el `subject`, y
+borra la fila. Si el personaje no está online, la fila espera hasta que entre — no se
+pierde nada.
+
+**Antes de usar este servicio, activar en el gameserver:**
+
+```ini
+# config/Custom/CustomMailManager.ini
+CustomMailManagerEnabled = True
+```
+
+Este servicio solo hace `INSERT INTO custom_mail (...)` — la entrega la hace el juego
+solo, no hay ningún otro paso Java que escribir.
 
 ## Instalación
 
@@ -20,38 +38,53 @@ cp .env.example .env
 ```
 
 Completar `.env`:
-- `DB_USER` / `DB_PASSWORD`: el usuario de MySQL que ya usa el gameserver (acceso a
-  `l2jmobius_login`).
+- `DB_USER` / `DB_PASSWORD`: un usuario de MySQL **nuevo**, dedicado a esto (ver
+  permisos abajo) — no el que usa el gameserver, que tiene acceso a todo.
 - `BRIDGE_SECRET`: generar uno random y largo:
   ```bash
   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   ```
-  Este mismo valor va como `GAMESERVER_BRIDGE_SECRET` en las variables de entorno de Vercel.
+  Este mismo valor va como `GAMESERVER_BRIDGE_SECRET` en las variables de entorno de
+  Vercel.
 
-## ⚠️ Antes de usarlo con pagos reales: HTTPS obligatorio
+### Preparar la base (una sola vez, a mano)
 
-El servicio escucha en el puerto 4001 sin TLS propio. Si lo exponés tal cual, el
-`BRIDGE_SECRET` viaja en texto plano — cualquiera que esté en el medio de la red lo puede
-leer y usar para acreditarse coins gratis. Antes de conectarlo a pagos de verdad, ponerlo
-detrás de HTTPS. La forma más simple es con **Caddy** (un solo binario, certificado
-automático, sin configurar certbot a mano):
+Este servicio nunca crea tablas por sí solo — evita darle permiso de `CREATE`. Correr
+esto una vez como el usuario admin de MySQL:
 
+```sql
+USE l2jmobius;
+
+CREATE TABLE IF NOT EXISTS l2thunder_bridge_log (
+  order_id VARCHAR(64) PRIMARY KEY,
+  character_name VARCHAR(64) NOT NULL,
+  coins INT NOT NULL,
+  sent_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE USER 'l2thunder_bridge'@'localhost' IDENTIFIED BY 'ELEGIR-UNA-CONTRASEÑA-FUERTE';
+
+-- Solo lo que el servicio necesita de verdad, nada de accounts ni l2jmobius_login:
+GRANT SELECT (charId, char_name) ON l2jmobius.characters TO 'l2thunder_bridge'@'localhost';
+GRANT INSERT ON l2jmobius.custom_mail TO 'l2thunder_bridge'@'localhost';
+GRANT SELECT, INSERT ON l2jmobius.l2thunder_bridge_log TO 'l2thunder_bridge'@'localhost';
+
+FLUSH PRIVILEGES;
 ```
-# /etc/caddy/Caddyfile
-bridge.tudominio.com {
-    reverse_proxy 127.0.0.1:4001
-}
+
+**Antes de correr esto, confirmar los nombres reales de columnas** (pueden variar según
+la versión exacta del datapack):
+
+```sql
+DESCRIBE characters;
+DESCRIBE custom_mail;
 ```
 
-Y `GAMESERVER_BRIDGE_URL` en Vercel apunta a `https://bridge.tudominio.com/credit-coins`
-en vez de a la IP directa.
+El código asume `charId` (PK) y `char_name` en `characters`, y
+`(date, receiver, subject, message, items)` en `custom_mail`. Si difiere, ajustar tanto
+el `GRANT` de arriba como las queries marcadas `AJUSTAR ACÁ` en `server.js`.
 
-Si no hay dominio todavía, como mínimo restringí el puerto 4001 por firewall a IPs
-conocidas mientras se prueba, y no lo dejes así en producción.
-
-## Correrlo
-
-Para dejarlo corriendo siempre (se reinicia si se cae o si reinicia el VPS), con `pm2`:
+### Dejarlo corriendo
 
 ```bash
 npm i -g pm2
@@ -60,12 +93,33 @@ pm2 save
 pm2 startup
 ```
 
-## Verificar que arrancó bien
+Verificar:
 
 ```bash
 curl http://127.0.0.1:4001/health
 # {"ok":true}
 ```
+
+## ⚠️ Antes de usarlo con pagos reales: HTTPS obligatorio
+
+El servicio escucha en el puerto 4001 sin TLS propio. Si lo exponés tal cual, el
+`BRIDGE_SECRET` viaja en texto plano — cualquiera que esté en el medio de la red lo puede
+leer y usar para mandarse coins gratis. La forma más simple es
+**[Caddy](https://caddyserver.com/)** (un solo binario, certificado automático):
+
+```
+# /etc/caddy/Caddyfile
+bridge.tudominio.com {
+    reverse_proxy 127.0.0.1:4001
+}
+```
+
+```bash
+sudo systemctl reload caddy
+```
+
+Y `GAMESERVER_BRIDGE_URL` en Vercel apunta a `https://bridge.tudominio.com/credit-coins`,
+no a la IP directa. Si no hay dominio todavía, avisar antes de conectar pagos reales.
 
 ## Endpoint
 
@@ -75,23 +129,21 @@ Headers: `X-Bridge-Secret: <el secreto>`
 
 Body:
 ```json
-{ "accountName": "cuenta_del_jugador", "coins": 10, "orderId": "cmsp1z1..." }
+{ "characterName": "nombre_del_personaje", "coins": 10, "orderId": "cmsp1z1..." }
 ```
 
-- Si la cuenta no existe en `accounts`, responde 404.
-- Si la misma `orderId` ya se procesó antes, no vuelve a acreditar (responde
-  `{"ok": true, "alreadyCredited": true}`) — así los reintentos del webhook de Mercado
-  Pago nunca duplican el crédito.
+- Si el personaje no existe en `characters`, responde 404.
+- Si la misma `orderId` ya se procesó antes, no manda un segundo correo (responde
+  `{"ok": true, "alreadySent": true}`) — los reintentos del webhook de Mercado Pago
+  nunca duplican la entrega.
+- Límite de `coins` por pedido: `MAX_COINS_PER_REQUEST` (default 100).
+- Límite global de pedidos por minuto: 20 (protección extra si el secreto se filtra).
 
-## Si `account_data` no es como se asumió acá
+## Seguridad — decisiones tomadas a propósito
 
-El script asume una tabla clave-valor `account_data(account_name, var, value)` en
-`l2jmobius_login`, con `var = 'donate_coins'` como convención para el balance de Coins of
-Luck. Si la tabla real tiene otro nombre de columnas, correr:
-
-```sql
-DESCRIBE account_data;
-```
-
-y ajustar las tres queries marcadas en `server.js` (buscar el comentario
-`AJUSTAR ACÁ`).
+- El bridge **no tiene ni va a tener** su propio Access Token de Mercado Pago. La
+  verificación de que el pago sea real se hace del lado de Vercel (que re-consulta la
+  API de MP, nunca confía en el body del webhook) antes de llamar acá. Darle al VPS su
+  propio token de MP repartiría el riesgo en vez de reducirlo.
+- El usuario de MySQL de este servicio no toca `accounts` ni `l2jmobius_login` — la
+  entrega es por nombre de personaje, no de cuenta.

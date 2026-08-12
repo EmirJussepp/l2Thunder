@@ -4,10 +4,10 @@ import { mpClient } from "@/lib/mercadopago";
 import { prisma } from "@/lib/prisma";
 import { getArsPerCoin } from "@/lib/economy";
 
-const ACCOUNT_NAME_RE = /^[a-zA-Z0-9_]{3,40}$/;
+const CHARACTER_NAME_RE = /^[a-zA-Z0-9_]{3,40}$/;
 
 export async function POST(req: NextRequest) {
-  let body: { packageId?: string; gameAccountName?: string };
+  let body: { packageId?: string; characterName?: string };
   try {
     body = await req.json();
   } catch {
@@ -15,14 +15,14 @@ export async function POST(req: NextRequest) {
   }
 
   const packageId = body.packageId;
-  const gameAccountName = body.gameAccountName?.trim();
+  const characterName = body.characterName?.trim();
 
-  if (!packageId || !gameAccountName) {
+  if (!packageId || !characterName) {
     return NextResponse.json({ error: "Faltan datos" }, { status: 400 });
   }
-  if (!ACCOUNT_NAME_RE.test(gameAccountName)) {
+  if (!CHARACTER_NAME_RE.test(characterName)) {
     return NextResponse.json(
-      { error: "Nombre de cuenta inválido (3-40 caracteres, sin espacios ni símbolos)" },
+      { error: "Nombre de personaje inválido (3-40 caracteres, sin espacios ni símbolos)" },
       { status: 400 },
     );
   }
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
   const order = await prisma.donationOrder.create({
     data: {
       packageId: pkg.id,
-      gameAccountName,
+      characterName,
       amountArsCents,
       coinsCredited,
       status: "PENDING_PAYMENT",

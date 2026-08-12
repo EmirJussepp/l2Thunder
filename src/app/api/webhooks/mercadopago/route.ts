@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
 
       try {
         await creditCoins({
-          accountName: order.gameAccountName,
+          characterName: order.characterName,
           coins: order.coinsCredited,
           orderId: order.id,
         });
