@@ -39,6 +39,11 @@ export default function AccountLinkExplainer() {
           </li>
         ))}
       </ol>
+
+      <p className="mt-6 border-t border-border-soft pt-4 text-xs text-muted/70">
+        Dejá espacio libre en el inventario antes de donar — si está lleno, el correo
+        no se puede entregar.
+      </p>
     </div>
   );
 }
