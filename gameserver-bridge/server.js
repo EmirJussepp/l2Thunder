@@ -8,6 +8,11 @@ const COIN_OF_LUCK_ITEM_ID = 4037;
 // Sanity check por las dudas — nunca debería llegar algo fuera de rango si la web
 // está bien, pero es gratis chequearlo antes de mandar el correo.
 const MAX_COINS_PER_ORDER = Number(process.env.MAX_COINS_PER_ORDER) || 100;
+// Sin esto, un fetch() que se cuelga (red caída, DNS raro) nunca resuelve ni rechaza:
+// pm2 ve el proceso vivo, los logs quedan mudos, y las donaciones dejan de entregarse
+// para siempre hasta que alguien lo reinicie a mano. Con AbortSignal.timeout se corta
+// solo y el error cae en el catch de siempre.
+const FETCH_TIMEOUT_MS = 15_000;
 
 if (!WEB_BASE_URL || !BRIDGE_SECRET) {
   console.error("Faltan WEB_BASE_URL / BRIDGE_SECRET en .env — no arranco sin eso.");
@@ -29,6 +34,7 @@ const pool = mysql.createPool({
 async function fetchPending() {
   const res = await fetch(`${WEB_BASE_URL}/api/bridge/pending`, {
     headers: { "X-Bridge-Secret": BRIDGE_SECRET },
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
   if (!res.ok) throw new Error(`/api/bridge/pending respondió ${res.status}`);
   const data = await res.json();
@@ -41,6 +47,7 @@ async function ack(orderId, status, error) {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-Bridge-Secret": BRIDGE_SECRET },
       body: JSON.stringify({ orderId, status, error }),
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
   } catch (err) {
     // Si el ack no llega, la orden queda PROCESSING y /pending la vuelve a ofrecer
@@ -50,6 +57,11 @@ async function ack(orderId, status, error) {
 }
 
 async function deliverOrder({ orderId, characterName, coins }) {
+  if (typeof characterName !== "string" || !characterName.trim()) {
+    console.error(`Orden ${orderId}: characterName inválido`);
+    await ack(orderId, "FAILED", "characterName inválido");
+    return;
+  }
   if (!Number.isInteger(coins) || coins <= 0 || coins > MAX_COINS_PER_ORDER) {
     console.error(`Orden ${orderId}: coins fuera de rango (${coins}), no se entrega`);
     await ack(orderId, "FAILED", "coins fuera de rango");
@@ -60,7 +72,7 @@ async function deliverOrder({ orderId, characterName, coins }) {
   try {
     conn = await pool.getConnection();
 
-    // AJUSTAR ACÁ si characters.char_name/charId no coinciden con el schema real.
+    // Confirmado contra el schema real del VPS: characters.charId (PK) y char_name.
     const [charRows] = await conn.query(
       "SELECT charId FROM characters WHERE char_name = ? LIMIT 1",
       [characterName],
