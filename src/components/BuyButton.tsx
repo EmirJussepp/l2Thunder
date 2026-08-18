@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 
+type Step = "closed" | "form" | "confirm" | "submitted";
+
 export default function BuyButton({
   packageId,
   label,
@@ -13,14 +15,17 @@ export default function BuyButton({
   buttonClassName: string;
   fullWidthButton?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [step, setStep] = useState<Step>("closed");
   const [characterName, setCharacterName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
 
-  async function handleSubmit(e: FormEvent) {
+  function handleContinue(e: FormEvent) {
     e.preventDefault();
+    setStep("confirm");
+  }
+
+  async function handleConfirm() {
     setLoading(true);
     setError(null);
 
@@ -48,15 +53,16 @@ export default function BuyButton({
         window.open(data.checkoutUrl, "_blank", "noopener,noreferrer");
       }
       setLoading(false);
-      setSubmitted(true);
+      setStep("submitted");
     } catch (err) {
       checkoutWindow?.close();
       setError(err instanceof Error ? err.message : "Error inesperado, probá de nuevo");
       setLoading(false);
+      setStep("form");
     }
   }
 
-  if (submitted) {
+  if (step === "submitted") {
     return (
       <p className="text-sm text-foreground">
         Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
@@ -65,11 +71,47 @@ export default function BuyButton({
     );
   }
 
-  if (!open) {
+  if (step === "confirm") {
+    return (
+      <div className="w-full space-y-3 text-left">
+        <p className="text-sm text-foreground">
+          Tu personaje es <span className="font-semibold text-gold">{characterName}</span>
+          , ¿confirmás?
+        </p>
+        <p className="text-xs text-muted/70">
+          Ahí llegan los Coins of Luck — si está mal escrito, no hay forma de corregirlo
+          después del pago.
+        </p>
+
+        {error && <p className="text-xs text-danger">{error}</p>}
+
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => setStep("form")}
+            disabled={loading}
+            className="flex-1 border border-border-soft px-3 py-2 text-sm text-muted hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Corregir
+          </button>
+          <button
+            type="button"
+            onClick={handleConfirm}
+            disabled={loading}
+            className={`${buttonClassName} flex-1 disabled:cursor-not-allowed disabled:opacity-60`}
+          >
+            {loading ? "Redirigiendo…" : "Sí, es correcto"}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "closed") {
     return (
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => setStep("form")}
         className={`${buttonClassName} ${fullWidthButton ? "w-full" : ""}`}
       >
         {label}
@@ -78,7 +120,7 @@ export default function BuyButton({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-3 text-left">
+    <form onSubmit={handleContinue} className="w-full space-y-3 text-left">
       <label className="block text-xs text-muted">
         Nombre de tu personaje en el juego
         <input
@@ -99,14 +141,8 @@ export default function BuyButton({
         por correo in-game. Revisá que esté bien escrito.
       </p>
 
-      {error && <p className="text-xs text-danger">{error}</p>}
-
-      <button
-        type="submit"
-        disabled={loading}
-        className={`${buttonClassName} w-full disabled:cursor-not-allowed disabled:opacity-60`}
-      >
-        {loading ? "Redirigiendo a Mercado Pago…" : `Pagar — ${label}`}
+      <button type="submit" className={`${buttonClassName} w-full`}>
+        Continuar
       </button>
     </form>
   );
