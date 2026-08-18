@@ -17,11 +17,17 @@ export default function BuyButton({
   const [characterName, setCharacterName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    // Se abre la pestaña en blanco ACÁ, todavía dentro del gesto de click del
+    // usuario — si se espera al fetch para recién ahí abrir, el navegador lo
+    // trata como popup y lo bloquea. Después solo le cambiamos la URL.
+    const checkoutWindow = window.open("", "_blank");
 
     try {
       const res = await fetch("/api/checkout", {
@@ -32,14 +38,31 @@ export default function BuyButton({
       const data = await res.json();
 
       if (!res.ok) {
+        checkoutWindow?.close();
         throw new Error(data.error ?? "No se pudo iniciar el pago");
       }
 
-      window.location.href = data.checkoutUrl;
+      if (checkoutWindow) {
+        checkoutWindow.location.href = data.checkoutUrl;
+      } else {
+        window.open(data.checkoutUrl, "_blank", "noopener,noreferrer");
+      }
+      setLoading(false);
+      setSubmitted(true);
     } catch (err) {
+      checkoutWindow?.close();
       setError(err instanceof Error ? err.message : "Error inesperado, probá de nuevo");
       setLoading(false);
     }
+  }
+
+  if (submitted) {
+    return (
+      <p className="text-sm text-foreground">
+        Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
+        of Luck llegan solos por correo in-game a los pocos segundos de confirmarse.
+      </p>
+    );
   }
 
   if (!open) {
