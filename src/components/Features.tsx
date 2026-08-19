@@ -2,7 +2,7 @@ const features = [
   {
     title: "Razas balanceadas de raíz",
     description:
-      "Cada raza tiene bonus e identidad propia. Elegir Kamael, Orco o Dark Elf ya no es una decisión estética: cambia cómo jugás.",
+      "Cada raza tiene bonus e identidad propia. Elegir Elfo, Orco o Dark Elf ya no es una decisión estética: cambia cómo jugás.",
   },
   {
     title: "Skills que ahora tienen uso",
@@ -12,7 +12,7 @@ const features = [
   {
     title: "Spoil para todas las clases",
     description:
-      "Un NPC especial habilita el spoil a cualquier personaje, no solo a Dwarves. Fighters, Mystics y Kamael también pueden farmear spoileando.",
+      "Un NPC especial habilita el spoil a cualquier personaje, no solo a Dwarves. Fighters y Mystics también pueden farmear spoileando.",
   },
   {
     title: "Cualquier clase es viable",

@@ -10,7 +10,7 @@ const steps = [
   {
     step: "2",
     title: "Creá tu cuenta",
-    description: "Registro rápido desde la web, sin vueltas.",
+    description: "Es autocuenta: poné el usuario y contraseña que quieras en la pantalla de login del launcher y se crea sola.",
   },
   {
     step: "3",
