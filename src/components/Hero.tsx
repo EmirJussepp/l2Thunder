@@ -8,10 +8,6 @@ export default function Hero() {
       <HeroBackground />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
-        <span className="rounded-none border border-accent-2/40 bg-accent-2/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-accent-2">
-          Beta abierta — entrá a testear
-        </span>
-
         <Crest className="h-16 w-16" />
 
         <h1 className="brand text-5xl font-black leading-tight text-glow sm:text-6xl">

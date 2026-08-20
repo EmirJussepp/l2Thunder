@@ -11,7 +11,7 @@ export default function Footer() {
             <p className="brand text-base font-bold text-foreground">
               <small className="text-accent-2">L2</small>THUNDER
             </p>
-            <p className="mt-1">Lineage II — Servidor Privado • Interlude. Beta abierta.</p>
+            <p className="mt-1">Lineage II — Servidor Privado</p>
           </div>
         </div>
 
