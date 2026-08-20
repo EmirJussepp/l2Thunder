@@ -4,7 +4,7 @@ import HeroBackground from "./HeroBackground";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pt-20 pb-24 text-center">
+    <section className="relative overflow-hidden px-6 pt-20 pb-10 text-center">
       <HeroBackground />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
