@@ -6,7 +6,7 @@ import Crest from "./Crest";
 
 const links = [
   { href: "/#rates", label: "Rates" },
-  { href: "/#features", label: "Features" },
+  { href: "/#features", label: "Características" },
   { href: "/#jugar", label: "Cómo jugar" },
   { href: "/donar", label: "Donar" },
 ];

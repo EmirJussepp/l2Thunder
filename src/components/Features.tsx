@@ -12,7 +12,7 @@ const features = [
   {
     title: "Spoil para todas las clases",
     description:
-      "Un NPC especial habilita el spoil a cualquier personaje, no solo a Dwarves. Fighters y Mystics también pueden farmear spoileando.",
+      "Mediante una quest se habilita una nueva profesión de spoil, disponible para cualquier clase — no hace falta ser Dwarf para farmear spoileando.",
   },
   {
     title: "Cualquier clase es viable",
@@ -39,8 +39,9 @@ export default function Features() {
           Le dimos una razón de ser a cada detalle
         </h2>
         <p className="mt-4 text-muted">
-          No es Interlude con rates altos. Es Interlude repensado: revisamos razas, clases y
-          skills para que todo lo que existe en el juego, sirva.
+          Nuestro servidor está basado en Interlude, pero lo repensamos para hacerlo
+          competitivo: revisamos razas, clases y skills para que todo lo que existe en el
+          juego, sirva.
         </p>
       </div>
 

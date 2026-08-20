@@ -17,7 +17,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link href="/#features" className="hover:text-foreground">
-            Features
+            Características
           </Link>
           <Link href="/donar" className="hover:text-foreground">
             Donar
