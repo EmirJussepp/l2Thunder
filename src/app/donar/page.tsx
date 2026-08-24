@@ -3,6 +3,10 @@ import DonationTiers from "@/components/DonationTiers";
 import VipPass from "@/components/VipPass";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
 
+// Los precios casi no cambian — cachear la página evita pegarle a la base en
+// cada visita (cada visitante repetido reusa el render de hasta 60s antes).
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Fundadores",
   description:

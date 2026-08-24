@@ -3,7 +3,10 @@ const mysql = require("mysql2/promise");
 
 const WEB_BASE_URL = process.env.WEB_BASE_URL;
 const BRIDGE_SECRET = process.env.BRIDGE_SECRET;
-const POLL_INTERVAL_MS = Number(process.env.POLL_INTERVAL_MS) || 30_000;
+// 30s tenía a la base de Neon despierta las 24hs sin parar (consume horas de
+// compute aunque no haya donaciones). 2 minutos sigue siendo rápido para el
+// jugador y le da a Neon ventanas para hacer auto-suspend entre consultas.
+const POLL_INTERVAL_MS = Number(process.env.POLL_INTERVAL_MS) || 120_000;
 const COIN_OF_LUCK_ITEM_ID = 4037;
 // Sanity check por las dudas — nunca debería llegar algo fuera de rango si la web
 // está bien, pero es gratis chequearlo antes de mandar el correo.

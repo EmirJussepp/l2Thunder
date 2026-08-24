@@ -20,6 +20,16 @@ web nunca inicia conexión hacia el VPS. Ventajas:
   secreto podría leer nombres de personaje y montos, o confirmar entregas falsas de
   órdenes reales (lo cual banco lo nota rápido, no se pierde plata).
 
+## `POLL_INTERVAL_MS`: no lo bajes sin necesidad
+
+Cada consulta a `/api/bridge/pending` le pega a Postgres (Neon) del lado de la web.
+Con un intervalo muy corto (arrancó en 30s), la base nunca tiene un hueco de
+inactividad lo bastante largo como para hacer auto-suspend, y Neon cobra por
+tiempo de compute activo — terminás pagando/consumiendo cuota las 24hs aunque
+no haya una sola donación en todo el día. Quedó en **120000 (2 min)** por
+default: sigue siendo rápido para el jugador, pero le da a Neon ventanas reales
+para dormir la compute entre consulta y consulta.
+
 ## Cómo entrega — CustomMailManager
 
 L2jMobius trae un sistema de correo in-game que hace exactamente lo que necesitamos:
