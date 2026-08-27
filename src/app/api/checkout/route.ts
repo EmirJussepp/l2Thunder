@@ -3,10 +3,16 @@ import { Preference } from "mercadopago";
 import { mpClient } from "@/lib/mercadopago";
 import { prisma } from "@/lib/prisma";
 import { getArsPerCoin } from "@/lib/economy";
+import { getClientIp, isRateLimited } from "@/lib/rateLimit";
 
 const CHARACTER_NAME_RE = /^[a-zA-Z0-9_]{3,40}$/;
 
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req);
+  if (isRateLimited(`checkout:${ip}`, 5, 60_000)) {
+    return NextResponse.json({ error: "Demasiados intentos — esperá un minuto." }, { status: 429 });
+  }
+
   let body: { packageId?: string; characterName?: string };
   try {
     body = await req.json();
