@@ -1,18 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Crest from "./Crest";
 
 const links = [
-  { href: "/#rates", label: "Rates" },
-  { href: "/#features", label: "Características" },
-  { href: "/#jugar", label: "Cómo jugar" },
-  { href: "/donar", label: "Donar" },
+  { href: "/#rates", label: "Rates", sectionId: "rates" },
+  { href: "/#features", label: "Características", sectionId: "features" },
+  { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
+  { href: "/donar", label: "Donar", sectionId: null },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // isActive() ya chequea pathname === "/" antes de mirar activeSection, así
+    // que no hace falta resetear el estado acá cuando cambiamos de página.
+    if (pathname !== "/") return;
+
+    const sectionIds = links.map((l) => l.sectionId).filter((id): id is string => id !== null);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-84px 0px -70% 0px" },
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  function isActive(link: (typeof links)[number]) {
+    if (link.href === "/donar") return pathname === "/donar";
+    return pathname === "/" && activeSection === link.sectionId;
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-soft bg-background/80 backdrop-blur">
@@ -24,12 +56,15 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
+        <nav className="hidden items-center gap-8 text-sm md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-foreground"
+              aria-current={isActive(link) ? "page" : undefined}
+              className={`transition-colors hover:text-foreground ${
+                isActive(link) ? "font-semibold text-gold" : "text-muted"
+              }`}
             >
               {link.label}
             </Link>
@@ -67,14 +102,17 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-border-soft bg-background px-6 py-4 text-sm text-muted md:hidden">
+        <nav className="border-t border-border-soft bg-background px-6 py-4 text-sm md:hidden">
           <ul className="flex flex-col gap-4">
             {links.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block transition-colors hover:text-foreground"
+                  aria-current={isActive(link) ? "page" : undefined}
+                  className={`block transition-colors hover:text-foreground ${
+                    isActive(link) ? "font-semibold text-gold" : "text-muted"
+                  }`}
                 >
                   {link.label}
                 </Link>

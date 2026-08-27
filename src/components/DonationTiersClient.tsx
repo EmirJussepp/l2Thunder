@@ -10,6 +10,14 @@ export type TierView = {
 };
 
 export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
+  if (tiers.length === 0) {
+    return (
+      <p className="text-center text-sm text-muted">
+        No hay cajas disponibles por el momento — volvé a mirar más tarde.
+      </p>
+    );
+  }
+
   return (
     <div className="grid gap-6 sm:grid-cols-3">
       {tiers.map((tier) => (
