@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Cinzel } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DiscordBanner from "@/components/DiscordBanner";
+import VoteBanner from "@/components/VoteBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,6 +56,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <DiscordBanner />
+        <VoteBanner />
       </body>
     </html>
   );
