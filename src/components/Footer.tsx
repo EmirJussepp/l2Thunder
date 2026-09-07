@@ -30,6 +30,14 @@ export default function Footer() {
           >
             Discord
           </a>
+          <a
+            href="https://l2.hopzone.net/es/lineage2/details/107612/L2THUNDER.ONLINE"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground"
+          >
+            Votar
+          </a>
           <span className="cursor-not-allowed opacity-60">Foro (próximamente)</span>
         </div>
 
