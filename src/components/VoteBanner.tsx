@@ -1,23 +1,19 @@
-// HopZone exige tener uno de sus banners de voto visible en el sitio para
-// aprobar el listado. Se reimplementa como componente propio (no se pega el
-// <a><img></a> que da su panel tal cual) para mantener el mismo patrón que
-// el resto del sitio y evitar HTML crudo.
+// HopZone exige tener un banner de voto visible en el sitio para aprobar el
+// listado. Los banners <img> que da su panel (banner_1/2/3.png) devuelven 404
+// directo desde su propio servidor — el link de voto en sí funciona bien, así
+// que se arma un badge propio en vez de mostrar una imagen rota.
 export default function VoteBanner() {
   return (
     <a
       href="https://l2.hopzone.net/site/vote/107612/1"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 left-4 z-40"
+      className="card-surface fixed bottom-4 left-4 z-40 flex items-center gap-2 rounded-none border-accent-2/40 px-3 py-2 text-xs font-semibold text-foreground shadow-lg transition hover:border-gold hover:text-gold"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="https://l2.hopzone.net/assets/img/banners/banner_1.png"
-        alt="Votar por L2THUNDER.ONLINE"
-        title="L2.HOPZONE.NET – Lineage 2 Servers ranking"
-        width={140}
-        height={120}
-      />
+      <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+        <path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2Z" />
+      </svg>
+      Votar en HopZone
     </a>
   );
 }
