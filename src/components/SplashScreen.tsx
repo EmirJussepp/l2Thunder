@@ -18,10 +18,10 @@ export default function SplashScreen() {
       }}
     >
       <Image
-        src="/iconol2thunder.png"
+        src="/spiner.png"
         alt=""
-        width={130}
-        height={130}
+        width={110}
+        height={110}
         priority
         className="splash-logo"
       />
