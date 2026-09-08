@@ -40,8 +40,8 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, [pathname]);
 
-  // El menú es a pantalla completa — bloqueamos el scroll de atrás mientras
-  // está abierto, si no el fondo se sigue moviendo detrás del overlay.
+  // El panel es fixed encima de todo — bloqueamos el scroll de atrás mientras
+  // está abierto, si no el fondo se sigue moviendo detrás.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -57,7 +57,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <div className="flex w-full items-center justify-between px-6 py-5 sm:px-10">
           <Link href="/">
             <Crest className="h-14 w-14" variant="solid" />
           </Link>
@@ -78,62 +78,71 @@ export default function Navbar() {
         </div>
       </header>
 
-      {open && (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-background/98 backdrop-blur-sm">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-            <Link href="/" onClick={() => setOpen(false)}>
-              <Crest className="h-14 w-14" variant="solid" />
-            </Link>
+      {/* Fondo oscuro atrás del panel — clic afuera cierra el menú. Siempre
+          montado (no solo cuando open) para poder animar la entrada Y la
+          salida con transición, en vez de aparecer/desaparecer de golpe. */}
+      <div
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+        className={`fixed inset-0 z-[90] bg-black/70 backdrop-blur-sm transition-opacity duration-500 ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
 
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Cerrar menú"
-              className="flex h-10 w-10 items-center justify-center border border-border-soft text-foreground transition hover:border-gold hover:text-gold"
-            >
-              <span className="relative block h-4 w-4">
-                <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 rotate-45 bg-current" />
-                <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-current" />
-              </span>
-            </button>
-          </div>
-
-          <nav className="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                aria-current={isActive(link) ? "page" : undefined}
-                className={`brand text-4xl font-black tracking-wide transition sm:text-5xl ${
-                  isActive(link) ? "text-gold" : "text-foreground hover:text-gold"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center justify-center gap-6 px-6 py-8 text-sm text-muted">
-            <a
-              href="https://www.facebook.com/profile.php?id=61589483216047"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-gold"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://discord.gg/6W6EJjXSa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-gold"
-            >
-              Discord
-            </a>
-          </div>
+      <div
+        className={`fixed inset-y-0 right-0 z-[100] flex w-full max-w-sm flex-col overflow-y-auto border-l border-border-soft bg-background shadow-2xl transition-transform duration-500 ease-in-out ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-end px-6 py-5">
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Cerrar menú"
+            className="flex h-10 w-10 items-center justify-center text-foreground transition hover:text-gold"
+          >
+            <span className="relative block h-4 w-4">
+              <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 rotate-45 bg-current" />
+              <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-current" />
+            </span>
+          </button>
         </div>
-      )}
+
+        <nav className="flex flex-1 flex-col gap-2 px-8 py-6">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              aria-current={isActive(link) ? "page" : undefined}
+              className={`brand py-2 text-2xl font-black tracking-wide transition sm:text-3xl ${
+                isActive(link) ? "text-gold" : "text-foreground hover:text-gold"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-6 px-8 py-8 text-sm text-muted">
+          <a
+            href="https://www.facebook.com/profile.php?id=61589483216047"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:text-gold"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://discord.gg/6W6EJjXSa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:text-gold"
+          >
+            Discord
+          </a>
+        </div>
+      </div>
     </>
   );
 }
