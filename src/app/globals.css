@@ -56,12 +56,12 @@ body {
   border: 1px solid var(--border-soft);
 }
 
-/* Botones de "alto impacto" (Jugar, Descargar, Donar, Pagar): más redondeados
-   y con más peso/sombra que el resto del sitio (que usa esquinas cuadradas a
-   propósito) — la excepción marca jerarquía, "este es el botón importante".
+/* Botones de "alto impacto" (Jugar, Descargar, Donar, Pagar): más peso y
+   sombra marcada que el resto del sitio, pero mismas esquinas cuadradas —
+   la identidad visual del sitio no lleva bordes redondeados en ningún lado.
    No se usa @apply para no repetir esta combinación en cada componente. */
 .btn-impact {
-  border-radius: 0.75rem;
+  border-radius: 0;
   font-weight: 700;
   box-shadow:
     0 10px 25px -5px rgba(240, 192, 64, 0.45),
