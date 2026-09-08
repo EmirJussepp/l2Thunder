@@ -55,3 +55,23 @@ body {
   background: linear-gradient(180deg, var(--surface-2), var(--surface));
   border: 1px solid var(--border-soft);
 }
+
+/* Botones de "alto impacto" (Jugar, Descargar, Donar, Pagar): más redondeados
+   y con más peso/sombra que el resto del sitio (que usa esquinas cuadradas a
+   propósito) — la excepción marca jerarquía, "este es el botón importante".
+   No se usa @apply para no repetir esta combinación en cada componente. */
+.btn-impact {
+  border-radius: 0.75rem;
+  font-weight: 700;
+  box-shadow:
+    0 10px 25px -5px rgba(240, 192, 64, 0.45),
+    0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-impact:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 30px -6px rgba(240, 192, 64, 0.55),
+    0 6px 14px rgba(0, 0, 0, 0.4);
+}

@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#jugar"
-            className="rounded-none bg-gradient-to-r from-gold to-accent-2 px-7 py-3 font-semibold text-background shadow-lg shadow-gold/30 transition hover:brightness-110"
+            className="btn-impact bg-gradient-to-r from-gold to-accent-2 px-7 py-3 text-background hover:brightness-110"
           >
             Jugar la beta
           </Link>

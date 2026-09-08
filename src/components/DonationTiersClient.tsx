@@ -50,11 +50,11 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
               packageId={tier.id}
               label={`Elegir ${tier.name}`}
               fullWidthButton
-              buttonClassName={`rounded-none px-5 py-2.5 text-sm font-semibold transition ${
+              buttonClassName={
                 tier.highlight
-                  ? "bg-gradient-to-r from-gold to-accent-2 text-background hover:brightness-110"
-                  : "border border-border-soft text-foreground hover:border-accent hover:text-accent"
-              }`}
+                  ? "btn-impact bg-gradient-to-r from-gold to-accent-2 px-5 py-2.5 text-sm text-background hover:brightness-110"
+                  : "rounded-none border border-border-soft px-5 py-2.5 text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent"
+              }
             />
           </div>
         </div>

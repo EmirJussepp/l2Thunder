@@ -37,7 +37,7 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
           <BuyButton
             packageId={vip.id}
             label={`Activar ${vip.name}`}
-            buttonClassName="rounded-none bg-gradient-to-r from-gold to-accent-2 px-8 py-3 text-sm font-semibold text-background transition hover:brightness-110 md:w-auto"
+            buttonClassName="btn-impact bg-gradient-to-r from-gold to-accent-2 px-8 py-3 text-sm text-background hover:brightness-110 md:w-auto"
           />
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function DonateTeaser() {
         </p>
         <Link
           href="/donar"
-          className="rounded-none bg-gradient-to-r from-gold to-accent-2 px-7 py-3 font-semibold text-background transition hover:brightness-110"
+          className="btn-impact bg-gradient-to-r from-gold to-accent-2 px-7 py-3 text-background hover:brightness-110"
         >
           Ver beneficios de Fundador
         </Link>
