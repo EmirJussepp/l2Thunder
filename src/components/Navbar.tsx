@@ -64,15 +64,27 @@ export default function Navbar() {
 
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label="Abrir menú"
-            className="flex h-12 w-12 items-center justify-center text-foreground transition hover:text-gold"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            className="relative z-[110] flex h-12 w-12 items-center justify-center text-foreground transition hover:text-gold"
           >
             <span className="relative block h-3 w-6">
-              <span className="absolute left-0 top-0 h-px w-6 bg-current" />
-              <span className="absolute left-0 top-1.5 h-px w-6 bg-current" />
-              <span className="absolute left-0 top-3 h-px w-6 bg-current" />
+              <span
+                className={`absolute left-0 top-0 h-px w-6 bg-current transition-transform duration-300 ${
+                  open ? "translate-y-1.5 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1.5 h-px w-6 bg-current transition-opacity duration-300 ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-3 h-px w-6 bg-current transition-transform duration-300 ${
+                  open ? "-translate-y-1.5 -rotate-45" : ""
+                }`}
+              />
             </span>
           </button>
         </div>
@@ -94,21 +106,7 @@ export default function Navbar() {
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-end px-6 py-5">
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label="Cerrar menú"
-            className="flex h-10 w-10 items-center justify-center text-foreground transition hover:text-gold"
-          >
-            <span className="relative block h-4 w-4">
-              <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 rotate-45 bg-current" />
-              <span className="absolute left-1/2 top-1/2 h-5 w-px -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-current" />
-            </span>
-          </button>
-        </div>
-
-        <nav className="flex flex-1 flex-col gap-2 px-8 py-6">
+        <nav className="flex flex-1 flex-col gap-2 px-8 pb-6 pt-24">
           {links.map((link) => (
             <Link
               key={link.href}
