@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function DonarPage() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-20">
+    <div className="mx-auto max-w-6xl px-6 pb-20 pt-36">
       <div className="mx-auto mb-14 max-w-2xl text-center">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Boost, no poder
