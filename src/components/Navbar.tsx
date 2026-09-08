@@ -52,7 +52,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           <Crest className="h-8 w-8" variant="solid" />
           <span className="brand text-xl font-bold text-glow">
-            <small className="text-accent-2">L2</small>THUNDER
+            <span className="text-accent-2">L2</span>THUNDER
           </span>
         </Link>
 

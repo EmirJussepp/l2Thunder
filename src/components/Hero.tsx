@@ -1,11 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 import Crest from "./Crest";
-import HeroBackground from "./HeroBackground";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pt-20 pb-10 text-center">
-      <HeroBackground />
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/header_bg.jpg"
+          alt=""
+          fill
+          priority
+          className="hero-bg-animate object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/55 to-background" />
+      </div>
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
         <div className="relative">
@@ -14,7 +23,7 @@ export default function Hero() {
         </div>
 
         <h1 className="brand text-5xl font-black leading-tight text-glow sm:text-6xl">
-          <small className="text-accent-2">L2</small>THUNDER
+          <span className="text-accent-2">L2</span>THUNDER
         </h1>
 
         <p className="text-lg text-muted sm:text-xl">

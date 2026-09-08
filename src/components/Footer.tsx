@@ -9,7 +9,7 @@ export default function Footer() {
           <Crest className="h-8 w-8 shrink-0" variant="solid" />
           <div>
             <p className="brand text-base font-bold text-foreground">
-              <small className="text-accent-2">L2</small>THUNDER
+              <span className="text-accent-2">L2</span>THUNDER
             </p>
             <p className="mt-1">Lineage II — Servidor Privado</p>
           </div>
