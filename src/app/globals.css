@@ -84,18 +84,23 @@ body {
    No se usa @apply para no repetir esta combinación en cada componente. */
 .btn-impact {
   border-radius: 0;
+  border: 2px solid transparent;
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
   box-shadow:
     0 10px 25px -5px rgba(240, 192, 64, 0.45),
     0 4px 10px rgba(0, 0, 0, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, border-color 0.15s ease;
 }
 
+/* Estilo Steam/Battle.net: un borde claro que se prende en hover, como el
+   contorno celeste que aparece alrededor de sus botones azules. */
 .btn-impact:hover {
   transform: translateY(-1px);
+  border-color: #ffe28a;
   box-shadow:
+    0 0 0 3px rgba(255, 226, 138, 0.35),
     0 14px 30px -6px rgba(240, 192, 64, 0.55),
     0 6px 14px rgba(0, 0, 0, 0.4);
 }
