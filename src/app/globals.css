@@ -113,3 +113,49 @@ body {
 .btn-impact:hover {
   border-color: #ffe28a;
 }
+
+/* Brasas de fondo: puntitos que suben lento y se apagan, atrás de todo el
+   contenido — solo se ven en los huecos donde no hay una card/sección con
+   fondo opaco encima. Pura animación CSS (transform+opacity), sin canvas. */
+.ember {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(240, 192, 64, 0.9), rgba(240, 192, 64, 0) 70%);
+  animation-name: ember-float;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ember-float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(12px, -55vh);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-8px, -110vh);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember {
+    display: none;
+  }
+}
+
+/* Borde inferior del navbar con un detalle dorado tallado en el centro, en
+   vez de la línea plana — restringido, sin textura ni marco completo. */
+.navbar-edge {
+  border-image: linear-gradient(90deg, transparent 0%, rgba(240, 192, 64, 0.55) 50%, transparent 100%) 1;
+}
