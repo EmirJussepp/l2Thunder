@@ -30,11 +30,11 @@
 }
 
 html {
-  /* El navbar es sticky (~69px) y tapa el borde superior de cualquier sección
-     a la que se salte por ancla (#rates, #features, #jugar) si no hay este
-     offset — sin esto, el contenido de arriba de cada sección queda oculto
-     detrás del navbar en vez de empezar debajo. */
-  scroll-padding-top: 5rem;
+  /* El navbar es sticky (~104px, agrandado) y tapa el borde superior de
+     cualquier sección a la que se salte por ancla (#features, #jugar) si no
+     hay este offset — sin esto, el contenido de arriba de cada sección
+     queda oculto detrás del navbar en vez de empezar debajo. */
+  scroll-padding-top: 7.5rem;
 }
 
 body {

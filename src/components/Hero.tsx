@@ -4,7 +4,7 @@ import HeroSlideshow from "./HeroSlideshow";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100dvh-69px)] flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
+    <section className="relative flex min-h-[calc(100dvh-104px)] flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
       <HeroSlideshow />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
