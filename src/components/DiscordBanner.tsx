@@ -65,7 +65,7 @@ export default function DiscordBanner() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={dismiss}
-          className="mt-4 block rounded-none bg-gradient-to-r from-gold to-accent-2 px-4 py-2 text-center text-sm font-semibold text-background transition hover:brightness-110"
+          className="mt-4 block rounded-none bg-gold px-4 py-2 text-center text-sm font-semibold text-background transition hover:brightness-110"
         >
           Unirme al Discord
         </a>

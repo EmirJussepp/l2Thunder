@@ -4,7 +4,7 @@ import Crest from "./Crest";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pt-20 pb-10 text-center">
+    <section className="relative flex min-h-[calc(100dvh-69px)] flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/hero.jpg"
@@ -42,7 +42,7 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#jugar"
-            className="btn-impact bg-gradient-to-r from-gold to-accent-2 px-7 py-3 text-background hover:brightness-110"
+            className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
           >
             Jugar la beta
           </Link>

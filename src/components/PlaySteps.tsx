@@ -43,7 +43,7 @@ export default function PlaySteps() {
                     href={CLIENT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-impact bg-gradient-to-r from-gold to-accent-2 px-4 py-2 text-sm text-background hover:brightness-110"
+                    className="btn-impact bg-gold px-4 py-2 text-sm text-background hover:brightness-110"
                   >
                     Descargar cliente (3.7 GB)
                   </a>
