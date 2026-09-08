@@ -7,10 +7,11 @@ export default function Hero() {
     <section className="relative overflow-hidden px-6 pt-20 pb-10 text-center">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/header_bg.jpg"
+          src="/hero.jpg"
           alt=""
           fill
           priority
+          quality={100}
           className="hero-bg-animate object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/55 to-background" />
@@ -25,6 +26,18 @@ export default function Hero() {
         <h1 className="brand text-5xl font-black leading-tight text-glow sm:text-6xl">
           <span className="text-accent-2">L2</span>THUNDER
         </h1>
+
+        <div className="mt-2">
+          <p className="brand text-base font-bold tracking-widest text-accent-2">
+            Nuestra visión
+          </p>
+          <h2 className="mt-5 font-display text-xl font-semibold leading-relaxed text-muted sm:text-2xl">
+            L2Thunder no es &ldquo;un Interlude con rates medios&rdquo;. Es la pregunta de qué
+            habría pasado si Interlude hubiera seguido evolucionando por otro camino: revisamos
+            cada raza, cada clase y cada skill para que nada quede obsoleto, sin perder la
+            esencia del combate que hizo grande a Lineage II.
+          </h2>
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
