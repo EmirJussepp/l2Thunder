@@ -1,21 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import Crest from "./Crest";
+import HeroSlideshow from "./HeroSlideshow";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-[calc(100dvh-69px)] flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/hero.jpg"
-          alt=""
-          fill
-          priority
-          quality={100}
-          className="hero-bg-animate object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/55 to-background" />
-      </div>
+      <HeroSlideshow />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
         <div className="relative">
