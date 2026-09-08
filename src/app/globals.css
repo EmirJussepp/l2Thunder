@@ -169,3 +169,44 @@ body {
 .navbar-edge {
   border-image: linear-gradient(90deg, transparent 0%, rgba(240, 192, 64, 0.55) 50%, transparent 100%) 1;
 }
+
+/* Splash de carga (estilo Rockstar): logo con contorno que aparece con un
+   glow y se desvanece, tapando el sitio un instante al entrar. */
+.splash-overlay {
+  animation: splash-fade-out 0.7s ease-in forwards;
+  animation-delay: 1.3s;
+}
+
+.splash-logo {
+  animation: splash-logo-in 1s ease-out both;
+  filter: drop-shadow(0 0 18px rgba(240, 192, 64, 0.6));
+}
+
+@keyframes splash-fade-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes splash-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-overlay {
+    animation-duration: 0.01s;
+    animation-delay: 0.3s;
+  }
+  .splash-logo {
+    animation: none;
+    opacity: 1;
+  }
+}

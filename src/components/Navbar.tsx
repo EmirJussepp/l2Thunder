@@ -57,12 +57,9 @@ export default function Navbar() {
   return (
     <>
       <header className="navbar-edge sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Crest className="h-8 w-8" variant="solid" />
-            <span className="brand text-xl font-bold text-glow">
-              <span className="text-accent-2">L2</span>THUNDER
-            </span>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <Link href="/">
+            <Crest className="h-14 w-14" variant="solid" />
           </Link>
 
           <button
@@ -70,12 +67,12 @@ export default function Navbar() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-label="Abrir menú"
-            className="flex h-10 w-10 items-center justify-center border border-border-soft text-foreground transition hover:border-gold hover:text-gold"
+            className="flex h-12 w-12 items-center justify-center border border-border-soft text-foreground transition hover:border-gold hover:text-gold"
           >
-            <span className="relative block h-3 w-5">
-              <span className="absolute left-0 top-0 h-px w-5 bg-current" />
-              <span className="absolute left-0 top-1.5 h-px w-5 bg-current" />
-              <span className="absolute left-0 top-3 h-px w-5 bg-current" />
+            <span className="relative block h-3 w-6">
+              <span className="absolute left-0 top-0 h-px w-6 bg-current" />
+              <span className="absolute left-0 top-1.5 h-px w-6 bg-current" />
+              <span className="absolute left-0 top-3 h-px w-6 bg-current" />
             </span>
           </button>
         </div>
@@ -83,12 +80,9 @@ export default function Navbar() {
 
       {open && (
         <div className="fixed inset-0 z-[100] flex flex-col bg-background/98 backdrop-blur-sm">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-            <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-              <Crest className="h-8 w-8" variant="solid" />
-              <span className="brand text-xl font-bold text-glow">
-                <span className="text-accent-2">L2</span>THUNDER
-              </span>
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
+            <Link href="/" onClick={() => setOpen(false)}>
+              <Crest className="h-14 w-14" variant="solid" />
             </Link>
 
             <button

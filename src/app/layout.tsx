@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import DiscordBanner from "@/components/DiscordBanner";
 import VoteBanner from "@/components/VoteBanner";
 import Embers from "@/components/Embers";
+import SplashScreen from "@/components/SplashScreen";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -61,6 +62,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SplashScreen />
         <Embers />
         <Navbar />
         <main className="flex-1">{children}</main>
