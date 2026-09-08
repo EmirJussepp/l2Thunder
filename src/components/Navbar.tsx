@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50">
+      <header className="fixed inset-x-0 top-0 z-[120]">
         <div className="flex w-full items-center justify-between px-6 py-5 sm:px-10">
           <Link href="/">
             <Crest className="h-14 w-14" variant="solid" />
@@ -67,7 +67,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="relative z-[110] flex h-12 w-12 items-center justify-center text-foreground transition hover:text-gold"
+            className="flex h-12 w-12 items-center justify-center text-foreground transition hover:text-gold"
           >
             <span className="relative block h-3 w-6">
               <span
