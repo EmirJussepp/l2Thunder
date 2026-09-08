@@ -8,7 +8,10 @@ export default function Hero() {
       <HeroBackground />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
-        <Crest className="h-16 w-16" />
+        <div className="relative">
+          <div className="absolute inset-0 -z-10 scale-[2.2] rounded-full bg-gold/25 blur-2xl" aria-hidden="true" />
+          <Crest className="crest-epic h-24 w-24 sm:h-28 sm:w-28" />
+        </div>
 
         <h1 className="brand text-5xl font-black leading-tight text-glow sm:text-6xl">
           <small className="text-accent-2">L2</small>THUNDER

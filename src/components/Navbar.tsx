@@ -50,7 +50,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border-soft bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <Crest className="h-8 w-8" />
+          <Crest className="h-8 w-8" variant="solid" />
           <span className="brand text-xl font-bold text-glow">
             <small className="text-accent-2">L2</small>THUNDER
           </span>

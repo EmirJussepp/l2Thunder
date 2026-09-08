@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-border-soft">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between">
         <div className="flex items-start gap-3">
-          <Crest className="h-8 w-8 shrink-0" />
+          <Crest className="h-8 w-8 shrink-0" variant="solid" />
           <div>
             <p className="brand text-base font-bold text-foreground">
               <small className="text-accent-2">L2</small>THUNDER
