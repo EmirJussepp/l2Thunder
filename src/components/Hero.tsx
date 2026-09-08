@@ -26,12 +26,6 @@ export default function Hero() {
           <span className="text-accent-2">L2</span>THUNDER
         </h1>
 
-        <p className="text-lg text-muted sm:text-xl">
-          Lineage II Interlude, reinventado. Reworkeamos razas, clases y skills olvidadas
-          para que <span className="text-foreground">cada elección tenga sentido</span> —
-          nada de builds únicas, nada de skills muertas.
-        </p>
-
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#jugar"
