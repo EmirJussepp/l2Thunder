@@ -23,7 +23,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
       {tiers.map((tier) => (
         <div
           key={tier.id}
-          className={`card-surface flex flex-col rounded-none p-6 ${
+          className={`card-surface flex flex-col rounded-none p-6 transition hover:border-accent/50 ${
             tier.highlight ? "border-gold/60 ring-1 ring-gold/30" : ""
           }`}
         >
@@ -59,10 +59,6 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
           </div>
         </div>
       ))}
-
-      <p className="text-center text-xs text-muted/70 sm:col-span-3">
-        Precios y cantidades de ejemplo — se ajustan antes de lanzar el checkout real.
-      </p>
     </div>
   );
 }

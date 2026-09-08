@@ -58,10 +58,6 @@ export default function Features() {
           </div>
         ))}
       </div>
-
-      <p className="mt-8 text-center text-xs text-muted/70">
-        Contenido de ejemplo — se reemplaza por el detalle real de cada sistema.
-      </p>
     </section>
   );
 }
