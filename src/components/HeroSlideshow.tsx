@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const IMAGES = ["/hero.jpg", "/hero2.jpg", "/hero3.jpg", "/hero4.png"];
+const IMAGES = ["/hero.jpg", "/hero2.jpg", "/hero4.png"];
 const INTERVAL_MS = 7000;
 
 export default function HeroSlideshow() {
