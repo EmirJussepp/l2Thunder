@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/#features" className="hover:text-foreground">
-            Características
+          <Link href="/por-que-l2thunder" className="hover:text-foreground">
+            ¿Por qué L2Thunder?
           </Link>
           <Link href="/donar" className="hover:text-foreground">
             Donar

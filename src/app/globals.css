@@ -30,10 +30,10 @@
 }
 
 html {
-  /* El navbar es sticky (~104px, agrandado) y tapa el borde superior de
-     cualquier sección a la que se salte por ancla (#features, #jugar) si no
-     hay este offset — sin esto, el contenido de arriba de cada sección
-     queda oculto detrás del navbar en vez de empezar debajo. */
+  /* El navbar es fixed (~104px, agrandado) y tapa el borde superior de
+     cualquier sección a la que se salte por ancla (#jugar) si no hay este
+     offset — sin esto, el contenido de arriba de cada sección queda oculto
+     detrás del navbar en vez de empezar debajo. */
   scroll-padding-top: 7.5rem;
 
   /* Reserva el espacio de la scrollbar siempre, haya o no scroll. Sin esto,

@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import WhyTeaser from "@/components/WhyTeaser";
 import PlaySteps from "@/components/PlaySteps";
 import DonateTeaser from "@/components/DonateTeaser";
 
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Features />
+      <WhyTeaser />
       <PlaySteps />
       <DonateTeaser />
     </>
