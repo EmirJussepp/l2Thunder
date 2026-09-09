@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Crest from "./Crest";
 import HeroSlideshow from "./HeroSlideshow";
+import Countdown from "./Countdown";
 
 export default function Hero() {
   return (
@@ -27,6 +28,10 @@ export default function Hero() {
             cada raza, cada clase y cada skill para que nada quede obsoleto, sin perder la
             esencia del combate que hizo grande a Lineage II.
           </h2>
+        </div>
+
+        <div className="pt-2">
+          <Countdown />
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">

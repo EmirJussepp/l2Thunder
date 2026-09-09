@@ -41,7 +41,9 @@ export default function Navbar() {
   }, [pathname]);
 
   // El panel es fixed encima de todo — bloqueamos el scroll de atrás mientras
-  // está abierto, si no el fondo se sigue moviendo detrás.
+  // está abierto, si no el fondo se sigue moviendo detrás. El salto del botón
+  // de la esquina (el header es fixed, así que el padding del body no lo
+  // afecta) se resuelve aparte, con scrollbar-gutter: stable en globals.css.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
