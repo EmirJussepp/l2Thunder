@@ -52,28 +52,6 @@ body {
   text-shadow: 0 0 24px rgba(240, 192, 64, 0.4), 0 0 48px rgba(108, 200, 255, 0.2);
 }
 
-.crest-epic {
-  animation: crest-pulse 3s ease-in-out infinite;
-}
-
-@keyframes crest-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 14px rgba(240, 192, 64, 0.55)) drop-shadow(0 0 30px rgba(108, 200, 255, 0.3));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 26px rgba(240, 192, 64, 0.85)) drop-shadow(0 0 48px rgba(108, 200, 255, 0.5));
-    transform: scale(1.04);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .crest-epic {
-    animation: none;
-    filter: drop-shadow(0 0 20px rgba(240, 192, 64, 0.7));
-  }
-}
-
 .hero-bg-animate {
   animation: hero-bg-zoom 20s ease-in-out infinite alternate;
 }
