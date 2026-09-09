@@ -38,7 +38,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/donar"
-            className="rounded-none border border-border-soft px-7 py-3 font-semibold text-foreground transition hover:border-gold hover:bg-gold hover:text-background"
+            className="rounded-none border border-border-soft px-7 py-3 font-semibold text-foreground transition hover:border-gold hover:text-gold"
           >
             Apoyar el proyecto
           </Link>

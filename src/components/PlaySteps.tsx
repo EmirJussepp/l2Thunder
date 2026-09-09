@@ -54,7 +54,7 @@ export default function PlaySteps() {
                     href={LAUNCHER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-none border border-border-soft px-4 py-2 text-sm font-semibold text-foreground transition hover:border-gold hover:bg-gold hover:text-background"
+                    className="rounded-none border border-border-soft px-4 py-2 text-sm font-semibold text-foreground transition hover:border-gold hover:text-gold"
                   >
                     Descargar launcher
                   </a>

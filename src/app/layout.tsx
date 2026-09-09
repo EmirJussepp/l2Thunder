@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DiscordBanner from "@/components/DiscordBanner";
 import VoteBanner from "@/components/VoteBanner";
-import Embers from "@/components/Embers";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import SplashScreen from "@/components/SplashScreen";
 import "./globals.css";
 
@@ -63,7 +63,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <SplashScreen />
-        <Embers />
+        <ParticlesBackground />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -114,62 +114,6 @@ body {
   border-color: #ffe28a;
 }
 
-/* Cenizas/brasas de fondo: flecos que suben y se tambalean por todo el
-   sitio — atrás de todo el contenido, solo se ven en los huecos donde no
-   hay una card/sección con fondo opaco encima. Pura animación CSS
-   (transform+opacity), sin canvas. Dos variantes: cenizas grises (la
-   mayoría) y brasas doradas brillantes (menos, para el toque de fuego). */
-.ember {
-  position: absolute;
-  bottom: -10px;
-  border-radius: 9999px;
-  animation-name: ember-float;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
-}
-
-.ember--ash {
-  background: radial-gradient(circle, rgba(221, 228, 255, 0.85), rgba(221, 228, 255, 0) 70%);
-}
-
-.ember--glow {
-  background: radial-gradient(circle, rgba(255, 200, 90, 0.95), rgba(240, 120, 40, 0) 70%);
-  box-shadow: 0 0 6px rgba(255, 180, 80, 0.6);
-}
-
-@keyframes ember-float {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-  12% {
-    opacity: 0.85;
-  }
-  50% {
-    transform: translate(24px, -55vh) rotate(180deg);
-  }
-  88% {
-    opacity: 0.85;
-  }
-  100% {
-    transform: translate(-18px, -110vh) rotate(340deg);
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ember {
-    display: none;
-  }
-}
-
-/* Borde inferior del navbar con un detalle dorado tallado en el centro, en
-   vez de la línea plana — restringido, sin textura ni marco completo. */
-.navbar-edge {
-  border-image: linear-gradient(90deg, transparent 0%, rgba(240, 192, 64, 0.55) 50%, transparent 100%) 1;
-}
-
 /* Splash de carga (estilo Rockstar): logo con contorno que aparece con un
    glow y se desvanece, tapando el sitio un instante al entrar. */
 .splash-overlay {
