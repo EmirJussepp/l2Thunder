@@ -4,9 +4,11 @@ import Particles, { ParticlesProvider, useParticlesProvider } from "@tsparticles
 import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 
-// Mismo look que las cenizas/brasas que estaban en CSS puro (cenizas grises +
-// brasas doradas subiendo lento), ahora manejado por tsParticles a pedido
-// del usuario.
+// Cenizas + brasas ambientadas al tema fuego/dragón del sitio — más brasas
+// doradas/naranjas que cenizas grises (antes era al revés), tamaños más
+// variados (alguna brasa grande de vez en cuando) y un poco más de
+// velocidad/dispersión para que se sientan "vivas" subiendo, no un flotar
+// parejo tipo nieve.
 const options: ISourceOptions = {
   fullScreen: { enable: false },
   fpsLimit: 60,
@@ -14,20 +16,20 @@ const options: ISourceOptions = {
   background: { color: { value: "transparent" } },
   particles: {
     number: {
-      value: 26,
+      value: 32,
       density: { enable: true, width: 1920, height: 1080 },
     },
-    color: { value: ["#dde4ff", "#dde4ff", "#dde4ff", "#f0c040", "#ff9d4d"] },
+    color: { value: ["#f0c040", "#ff9d4d", "#ff7a3d", "#dde4ff", "#dde4ff"] },
     shape: { type: "circle" },
     opacity: {
-      value: { min: 0.15, max: 0.75 },
-      animation: { enable: true, speed: 0.6, sync: false },
+      value: { min: 0.2, max: 0.85 },
+      animation: { enable: true, speed: 0.8, sync: false },
     },
-    size: { value: { min: 1.5, max: 4 } },
+    size: { value: { min: 1.5, max: 5 } },
     move: {
       enable: true,
       direction: "top",
-      speed: { min: 0.4, max: 1.2 },
+      speed: { min: 0.4, max: 1.8 },
       random: true,
       straight: false,
       outModes: { default: "out" },
