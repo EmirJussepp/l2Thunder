@@ -14,7 +14,7 @@ export default function WhyTeaser() {
           ¿Por qué L2Thunder?
         </p>
         <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
-          No es Interlude con las tasas subidas
+          Interlude, repensado de raíz
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
           Rates pensadas para llegar al contenido, un enchant que no te rompe el equipo y clases

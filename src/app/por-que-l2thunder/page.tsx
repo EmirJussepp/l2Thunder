@@ -211,7 +211,7 @@ export default function PorQueL2ThunderPage() {
           Interlude, reimaginado
         </p>
         <p className="mt-6 text-muted">
-          No es Interlude con las tasas subidas. Es Interlude con{" "}
+          Interlude, pero repensado:{" "}
           <strong className="font-bold text-foreground">cada clase revisada a mano</strong>, un
           enchant que no te rompe el equipo, profesiones que valen la pena y contenido nuevo —
           sobre la crónica que ya sabés jugar.
