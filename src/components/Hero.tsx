@@ -22,7 +22,7 @@ export default function Hero() {
           <p className="brand text-lg font-bold tracking-widest text-accent-2">
             Nuestra visión
           </p>
-          <h2 className="mt-5 font-display text-xl font-semibold leading-relaxed text-foreground sm:text-2xl">
+          <h2 className="mt-5 font-display text-base font-semibold leading-relaxed text-foreground sm:text-lg">
             Thunder no es &ldquo;un Interlude con rates medios&rdquo;. Es la pregunta de qué
             habría pasado si Interlude hubiera seguido evolucionando por otro camino: revisamos
             cada raza, cada clase y cada skill para que nada quede obsoleto, sin perder la

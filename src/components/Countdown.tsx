@@ -51,20 +51,20 @@ export default function Countdown() {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
+    <div className="flex flex-col items-center gap-4">
+      <p className="brand text-base font-bold uppercase tracking-widest text-gold sm:text-lg">
         Gran apertura — 16 de octubre
       </p>
-      <div className="flex gap-2 sm:gap-3">
+      <div className="flex gap-3 sm:gap-4">
         {units.map((u) => (
           <div
             key={u.label}
-            className="card-surface flex w-14 flex-col items-center rounded-none py-2 sm:w-16"
+            className="card-surface flex w-16 flex-col items-center rounded-none border-gold/40 py-3 sm:w-24"
           >
-            <span className="font-display text-xl font-black text-gold sm:text-2xl">
+            <span className="font-display text-3xl font-black text-gold sm:text-4xl">
               {String(u.value).padStart(2, "0")}
             </span>
-            <span className="text-[10px] uppercase tracking-wider text-muted">{u.label}</span>
+            <span className="text-xs uppercase tracking-wider text-muted">{u.label}</span>
           </div>
         ))}
       </div>
