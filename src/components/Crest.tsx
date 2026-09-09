@@ -8,12 +8,16 @@ const SRC = {
 export default function Crest({
   className,
   variant = "outline",
+  shine = false,
 }: {
   className?: string;
   variant?: "outline" | "solid";
+  shine?: boolean;
 }) {
   return (
-    <span className={`relative inline-block ${className ?? ""}`}>
+    <span
+      className={`relative inline-block ${shine ? "crest-shine" : ""} ${className ?? ""}`}
+    >
       <Image src={SRC[variant]} alt="" fill className="object-contain" priority />
     </span>
   );

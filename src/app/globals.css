@@ -52,6 +52,49 @@ body {
   text-shadow: 0 0 24px rgba(240, 192, 64, 0.4), 0 0 48px rgba(108, 200, 255, 0.2);
 }
 
+/* Destello que recorre el crest en diagonal cada tanto — hecho a mano con
+   CSS (sin Lottie ni librerías), pensado para el logo central del hero.
+   El ::after es un degradé angosto que barre de punta a punta y después
+   hace una pausa larga antes de repetir, para que no sea un parpadeo
+   constante sino un brillo ocasional tipo metal/oro. */
+.crest-shine {
+  overflow: hidden;
+}
+
+.crest-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    75deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 58%
+  );
+  transform: translateX(-140%);
+  animation: crest-shine-sweep 4s ease-in-out infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes crest-shine-sweep {
+  0%,
+  30% {
+    transform: translateX(-140%);
+  }
+  55%,
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crest-shine::after {
+    animation: none;
+    display: none;
+  }
+}
+
 .hero-bg-animate {
   animation: hero-bg-zoom 20s ease-in-out infinite alternate;
 }
