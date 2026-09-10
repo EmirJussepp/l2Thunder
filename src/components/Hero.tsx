@@ -11,8 +11,10 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6">
         <Crest className="h-24 w-24 sm:h-28 sm:w-28" shine />
 
-        <h1 className="brand text-5xl font-black leading-tight text-glow sm:text-6xl">
-          <span className="text-accent-2">L2</span>THUNDER
+        <h1 className="brand text-4xl font-black leading-tight text-glow sm:text-5xl md:text-6xl">
+          <span className="text-accent-2">L2</span>
+          <wbr />
+          THUNDER
         </h1>
 
         <div className="-mt-3">

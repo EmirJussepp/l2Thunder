@@ -38,8 +38,12 @@ export default function DiscordBanner() {
   if (!mounted) return null;
 
   return (
+    // bottom-40 en mobile: el banner ocupa todo el ancho (inset-x-4), así que
+    // si va pegado abajo tapa el badge de voto de HopZone (bottom-4 left-4).
+    // Lo subimos por encima de esa franja; en sm+ vuelve a la tarjeta angosta
+    // de la esquina, que no choca con nada.
     <div
-      className={`fixed inset-x-4 bottom-4 z-40 transition-all duration-300 sm:inset-x-auto sm:right-6 sm:w-80 ${
+      className={`fixed inset-x-4 bottom-40 z-40 transition-all duration-300 sm:inset-x-auto sm:bottom-4 sm:right-6 sm:w-80 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
       }`}
     >

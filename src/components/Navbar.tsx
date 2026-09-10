@@ -13,8 +13,22 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const pathname = usePathname();
+
+  // El header es transparente para complementar la imagen del hero, pero eso
+  // hace que el crest y el texto de cada sección se pisen apenas se scrollea
+  // (no hay hero detrás para separarlos). Le damos fondo sólido en cuanto se
+  // deja de estar arriba de todo.
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 20);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     // isActive() ya chequea pathname === "/" antes de mirar activeSection, así
@@ -58,7 +72,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[120]">
+      <header
+        className={`fixed inset-x-0 top-0 z-[120] transition-colors duration-300 ${
+          scrolled ? "border-b border-border-soft bg-background/85 backdrop-blur-md" : ""
+        }`}
+      >
         <div className="flex w-full items-center justify-between px-6 py-5 sm:px-10">
           <Link href="/">
             <Crest className="h-14 w-14" variant="solid" />
