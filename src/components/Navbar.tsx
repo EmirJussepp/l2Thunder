@@ -7,6 +7,7 @@ import Crest from "./Crest";
 
 const links = [
   { href: "/por-que-l2thunder", label: "¿Por qué L2Thunder?", sectionId: null },
+  { href: "/guias", label: "Guías", sectionId: null },
   { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
   { href: "/donar", label: "Donar", sectionId: null },
 ];
@@ -66,7 +67,9 @@ export default function Navbar() {
   }, [open]);
 
   function isActive(link: (typeof links)[number]) {
-    if (link.sectionId === null) return pathname === link.href;
+    if (link.sectionId === null) {
+      return pathname === link.href || pathname.startsWith(`${link.href}/`);
+    }
     return pathname === "/" && activeSection === link.sectionId;
   }
 

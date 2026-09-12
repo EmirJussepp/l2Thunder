@@ -19,6 +19,9 @@ export default function Footer() {
           <Link href="/por-que-l2thunder" className="hover:text-foreground">
             ¿Por qué L2Thunder?
           </Link>
+          <Link href="/guias" className="hover:text-foreground">
+            Guías
+          </Link>
           <Link href="/donar" className="hover:text-foreground">
             Donar
           </Link>
