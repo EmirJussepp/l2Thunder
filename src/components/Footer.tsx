@@ -26,7 +26,7 @@ export default function Footer() {
             Donar
           </Link>
           <a
-            href="https://discord.gg/6W6EJjXSa"
+            href="https://discord.gg/nNFJVWTbD"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground"
