@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "×15", label: "Experiencia y SP" },
-  { value: "×10", label: "Probabilidad de drop" },
-  { value: "+10", label: "Enchant máximo" },
-  { value: "0", label: "Ítems destruidos" },
+  { value: "×15", label: "Experiencia" },
+  { value: "×10", label: "Drop" },
+  { value: "×4", label: "Adena" },
+  { value: "+10", label: "Enchant máx." },
 ];
 
 const ritmoRows = [
