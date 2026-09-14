@@ -213,8 +213,8 @@ export default function PorQueL2ThunderPage() {
         <p className="mt-6 text-muted">
           Interlude, pero repensado:{" "}
           <strong className="font-bold text-foreground">cada clase revisada a mano</strong>, un
-          enchant que no te rompe el equipo, profesiones que valen la pena y contenido nuevo —
-          sobre la crónica que ya sabés jugar.
+          enchant que no te rompe el equipo, profesiones que valen la pena y contenido nuevo que
+          no existía antes — sobre la crónica que ya sabés jugar.
         </p>
 
         <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-none border border-border-soft bg-border-soft sm:grid-cols-4">
