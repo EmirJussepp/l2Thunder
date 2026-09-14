@@ -15,6 +15,13 @@ const guides = [
     subtitle: "Cómo derrotar a Shadow of Halisha",
     text: "El pase, la misión del espíritu sin nombre, la ventana de cinco minutos y los cuatro guardianes — todo lo que hace falta para llegar al jefe.",
   },
+  {
+    href: "/guias/sailren-benom-frintezza",
+    level: "Instancias",
+    title: "Sailren, Benom y Frintezza",
+    subtitle: "Las tres mazmorras privadas del servidor",
+    text: "Cómo entrar a cada una, los mecanismos de la pelea y el botín — incluido el modo difícil de Benom y el Triol's Earring, exclusivo de L2Thunder.",
+  },
 ];
 
 export default function GuiasPage() {
