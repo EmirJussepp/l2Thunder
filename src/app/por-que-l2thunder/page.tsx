@@ -91,6 +91,33 @@ const enchantRows = [
   },
 ];
 
+const equipo = [
+  {
+    title: "Life stones que se leen de un vistazo",
+    text: "Ahora tienen color según su calidad: las top dan un brillo lila que se distingue en el inventario sin pasar el mouse.",
+  },
+  {
+    title: "Special Ability competitivos",
+    text: "Reworkeamos los SA de las armas para que valgan la pena, no una casilla que queda vacía.",
+  },
+  {
+    title: "Sets con bonus nuevos",
+    text: "C, B, A y S grade tienen combinaciones de set repensadas de cero, no la tabla de siempre.",
+  },
+  {
+    title: "Apella, el nuevo techo del grado A",
+    text: "Se suma como la cima del set A, un escalón que Interlude original no tenía.",
+  },
+  {
+    title: "Sigils para los magos",
+    text: "Un slot nuevo que en retail nunca tuvieron, pensado para sumar poder mágico.",
+  },
+  {
+    title: "Joyería boss y S, repensada",
+    text: "De punta a punta, con bonus que ahora valen la pena equiparlos.",
+  },
+];
+
 const clases = [
   {
     n: "I",
@@ -196,6 +223,10 @@ const comodidades = [
   { title: "El comando .stat", text: "Una ventana con tus estadísticas reales, las que el cliente no te muestra." },
   { title: "Títulos por PvP", text: "Tu cuenta de muertes se ve, y cambia de color a medida que sube." },
   { title: "Pociones automáticas", text: "HP y CP, opcionales, para que pelear no sea apretar una tecla mil veces." },
+  { title: "Sin penalización en los dyes", text: "Las clases de soporte pueden sumar INT sin resignar nada a cambio." },
+  { title: "Comida en la mesa", text: "Sentado, cura HP y MP rápido — una alternativa a gastar pociones." },
+  { title: "Pociones con dos minutos de respiro", text: "HP, MP y CP se usan con cabeza, no a repetición: el reuso es de dos minutos." },
+  { title: "Buffers sin mochila", text: "Ya no hace falta cargar con una montaña de dyes y pergaminos encima." },
 ];
 
 export default function PorQueL2ThunderPage() {
@@ -262,6 +293,23 @@ export default function PorQueL2ThunderPage() {
             el ítem. Y los pergaminos se apilan, así que el inventario no se te llena de filas
             sueltas.
           </p>
+        </div>
+      </section>
+
+      {/* El equipo */}
+      <section className="mx-auto mt-24 max-w-5xl">
+        <SectionHeader
+          eyebrow="El equipo"
+          title="El itemizado también se repensó"
+          intro="Sets, life stones, augmentación y joyería — nada quedó con los números ni el aspecto de siempre."
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {equipo.map((e) => (
+            <div key={e.title} className="card-surface rounded-none p-6">
+              <h3 className="font-display text-base font-bold text-foreground">{e.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{e.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
