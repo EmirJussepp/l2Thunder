@@ -300,7 +300,7 @@ export default function PorQueL2ThunderPage() {
       <section className="mx-auto mt-24 max-w-5xl">
         <SectionHeader
           eyebrow="El equipo"
-          title="Cada pieza que te ponés, repensada"
+          title="Cada pieza que te equipás, repensada"
           intro="Sets, life stones, augmentación y joyería — nada quedó con los números ni el aspecto de siempre."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
