@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 const VARIANTS = {
   warn: "border-danger/60 bg-danger/[0.06] text-danger",
   info: "border-accent/60 bg-accent/[0.06] text-accent",
+  // Para las reglas que son propias de L2Thunder y no del diseño original
+  // del evento — se repite bastante en las guías de eventos, merece su
+  // propio color en vez de pedir prestado el warn o el info.
+  custom: "border-gold/60 bg-gold/[0.06] text-gold",
 };
 
 export default function Callout({

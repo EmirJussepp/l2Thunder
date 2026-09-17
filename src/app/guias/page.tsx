@@ -22,6 +22,13 @@ const guides = [
     subtitle: "Las tres mazmorras privadas del servidor",
     text: "Cómo entrar a cada una, los mecanismos de la pelea y el botín — incluido el modo difícil de Benom y el Triol's Earring, exclusivo de L2Thunder.",
   },
+  {
+    href: "/guias/los-siete-signos",
+    level: "Evento · Nivel 20+",
+    title: "Los Siete Signos",
+    subtitle: "Amanecer contra Ocaso, una semana por ciclo",
+    text: "Cómo elegir bando y sello, juntar piedras, jugar el Festival de la Oscuridad y cobrar Adena Antigua — con las zonas abiertas a todos, propio de L2Thunder.",
+  },
 ];
 
 export default function GuiasPage() {
@@ -37,7 +44,7 @@ export default function GuiasPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {guides.map((g) => (
             <Link
               key={g.href}

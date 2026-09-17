@@ -11,7 +11,7 @@ export default function DataTable({ headers, rows }: { headers: string[]; rows: 
       >
         {headers.map((h, i) => (
           <div
-            key={h}
+            key={i}
             className={`px-5 py-3 text-xs font-semibold uppercase tracking-widest text-muted ${
               i !== 0 ? "border-l border-border-soft" : ""
             }`}
