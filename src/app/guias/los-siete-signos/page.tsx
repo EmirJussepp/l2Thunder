@@ -444,9 +444,12 @@ export default function LosSieteSignosPage() {
           <div className="mt-6">
             <Callout title="Tiene su propia guía" variant="info">
               <p>
-                La Grieta merece una nota aparte y la vamos a publicar por separado. Lo que te
-                interesa saber acá: mientras farmeás piedras de sello estás juntando fragmentos
-                para entrar.
+                La Grieta tiene su nota aparte:{" "}
+                <Link href="/guias/la-grieta-dimensional" className="underline decoration-accent/40 underline-offset-2 hover:text-foreground">
+                  cómo elegir escalón, sobrevivir al reloj y llegar a Anakazel
+                </Link>
+                . Lo que te interesa saber acá: mientras farmeás piedras de sello estás juntando
+                fragmentos para entrar.
               </p>
             </Callout>
           </div>

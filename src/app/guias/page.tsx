@@ -29,6 +29,13 @@ const guides = [
     subtitle: "Amanecer contra Ocaso, una semana por ciclo",
     text: "Cómo elegir bando y sello, juntar piedras, jugar el Festival de la Oscuridad y cobrar Adena Antigua — con las zonas abiertas a todos, propio de L2Thunder.",
   },
+  {
+    href: "/guias/la-grieta-dimensional",
+    level: "Nivel 20+",
+    title: "La Grieta Dimensional",
+    subtitle: "Cinco salas, un reloj corriendo y un jefe en el fondo",
+    text: "Cómo juntar Dimensional Fragments, elegir escalón, sobrevivir al reloj de salas y llegar a Anakazel — con dos jugadores alcanza.",
+  },
 ];
 
 export default function GuiasPage() {
