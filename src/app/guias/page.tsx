@@ -36,6 +36,13 @@ const guides = [
     subtitle: "Cinco salas, un reloj corriendo y un jefe en el fondo",
     text: "Cómo juntar Dimensional Fragments, elegir escalón, sobrevivir al reloj de salas y llegar a Anakazel — con dos jugadores alcanza.",
   },
+  {
+    href: "/guias/el-festival-de-la-oscuridad",
+    level: "Evento · Nivel 20+",
+    title: "El Festival de la Oscuridad",
+    subtitle: "Dieciocho minutos de oleadas por el otro 50% de los Siete Signos",
+    text: "Cómo elegir escalón, sobrevivir a las oleadas y registrar el puntaje para cobrar la bolsa de Adena Antigua — con dos jugadores alcanza.",
+  },
 ];
 
 export default function GuiasPage() {

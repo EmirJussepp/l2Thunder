@@ -264,7 +264,15 @@ export default function LosSieteSignosPage() {
             <p>
               Es el otro 50% del puntaje, y va aparte de las piedras. Tu grupo entra a una arena
               cerrada, pelea 18 minutos contra oleadas de monstruos y junta Blood Offerings:
-              cuantas más junten, más alto el puntaje.
+              cuantas más junten, más alto el puntaje. Acá va lo esencial; el minuto a minuto de
+              la arena, las oleadas y la Festival Witch están en{" "}
+              <Link
+                href="/guias/el-festival-de-la-oscuridad"
+                className="underline decoration-accent/40 underline-offset-2 hover:text-foreground"
+              >
+                su propia guía
+              </Link>
+              .
             </p>
 
             <div>
