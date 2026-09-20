@@ -8,11 +8,24 @@ const priceFormatter = new Intl.NumberFormat("es-AR", {
   maximumFractionDigits: 0,
 });
 
-export default async function VipPass() {
-  const [pkg, arsPerCoin] = await Promise.all([
+function loadVip() {
+  return Promise.all([
     prisma.donationPackage.findFirst({ where: { active: true, kind: "VIP" } }),
     getArsPerCoin(),
   ]);
+}
+
+export default async function VipPass() {
+  // Con la base caída no se muestra nada acá: el aviso de mantenimiento ya lo
+  // pone DonationTiers una sola vez en la página.
+  let data: Awaited<ReturnType<typeof loadVip>>;
+  try {
+    data = await loadVip();
+  } catch (err) {
+    console.error("VipPass: no se pudo leer la base", err);
+    return null;
+  }
+  const [pkg, arsPerCoin] = data;
 
   if (!pkg) return null;
 

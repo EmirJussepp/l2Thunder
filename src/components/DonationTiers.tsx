@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { getArsPerCoin } from "@/lib/economy";
 import DonationTiersClient from "./DonationTiersClient";
+import DonationsUnavailable from "./DonationsUnavailable";
 
 const priceFormatter = new Intl.NumberFormat("es-AR", {
   style: "currency",
@@ -8,14 +9,28 @@ const priceFormatter = new Intl.NumberFormat("es-AR", {
   maximumFractionDigits: 0,
 });
 
-export default async function DonationTiers() {
-  const [packages, arsPerCoin] = await Promise.all([
+function loadTiers() {
+  return Promise.all([
     prisma.donationPackage.findMany({
       where: { active: true, kind: "BOX" },
       orderBy: { priceCoins: "asc" },
     }),
     getArsPerCoin(),
   ]);
+}
+
+export default async function DonationTiers() {
+  // Si la base no responde (cuota agotada, caída) el build de /donar no puede
+  // romper todo el deploy: se muestra el aviso y la página se regenera sola
+  // (revalidate) apenas la base vuelva.
+  let data: Awaited<ReturnType<typeof loadTiers>>;
+  try {
+    data = await loadTiers();
+  } catch (err) {
+    console.error("DonationTiers: no se pudo leer la base", err);
+    return <DonationsUnavailable />;
+  }
+  const [packages, arsPerCoin] = data;
 
   const tiers = packages.map((pkg) => ({
     id: pkg.id,
