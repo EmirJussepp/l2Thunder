@@ -53,7 +53,7 @@ export default function DiscordBanner() {
 
   return (
     // bottom-52 en modo compacto: la barra ocupa todo el ancho, así que tiene
-    // que ir por encima del stack de votos (Dragones Negros + HopZone, ~172px
+    // que ir por encima del stack de votos (Dragones Negros + HopZone, ~165px
     // desde bottom-4) de VoteBanner.
     <div
       className={`fixed z-40 transition-all duration-300 ${
