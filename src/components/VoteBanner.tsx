@@ -11,7 +11,7 @@
 // bottom del DiscordBanner en modo compacto para que siga por encima.
 export default function VoteBanner() {
   return (
-    <div className="fixed bottom-4 left-4 z-40 flex flex-col items-start gap-2">
+    <div className="fixed bottom-4 left-4 z-40 flex flex-col items-center gap-2">
       <a
         href="https://dragonesnegros.online/servers/thunder"
         target="_blank"
