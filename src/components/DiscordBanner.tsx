@@ -52,12 +52,12 @@ export default function DiscordBanner() {
   if (!mounted) return null;
 
   return (
-    // bottom-52 en modo compacto: la barra ocupa todo el ancho, así que tiene
-    // que ir por encima del stack de votos (Dragones Negros + HopZone, ~165px
-    // desde bottom-4) de VoteBanner.
+    // bottom-28 (112px) en modo compacto: la barra ocupa todo el ancho, así que
+    // tiene que ir por encima del stack de votos de VoteBanner, que llega hasta
+    // ~94px desde el borde (medido: 78px de alto desde bottom-4).
     <div
       className={`fixed z-40 transition-all duration-300 ${
-        compact ? "inset-x-4 bottom-52" : "bottom-4 right-6 w-80"
+        compact ? "inset-x-4 bottom-28" : "bottom-4 right-6 w-80"
       } ${visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
     >
       {compact ? (
