@@ -8,6 +8,7 @@ import Crest from "./Crest";
 const links = [
   { href: "/por-que-l2thunder", label: "¿Por qué L2Thunder?", sectionId: null },
   { href: "/guias", label: "Guías", sectionId: null },
+  { href: "/informacion-de-juego", label: "Información de juego", sectionId: null },
   { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
   { href: "/donar", label: "Donar", sectionId: null },
 ];

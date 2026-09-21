@@ -22,6 +22,9 @@ export default function Footer() {
           <Link href="/guias" className="hover:text-foreground">
             Guías
           </Link>
+          <Link href="/informacion-de-juego" className="hover:text-foreground">
+            Información de juego
+          </Link>
           <Link href="/donar" className="hover:text-foreground">
             Donar
           </Link>
