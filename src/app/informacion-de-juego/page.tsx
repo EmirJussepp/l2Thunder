@@ -11,8 +11,14 @@ const apartados = [
   {
     href: "/informacion-de-juego/armaduras",
     title: "Armaduras",
-    subtitle: "Sets de grado C, B, A y S",
+    subtitle: "Sets de grado B, A y S",
     text: "El nombre de cada set y los bonus que da, en Heavy, Light y Robe.",
+  },
+  {
+    href: "/informacion-de-juego/joyas",
+    title: "Joyas",
+    subtitle: "Grado S y Raid Boss",
+    text: "Collares, aros y anillos con el nombre de cada joya y los bonus que da.",
   },
 ];
 

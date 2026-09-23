@@ -1,11 +1,12 @@
-// L2Thunder no tiene grado C como escalón propio (se saltea), así que no
+import type { ItemEntry } from "./items";
+
+// El grado C no se documenta en esta sección (se sacó a pedido), así que no
 // aparece acá ni en la navegación.
 export type ArmorGrade = "B" | "A" | "S";
 export type ArmorType = "heavy" | "light" | "robe";
 
-// Un set: su nombre y una línea por cada bonus que da. Ejemplo:
-//   { name: "Nombre del set", bonuses: ["P. Def. +5%", "Vel. de ataque +3%"] }
-export type ArmorSet = { name: string; bonuses: string[] };
+// Un set: su nombre y una línea por cada bonus que da.
+export type ArmorSet = ItemEntry;
 
 export type ArmorData = Record<ArmorGrade, Record<ArmorType, ArmorSet[]>>;
 
@@ -16,20 +17,6 @@ export const ARMOR_TYPES: { id: ArmorType; label: string }[] = [
   { id: "light", label: "Light" },
   { id: "robe", label: "Robe" },
 ];
-
-// Nombre de archivo esperado para la imagen de un set, sin extensión:
-// "Zubei's Breastplate" -> "zubeis-breastplate". La página busca ese nombre en
-// public/armaduras/ (png, webp, jpg, gif o avif), así que agregar una imagen es
-// soltar el archivo ahí y redeployar, sin tocar los datos.
-export function armorSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 // Vacío a propósito: los bonus de set de C, B, A y S están reworkeados en
 // L2Thunder, así que no se cargan de memoria del juego original. Se completa

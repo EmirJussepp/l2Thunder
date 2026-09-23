@@ -1,32 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { readdirSync } from "node:fs";
-import { join } from "node:path";
-import ArmorExplorer from "@/components/informacion/ArmorExplorer";
-import { armorSets } from "@/lib/armaduras";
+import ItemExplorer from "@/components/informacion/ItemExplorer";
+import { ARMOR_GRADES, ARMOR_TYPES, armorSets } from "@/lib/armaduras";
+import { loadItemImages } from "@/lib/itemImages";
 
 export const metadata: Metadata = {
   title: "Armaduras — Información de juego",
   description:
     "Sets de armadura de grado B, A y S en L2Thunder, con el nombre de cada set y los bonus que da, separados en Heavy, Light y Robe.",
 };
-
-// Imágenes de cada set: los archivos de public/armaduras/ cuyo nombre (sin
-// extensión) coincide con armorSlug(nombre del set). La página es estática, así
-// que esto se lee en el build: agregar una imagen es soltar el archivo y
-// redeployar. Sin imagen, el set se muestra igual, solo con el nombre.
-function loadArmorImages(): Record<string, string> {
-  try {
-    const images: Record<string, string> = {};
-    for (const file of readdirSync(join(process.cwd(), "public", "armaduras"))) {
-      const match = file.match(/^(.+)\.(png|webp|jpe?g|gif|avif)$/i);
-      if (match) images[match[1].toLowerCase()] = `/armaduras/${file}`;
-    }
-    return images;
-  } catch {
-    return {};
-  }
-}
 
 export default function ArmadurasPage() {
   return (
@@ -50,7 +32,19 @@ export default function ArmadurasPage() {
         </div>
 
         <div className="mt-10">
-          <ArmorExplorer data={armorSets} images={loadArmorImages()} />
+          <ItemExplorer
+            idPrefix="armor"
+            tabsLabel="Grado de armadura"
+            tabs={ARMOR_GRADES.map((g) => ({
+              id: g,
+              label: `Grado ${g}`,
+              emptyText: `Los sets de grado ${g} se están cargando. Pronto vas a ver acá el nombre de cada uno y los bonus que dan.`,
+            }))}
+            groups={ARMOR_TYPES}
+            data={armorSets}
+            images={loadItemImages("armaduras")}
+            noun={{ one: "set", many: "sets", groupEmpty: "Sin sets cargados." }}
+          />
         </div>
       </div>
     </div>

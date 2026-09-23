@@ -2,18 +2,26 @@
 
 import { useState } from "react";
 import Collapsible from "./Collapsible";
-import {
-  ARMOR_GRADES,
-  ARMOR_TYPES,
-  armorSlug,
-  type ArmorData,
-  type ArmorGrade,
-  type ArmorSet,
-  type ArmorType,
-} from "@/lib/armaduras";
+import { itemSlug, type ItemEntry } from "@/lib/items";
 
-const setKey = (grade: ArmorGrade, type: ArmorType, name: string) => `${grade}:${type}:${name}`;
-const groupKey = (grade: ArmorGrade, type: ArmorType) => `${grade}:${type}`;
+type Tab = { id: string; label: string; emptyText: string };
+type Group = { id: string; label: string };
+
+// Pantalla común de las secciones de Información de juego (armaduras, joyas):
+// pestañas arriba, grupos desplegables adentro y cada ítem desplegable con su
+// imagen si existe. idPrefix mantiene únicos los ids del DOM.
+type Props = {
+  idPrefix: string;
+  tabsLabel: string;
+  tabs: Tab[];
+  groups: Group[];
+  data: Record<string, Record<string, ItemEntry[]>>;
+  images: Record<string, string>;
+  noun: { one: string; many: string; groupEmpty: string };
+};
+
+const itemKey = (tab: string, group: string, name: string) => `${tab}:${group}:${name}`;
+const groupKey = (tab: string, group: string) => `${tab}:${group}`;
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -32,15 +40,15 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-function SetRow({
+function ItemRow({
   id,
-  set,
+  item,
   image,
   open,
   onToggle,
 }: {
   id: string;
-  set: ArmorSet;
+  item: ItemEntry;
   image?: string;
   open: boolean;
   onToggle: () => void;
@@ -63,7 +71,7 @@ function SetRow({
             </span>
           )}
           <span className="flex-1 font-display text-sm font-bold text-gold sm:text-base">
-            {set.name}
+            {item.name}
           </span>
           <Chevron open={open} />
         </button>
@@ -71,7 +79,7 @@ function SetRow({
 
       <Collapsible open={open} id={`${id}-panel`} labelledBy={`${id}-btn`}>
         <ul className="space-y-1.5 px-4 pb-4 pt-1 text-sm text-foreground">
-          {set.bonuses.map((b, i) => (
+          {item.bonuses.map((b, i) => (
             <li key={i}>{b}</li>
           ))}
         </ul>
@@ -80,21 +88,25 @@ function SetRow({
   );
 }
 
-export default function ArmorExplorer({
+export default function ItemExplorer({
+  idPrefix,
+  tabsLabel,
+  tabs,
+  groups,
   data,
   images,
-}: {
-  data: ArmorData;
-  images: Record<string, string>;
-}) {
-  const [grade, setGrade] = useState<ArmorGrade>(ARMOR_GRADES[0]);
-  const [openSets, setOpenSets] = useState<Set<string>>(new Set());
+  noun,
+}: Props) {
+  const [tabId, setTabId] = useState(tabs[0].id);
+  const [openItems, setOpenItems] = useState<Set<string>>(new Set());
   const [closedGroups, setClosedGroups] = useState<Set<string>>(new Set());
 
-  const byType = data[grade];
-  const total = ARMOR_TYPES.reduce((n, t) => n + byType[t.id].length, 0);
+  const tab = tabs.find((t) => t.id === tabId) ?? tabs[0];
+  const byGroup = data[tab.id] ?? {};
+  const itemsOf = (groupId: string) => byGroup[groupId] ?? [];
+  const total = groups.reduce((n, g) => n + itemsOf(g.id).length, 0);
 
-  function toggle(setter: typeof setOpenSets, key: string) {
+  function toggle(setter: typeof setOpenItems, key: string) {
     setter((prev) => {
       const next = new Set(prev);
       if (next.has(key)) next.delete(key);
@@ -103,48 +115,46 @@ export default function ArmorExplorer({
     });
   }
 
-  const gradeSetKeys = ARMOR_TYPES.flatMap((t) =>
-    byType[t.id].map((s) => setKey(grade, t.id, s.name)),
-  );
+  const tabItemKeys = groups.flatMap((g) => itemsOf(g.id).map((it) => itemKey(tab.id, g.id, it.name)));
 
   function expandAll() {
-    setOpenSets((prev) => new Set([...prev, ...gradeSetKeys]));
+    setOpenItems((prev) => new Set([...prev, ...tabItemKeys]));
     setClosedGroups((prev) => {
       const next = new Set(prev);
-      ARMOR_TYPES.forEach((t) => next.delete(groupKey(grade, t.id)));
+      groups.forEach((g) => next.delete(groupKey(tab.id, g.id)));
       return next;
     });
   }
 
   function collapseAll() {
-    setOpenSets((prev) => {
+    setOpenItems((prev) => {
       const next = new Set(prev);
-      gradeSetKeys.forEach((k) => next.delete(k));
+      tabItemKeys.forEach((k) => next.delete(k));
       return next;
     });
   }
 
   return (
     <div>
-      <div role="tablist" aria-label="Grado de armadura" className="flex flex-wrap gap-2">
-        {ARMOR_GRADES.map((g) => {
-          const active = g === grade;
+      <div role="tablist" aria-label={tabsLabel} className="flex flex-wrap gap-2">
+        {tabs.map((t) => {
+          const active = t.id === tab.id;
           return (
             <button
-              key={g}
+              key={t.id}
               type="button"
               role="tab"
-              id={`armor-tab-${g}`}
+              id={`${idPrefix}-tab-${t.id}`}
               aria-selected={active}
-              aria-controls="armor-panel"
-              onClick={() => setGrade(g)}
+              aria-controls={`${idPrefix}-panel`}
+              onClick={() => setTabId(t.id)}
               className={`rounded-none border px-5 py-2.5 font-display text-sm font-bold uppercase tracking-widest transition ${
                 active
                   ? "border-gold bg-gold text-background"
                   : "border-border-soft text-muted hover:border-gold/60 hover:text-foreground"
               }`}
             >
-              Grado {g}
+              {t.label}
             </button>
           );
         })}
@@ -152,19 +162,16 @@ export default function ArmorExplorer({
 
       <div
         role="tabpanel"
-        id="armor-panel"
-        aria-labelledby={`armor-tab-${grade}`}
+        id={`${idPrefix}-panel`}
+        aria-labelledby={`${idPrefix}-tab-${tab.id}`}
         className="mt-8"
       >
         {total === 0 ? (
           <div className="card-surface rounded-none p-8 text-center">
             <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-              Grado {grade}
+              {tab.label}
             </p>
-            <p className="mx-auto mt-3 max-w-xl text-muted">
-              Los sets de grado {grade} se están cargando. Pronto vas a ver acá el nombre de
-              cada uno y los bonus que dan.
-            </p>
+            <p className="mx-auto mt-3 max-w-xl text-muted">{tab.emptyText}</p>
           </div>
         ) : (
           <>
@@ -186,14 +193,14 @@ export default function ArmorExplorer({
             </div>
 
             <div className="space-y-8">
-              {ARMOR_TYPES.map((t) => {
-                const sets = byType[t.id];
-                const gKey = groupKey(grade, t.id);
+              {groups.map((g) => {
+                const items = itemsOf(g.id);
+                const gKey = groupKey(tab.id, g.id);
                 const groupOpen = !closedGroups.has(gKey);
-                const gId = `armor-group-${grade}-${t.id}`;
+                const gId = `${idPrefix}-group-${tab.id}-${g.id}`;
 
                 return (
-                  <section key={t.id}>
+                  <section key={g.id}>
                     <h3>
                       <button
                         type="button"
@@ -204,10 +211,10 @@ export default function ArmorExplorer({
                         className="flex w-full items-center gap-3 border-b border-border-soft pb-3 text-left"
                       >
                         <span className="font-display text-lg font-bold text-foreground">
-                          {t.label}
+                          {g.label}
                         </span>
                         <span className="text-xs text-muted">
-                          {sets.length} {sets.length === 1 ? "set" : "sets"}
+                          {items.length} {items.length === 1 ? noun.one : noun.many}
                         </span>
                         <span className="ml-auto">
                           <Chevron open={groupOpen} />
@@ -217,21 +224,21 @@ export default function ArmorExplorer({
 
                     <Collapsible open={groupOpen} id={`${gId}-panel`} labelledBy={`${gId}-btn`}>
                       <div className="pt-4">
-                        {sets.length === 0 ? (
-                          <p className="text-sm text-muted">Sin sets cargados.</p>
+                        {items.length === 0 ? (
+                          <p className="text-sm text-muted">{noun.groupEmpty}</p>
                         ) : (
                           <div className="card-surface rounded-none">
-                            {sets.map((s) => {
-                              const key = setKey(grade, t.id, s.name);
-                              const slug = armorSlug(s.name);
+                            {items.map((it) => {
+                              const key = itemKey(tab.id, g.id, it.name);
+                              const slug = itemSlug(it.name);
                               return (
-                                <SetRow
+                                <ItemRow
                                   key={key}
-                                  id={`armor-set-${grade}-${slug}`}
-                                  set={s}
+                                  id={`${idPrefix}-set-${tab.id}-${slug}`}
+                                  item={it}
                                   image={images[slug]}
-                                  open={openSets.has(key)}
-                                  onToggle={() => toggle(setOpenSets, key)}
+                                  open={openItems.has(key)}
+                                  onToggle={() => toggle(setOpenItems, key)}
                                 />
                               );
                             })}
