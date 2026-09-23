@@ -59,7 +59,7 @@ function SetRow({
           {image && (
             <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-border-soft bg-surface-2 p-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={image} alt="" className="h-full w-full object-contain" />
+              <img src={image} alt="" className="max-h-full max-w-full" />
             </span>
           )}
           <span className="flex-1 font-display text-sm font-bold text-gold sm:text-base">
