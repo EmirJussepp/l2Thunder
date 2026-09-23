@@ -57,7 +57,7 @@ function SetRow({
           className="flex w-full items-center gap-4 px-4 py-3 text-left transition hover:bg-surface-2/60"
         >
           {image && (
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-border-soft bg-surface-2 p-1">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-border-soft bg-surface-2 p-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={image} alt="" className="h-full w-full object-contain" />
             </span>
