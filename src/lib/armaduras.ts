@@ -1,4 +1,6 @@
-export type ArmorGrade = "C" | "B" | "A" | "S";
+// L2Thunder no tiene grado C como escalón propio (se saltea), así que no
+// aparece acá ni en la navegación.
+export type ArmorGrade = "B" | "A" | "S";
 export type ArmorType = "heavy" | "light" | "robe";
 
 // Un set: su nombre y una línea por cada bonus que da. Ejemplo:
@@ -7,7 +9,7 @@ export type ArmorSet = { name: string; bonuses: string[] };
 
 export type ArmorData = Record<ArmorGrade, Record<ArmorType, ArmorSet[]>>;
 
-export const ARMOR_GRADES: ArmorGrade[] = ["C", "B", "A", "S"];
+export const ARMOR_GRADES: ArmorGrade[] = ["B", "A", "S"];
 
 export const ARMOR_TYPES: { id: ArmorType; label: string }[] = [
   { id: "heavy", label: "Heavy" },
@@ -20,7 +22,6 @@ export const ARMOR_TYPES: { id: ArmorType; label: string }[] = [
 // con la lista real; un tipo sin sets muestra "sin sets cargados" y un grado
 // entero vacío muestra el aviso de que se está cargando.
 export const armorSets: ArmorData = {
-  C: { heavy: [], light: [], robe: [] },
   B: {
     heavy: [
       {
@@ -180,6 +181,176 @@ export const armorSets: ArmorData = {
       },
     ],
   },
-  A: { heavy: [], light: [], robe: [] },
+  A: {
+    heavy: [
+      {
+        name: "Dark Crystal Breastplate",
+        bonuses: [
+          "P. Def. de la pieza: 171",
+          "Curación recibida +10%",
+          "P. Def. +6%",
+          "Vel. de casteo +10%",
+          "Vel. de ataque +3%",
+          "Probabilidad de sufrir parálisis -20%",
+          "CON +2",
+          "Incluye escudo — Def. del escudo +10%",
+          "Con 6 o más de encantamiento en todo el set: sube P. Atk., P. Def. y regeneración de MP.",
+        ],
+      },
+      {
+        name: "Tallum Plate Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 278",
+          "Vel. de ataque +8%",
+          "Max MP +550",
+          "Probabilidad de sufrir Veneno/Sangrado -10%",
+          "DEX +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Atk., P. Def. y regeneración de MP.",
+        ],
+      },
+      {
+        name: "Armor of Nightmare",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 293",
+          "P. Atk. +6%",
+          "Probabilidad de sufrir Sueño/Inmovilización -12%",
+          "CON +2",
+          "Incluye escudo — devuelve 6% del daño físico cuerpo a cuerpo recibido al atacante",
+          "Con 6 o más de encantamiento en todo el set: sube P. Atk., P. Def. y regeneración de MP.",
+        ],
+      },
+      {
+        name: "Majestic Plate Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 293",
+          "P. Atk. +8%",
+          "Max HP +600",
+          "Precisión +3",
+          "Probabilidad de sufrir aturdimiento -10%",
+          "STR +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Atk., P. Def. y regeneración de MP.",
+        ],
+      },
+    ],
+    light: [
+      {
+        name: "Dark Crystal Leather Armor",
+        bonuses: [
+          "P. Def. de la pieza: 128",
+          "P. Atk. +4%",
+          "Vel. de ataque +4%",
+          "Vel. de casteo +15%",
+          "Poder de curación +10%",
+          "Probabilidad de sufrir parálisis -20%",
+          "STR +1",
+          "WIT +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de ataque y evasión.",
+        ],
+      },
+      {
+        name: "Tallum Leather Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 209",
+          "Regeneración de MP +8%",
+          "Max MP +550",
+          "Probabilidad de sufrir Veneno/Sangrado -10%",
+          "Daño crítico +10%",
+          "MEN +1",
+          "DEX +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de ataque y evasión.",
+        ],
+      },
+      {
+        name: "Nightmarish Leather Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 220",
+          "M. Def. +8%",
+          "Absorbe 4% del daño cuerpo a cuerpo recibido como HP",
+          "Velocidad +7",
+          "Probabilidad de sufrir Sueño/Inmovilización -12%",
+          "DEX +1",
+          "STR +1",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de ataque y evasión.",
+        ],
+      },
+      {
+        name: "Majestic Leather Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 220",
+          "P. Atk. +8% con arco equipado",
+          "Precisión +3",
+          "Probabilidad de sufrir aturdimiento -10%",
+          "DEX +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de ataque y evasión.",
+        ],
+      },
+    ],
+    robe: [
+      {
+        name: "Tallum Tunic",
+        bonuses: [
+          "Aumento de MP: 409",
+          "P. Def. de la pieza: 86",
+          "Vel. de casteo +15%",
+          "M. Def. +8%",
+          "Probabilidad de sufrir Veneno/Sangrado -15%",
+          "Resistencia a arcos +10%",
+          "WIT +1",
+          "CON +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de casteo y resistencia a dagas.",
+        ],
+      },
+      {
+        name: "Dark Crystal Robe",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "Aumento de MP: 665",
+          "P. Def. de la pieza: 139",
+          "P. Def. +8%",
+          "Vel. de casteo +15%",
+          "Resistencia a cancelación mágica (leve)",
+          "Probabilidad de sufrir parálisis -10%",
+          "WIT +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de casteo y resistencia a dagas.",
+        ],
+      },
+      {
+        name: "Nightmare Robe",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "Aumento de MP: 718",
+          "P. Def. de la pieza: 147",
+          "Regeneración de MP +5%",
+          "M. Atk. +8%",
+          "Probabilidad de sufrir Sueño/Inmovilización -15%",
+          "Leve baja en la probabilidad de que te corten el casteo",
+          "WIT +3",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de casteo y resistencia a dagas.",
+        ],
+      },
+      {
+        name: "Majestic Robe",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "Aumento de MP: 718",
+          "P. Def. de la pieza: 147",
+          "Max MP +550",
+          "Vel. de casteo +15%",
+          "Regeneración de MP +8%",
+          "Velocidad +7",
+          "Probabilidad de sufrir aturdimiento -10%",
+          "MEN +2",
+          "CON +1",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de casteo y resistencia a dagas.",
+        ],
+      },
+    ],
+  },
   S: { heavy: [], light: [], robe: [] },
 };

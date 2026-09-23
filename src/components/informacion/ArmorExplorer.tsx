@@ -5,7 +5,7 @@ import DataTable from "@/components/guias/DataTable";
 import { ARMOR_GRADES, ARMOR_TYPES, type ArmorData, type ArmorGrade } from "@/lib/armaduras";
 
 export default function ArmorExplorer({ data }: { data: ArmorData }) {
-  const [grade, setGrade] = useState<ArmorGrade>("C");
+  const [grade, setGrade] = useState<ArmorGrade>(ARMOR_GRADES[0]);
   const byType = data[grade];
   const total = ARMOR_TYPES.reduce((n, t) => n + byType[t.id].length, 0);
 
