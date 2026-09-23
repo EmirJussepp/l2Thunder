@@ -17,6 +17,20 @@ export const ARMOR_TYPES: { id: ArmorType; label: string }[] = [
   { id: "robe", label: "Robe" },
 ];
 
+// Nombre de archivo esperado para la imagen de un set, sin extensión:
+// "Zubei's Breastplate" -> "zubeis-breastplate". La página busca ese nombre en
+// public/armaduras/ (png, webp, jpg, gif o avif), así que agregar una imagen es
+// soltar el archivo ahí y redeployar, sin tocar los datos.
+export function armorSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 // Vacío a propósito: los bonus de set de C, B, A y S están reworkeados en
 // L2Thunder, así que no se cargan de memoria del juego original. Se completa
 // con la lista real; un tipo sin sets muestra "sin sets cargados" y un grado
