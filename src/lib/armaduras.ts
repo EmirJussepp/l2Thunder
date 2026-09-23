@@ -352,5 +352,57 @@ export const armorSets: ArmorData = {
       },
     ],
   },
-  S: { heavy: [], light: [], robe: [] },
+  S: {
+    heavy: [
+      {
+        name: "Imperial Crusader Breastplate",
+        bonuses: [
+          "P. Def. de la pieza: 205",
+          "P. Def. +8%",
+          "Max HP +845",
+          "Velocidad +5",
+          "Probabilidad de sufrir Sueño/Inmovilización -15%",
+          "STR +1",
+          "CON +2",
+          "Incluye escudo — P. Atk. +3%, probabilidad de sufrir Veneno/Sangrado -20%",
+          "Con 6 o más de encantamiento en todo el set: sube P. Atk., P. Def. y regeneración de MP.",
+        ],
+      },
+    ],
+    light: [
+      {
+        name: "Draconic Leather Armor",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "P. Def. de la pieza: 249",
+          "P. Atk./Vel. de ataque +5%",
+          "Vel. de casteo +15%",
+          "Daño crítico +8%",
+          "Max MP +845",
+          "Velocidad +5",
+          "STR +1",
+          "DEX +2",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de ataque y evasión.",
+        ],
+      },
+    ],
+    robe: [
+      {
+        name: "Major Arcana Robe",
+        bonuses: [
+          "Pieza única: ocupa upper y lower body",
+          "Aumento de MP: 866",
+          "P. Def. de la pieza: 166",
+          "M. Atk. +8%",
+          "Vel. de casteo +15%",
+          "Regeneración de MP +5%",
+          "Resistencia a cancelación -50%",
+          "Probabilidad de sufrir aturdimiento -10%",
+          "WIT +2",
+          "INT +1",
+          "Con 6 o más de encantamiento en todo el set: sube P. Def., Vel. de casteo y resistencia a dagas.",
+        ],
+      },
+    ],
+  },
 };
