@@ -42,8 +42,30 @@ export const jewelry: JewelData = {
         ],
       },
     ],
-    earring: [],
-    ring: [],
+    earring: [
+      {
+        name: "Tateossian Earring",
+        bonuses: [
+          "M. Def. de la joya: 71",
+          "MP +61",
+          "P. Atk. +3%",
+          "M. Atk. +3%",
+          "Con dos aros iguales puestos, solo cuenta el efecto de uno",
+        ],
+      },
+    ],
+    ring: [
+      {
+        name: "Tateossian Ring",
+        bonuses: [
+          "M. Def. de la joya: 48",
+          "MP +41",
+          "P. Def. +2%",
+          "M. Def. +2%",
+          "Con dos anillos iguales puestos, solo cuenta el efecto de uno",
+        ],
+      },
+    ],
   },
   raid: {
     necklace: [
