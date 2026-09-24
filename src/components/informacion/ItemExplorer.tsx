@@ -70,8 +70,13 @@ function ItemRow({
               <img src={image} alt="" className="max-h-full max-w-full" />
             </span>
           )}
-          <span className="flex-1 font-display text-sm font-bold text-gold sm:text-base">
-            {item.name}
+          <span className="flex-1">
+            <span className="block font-display text-sm font-bold text-gold sm:text-base">
+              {item.name}
+            </span>
+            {item.tag && (
+              <span className="mt-0.5 block text-xs font-semibold text-accent-2">{item.tag}</span>
+            )}
           </span>
           <Chevron open={open} />
         </button>

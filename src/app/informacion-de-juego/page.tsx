@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Información de juego",
   description:
-    "Datos del servidor L2Thunder para consultar mientras jugás: armaduras y los bonus de cada set.",
+    "Datos del servidor L2Thunder para consultar mientras jugás: armaduras, joyas y los SA reworkeados de las armas.",
 };
 
 const apartados = [
@@ -19,6 +19,12 @@ const apartados = [
     title: "Joyas",
     subtitle: "Grado S y Raid Boss",
     text: "Collares, aros y anillos con el nombre de cada joya y los bonus que da.",
+  },
+  {
+    href: "/informacion-de-juego/sa-reworkeados",
+    title: "SA Reworkeados",
+    subtitle: "Guía de Special Abilities",
+    text: "Qué da cada SA hoy, qué se cambió y ejemplos de armas con sus stats.",
   },
 ];
 

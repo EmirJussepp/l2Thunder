@@ -1,7 +1,8 @@
 // Un ítem de las secciones de Información de juego: su nombre y una línea por
-// cada dato o bonus. Ejemplo:
+// cada dato o bonus. tag es opcional: un dato corto que se ve al lado del
+// nombre aun con el ítem cerrado (por ejemplo, el SA de un arma). Ejemplo:
 //   { name: "Nombre del ítem", bonuses: ["P. Def. +5%", "Vel. de ataque +3%"] }
-export type ItemEntry = { name: string; bonuses: string[] };
+export type ItemEntry = { name: string; bonuses: string[]; tag?: string };
 
 // Nombre de archivo esperado para la imagen de un ítem, sin extensión:
 // "Zubei's Breastplate" -> "zubeis-breastplate". Cada sección busca ese nombre
