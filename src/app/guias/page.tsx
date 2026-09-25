@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Guías",
   description:
-    "Guías de contenido de L2Thunder: instancias, jefes y misiones explicados paso a paso, con coordenadas y requisitos exactos.",
+    "Guías de contenido de L2Thunder: instancias, jefes, misiones y sistemas explicados paso a paso, con coordenadas y requisitos exactos.",
 };
 
 const guides = [
@@ -43,6 +43,13 @@ const guides = [
     subtitle: "Dieciocho minutos de oleadas por el otro 50% de los Siete Signos",
     text: "Cómo elegir escalón, sobrevivir a las oleadas y registrar el puntaje para cobrar la bolsa de Adena Antigua — con dos jugadores alcanza.",
   },
+  {
+    href: "/guias/contrato-de-mercenario",
+    level: "Sistema propio · Cualquier nivel",
+    title: "Contrato de Mercenario",
+    subtitle: "Las habilidades de clan, sin pertenecer a un clan",
+    text: "Cómo conseguir ranuras con Destruction Tombstone, contratar y subir las veinte pasivas, dónde está cada corredor y qué pasa si entrás a un clan.",
+  },
 ];
 
 export default function GuiasPage() {
@@ -53,8 +60,8 @@ export default function GuiasPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">Guías</p>
           <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">Guías del servidor</h1>
           <p className="mt-4 text-muted">
-            Instancias, jefes y misiones explicados paso a paso: qué hace falta, dónde queda y
-            qué se rompe si te saltás un requisito.
+            Instancias, jefes, misiones y sistemas explicados paso a paso: qué hace falta, dónde
+            queda y qué se rompe si te saltás un requisito.
           </p>
         </div>
 
