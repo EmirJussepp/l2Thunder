@@ -10,7 +10,7 @@ import SkillLevelTable, { type SkillRow } from "@/components/guias/SkillLevelTab
 export const metadata: Metadata = {
   title: "Contrato de Mercenario — Guía",
   description:
-    "Las habilidades de clan sin pertenecer a un clan: cómo conseguir ranuras con Destruction Tombstone, contratar y subir las veinte pasivas y dónde está cada Corredor de Mercenarios.",
+    "Las habilidades de clan sin pertenecer a un clan: cómo conseguir ranuras con Destruction Tombstone, contratar, subir y cambiar las veinte pasivas y dónde está cada Corredor de Mercenarios.",
 };
 
 const introStats = [
@@ -87,7 +87,7 @@ const corredores: [string, string, string][] = [
   ["Giran", "Taurin", "80792, 146440, −3533"],
   ["Oren", "Cliff · Hagger", "81817, 55163, −1506"],
   ["Giran", "Randolf", "82445, 149945, −3520"],
-  ["Giran", "Parman · Valkon", "83304, 146642, −3464"],
+  ["Giran", "Parman · Valkon", "83299, 146822, −3464"],
   ["Torre de Marfil", "Marty · Radic", "85045, 15678, −4271"],
   ["Schuttgart", "Axel · Cherbal · Rydel", "88666, −141166, −1527"],
   ["Varka Silenos", "Hagos", "107416, −55384, −2393"],
@@ -117,6 +117,10 @@ const faq: [string, string][] = [
   [
     "Te devolvió la adena sola",
     "La habilidad entró sin ranura libre y el contrato se canceló.",
+  ],
+  [
+    "Al cambiar, la lista sale vacía",
+    "Ya tenés contratadas las veinte: no queda ninguna por la cual cambiarla.",
   ],
 ];
 
@@ -196,16 +200,34 @@ export default function ContratoDeMercenarioPage() {
               Hay que ir en orden: el corredor no te ofrece el nivel 3 si no tenés el 2. Llevar
               las seis ranuras a nivel 3 son 135.000.000 de adena además de los 285 Tombstone.
             </p>
+          </GuideStep>
 
-            <Callout title="Una ranura ocupada no se libera" variant="warn">
+          <GuideStep n="IV" title="Cambiar una habilidad por otra">
+            <p>
+              Si te arrepentís de una elección no perdés la ranura. En el menú del corredor está{" "}
+              <strong className="font-semibold text-foreground">
+                Cambiar una habilidad por otra
+              </strong>
+              : se abre la lista de lo que tenés contratado, elegís cuál sale, y aparece la misma
+              ventana de siempre con las que podés poner en su lugar.
+            </p>
+            <p>
+              La ranura no se vuelve a cobrar. Pagás únicamente los 5.000.000 de adena del nivel 1
+              de la que entra, y desde ahí la subís a nivel 2 y 3 como cualquier otra. La que sale
+              se pierde con el nivel que tuviera: no se devuelve nada de lo que habías gastado en
+              subirla.
+            </p>
+
+            <Callout title="Cambiar cuesta lo mismo que empezar" variant="warn">
               <p>
-                No hay forma de cancelar una habilidad para poner otra en su lugar. Elegí pensando
-                en las seis que vas a querer, no en la primera que te tiente.
+                Una habilidad que llevaste a nivel 3 son 22.500.000 de adena. Si la cambiás, esos
+                22.500.000 se van con ella y la nueva arranca de cero. Conviene llegar al nivel 3
+                recién cuando estés seguro.
               </p>
             </Callout>
           </GuideStep>
 
-          <GuideStep n="IV" title="Si entrás a un clan" last>
+          <GuideStep n="V" title="Si entrás a un clan" last>
             <p>
               El contrato se suspende, no se pierde. En el momento en que entrás a un clan se te
               sacan las habilidades contratadas, porque el clan ya te da las suyas y no tendría

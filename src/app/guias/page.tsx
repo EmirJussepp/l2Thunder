@@ -48,7 +48,14 @@ const guides = [
     level: "Sistema propio · Cualquier nivel",
     title: "Contrato de Mercenario",
     subtitle: "Las habilidades de clan, sin pertenecer a un clan",
-    text: "Cómo conseguir ranuras con Destruction Tombstone, contratar y subir las veinte pasivas, dónde está cada corredor y qué pasa si entrás a un clan.",
+    text: "Cómo conseguir ranuras con Destruction Tombstone, contratar, subir y cambiar las veinte pasivas, dónde está cada corredor y qué pasa si entrás a un clan.",
+  },
+  {
+    href: "/guias/rework-de-clases",
+    level: "Guía de clases",
+    title: "Rework de Clases",
+    subtitle: "Qué cambia respecto del Interlude original",
+    text: "Las seis reglas que aplican a todos y lo que cambia la forma de jugar de arqueros, dagueros, tanques, magos, invocadores, soporte y enanos.",
   },
 ];
 
