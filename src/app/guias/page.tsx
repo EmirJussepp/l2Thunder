@@ -57,6 +57,13 @@ const guides = [
     subtitle: "Qué cambia respecto del Interlude original",
     text: "Las seis reglas que aplican a todos y lo que cambia la forma de jugar de arqueros, dagueros, tanques, magos, invocadores, soporte y enanos.",
   },
+  {
+    href: "/guias/cambios-de-clase",
+    level: "Guía de progreso · Del 1 al 40",
+    title: "Cambios de Clase",
+    subtitle: "Los dos cambios, los libros de skill y cómo no trabarte",
+    text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon y el drop de libros subido de ahí en adelante.",
+  },
 ];
 
 export default function GuiasPage() {
