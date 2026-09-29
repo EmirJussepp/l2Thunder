@@ -9,12 +9,13 @@ import Screenshot from "@/components/guias/Screenshot";
 export const metadata: Metadata = {
   title: "Cambios de Clase — Guía",
   description:
-    "Los dos cambios de clase en L2Thunder: el primero a nivel 20 sin quest, los libros de skill que se compran en la iglesia hasta el 40, la quest de Ascalon para el segundo cambio y el drop de libros subido un 30% de ahí en adelante.",
+    "Los tres cambios de clase en L2Thunder: el primero a nivel 20 sin quest, los libros de skill que se compran en la iglesia hasta el 40, la quest de Ascalon para el segundo cambio, el drop de libros de ahí en adelante y el tercer cambio con la quest original.",
 };
 
 const introStats = [
   { value: "20", label: "1er cambio", sub: "en el NPC de inicio" },
   { value: "40", label: "2do cambio", sub: "quest de Ascalon" },
+  { value: "76", label: "3er cambio", sub: "quest original" },
   { value: "C", label: "Arma shadow", sub: "cupón de la quest" },
   { value: "~20%", label: "Drop de libros", sub: "+30% que el original" },
 ];
@@ -27,6 +28,7 @@ const resumen: [string, string, string, string][] = [
     "Quest de Ascalon",
     "Experiencia, adena y un cupón de arma grado C shadow",
   ],
+  ["3er cambio", "Nivel 76", "La quest original de Interlude, con facilidades", "—"],
 ];
 
 export default function CambiosDeClasePage() {
@@ -43,16 +45,16 @@ export default function CambiosDeClasePage() {
         {/* Intro */}
         <div className="mt-6">
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            Guía de progreso · Del 1 al 40
+            Guía de progreso · Del 1 al 76
           </p>
           <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">Cambios de Clase</h1>
           <p className="mt-2 font-display text-lg font-semibold text-muted">
-            Los dos cambios, los libros de skill y cómo no trabarte en el camino
+            Los tres cambios, los libros de skill y cómo no trabarte en el camino
           </p>
           <p className="mt-6 max-w-3xl text-muted">
-            Entre el nivel 1 y el 40 hay dos cambios de clase y dos formas distintas de conseguir
-            los libros de skill. Acá está el orden exacto: cuándo hablás con quién, qué te dan y
-            en qué momento dejás de comprar los libros para salir a buscarlos.
+            Del nivel 1 al 76 hay tres cambios de clase y dos formas distintas de conseguir los
+            libros de skill. Acá está el orden exacto: cuándo hablás con quién, qué te dan y en
+            qué momento dejás de comprar los libros para salir a buscarlos.
           </p>
 
           <div className="mt-8">
@@ -122,7 +124,7 @@ export default function CambiosDeClasePage() {
             </div>
           </GuideStep>
 
-          <GuideStep n="IV" title="Del 40 en adelante — a cazar los libros" last>
+          <GuideStep n="IV" title="Del 40 en adelante — a cazar los libros">
             <p>
               A partir de acá los libros de skill ya no se compran: hay que conseguirlos como drop
               mientras subís de nivel. No hace falta salir especialmente a cazarlos, van cayendo en
@@ -141,6 +143,14 @@ export default function CambiosDeClasePage() {
                 original, para que buscarlos no te trabe la subida de nivel.
               </p>
             </Callout>
+          </GuideStep>
+
+          <GuideStep n="V" title="Nivel 76 — tercer cambio, la quest original" last>
+            <p>
+              El tercer cambio no se tocó: es la misma quest del Interlude original. Lo que sí
+              tiene son algunas facilidades propias de L2Thunder para hacerla más llevadera, sin
+              salirse del camino de siempre.
+            </p>
           </GuideStep>
         </div>
       </div>

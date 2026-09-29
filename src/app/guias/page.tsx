@@ -59,10 +59,10 @@ const guides = [
   },
   {
     href: "/guias/cambios-de-clase",
-    level: "Guía de progreso · Del 1 al 40",
+    level: "Guía de progreso · Del 1 al 76",
     title: "Cambios de Clase",
-    subtitle: "Los dos cambios, los libros de skill y cómo no trabarte",
-    text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon y el drop de libros subido de ahí en adelante.",
+    subtitle: "Los tres cambios, los libros de skill y cómo no trabarte",
+    text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon, el drop de libros de ahí en adelante y el tercer cambio a nivel 76.",
   },
 ];
 
