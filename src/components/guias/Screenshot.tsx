@@ -11,7 +11,7 @@ export default function Screenshot({
   caption?: string;
 }) {
   return (
-    <figure className="overflow-hidden border border-border-soft bg-surface-2/40">
+    <figure className="card-surface overflow-hidden rounded-none">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} loading="lazy" className="block w-full" />
       {caption && (
