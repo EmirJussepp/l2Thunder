@@ -4,7 +4,7 @@ const steps = [
   {
     step: "1",
     title: "Descargá el cliente y el launcher",
-    description: "Interlude completo (3.7 GB) + el launcher para conectarte al server.",
+    description: "Interlude completo (3.18 GB) + el launcher para conectarte al server.",
   },
   {
     step: "2",
@@ -47,7 +47,7 @@ export default function PlaySteps() {
                     rel="noopener noreferrer"
                     className="btn-impact bg-gold px-4 py-2 text-sm text-background hover:brightness-110"
                   >
-                    Descargar cliente (3.7 GB)
+                    Descargar cliente (3.18 GB)
                   </a>
                   <a
                     href={LAUNCHER_URL}

@@ -442,7 +442,7 @@ export default function PorQueL2ThunderPage() {
             rel="noopener noreferrer"
             className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
           >
-            Descargar cliente (3.7 GB)
+            Descargar cliente (3.18 GB)
           </a>
           <a
             href={LAUNCHER_URL}
