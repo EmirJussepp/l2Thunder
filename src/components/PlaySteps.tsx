@@ -1,6 +1,5 @@
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
 import VerifyDownload from "@/components/VerifyDownload";
-import DownloadMirrors from "@/components/DownloadMirrors";
 
 const steps = [
   {
@@ -59,7 +58,6 @@ export default function PlaySteps() {
                   >
                     Descargar launcher
                   </a>
-                  <DownloadMirrors className="mt-1" />
                 </div>
               )}
             </div>

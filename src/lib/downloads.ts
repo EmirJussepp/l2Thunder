@@ -1,27 +1,13 @@
-// Cliente y launcher viven en la misma carpeta de Drive (l2thunderclient.rar
-// y L2ThunderLauncher.exe); los dos botones apuntan ahí, el usuario baja el
-// archivo que corresponda.
-export const CLIENT_URL =
-  "https://drive.google.com/drive/folders/1tm1lnz_Ty0ULe7iFT7oD3BLUE2HB_bRy";
-export const LAUNCHER_URL =
-  "https://drive.google.com/drive/folders/1tm1lnz_Ty0ULe7iFT7oD3BLUE2HB_bRy";
+// El cliente (l2thunderclient.rar) y el launcher (L2ThunderLauncher.exe) se
+// descargan de MEGA, cada uno en su propia carpeta. Es la única fuente: no hay
+// espejos, así que si MEGA falla o corta por cuota no hay alternativa en la web.
+export const CLIENT_URL = "https://mega.nz/folder/Sz5nzajD#K0hgkoEwf3FJAFgOA0KXDg";
+export const LAUNCHER_URL = "https://mega.nz/folder/y6BGkawQ#tZnUwfk4GWjz9CqtuXP8qw";
 
-// Espejos por si Drive se cae o corta la descarga por cuota (pasa con archivos
-// grandes muy bajados). Es el mismo archivo en otro host, así que el hash de
-// abajo vale para cualquiera de los links. Para sumar otro espejo (MediaFire,
-// un torrent, el propio dominio) alcanza con agregarlo a la lista.
-export type Mirror = { name: string; url: string };
-
-export const CLIENT_MIRRORS: Mirror[] = [
-  { name: "MEGA", url: "https://mega.nz/folder/Sz5nzajD#K0hgkoEwf3FJAFgOA0KXDg" },
-];
-export const LAUNCHER_MIRRORS: Mirror[] = [
-  { name: "MEGA", url: "https://mega.nz/folder/y6BGkawQ#tZnUwfk4GWjz9CqtuXP8qw" },
-];
-
-// Huellas SHA-256 de lo que hay en esa carpeta, para que el jugador pueda
+// Huellas SHA-256 de lo que hay en esas carpetas, para que el jugador pueda
 // comprobar que lo que bajó es lo que subimos nosotros, venga del link que
-// venga (Drive, un espejo o un torrent). VerifyDownload las muestra.
+// venga (si algún día se suma un espejo o un torrent, valen los mismos).
+// VerifyDownload las muestra.
 //
 // IMPORTANTE: cada vez que se reemplace uno de los dos archivos hay que
 // recalcular su hash y actualizar esta lista (y la fecha), si no la web le va
