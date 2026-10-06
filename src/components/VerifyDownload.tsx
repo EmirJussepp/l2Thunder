@@ -23,7 +23,7 @@ export default function VerifyDownload({ className = "" }: { className?: string 
             Verificá tu descarga
           </span>
           <span className="mt-0.5 block text-xs text-muted">
-            La huella SHA-256 del cliente y del launcher, para comprobar que no se tocaron
+            La huella SHA-256 del cliente y del launcher, y qué hacer si Windows muestra un aviso
           </span>
         </span>
         <svg
@@ -79,6 +79,18 @@ export default function VerifyDownload({ className = "" }: { className?: string 
           <p>
             No lo abras. Volvé a descargarlo, y si sigue sin coincidir avisanos en el Discord antes
             de ejecutar nada.
+          </p>
+        </Callout>
+
+        <Callout title="Si Windows muestra un aviso azul" variant="info">
+          <p>
+            Al abrir el launcher, Windows puede mostrar «Windows protegió su PC» (SmartScreen).
+            Pasa porque el launcher es un programa nuevo y todavía no tiene firma digital, no
+            porque el archivo tenga un problema.
+          </p>
+          <p>
+            Si la huella coincide con la de arriba, tocá «Más información» y después «Ejecutar de
+            todas formas». Si algo no te cierra, preguntá en el Discord antes de abrirlo.
           </p>
         </Callout>
       </div>
