@@ -1,5 +1,4 @@
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
-import VerifyDownload from "@/components/VerifyDownload";
 
 const steps = [
   {
@@ -63,8 +62,6 @@ export default function PlaySteps() {
             </div>
           ))}
         </div>
-
-        <VerifyDownload className="mx-auto mt-8 max-w-3xl" />
       </div>
     </section>
   );

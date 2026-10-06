@@ -3,7 +3,6 @@ import Link from "next/link";
 import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import ComparisonTable from "@/components/porque/ComparisonTable";
-import VerifyDownload from "@/components/VerifyDownload";
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
 
 export const metadata: Metadata = {
@@ -454,8 +453,6 @@ export default function PorQueL2ThunderPage() {
             Descargar launcher
           </a>
         </div>
-
-        <VerifyDownload className="mt-8" />
 
         <Link
           href="/donar"
