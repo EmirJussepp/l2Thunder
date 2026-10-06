@@ -6,6 +6,19 @@ export const CLIENT_URL =
 export const LAUNCHER_URL =
   "https://drive.google.com/drive/folders/1tm1lnz_Ty0ULe7iFT7oD3BLUE2HB_bRy";
 
+// Espejos por si Drive se cae o corta la descarga por cuota (pasa con archivos
+// grandes muy bajados). Es el mismo archivo en otro host, así que el hash de
+// abajo vale para cualquiera de los links. Para sumar otro espejo (MediaFire,
+// un torrent, el propio dominio) alcanza con agregarlo a la lista.
+export type Mirror = { name: string; url: string };
+
+export const CLIENT_MIRRORS: Mirror[] = [
+  { name: "MEGA", url: "https://mega.nz/folder/Sz5nzajD#K0hgkoEwf3FJAFgOA0KXDg" },
+];
+export const LAUNCHER_MIRRORS: Mirror[] = [
+  { name: "MEGA", url: "https://mega.nz/folder/y6BGkawQ#tZnUwfk4GWjz9CqtuXP8qw" },
+];
+
 // Huellas SHA-256 de lo que hay en esa carpeta, para que el jugador pueda
 // comprobar que lo que bajó es lo que subimos nosotros, venga del link que
 // venga (Drive, un espejo o un torrent). VerifyDownload las muestra.

@@ -4,6 +4,7 @@ import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import ComparisonTable from "@/components/porque/ComparisonTable";
 import VerifyDownload from "@/components/VerifyDownload";
+import DownloadMirrors from "@/components/DownloadMirrors";
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
 
 export const metadata: Metadata = {
@@ -455,7 +456,9 @@ export default function PorQueL2ThunderPage() {
           </a>
         </div>
 
-        <VerifyDownload className="mt-8" />
+        <DownloadMirrors className="mt-4" />
+
+        <VerifyDownload className="mt-6" />
 
         <Link
           href="/donar"
