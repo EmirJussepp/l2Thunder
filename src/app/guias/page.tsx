@@ -64,6 +64,13 @@ const guides = [
     subtitle: "Los tres cambios, los libros de skill y cómo no trabarte",
     text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon, el drop de libros de ahí en adelante y el tercer cambio a nivel 76.",
   },
+  {
+    href: "/guias/limites-de-nivel",
+    level: "Guía de sistema · Todos los niveles",
+    title: "Límites de Nivel",
+    subtitle: "Desde qué diferencia dejás de ganar experiencia",
+    text: "Dónde corta la experiencia la party, los mobs y el Raid Curse, por qué no hay degradado y qué pasa con tus skills si bajás de nivel.",
+  },
 ];
 
 export default function GuiasPage() {
