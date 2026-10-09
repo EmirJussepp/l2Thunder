@@ -77,7 +77,7 @@ export default function LaGrietaDimensionalPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -91,7 +91,7 @@ export default function LaGrietaDimensionalPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Cinco salas, un reloj corriendo y un jefe en el fondo
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Una mazmorra por tiempo para grupos chicos. Entrás con dos personas, te tiran en una
             sala al azar, matás todo lo que aparece y cada ocho o diez minutos la dimensión se
             corre y te arrastra a la siguiente. Visitás cinco salas de nueve, y en una de esas
@@ -290,7 +290,7 @@ export default function LaGrietaDimensionalPage() {
             <DataTable headers={["Cuesta", "Te llevás"]} rows={tombstoneCambio} />
           </div>
 
-          <p className="mt-4 max-w-3xl text-sm text-muted">
+          <p className="mt-4 max-w-[38rem] text-sm text-muted">
             Con 4 a 6 por jefe, cada dos jefes te sale una caja de grado C y cada ocho, una de
             grado A.
           </p>
@@ -318,7 +318,7 @@ export default function LaGrietaDimensionalPage() {
             <DataTable headers={["Lo que ves", "Qué pasa"]} rows={faq} />
           </div>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todo lo descrito acá corresponde al comportamiento vigente del servidor. Lo propio de
             L2Thunder son dos cosas: los cinco saltos en vez de cuatro —que suben la chance de
             encontrar al jefe del 44,4% al 55,6%— y los drops agregados a Anakazel (Tombstone,

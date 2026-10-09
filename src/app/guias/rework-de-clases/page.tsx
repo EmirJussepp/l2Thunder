@@ -241,7 +241,7 @@ function Seccion({ id, title, children }: { id: string; title: string; children:
 }
 
 function P({ children }: { children: ReactNode }) {
-  return <p className="max-w-3xl text-muted">{children}</p>;
+  return <p className="max-w-[38rem] text-muted">{children}</p>;
 }
 
 export default function ReworkDeClasesPage() {
@@ -250,7 +250,7 @@ export default function ReworkDeClasesPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -264,7 +264,7 @@ export default function ReworkDeClasesPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Qué cambia respecto del Interlude original
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             L2Thunder parte de Interlude, pero casi ninguna clase se juega igual. Esta guía no es
             el listado completo de cambios: son los que cambian la manera de jugar, agrupados por
             el tipo de personaje. Si venís de otro servidor, leé primero el bloque «Lo que cambió
@@ -300,7 +300,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="arqueros" title="Arqueros">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               El arquero de retail pega con el golpe común y usa los skills de apoyo. Acá es al
               revés: el daño está en los skills y el golpe común es lo que hacés entre uno y otro.
@@ -319,7 +319,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="dagueros" title="Dagueros">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               Silent Move no es el de retail. Acá es invisibilidad de verdad, también para los demás
               jugadores. Al activarla todo lo que te tenía apuntado te suelta. Se rompe en cuanto
@@ -343,7 +343,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="tanques" title="Tanques">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               El tanque de retail aguanta y agarra aggro. Acá además pega, y se mueve mientras lo
               hace.
@@ -383,7 +383,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="magos" title="Magos elementales">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               El rediseño más grande del servidor. En retail el mago tira un nuke y espera; acá los
               seis nukes grandes tienen 2 segundos de reuso, así que el límite pasó a ser la
@@ -406,7 +406,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="invocadores" title="Invocadores">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               La invocación sale ya buffeada: al aparecer recibe sola los escudos, la prisa y los
               buffs de servitor, sin que tengas que tirárselos uno por uno. Todas ganaron además
@@ -430,7 +430,7 @@ export default function ReworkDeClasesPage() {
         </Seccion>
 
         <Seccion id="enanos" title="Enanos">
-          <div className="max-w-3xl space-y-3 text-muted">
+          <div className="max-w-[38rem] space-y-3 text-muted">
             <p>
               El Bounty Hunter pasó a la maestría de armadura ligera de los dagueros. Pierde unos 16
               puntos de P. Def. de tope y la maestría de pesada, y a cambio gana +6 de velocidad y
@@ -449,14 +449,14 @@ export default function ReworkDeClasesPage() {
           <h2 className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             Lo que no ves en la lista
           </h2>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             Las descripciones de los skills dentro del juego están reescritas con los valores
             reales del servidor, no con los de retail. Si un skill dice un número, ese número es el
             que usa el servidor. Cuando tengas una duda puntual, la ventana de habilidades es la
             fuente más confiable que esta guía.
           </p>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todos los valores de esta guía se leyeron del servidor en funcionamiento, no del diseño
             original ni de una wiki. Los skills mencionados conservan su nombre de Interlude salvo
             donde se aclare que se renombraron.

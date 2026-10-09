@@ -106,7 +106,7 @@ export default function LosSieteSignosPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -120,7 +120,7 @@ export default function LosSieteSignosPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Amanecer contra Ocaso, una semana por ciclo
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Todo el servidor se parte en dos bandos y compite por el control de tres sellos. Se
             junta puntaje matando en catacumbas y necrópolis, el bando que gana cobra en Adena
             Antigua y se queda con beneficios hasta el ciclo siguiente. Se entra en cinco minutos
@@ -326,7 +326,7 @@ export default function LosSieteSignosPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ⏱ Cómo corre la semana
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             El ciclo completo dura <strong className="font-semibold text-foreground">1
             semana</strong> y se reinicia solo.
           </p>
@@ -354,7 +354,7 @@ export default function LosSieteSignosPage() {
             </div>
           </div>
 
-          <p className="mt-4 text-xs text-muted/70">
+          <p className="mt-4 text-xs text-muted">
             Entre un período y el otro hay 15 minutos en los que el sacerdote no te atiende: está
             contando los puntajes.
           </p>
@@ -375,7 +375,7 @@ export default function LosSieteSignosPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ✦ Qué se cobra y en qué se gasta
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             Durante la validación, volvé con el sacerdote de tu bando y pedí «Quiero mi
             recompensa por juntar Piedras de Sello». Cobrás Adena Antigua:{" "}
             <strong className="font-semibold text-foreground">3</strong> por cada piedra azul,{" "}
@@ -434,7 +434,7 @@ export default function LosSieteSignosPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ✦ De paso: la Grieta Dimensional
           </p>
-          <div className="mt-3 max-w-3xl space-y-3 text-muted">
+          <div className="mt-3 max-w-[38rem] space-y-3 text-muted">
             <p>
               Adentro de cada catacumba y cada necrópolis hay un{" "}
               <strong className="font-semibold text-foreground">Dimensional Gate
@@ -472,7 +472,7 @@ export default function LosSieteSignosPage() {
             <DataTable headers={["Lo que ves", "Qué pasa"]} rows={faq} />
           </div>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todo lo descrito acá corresponde al comportamiento vigente del servidor. Las reglas
             propias de L2Thunder son cuatro: el ciclo dura una semana en vez de dos y cambia a
             las 21:00 hora argentina; las catacumbas y necrópolis están abiertas a todos siempre;

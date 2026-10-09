@@ -66,7 +66,7 @@ export default function SaReworkeadosPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/informacion-de-juego"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Información de juego
         </Link>
@@ -80,7 +80,7 @@ export default function SaReworkeadosPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Special Abilities: qué da cada SA hoy, y qué se cambió para llegar acá
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Un Soul Crystal le agrega una habilidad permanente a un arma. El catálogo venía con
             valores inventados, gradientes al revés y una docena de SA que no hacían absolutamente
             nada. Se rehizo entero: hoy cada arma base tiene exactamente tres opciones y todas
@@ -252,6 +252,7 @@ export default function SaReworkeadosPage() {
               data={saWeapons}
               images={loadItemImages("sa")}
               noun={{ one: "arma", many: "armas", groupEmpty: "Sin armas cargadas." }}
+              headingLevel={3}
             />
 
             <Callout title="Propio de L2Thunder" variant="custom">

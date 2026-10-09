@@ -15,24 +15,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/por-que-l2thunder" className="hover:text-foreground">
+        <div className="flex flex-wrap gap-x-2">
+          <Link href="/por-que-l2thunder" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             ¿Por qué L2Thunder?
           </Link>
-          <Link href="/guias" className="hover:text-foreground">
+          <Link href="/guias" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Guías
           </Link>
-          <Link href="/informacion-de-juego" className="hover:text-foreground">
+          <Link href="/informacion-de-juego" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Información de juego
           </Link>
-          <Link href="/donar" className="hover:text-foreground">
+          <Link href="/donar" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Donar
           </Link>
           <a
             href="https://discord.gg/nNFJVWTbD"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground"
+            className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
           >
             Discord
           </a>
@@ -40,14 +40,14 @@ export default function Footer() {
             href="https://l2.hopzone.net/es/lineage2/details/107612/L2THUNDER.ONLINE"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground"
+            className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
           >
             Votar
           </a>
-          <span className="cursor-not-allowed opacity-60">Foro (próximamente)</span>
+          <span className="inline-flex min-h-11 cursor-not-allowed items-center px-2 italic">Foro (próximamente)</span>
         </div>
 
-        <p className="text-xs text-muted/70">
+        <p className="text-xs text-muted">
           © {new Date().getFullYear()} L2Thunder. No afiliado con NCSoft.
         </p>
       </div>

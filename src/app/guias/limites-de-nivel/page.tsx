@@ -90,14 +90,14 @@ function Seccion({ title, children }: { title: string; children: ReactNode }) {
 }
 
 function P({ children }: { children: ReactNode }) {
-  return <p className="max-w-3xl text-muted">{children}</p>;
+  return <p className="max-w-[38rem] text-muted">{children}</p>;
 }
 
 function Subtitulo({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div>
       <p className="font-display text-base font-bold text-foreground">{title}</p>
-      <div className="mt-2 max-w-3xl space-y-3 text-muted">{children}</div>
+      <div className="mt-2 max-w-[38rem] space-y-3 text-muted">{children}</div>
     </div>
   );
 }
@@ -108,7 +108,7 @@ export default function LimitesDeNivelPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -122,7 +122,7 @@ export default function LimitesDeNivelPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Desde qué diferencia dejás de ganar experiencia, y qué pasa si bajás de nivel
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             El servidor corta la experiencia en tres lugares distintos, cada uno con su propio
             número. Ninguno de los tres avisa: simplemente dejás de cobrar. Acá están los tres, de
             dónde salen y qué se puede y qué no se puede hacer con la diferencia de nivel.
@@ -139,7 +139,7 @@ export default function LimitesDeNivelPage() {
             />
           </div>
 
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Los tres números miden cosas distintas: el de la party se mide contra el compañero más
             alto, el de los mobs contra el bicho, y el del Raid Curse contra el raid.
           </p>
@@ -267,7 +267,7 @@ export default function LimitesDeNivelPage() {
         <Seccion title="? No estoy ganando experiencia">
           <DataTable headers={["Lo que ves", "Qué está pasando", "Cómo se arregla"]} rows={faq} />
 
-          <p className="max-w-3xl text-xs text-muted/70">
+          <p className="max-w-[38rem] text-xs text-muted">
             Todos los números de esta guía se leyeron del servidor en funcionamiento y de su
             código, no de una wiki. Lo propio de L2Thunder es el corte de party sin escalones: el
             motor ofrece una penalización gradual y acá se eligió el método seco, con el límite en

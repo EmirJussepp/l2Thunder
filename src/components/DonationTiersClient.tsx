@@ -34,7 +34,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
           )}
           <h3 className="font-display text-xl font-bold">{tier.name}</h3>
           <p className="mt-1 text-2xl font-black text-accent">{tier.priceLabel}</p>
-          {tier.subLabel && <p className="text-xs text-muted/70">{tier.subLabel}</p>}
+          {tier.subLabel && <p className="text-xs text-muted">{tier.subLabel}</p>}
 
           <ul className="mt-4 flex-1 space-y-2 text-sm text-muted">
             {tier.perks.map((perk) => (

@@ -6,9 +6,10 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname),
   },
   images: {
-    // Next.js 16 solo permite quality=75 por default — sin esto, el
-    // quality={100} del fondo del hero se ignora en silencio y sirve 75 igual.
-    qualities: [75, 100],
+    // Next.js 16 solo permite quality=75 por default: cualquier otro valor se
+    // ignora en silencio y sirve 75. El fondo del hero usa 80; en escenas
+    // oscuras como esas, subir de ahí pesa mucho y no se nota.
+    qualities: [75, 80],
   },
   async headers() {
     return [

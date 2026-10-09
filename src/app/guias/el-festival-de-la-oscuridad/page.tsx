@@ -76,7 +76,7 @@ export default function ElFestivalDeLaOscuridadPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -92,7 +92,7 @@ export default function ElFestivalDeLaOscuridadPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Dieciocho minutos de oleadas por el otro 50% de los Siete Signos
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Tu grupo entra a una arena cerrada, los monstruos aparecen solos y vienen a
             buscarte. Cada uno que matás le da una Ofrenda de Sangre al líder, y esas ofrendas
             son el puntaje. Es la mitad de lo que decide quién gana los Siete Signos, y la única
@@ -306,7 +306,7 @@ export default function ElFestivalDeLaOscuridadPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ✦ Qué se cobra
           </p>
-          <div className="mt-3 max-w-3xl space-y-3 text-muted">
+          <div className="mt-3 max-w-[38rem] space-y-3 text-muted">
             <p>
               Todas las cuotas de inscripción de la semana se juntan en una bolsa por escalón.
               Al terminar la competencia, esa bolsa entera se paga en Adena Antigua al grupo que
@@ -346,7 +346,7 @@ export default function ElFestivalDeLaOscuridadPage() {
             <DataTable headers={["Lo que ves", "Qué pasa"]} rows={faq} />
           </div>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todo lo descrito acá corresponde al comportamiento vigente del servidor. Lo propio de
             L2Thunder son dos cosas: el Festival arranca con 2 jugadores en vez de 5, y corre de
             viernes a lunes a las 21:00 hora argentina porque el ciclo de los Siete Signos acá

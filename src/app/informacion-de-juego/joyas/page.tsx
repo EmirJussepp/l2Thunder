@@ -16,7 +16,7 @@ export default function JoyasPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/informacion-de-juego"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Información de juego
         </Link>

@@ -18,6 +18,11 @@ type Props = {
   data: Record<string, Record<string, ItemEntry[]>>;
   images: Record<string, string>;
   noun: { one: string; many: string; groupEmpty: string };
+  // Nivel del título de cada grupo: 2 si la lista sigue directo al h1 de la
+  // página (armaduras, joyas), 3 si va dentro de una sección que ya tiene su h2
+  // (SA reworkeados). Los ítems van un nivel más abajo. Así no se salta ningún
+  // nivel de encabezado.
+  headingLevel?: 2 | 3;
 };
 
 const itemKey = (tab: string, group: string, name: string) => `${tab}:${group}:${name}`;
@@ -46,16 +51,18 @@ function ItemRow({
   image,
   open,
   onToggle,
+  Heading,
 }: {
   id: string;
   item: ItemEntry;
   image?: string;
   open: boolean;
   onToggle: () => void;
+  Heading: "h3" | "h4";
 }) {
   return (
     <div className="border-b border-border-soft last:border-b-0">
-      <h4>
+      <Heading>
         <button
           type="button"
           id={`${id}-btn`}
@@ -80,7 +87,7 @@ function ItemRow({
           </span>
           <Chevron open={open} />
         </button>
-      </h4>
+      </Heading>
 
       <Collapsible open={open} id={`${id}-panel`} labelledBy={`${id}-btn`}>
         <ul className="space-y-1.5 px-4 pb-4 pt-1 text-sm text-foreground">
@@ -101,7 +108,10 @@ export default function ItemExplorer({
   data,
   images,
   noun,
+  headingLevel = 2,
 }: Props) {
+  const GroupHeading = headingLevel === 2 ? "h2" : "h3";
+  const ItemHeading = headingLevel === 2 ? "h3" : "h4";
   const [tabId, setTabId] = useState(tabs[0].id);
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
   const [closedGroups, setClosedGroups] = useState<Set<string>>(new Set());
@@ -153,7 +163,7 @@ export default function ItemExplorer({
               aria-selected={active}
               aria-controls={`${idPrefix}-panel`}
               onClick={() => setTabId(t.id)}
-              className={`rounded-none border px-5 py-2.5 font-display text-sm font-bold uppercase tracking-widest transition ${
+              className={`rounded-none border px-5 py-3 font-display text-sm font-bold uppercase tracking-widest transition ${
                 active
                   ? "border-gold bg-gold text-background"
                   : "border-border-soft text-muted hover:border-gold/60 hover:text-foreground"
@@ -180,18 +190,18 @@ export default function ItemExplorer({
           </div>
         ) : (
           <>
-            <div className="mb-6 flex justify-end gap-5 text-xs font-semibold uppercase tracking-widest">
+            <div className="mb-3 flex justify-end gap-3 text-xs font-semibold uppercase tracking-widest">
               <button
                 type="button"
                 onClick={expandAll}
-                className="text-muted transition hover:text-gold"
+                className="inline-flex min-h-11 items-center px-2 text-muted transition hover:text-gold"
               >
                 Expandir todo
               </button>
               <button
                 type="button"
                 onClick={collapseAll}
-                className="text-muted transition hover:text-gold"
+                className="inline-flex min-h-11 items-center px-2 text-muted transition hover:text-gold"
               >
                 Contraer todo
               </button>
@@ -206,14 +216,14 @@ export default function ItemExplorer({
 
                 return (
                   <section key={g.id}>
-                    <h3>
+                    <GroupHeading>
                       <button
                         type="button"
                         id={`${gId}-btn`}
                         aria-expanded={groupOpen}
                         aria-controls={`${gId}-panel`}
                         onClick={() => toggle(setClosedGroups, gKey)}
-                        className="flex w-full items-center gap-3 border-b border-border-soft pb-3 text-left"
+                        className="flex min-h-11 w-full items-center gap-3 border-b border-border-soft pb-3 text-left"
                       >
                         <span className="font-display text-lg font-bold text-foreground">
                           {g.label}
@@ -225,7 +235,7 @@ export default function ItemExplorer({
                           <Chevron open={groupOpen} />
                         </span>
                       </button>
-                    </h3>
+                    </GroupHeading>
 
                     <Collapsible open={groupOpen} id={`${gId}-panel`} labelledBy={`${gId}-btn`}>
                       <div className="pt-4">
@@ -244,6 +254,7 @@ export default function ItemExplorer({
                                   image={images[slug]}
                                   open={openItems.has(key)}
                                   onToggle={() => toggle(setOpenItems, key)}
+                                  Heading={ItemHeading}
                                 />
                               );
                             })}

@@ -130,7 +130,7 @@ export default function ContratoDeMercenarioPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -144,7 +144,7 @@ export default function ContratoDeMercenarioPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Las habilidades de clan, sin pertenecer a un clan
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Un clan reparte pasivas entre sus miembros. Si jugás solo, hasta ahora eso era una
             diferencia que no había forma de cerrar. El Corredor de Mercenarios te vende veinte de
             esas mismas pasivas a título personal: se compran ranuras con Destruction Tombstone y
@@ -246,7 +246,7 @@ export default function ContratoDeMercenarioPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ✦ Las veinte habilidades
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             Son las mismas del árbol de clan, con los mismos valores. Las tres resistencias del
             final trabajan sobre aturdimiento, inmovilización y sueño, que es donde más se nota
             jugando sin apoyo.
@@ -273,7 +273,7 @@ export default function ContratoDeMercenarioPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ✦ Dónde está el corredor
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             Siempre al lado de un Warehouse Keeper. Las ciudades con varios almacenes tienen un
             corredor en cada uno: en Giran hay cinco.
           </p>
@@ -305,13 +305,13 @@ export default function ContratoDeMercenarioPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             Por qué existe
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             La idea no es que dé lo mismo tener clan o no tenerlo: jugar en clan sigue teniendo
             ventajas que esto no toca. Es que la diferencia deje de ser un muro para el que
             prefiere jugar solo.
           </p>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             El sistema de mercenarios es propio de L2Thunder: no existe en el juego original. Las
             habilidades, sus tres niveles y sus valores son los del árbol de clan original, sin
             cambios. Los precios, las ranuras, qué habilidades se ofrecen y la suspensión al

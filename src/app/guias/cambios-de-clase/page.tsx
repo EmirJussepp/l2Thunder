@@ -37,7 +37,7 @@ export default function CambiosDeClasePage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -51,7 +51,7 @@ export default function CambiosDeClasePage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Los tres cambios, los libros de skill y cómo no trabarte en el camino
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Del nivel 1 al 76 hay tres cambios de clase y dos formas distintas de conseguir los
             libros de skill. Acá está el orden exacto: cuándo hablás con quién, qué te dan y en
             qué momento dejás de comprar los libros para salir a buscarlos.

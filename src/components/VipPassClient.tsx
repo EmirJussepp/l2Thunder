@@ -21,7 +21,7 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
           </span>
           <h2 className="mt-3 font-display text-2xl font-bold">{vip.name}</h2>
           <p className="mt-1 text-3xl font-black text-gold">{vip.priceLabel}</p>
-          {vip.subLabel && <p className="text-xs text-muted/70">{vip.subLabel}</p>}
+          {vip.subLabel && <p className="text-xs text-muted">{vip.subLabel}</p>}
 
           <ul className="mt-4 space-y-2 text-sm text-muted">
             {vip.perks.map((perk) => (

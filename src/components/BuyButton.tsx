@@ -78,7 +78,7 @@ export default function BuyButton({
           Tu personaje es <span className="font-semibold text-gold">{characterName}</span>
           , ¿confirmás?
         </p>
-        <p className="text-xs text-muted/70">
+        <p className="text-xs text-muted">
           Ahí llegan los Coins of Luck — si está mal escrito, no hay forma de corregirlo
           después del pago.
         </p>
@@ -136,7 +136,7 @@ export default function BuyButton({
         />
       </label>
 
-      <p className="text-xs text-muted/70">
+      <p className="text-xs text-muted">
         Tiene que ser el personaje exacto (no la cuenta) — ahí llegan los Coins of Luck
         por correo in-game. Revisá que esté bien escrito.
       </p>

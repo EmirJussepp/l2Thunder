@@ -71,7 +71,7 @@ export default function LosCuatroSepulcrosPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -85,7 +85,7 @@ export default function LosCuatroSepulcrosPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Cómo derrotar a Shadow of Halisha
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Cuatro cámaras funerarias bajo la Tumba Imperial, cada una custodiada por una sombra
             de Halisha. Se abren cinco minutos por hora y no perdonan la desorganización: sin
             pase no entrás, sin grupo no entrás, y si llegás tarde esperás una hora entera.
@@ -327,13 +327,13 @@ export default function LosCuatroSepulcrosPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ⏱ Una entrada por día
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             En L2Thunder, quien completa un sepulcro no vuelve a entrar a ninguno de los cuatro
             hasta el reinicio diario de las <strong className="font-semibold text-foreground">06:30</strong>.
             Es la única regla que se aparta del comportamiento clásico.
           </p>
 
-          <div className="mt-6 max-w-3xl space-y-3 text-sm text-muted">
+          <div className="mt-6 max-w-[38rem] space-y-3 text-sm text-muted">
             <p className="font-display text-base font-bold text-foreground">
               Cómo funciona exactamente
             </p>
@@ -366,7 +366,7 @@ export default function LosCuatroSepulcrosPage() {
             />
           </div>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todo lo descrito acá corresponde al comportamiento vigente del servidor. La única
             regla propia de L2Thunder es el límite de una entrada por día; el resto sigue el
             diseño original de la zona.

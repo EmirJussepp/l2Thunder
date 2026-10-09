@@ -70,7 +70,7 @@ export default function SailrenBenomFrintezzaPage() {
       <div className="mx-auto max-w-4xl">
         <Link
           href="/guias"
-          className="text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
+          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
           ← Guías
         </Link>
@@ -86,7 +86,7 @@ export default function SailrenBenomFrintezzaPage() {
           <p className="mt-2 font-display text-lg font-semibold text-muted">
             Las tres mazmorras privadas del servidor
           </p>
-          <p className="mt-6 max-w-3xl text-muted">
+          <p className="mt-6 max-w-[38rem] text-muted">
             Una instancia es una copia privada de la mazmorra: la abrís vos, es tuya y de nadie
             más, y nadie te puede robar el jefe. No hay cola ni hay que esperar a que otro grupo
             termine. A cambio, cada una tiene su llave y su tiempo de espera para volver.
@@ -224,7 +224,7 @@ export default function SailrenBenomFrintezzaPage() {
               Angel Slayer y sus hojas, y Enchant Weapon S.
             </p>
 
-            <p className="text-xs text-muted/70">
+            <p className="text-xs text-muted">
               Si el intento fracasa perdés el Gazkh, pero no las 24 horas: conseguís otro y
               volvés a bajar.
             </p>
@@ -345,7 +345,7 @@ export default function SailrenBenomFrintezzaPage() {
               <div className="mt-3">
                 <StatGrid stats={benomStats} />
               </div>
-              <p className="mt-3 text-xs text-muted/70">
+              <p className="mt-3 text-xs text-muted">
                 En modo difícil, sumale un 30% a cada uno de esos números.
               </p>
             </div>
@@ -486,7 +486,7 @@ export default function SailrenBenomFrintezzaPage() {
               </ul>
             </div>
 
-            <p className="text-xs text-muted/70">
+            <p className="text-xs text-muted">
               Después de la muerte quedan 5 minutos para juntar todo y salir por el cubo.
             </p>
           </GuideStep>
@@ -497,7 +497,7 @@ export default function SailrenBenomFrintezzaPage() {
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
             ◈ Triol&apos;s Earring
           </p>
-          <p className="mt-3 max-w-3xl text-muted">
+          <p className="mt-3 max-w-[38rem] text-muted">
             El aro que dropea Benom es propio de L2Thunder: no existe en ningún otro lado. Tiene
             la misma defensa mágica que un aro de grado S y encima un pasivo que no tiene ningún
             otro accesorio.
@@ -516,14 +516,14 @@ export default function SailrenBenomFrintezzaPage() {
             </Callout>
           </div>
 
-          <p className="mt-6 max-w-3xl text-sm text-muted">
+          <p className="mt-6 max-w-[38rem] text-sm text-muted">
             Es de grado A a efectos de cristales y se puede encantar. Cae al{" "}
             <strong className="font-semibold text-gold">15%</strong> en el modo normal y al{" "}
             <strong className="font-semibold text-gold">50%</strong> en el difícil, así que es la
             razón principal para animarse al modo difícil.
           </p>
 
-          <p className="mt-8 text-xs text-muted/70">
+          <p className="mt-8 text-xs text-muted">
             Todos los valores de esta guía salen del servidor y son los finales, ya con los
             multiplicadores aplicados. Las reglas propias de L2Thunder son: que las tres
             mazmorras sean instancias privadas por grupo, el modo difícil de Benom con la corte

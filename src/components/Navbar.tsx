@@ -151,7 +151,7 @@ export default function Navbar() {
             href="https://www.facebook.com/profile.php?id=61589483216047"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:text-gold"
+            className="inline-flex min-h-11 items-center transition hover:text-gold"
           >
             Facebook
           </a>
@@ -159,7 +159,7 @@ export default function Navbar() {
             href="https://discord.gg/nNFJVWTbD"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:text-gold"
+            className="inline-flex min-h-11 items-center transition hover:text-gold"
           >
             Discord
           </a>

@@ -61,14 +61,14 @@ export default function DiscordBanner() {
       } ${visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
     >
       {compact ? (
-        <div className="card-surface flex items-center gap-3 rounded-none border-accent-2/40 py-3 pl-4 pr-3">
+        <div className="card-surface flex items-center gap-3 rounded-none border-accent-2/40 py-2 pl-4 pr-1">
           <p className="flex-1 text-sm font-semibold text-foreground">Sumate al Discord</p>
           <a
             href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="shrink-0 whitespace-nowrap rounded-none bg-gold px-3 py-2 text-xs font-semibold text-background transition hover:brightness-110"
+            className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-none bg-gold px-4 text-xs font-semibold text-background transition hover:brightness-110"
           >
             Unirme
           </a>
@@ -76,7 +76,7 @@ export default function DiscordBanner() {
             type="button"
             onClick={dismiss}
             aria-label="Cerrar"
-            className="shrink-0 px-1 text-muted transition hover:text-foreground"
+            className="flex h-11 w-11 shrink-0 items-center justify-center text-muted transition hover:text-foreground"
           >
             ×
           </button>
@@ -87,12 +87,12 @@ export default function DiscordBanner() {
             type="button"
             onClick={dismiss}
             aria-label="Cerrar"
-            className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center text-muted transition hover:text-foreground"
+            className="absolute right-1 top-1 flex h-11 w-11 items-center justify-center text-muted transition hover:text-foreground"
           >
             ×
           </button>
 
-          <p className="pr-5 font-display text-sm font-bold text-foreground">Sumate al Discord</p>
+          <p className="pr-9 font-display text-sm font-bold text-foreground">Sumate al Discord</p>
           <p className="mt-1 text-xs text-muted">
             Novedades, soporte y la comunidad de L2Thunder — todo pasa ahí primero.
           </p>

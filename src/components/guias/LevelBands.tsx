@@ -35,7 +35,7 @@ export default function LevelBands({ bands, caption }: { bands: Band[]; caption:
 
       <div
         aria-hidden="true"
-        className="mt-3 flex justify-between text-[10px] font-semibold uppercase tracking-wider text-muted/60"
+        className="mt-3 flex justify-between text-[11px] font-semibold uppercase tracking-wider text-muted"
       >
         <span>0</span>
         <span>diferencia de nivel →</span>

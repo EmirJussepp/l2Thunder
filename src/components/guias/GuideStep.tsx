@@ -24,7 +24,7 @@ export default function GuideStep({
       </div>
       <div className="min-w-0 flex-1 pb-14">
         <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">{title}</h2>
-        <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
+        <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted sm:text-base [&>ol]:max-w-[38rem] [&>p]:max-w-[38rem] [&>ul]:max-w-[38rem]">
           {children}
         </div>
       </div>

@@ -241,7 +241,7 @@ export default function PorQueL2ThunderPage() {
         <p className="brand mt-2 text-xs font-bold uppercase tracking-widest text-accent-2">
           Interlude, reimaginado
         </p>
-        <p className="mt-6 text-muted">
+        <p className="mx-auto mt-6 max-w-xl text-muted">
           Interlude, pero repensado:{" "}
           <strong className="font-bold text-foreground">cada clase revisada a mano</strong>, un
           enchant que no te rompe el equipo, profesiones que valen la pena y contenido nuevo que
@@ -286,7 +286,7 @@ export default function PorQueL2ThunderPage() {
           intro="Es el cambio que más se nota. En Interlude original, fallar un enchant convierte tu arma en cristales y se terminó. Acá eso no pasa."
         />
         <ComparisonTable rows={enchantRows} />
-        <div className="mt-6 max-w-3xl">
+        <div className="mt-6 max-w-[32rem]">
           <p className="font-display text-lg font-bold text-foreground">Por qué importa</p>
           <p className="mt-2 text-sm text-muted">
             Encantar deja de ser una ruleta rusa y pasa a ser una decisión: arriesgás progreso, no
@@ -350,7 +350,7 @@ export default function PorQueL2ThunderPage() {
           intro="En Interlude original la pesca son 278 pescados con nombres que no dicen nada, cero experiencia y un torneo que se gana por azar. La rehicimos entera."
         />
         <ComparisonTable rows={pescaRows} />
-        <div className="mt-6 max-w-3xl">
+        <div className="mt-6 max-w-[32rem]">
           <p className="font-display text-lg font-bold text-foreground">Y se ve dónde vas</p>
           <p className="mt-2 text-sm text-muted">
             El Community Board tiene una pestaña Profesiones con tu nivel, la barra hacia el
@@ -430,7 +430,7 @@ export default function PorQueL2ThunderPage() {
           title="Bajás el launcher y jugás"
           intro="El launcher se encarga del parche y de mantenerte al día. No hace falta tocar archivos ni buscar clientes por ahí."
         />
-        <p className="-mt-4 text-muted">
+        <p className="mx-auto -mt-4 max-w-xl text-muted">
           Si venís de retail vas a reconocer todo. Si nunca jugaste Interlude, esta es la versión
           que se explica sola.
         </p>
@@ -461,7 +461,7 @@ export default function PorQueL2ThunderPage() {
           O conocé los beneficios de Fundador
         </Link>
 
-        <p className="brand mt-16 text-xs font-bold uppercase tracking-widest text-muted/60">
+        <p className="brand mt-16 text-xs font-bold uppercase tracking-widest text-muted">
           L2 Thunder · Interlude reimaginado
         </p>
       </section>
