@@ -14,6 +14,10 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Proyecto Node aparte que corre en el VPS del gameserver, no en Vercel.
     "gameserver-bridge/**",
+    // Skills de agentes (Impeccable, Prisma): scripts de terceros, no son código
+    // del sitio. Están en .gitignore; sin esto el lint los analiza igual.
+    ".claude/**",
+    ".agents/**",
   ]),
 ]);
 
