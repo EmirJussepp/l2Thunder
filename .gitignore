@@ -50,3 +50,6 @@ skills-lock.json
 
 .vercel
 .env*
+
+# Impeccable: archivos locales de la herramienta de diseño (el sistema de diseño versionado es DESIGN.md)
+/.impeccable
