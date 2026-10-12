@@ -65,6 +65,13 @@ const guides = [
     text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon, el drop de libros de ahí en adelante y el tercer cambio a nivel 76.",
   },
   {
+    href: "/guias/clases",
+    level: "Guías de clase · Tercera clase",
+    title: "Elegir clase",
+    subtitle: "Qué hace cada una, en una línea",
+    text: "El panorama de las clases de tercera y, de cada una, el árbol completo de habilidades por nivel, con lo que cambia respecto del Interlude original.",
+  },
+  {
     href: "/guias/limites-de-nivel",
     level: "Guía de sistema · Todos los niveles",
     title: "Límites de Nivel",
