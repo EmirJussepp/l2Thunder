@@ -49,24 +49,28 @@ export const soultaker: ClassGuide = {
           "name": "Magician's Movement",
           "kind": "passive",
           "learn": 1,
+          "icon": "magicians-movement",
           "desc": "Más velocidad de ataque con túnica puesta."
         },
         {
           "name": "Spellcraft",
           "kind": "passive",
           "learn": 1,
+          "icon": "spellcraft",
           "desc": "Duplica la velocidad de casteo con túnica puesta."
         },
         {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Mana Recovery",
           "kind": "passive",
           "learn": 1,
+          "icon": "mana-recovery",
           "desc": "Más regeneración de MP con túnica puesta."
         },
         {
@@ -74,18 +78,21 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 1,
           "max": 14,
+          "icon": "wind-strike",
           "desc": "El ataque mágico básico de la rama."
         },
         {
           "name": "Self Heal",
           "kind": "active",
           "learn": 1,
+          "icon": "self-heal",
           "desc": "La cura de arranque, sobre uno mismo."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -93,6 +100,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -100,6 +108,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "anti-magic",
           "desc": "+108 de M.Def."
         },
         {
@@ -107,6 +116,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 14,
+          "icon": "armor-mastery-89aa31",
           "desc": "+9,2 de P.Def."
         },
         {
@@ -114,6 +124,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "weapon-mastery",
           "desc": "+79,4 y +45% de P.Atk., +99,3 y +17% de M.Atk. Con arco o pole, -30% de velocidad de casteo y -9 de precisión."
         },
         {
@@ -121,24 +132,28 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 14,
+          "icon": "heal",
           "desc": "Cura directa de 301. Barata y sin tiempo de espera."
         },
         {
           "name": "Cure Poison",
           "kind": "active",
           "learn": 7,
+          "icon": "cure-poison",
           "desc": "Saca el veneno. Cubre todos los venenos que puede tirar un jugador."
         },
         {
           "name": "Shield",
           "kind": "active",
           "learn": 7,
+          "icon": "shield",
           "desc": "+15% de P.Def."
         },
         {
           "name": "Might",
           "kind": "active",
           "learn": 7,
+          "icon": "might",
           "desc": "+15% de P.Atk."
         },
         {
@@ -146,18 +161,21 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 20,
+          "icon": "ice-bolt",
           "desc": "Golpe de hielo que además frena al objetivo."
         },
         {
           "name": "Battle Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "battle-heal",
           "desc": "Misma potencia que Heal pero de casteo rápido: es la de emergencia."
         },
         {
           "name": "Group Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "group-heal",
           "desc": "Cura 241 a cada miembro de la party de una sola vez."
         },
         {
@@ -165,6 +183,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "max": 25,
+          "icon": "vampiric-touch",
           "desc": "Absorbe vida: te cura el 40% del daño que hace."
         },
         {
@@ -173,6 +192,7 @@ export const soultaker: ClassGuide = {
           "learn": 14,
           "max": 74,
           "custom": true,
+          "icon": "curse-weakness",
           "desc": "-15% de P.Atk. durante 12 segundos."
         },
         {
@@ -180,6 +200,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -187,6 +208,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -203,6 +225,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 48,
+          "icon": "quick-recovery",
           "desc": "-30% al tiempo de espera de los skills mágicos."
         },
         {
@@ -211,6 +234,7 @@ export const soultaker: ClassGuide = {
           "learn": 20,
           "max": 72,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -218,6 +242,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "robe-mastery",
           "desc": "+55,2 de P.Def. con túnica."
         },
         {
@@ -225,6 +250,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "higher-mana-gain",
           "desc": "Cada recarga que recibís rinde +39 de MP."
         },
         {
@@ -232,6 +258,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "concentration",
           "desc": "Hace mucho más difícil que a un mago le corten el casteo cuando recibe daño."
         },
         {
@@ -240,6 +267,7 @@ export const soultaker: ClassGuide = {
           "learn": 20,
           "max": 35,
           "custom": true,
+          "icon": "summon-kat-the-cat",
           "desc": "Invoca a Kat the Cat, servidor de nivel 76 que sabe Master Recharge. Pide 20 Spirit Ore y consume uno cada 4 minutos."
         },
         {
@@ -247,6 +275,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "servitor-heal",
           "desc": "Cura a tu invocación: 936 de potencia."
         },
         {
@@ -254,6 +283,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "aura-burn",
           "desc": "Ataque mágico de corto alcance."
         },
         {
@@ -261,6 +291,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "flame-strike",
           "desc": "Llamarada que prende un área amplia."
         },
         {
@@ -268,6 +299,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "blaze",
           "desc": "Bola de fuego sobre un objetivo."
         },
         {
@@ -276,6 +308,7 @@ export const soultaker: ClassGuide = {
           "learn": 20,
           "max": 35,
           "custom": true,
+          "icon": "summon-mew-the-cat",
           "desc": "Invoca a Mew the Cat, servidor de nivel 76 que sabe Mega Storm Strike."
         },
         {
@@ -283,6 +316,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "energy-bolt",
           "desc": "El dardo mágico más barato y más rápido de castear."
         },
         {
@@ -290,6 +324,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 56,
+          "icon": "fast-spell-casting",
           "desc": "+18% de velocidad de casteo."
         },
         {
@@ -297,6 +332,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 74,
+          "icon": "fast-mana-recovery",
           "desc": "+3,4 a la regeneración de MP."
         },
         {
@@ -304,6 +340,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 74,
+          "icon": "sleep",
           "desc": "Duerme a un enemigo 8 segundos. Cualquier daño lo despierta, y una vez despierto es casi imposible volver a dormirlo."
         },
         {
@@ -312,6 +349,7 @@ export const soultaker: ClassGuide = {
           "learn": 25,
           "max": 35,
           "custom": true,
+          "icon": "surrender-to-fire",
           "desc": "Le abre la guardia al fuego: -30 de resistencia al fuego y +15 al agua, por 30 segundos."
         },
         {
@@ -319,6 +357,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 35,
+          "icon": "servitor-recharge",
           "desc": "Le devuelve MP a tu invocación."
         },
         {
@@ -327,12 +366,14 @@ export const soultaker: ClassGuide = {
           "learn": 25,
           "max": 66,
           "custom": true,
+          "icon": "body-to-mind",
           "desc": "Quemás tu propia carne para rellenar la cabeza: recuperás 296 de MP. En L2Thunder cuesta 1,12 de HP por cada MP, no 6: antes no valía la pena usarlo."
         },
         {
           "name": "Resist Wind",
           "kind": "active",
           "learn": 25,
+          "icon": "resist-wind",
           "desc": "+15 de resistencia al viento."
         },
         {
@@ -340,6 +381,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 30,
           "max": 74,
+          "icon": "corpse-life-drain",
           "desc": "Absorbe la vida de un cadáver para curarte."
         },
         {
@@ -347,18 +389,21 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 35,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
           "name": "Servitor Wind Walk",
           "kind": "active",
           "learn": 35,
+          "icon": "servitor-wind-walk",
           "desc": "+33 de velocidad a la invocación."
         },
         {
           "name": "Slow",
           "kind": "active",
           "learn": 35,
+          "icon": "slow",
           "desc": "-30% de velocidad de movimiento."
         },
         {
@@ -367,6 +412,7 @@ export const soultaker: ClassGuide = {
           "learn": 35,
           "max": 74,
           "custom": true,
+          "icon": "curse-chaos",
           "desc": "-12 de precisión durante 15 segundos."
         }
       ]
@@ -384,6 +430,7 @@ export const soultaker: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "silence",
           "desc": "Le sella la magia 4 segundos: no puede castear, pero los skills físicos le siguen funcionando."
         },
         {
@@ -392,6 +439,7 @@ export const soultaker: ClassGuide = {
           "learn": 40,
           "max": 76,
           "custom": true,
+          "icon": "summon-corrupted-man",
           "desc": "Invoca un Corrupted Man de nivel 76 que sabe Steel Blood y Dark Empowerment. Pide 20 Cursed Bones y consume 4 cada 4 minutos."
         },
         {
@@ -399,6 +447,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "curse-discord",
           "desc": "Confunde al enemigo y lo hace atacar a los suyos."
         },
         {
@@ -407,6 +456,7 @@ export const soultaker: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "curse-fear",
           "desc": "El terror lo agarra y lo hace huir 4 segundos."
         },
         {
@@ -414,6 +464,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "vampiric-claw",
           "desc": "Garras de energía oscura: te curan el 40% del daño que hacen."
         },
         {
@@ -421,6 +472,7 @@ export const soultaker: ClassGuide = {
           "kind": "toggle",
           "learn": 40,
           "max": 70,
+          "icon": "transfer-pain",
           "desc": "Tu invocación se come el dolor que era para vos: le pasa el 50% del daño que recibís. Consume MP mientras dure."
         },
         {
@@ -429,6 +481,7 @@ export const soultaker: ClassGuide = {
           "learn": 44,
           "max": 74,
           "custom": true,
+          "icon": "summon-reanimated-man",
           "desc": "Invoca un Reanimated Man de nivel 76. En L2Thunder sacrifica su propia vida para curar al objetivo: antes era la única invocación del juego sin ningún skill."
         },
         {
@@ -436,6 +489,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 74,
+          "icon": "death-spike",
           "desc": "Le tirás un hueso maldito al enemigo. Requiere un Cursed Bone."
         },
         {
@@ -443,6 +497,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 74,
+          "icon": "forget",
           "desc": "Le saca al enemigo las ganas de atacar."
         },
         {
@@ -451,6 +506,7 @@ export const soultaker: ClassGuide = {
           "learn": 44,
           "max": 74,
           "custom": true,
+          "icon": "anchor",
           "desc": "Paraliza al enemigo en el acto durante 4 segundos."
         },
         {
@@ -459,6 +515,7 @@ export const soultaker: ClassGuide = {
           "learn": 44,
           "max": 74,
           "custom": true,
+          "icon": "curse-gloom",
           "desc": "-10% de M.Def. durante 15 segundos."
         },
         {
@@ -466,6 +523,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 48,
           "max": 74,
+          "icon": "corpse-burst",
           "desc": "Hace explotar un cadáver cercano."
         },
         {
@@ -473,6 +531,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 52,
           "max": 74,
+          "icon": "curse-death-link",
           "desc": "Le pasás tu dolor al enemigo: cuanto menos vida te queda, más fuerte pega."
         },
         {
@@ -481,6 +540,7 @@ export const soultaker: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "summon-cursed-man",
           "desc": "Invoca un Cursed Man de nivel 76 que sabe Cursed Strike y Cursed Blow."
         },
         {
@@ -489,6 +549,7 @@ export const soultaker: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "curse-disease",
           "desc": "Maldición que le corta la curación a la mitad durante 15 segundos."
         },
         {
@@ -496,6 +557,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "mass-fear",
           "desc": "Espanta a los enemigos cercanos y los hace huir 3 segundos."
         },
         {
@@ -504,6 +566,7 @@ export const soultaker: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "mass-gloom",
           "desc": "La versión en área: -10% de M.Def. a hasta 8 enemigos cercanos."
         },
         {
@@ -511,6 +574,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "summon-cursed-bones",
           "desc": "Fabrica entre 100 y 400 huesos malditos. Consume 160 Spirit Ore."
         },
         {
@@ -519,6 +583,7 @@ export const soultaker: ClassGuide = {
           "learn": 62,
           "max": 74,
           "custom": true,
+          "icon": "mass-slow",
           "desc": "-45% de velocidad a hasta 8 enemigos durante 8 segundos."
         }
       ]
@@ -534,12 +599,14 @@ export const soultaker: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
           "name": "Health",
           "kind": "passive",
           "learn": 76,
+          "icon": "health",
           "desc": "Más resistencia a veneno y sangrado."
         },
         {
@@ -547,6 +614,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 76,
           "custom": true,
+          "icon": "dark-vortex",
           "desc": "Vórtice de oscuridad: hace daño oscuro, te cura el 50% de lo que pega y le baja 30 la resistencia a la oscuridad."
         },
         {
@@ -554,18 +622,21 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu INT."
         },
         {
           "name": "Spell Force",
           "kind": "active",
           "learn": 77,
+          "icon": "spell-force",
           "desc": "Transfiere tu poder mágico a un compañero. Se corta si recibís daño, y es el requisito de Mass Recharge."
         },
         {
           "name": "Curse of Doom",
           "kind": "active",
           "learn": 77,
+          "icon": "curse-of-doom",
           "desc": "Le bloquea el uso de skills, físicos y mágicos, durante 5 segundos."
         },
         {
@@ -573,12 +644,14 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 77,
           "custom": true,
+          "icon": "mass-warrior-bane",
           "desc": "La versión en área: -5% de P.Atk. y velocidad de ataque a hasta 8 enemigos."
         },
         {
           "name": "Arcane Power",
           "kind": "toggle",
           "learn": 78,
+          "icon": "arcane-power",
           "desc": "Postura: +30% de M.Atk. a cambio de +10% de MP en los skills y un goteo constante."
         },
         {
@@ -586,6 +659,7 @@ export const soultaker: ClassGuide = {
           "kind": "passive",
           "learn": 78,
           "custom": true,
+          "icon": "necromancy",
           "desc": "Comunión con los muertos: +3% de M.Atk. y +15 de resistencia a la oscuridad."
         },
         {
@@ -593,6 +667,7 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 78,
           "custom": true,
+          "icon": "curse-of-abyss",
           "desc": "Maldición del abismo que le embota todo: -10% de M.Atk. y de crítico mágico, -5% de velocidad, P.Def. y casteo, y -6 de evasión. Dura 25 segundos."
         },
         {
@@ -600,18 +675,21 @@ export const soultaker: ClassGuide = {
           "kind": "active",
           "learn": 78,
           "custom": true,
+          "icon": "mass-mage-bane",
           "desc": "La versión en área contra magos: -5% de M.Atk. y velocidad de casteo a hasta 8 enemigos."
         },
         {
           "name": "Day of Doom",
           "kind": "active",
           "learn": 80,
+          "icon": "day-of-doom",
           "desc": "Planta un símbolo que maldice todo lo que entra en su área y le baja todas las estadísticas. Pide Spell Force nivel 3 y un Magic Symbol."
         },
         {
           "name": "Gehenna",
           "kind": "active",
           "learn": 80,
+          "icon": "gehenna",
           "desc": "Cadena de golpes de oscuridad: no te podés mover mientras lo lanzás y consume MP con cada impacto. Pide Spell Force nivel 3 y un Magic Symbol."
         }
       ]

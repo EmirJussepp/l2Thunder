@@ -49,24 +49,28 @@ export const arcanaLord: ClassGuide = {
           "name": "Magician's Movement",
           "kind": "passive",
           "learn": 1,
+          "icon": "magicians-movement",
           "desc": "Más velocidad de ataque con túnica puesta."
         },
         {
           "name": "Spellcraft",
           "kind": "passive",
           "learn": 1,
+          "icon": "spellcraft",
           "desc": "Duplica la velocidad de casteo con túnica puesta."
         },
         {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Mana Recovery",
           "kind": "passive",
           "learn": 1,
+          "icon": "mana-recovery",
           "desc": "Más regeneración de MP con túnica puesta."
         },
         {
@@ -74,18 +78,21 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 1,
           "max": 14,
+          "icon": "wind-strike",
           "desc": "El ataque mágico básico de la rama."
         },
         {
           "name": "Self Heal",
           "kind": "active",
           "learn": 1,
+          "icon": "self-heal",
           "desc": "La cura de arranque, sobre uno mismo."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -93,6 +100,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -100,6 +108,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "anti-magic",
           "desc": "+108 de M.Def."
         },
         {
@@ -107,6 +116,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 14,
+          "icon": "armor-mastery-89aa31",
           "desc": "+9,2 de P.Def."
         },
         {
@@ -114,6 +124,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "weapon-mastery",
           "desc": "+79,4 y +45% de P.Atk., +99,3 y +17% de M.Atk. Con arco o pole, -30% de velocidad de casteo y -9 de precisión."
         },
         {
@@ -121,24 +132,28 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 14,
+          "icon": "heal",
           "desc": "Cura directa de 301. Barata y sin tiempo de espera."
         },
         {
           "name": "Cure Poison",
           "kind": "active",
           "learn": 7,
+          "icon": "cure-poison",
           "desc": "Saca el veneno. Cubre todos los venenos que puede tirar un jugador."
         },
         {
           "name": "Shield",
           "kind": "active",
           "learn": 7,
+          "icon": "shield",
           "desc": "+15% de P.Def."
         },
         {
           "name": "Might",
           "kind": "active",
           "learn": 7,
+          "icon": "might",
           "desc": "+15% de P.Atk."
         },
         {
@@ -146,18 +161,21 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 20,
+          "icon": "ice-bolt",
           "desc": "Golpe de hielo que además frena al objetivo."
         },
         {
           "name": "Battle Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "battle-heal",
           "desc": "Misma potencia que Heal pero de casteo rápido: es la de emergencia."
         },
         {
           "name": "Group Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "group-heal",
           "desc": "Cura 241 a cada miembro de la party de una sola vez."
         },
         {
@@ -165,6 +183,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "max": 25,
+          "icon": "vampiric-touch",
           "desc": "Absorbe vida: te cura el 40% del daño que hace."
         },
         {
@@ -173,6 +192,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 14,
           "max": 35,
           "custom": true,
+          "icon": "curse-weakness",
           "desc": "-15% de P.Atk. durante 12 segundos."
         },
         {
@@ -180,6 +200,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -187,6 +208,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -203,6 +225,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 48,
+          "icon": "quick-recovery",
           "desc": "-30% al tiempo de espera de los skills mágicos."
         },
         {
@@ -211,6 +234,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 20,
           "max": 72,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -218,6 +242,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "robe-mastery",
           "desc": "+55,2 de P.Def. con túnica."
         },
         {
@@ -225,6 +250,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 35,
+          "icon": "higher-mana-gain",
           "desc": "Cada recarga que recibís rinde +39 de MP."
         },
         {
@@ -232,6 +258,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "concentration",
           "desc": "Hace mucho más difícil que a un mago le corten el casteo cuando recibe daño."
         },
         {
@@ -240,6 +267,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 20,
           "max": 74,
           "custom": true,
+          "icon": "summon-kat-the-cat",
           "desc": "Invoca a Kat the Cat, servidor de nivel 76 que sabe Master Recharge. Pide 20 Spirit Ore y consume uno cada 4 minutos."
         },
         {
@@ -247,6 +275,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 74,
+          "icon": "servitor-heal",
           "desc": "Cura a tu invocación: 936 de potencia."
         },
         {
@@ -254,6 +283,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "aura-burn",
           "desc": "Ataque mágico de corto alcance."
         },
         {
@@ -261,6 +291,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "flame-strike",
           "desc": "Llamarada que prende un área amplia."
         },
         {
@@ -268,6 +299,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 74,
+          "icon": "blaze",
           "desc": "Bola de fuego sobre un objetivo."
         },
         {
@@ -276,6 +308,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 20,
           "max": 74,
           "custom": true,
+          "icon": "summon-mew-the-cat",
           "desc": "Invoca a Mew the Cat, servidor de nivel 76 que sabe Mega Storm Strike."
         },
         {
@@ -283,6 +316,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "energy-bolt",
           "desc": "El dardo mágico más barato y más rápido de castear."
         },
         {
@@ -290,6 +324,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 56,
+          "icon": "fast-spell-casting",
           "desc": "+18% de velocidad de casteo."
         },
         {
@@ -297,6 +332,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 74,
+          "icon": "fast-mana-recovery",
           "desc": "+3,4 a la regeneración de MP."
         },
         {
@@ -304,6 +340,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 35,
+          "icon": "sleep",
           "desc": "Duerme a un enemigo 8 segundos. Cualquier daño lo despierta, y una vez despierto es casi imposible volver a dormirlo."
         },
         {
@@ -312,6 +349,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 25,
           "max": 35,
           "custom": true,
+          "icon": "surrender-to-fire",
           "desc": "Le abre la guardia al fuego: -30 de resistencia al fuego y +15 al agua, por 30 segundos."
         },
         {
@@ -319,6 +357,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 74,
+          "icon": "servitor-recharge",
           "desc": "Le devuelve MP a tu invocación."
         },
         {
@@ -326,12 +365,14 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "custom": true,
+          "icon": "body-to-mind",
           "desc": "Quemás tu propia carne para rellenar la cabeza: recuperás 296 de MP. En L2Thunder cuesta 1,12 de HP por cada MP, no 6: antes no valía la pena usarlo."
         },
         {
           "name": "Resist Wind",
           "kind": "active",
           "learn": 25,
+          "icon": "resist-wind",
           "desc": "+15 de resistencia al viento."
         },
         {
@@ -339,6 +380,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 30,
           "max": 35,
+          "icon": "corpse-life-drain",
           "desc": "Absorbe la vida de un cadáver para curarte."
         },
         {
@@ -346,6 +388,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 35,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
@@ -353,12 +396,14 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 35,
           "max": 48,
+          "icon": "servitor-wind-walk",
           "desc": "+33 de velocidad a la invocación."
         },
         {
           "name": "Slow",
           "kind": "active",
           "learn": 35,
+          "icon": "slow",
           "desc": "-30% de velocidad de movimiento."
         },
         {
@@ -366,6 +411,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 35,
           "custom": true,
+          "icon": "curse-chaos",
           "desc": "-12 de precisión durante 15 segundos."
         }
       ]
@@ -383,6 +429,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "summon-storm-cubic",
           "desc": "Invoca un cúbico de tormenta que elige tu objetivo y pega solo por unos 861 de daño, con su propia potencia mágica: la tuya no entra en la cuenta. Dura 30 minutos."
         },
         {
@@ -391,6 +438,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "light-armor-mastery-2051b1",
           "desc": "Con armadura ligera: +46 de P.Def., +88% de velocidad de casteo, +25% de ataque y +20% de recuperación de MP."
         },
         {
@@ -398,6 +446,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 56,
+          "icon": "servitor-physical-shield",
           "desc": "+15% de P.Def. a la invocación."
         },
         {
@@ -405,6 +454,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "toggle",
           "learn": 40,
           "max": 70,
+          "icon": "transfer-pain",
           "desc": "Tu invocación se come el dolor que era para vos: le pasa el 50% del daño que recibís. Consume MP mientras dure."
         },
         {
@@ -413,6 +463,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "summon-kai-the-cat",
           "desc": "Invoca a Kai the Cat, servidor de nivel 76 que sabe Reflect Shield."
         },
         {
@@ -421,6 +472,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 72,
           "custom": true,
+          "icon": "summon-binding-cubic",
           "desc": "Invoca un cúbico que paraliza a tu objetivo 3 segundos, con 40% de probabilidad. Dura 30 minutos."
         },
         {
@@ -429,6 +481,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 60,
           "custom": true,
+          "icon": "servitor-cure",
           "desc": "Le saca a la invocación un sangrado y un veneno de cualquier fuerza. No se puede resistir."
         },
         {
@@ -437,6 +490,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "mass-summon-storm-cubic",
           "desc": "Un cúbico de tormenta para cada miembro de la party."
         },
         {
@@ -445,6 +499,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 44,
           "max": 56,
           "custom": true,
+          "icon": "cubic-mastery",
           "desc": "Te permite tener 3 cúbicos a la vez."
         },
         {
@@ -452,6 +507,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 52,
+          "icon": "servitor-magic-shield",
           "desc": "+30% de M.Def. a la invocación."
         },
         {
@@ -459,6 +515,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 52,
+          "icon": "servitor-haste",
           "desc": "+30% de velocidad de ataque y +15% de casteo a la invocación."
         },
         {
@@ -467,6 +524,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 52,
           "max": 70,
           "custom": true,
+          "icon": "servitor-empowerment",
           "desc": "+2.500 de P.Def. y M.Def. a la invocación durante 30 segundos, a cambio de -65% de velocidad."
         },
         {
@@ -475,6 +533,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "summon-feline-queen",
           "desc": "Invoca a la Feline Queen, servidora de nivel 76 que cura y bendice a la party."
         },
         {
@@ -483,6 +542,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "betray",
           "desc": "Da vuelta a la invocación del enemigo contra su propio dueño durante 10 segundos: la ataca e ignora todas sus órdenes. Consume 5 Spirit Ore."
         },
         {
@@ -491,12 +551,14 @@ export const arcanaLord: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "arcane-disruption",
           "desc": "Cadenas arcanas que le frenan el casteo: -10% durante 10 segundos."
         },
         {
           "name": "Summon Friend",
           "kind": "active",
           "learn": 56,
+          "icon": "summon-friend",
           "desc": "Trae a un compañero de party a donde estés. El que viene tiene que tener un Summoning Crystal."
         },
         {
@@ -505,6 +567,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "mass-surrender-to-fire",
           "desc": "La versión en área: a hasta 8 enemigos, -15 de resistencia al fuego y -8% de defensas durante 15 segundos. Consume 3 Spirit Ore."
         },
         {
@@ -512,6 +575,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 62,
           "custom": true,
+          "icon": "servitor-blessing",
           "desc": "Libera a la invocación de raíces, inmovilizaciones, parálisis y frenos. Cubre todos los que puede tirar un jugador y no se puede resistir."
         }
       ]
@@ -527,6 +591,7 @@ export const arcanaLord: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
@@ -535,6 +600,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 76,
           "max": 77,
           "custom": true,
+          "icon": "warrior-servitor",
           "desc": "Le mete el espíritu de un guerrero antiguo: +30% de HP, +25% de P.Def., +20% de velocidad de ataque y mucha resistencia a debuffs. Consume 10 Spirit Ore."
         },
         {
@@ -542,6 +608,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 76,
           "custom": true,
+          "icon": "wizard-servitor",
           "desc": "Le mete el espíritu de un mago antiguo: +15% de M.Atk., +13% de casteo y de M.Def. Consume 10 Spirit Ore."
         },
         {
@@ -550,6 +617,7 @@ export const arcanaLord: ClassGuide = {
           "learn": 76,
           "max": 78,
           "custom": true,
+          "icon": "final-servitor",
           "desc": "Le mete el espíritu de un héroe: +20% de casi todo, incluido el crítico y su daño. Consume 10 Spirit Ore."
         },
         {
@@ -557,6 +625,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 76,
           "custom": true,
+          "icon": "warrior-bane",
           "desc": "-10% de P.Atk. y de velocidad de ataque durante 20 segundos."
         },
         {
@@ -564,6 +633,7 @@ export const arcanaLord: ClassGuide = {
           "kind": "active",
           "learn": 76,
           "custom": true,
+          "icon": "summon-feline-king",
           "desc": "Invoca al Feline King, servidor de nivel 80 que sabe Slash, Spin Slash y Hold of King."
         },
         {
@@ -571,18 +641,21 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu INT."
         },
         {
           "name": "Spell Force",
           "kind": "active",
           "learn": 77,
+          "icon": "spell-force",
           "desc": "Transfiere tu poder mágico a un compañero. Se corta si recibís daño, y es el requisito de Mass Recharge."
         },
         {
           "name": "Arcane Agility",
           "kind": "toggle",
           "learn": 78,
+          "icon": "arcane-agility",
           "desc": "Postura: +20% de velocidad de casteo y -10% de espera entre skills, a cambio de +10% de MP y un goteo constante."
         },
         {
@@ -590,12 +663,14 @@ export const arcanaLord: ClassGuide = {
           "kind": "passive",
           "learn": 78,
           "custom": true,
+          "icon": "summon-lore",
           "desc": "Profundiza tu dominio de la invocación: con armadura ligera +80 de P.Def. y +5% de casteo; con túnica +60, +7% y -3% de MP en los skills mágicos."
         },
         {
           "name": "Anti-Summoning Field",
           "kind": "active",
           "learn": 80,
+          "icon": "anti-summoning-field",
           "desc": "Planta un campo que manda a otra dimensión a toda invocación que entre. Pide Spell Force nivel 2 y un Magic Symbol."
         }
       ]

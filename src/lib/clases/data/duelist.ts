@@ -49,12 +49,14 @@ export const duelist: ClassGuide = {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -63,6 +65,7 @@ export const duelist: ClassGuide = {
           "learn": 5,
           "max": 15,
           "custom": true,
+          "icon": "power-strike",
           "desc": "El golpe cargado básico de espada o mazo: 870 de potencia."
         },
         {
@@ -70,6 +73,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 5,
           "max": 15,
+          "icon": "mortal-blow",
           "desc": "El golpe mortal básico de daga."
         },
         {
@@ -77,6 +81,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 5,
           "max": 15,
+          "icon": "power-shot",
           "desc": "El disparo cargado básico: 3.675 de potencia."
         },
         {
@@ -84,6 +89,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 15,
+          "icon": "weapon-mastery",
           "desc": "+8,5% y +4 de P.Atk."
         },
         {
@@ -91,12 +97,14 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 15,
+          "icon": "armor-mastery-9bf297",
           "desc": "Más defensa con equipo pesado, y defensa y evasión con equipo ligero."
         },
         {
           "name": "Relax",
           "kind": "toggle",
           "learn": 5,
+          "icon": "relax",
           "desc": "Sentado, +5 a la regeneración de HP."
         },
         {
@@ -104,6 +112,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -111,6 +120,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -118,6 +128,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -134,6 +145,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 43,
+          "icon": "war-cry",
           "desc": "+25% de P.Atk. por un momento."
         },
         {
@@ -141,6 +153,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "stun-attack",
           "desc": "Mazazo que deja al objetivo aturdido. Mientras dura no se lo puede volver a aturdir."
         },
         {
@@ -148,6 +161,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 36,
+          "icon": "boost-hp",
           "desc": "+480 de HP máximo."
         },
         {
@@ -156,6 +170,7 @@ export const duelist: ClassGuide = {
           "learn": 20,
           "max": 60,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -163,6 +178,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 36,
+          "icon": "polearm-mastery",
           "desc": "+129,3 de P.Atk. con lanza."
         },
         {
@@ -170,6 +186,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "light-armor-mastery-4d45b3",
           "desc": "+81,3 de P.Def. y +6 de evasión con armadura ligera."
         },
         {
@@ -177,6 +194,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "heavy-armor-mastery-a46092",
           "desc": "+79,3 de P.Def. con armadura pesada."
         },
         {
@@ -184,6 +202,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "wild-sweep",
           "desc": "Barrido de lanza que agarra a varios enemigos de adelante: 1.820 de potencia."
         },
         {
@@ -191,6 +210,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "power-smash",
           "desc": "Golpe fuerte sobre un solo enemigo: 2.180 de potencia."
         },
         {
@@ -198,6 +218,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "sword-blunt-mastery",
           "desc": "+20,5 de P.Atk. con espada o mazo."
         },
         {
@@ -206,6 +227,7 @@ export const duelist: ClassGuide = {
           "learn": 20,
           "max": 74,
           "custom": true,
+          "icon": "vicious-stance",
           "desc": "Postura despiadada: +609 de daño crítico con un goteo continuo de MP."
         },
         {
@@ -213,6 +235,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 24,
           "max": 32,
+          "icon": "vital-force",
           "desc": "Sentado recuperás +6,7 de HP y +2,5 de MP por tick."
         },
         {
@@ -220,12 +243,14 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 24,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
           "name": "Accuracy",
           "kind": "toggle",
           "learn": 24,
+          "icon": "accuracy",
           "desc": "Mientras lo tenés activo, +3 de precisión a cambio de un goteo de MP."
         },
         {
@@ -233,12 +258,14 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 28,
           "custom": true,
+          "icon": "battle-roar",
           "desc": "Un rugido que te hincha: +35% de HP máximo y te cura esa misma cantidad. Dura 600 segundos."
         },
         {
           "name": "Detect Insect Weakness",
           "kind": "active",
           "learn": 32,
+          "icon": "detect-insect-weakness",
           "desc": "+P.Atk. contra insectos."
         },
         {
@@ -247,6 +274,7 @@ export const duelist: ClassGuide = {
           "learn": 36,
           "max": 62,
           "custom": true,
+          "icon": "lionheart",
           "desc": "Tu ánimo no se quiebra: +60 de resistencia a aturdimiento, raíz, sueño y parálisis, y +60% contra el robo de buffs. Dura 30 segundos."
         }
       ]
@@ -263,6 +291,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "triple-slash",
           "desc": "Tres tajos rápidos con espadas dobles: 2.131 de potencia, ignora el escudo."
         },
         {
@@ -270,12 +299,14 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 70,
+          "icon": "sonic-focus",
           "desc": "Carga energía sónica para los demás skills Sonic. Se acumula hasta nivel 7 y se disipa a los 10 minutos sin usarla."
         },
         {
           "name": "Detect Animal Weakness",
           "kind": "active",
           "learn": 40,
+          "icon": "detect-animal-weakness",
           "desc": "+P.Atk. contra animales."
         },
         {
@@ -283,6 +314,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 40,
           "max": 74,
+          "icon": "dual-weapon-mastery",
           "desc": "+129,3 de P.Atk. con espadas dobles."
         },
         {
@@ -290,6 +322,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "fatal-strike",
           "desc": "Golpe demoledor que ignora la defensa del escudo: 4.100 de potencia."
         },
         {
@@ -298,6 +331,7 @@ export const duelist: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "hammer-crush",
           "desc": "Mazazo que sacude y hace daño a la vez: 3.870 de potencia, ignora el escudo."
         },
         {
@@ -305,6 +339,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 40,
           "max": 74,
+          "icon": "two-handed-weapon-mastery",
           "desc": "+129,3 de P.Atk. y +3 de precisión con armas a dos manos."
         },
         {
@@ -312,6 +347,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 43,
           "max": 74,
+          "icon": "sonic-blaster",
           "desc": "Dispara un haz de energía sónica a distancia: 1.827 de potencia. Pide carga 2."
         },
         {
@@ -319,6 +355,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 43,
           "max": 74,
+          "icon": "sonic-buster",
           "desc": "Onda sónica sobre los que tengas cerca. Pide carga 2 y consume 3 Energy Stones."
         },
         {
@@ -326,12 +363,14 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 43,
           "max": 66,
+          "icon": "final-frenzy",
           "desc": "Cuando te baja la vida, sube sola la P.Atk. hasta +213,3."
         },
         {
           "name": "Detect Plant Weakness",
           "kind": "active",
           "learn": 46,
+          "icon": "detect-plant-weakness",
           "desc": "+P.Atk. contra plantas."
         },
         {
@@ -339,6 +378,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 49,
           "max": 74,
+          "icon": "double-sonic-slash",
           "desc": "Tajo cargado de energía sónica: 3.196 de potencia. Pide carga 3."
         },
         {
@@ -346,12 +386,14 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 49,
           "max": 74,
+          "icon": "sonic-storm",
           "desc": "Masa de energía sónica que golpea a varios a distancia. Pide carga 2 y consume 3 Energy Stones."
         },
         {
           "name": "Detect Beast Weakness",
           "kind": "active",
           "learn": 52,
+          "icon": "detect-beast-weakness",
           "desc": "+P.Atk. contra bestias."
         },
         {
@@ -359,12 +401,14 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 55,
           "max": 74,
+          "icon": "triple-sonic-slash",
           "desc": "Tres tajos con la energía sónica encima: 4.262 de potencia, ignora el escudo. Pide carga 4."
         },
         {
           "name": "Detect Dragon Weakness",
           "kind": "active",
           "learn": 58,
+          "icon": "detect-dragon-weakness",
           "desc": "+P.Atk. contra dragones."
         },
         {
@@ -373,6 +417,7 @@ export const duelist: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "war-frenzy",
           "desc": "Postura que te templa la cabeza: +15% de resistencia al aturdimiento y +20% al sueño, con goteo de MP."
         },
         {
@@ -380,6 +425,7 @@ export const duelist: ClassGuide = {
           "kind": "active",
           "learn": 62,
           "max": 68,
+          "icon": "sonic-move",
           "desc": "+66 de velocidad. Pide carga 3."
         },
         {
@@ -388,6 +434,7 @@ export const duelist: ClassGuide = {
           "learn": 64,
           "max": 72,
           "custom": true,
+          "icon": "duelist-spirit",
           "desc": "Afila tu juego de espadas dobles: +12% de velocidad de ataque y +10% de daño en PvP, tanto con golpes normales como con skills. Dura 1 minuto."
         }
       ]
@@ -403,12 +450,14 @@ export const duelist: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
           "name": "Health",
           "kind": "passive",
           "learn": 76,
+          "icon": "health",
           "desc": "Más resistencia a veneno y sangrado."
         },
         {
@@ -416,6 +465,7 @@ export const duelist: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu STR."
         },
         {
@@ -423,54 +473,63 @@ export const duelist: ClassGuide = {
           "kind": "toggle",
           "learn": 77,
           "custom": true,
+          "icon": "riposte-stance",
           "desc": "Devolvés con el arma lo que te pegan, y tenés chance de reflejar también buffs y debuffs. A cambio perdés velocidad y precisión."
         },
         {
           "name": "Eye of Hunter",
           "kind": "active",
           "learn": 77,
+          "icon": "eye-of-hunter",
           "desc": "+P.Atk. contra insectos, plantas y animales, todo junto."
         },
         {
           "name": "Battle Force",
           "kind": "active",
           "learn": 77,
+          "icon": "battle-force",
           "desc": "Transfiere tu fuerza a un compañero de party. Se corta si recibís daño, y es el requisito de los símbolos."
         },
         {
           "name": "Sonic Rage",
           "kind": "active",
           "learn": 78,
+          "icon": "sonic-rage",
           "desc": "Golpe de espadas dobles que ataca de lejos y de paso carga energía sónica."
         },
         {
           "name": "Eye of Slayer",
           "kind": "active",
           "learn": 78,
+          "icon": "eye-of-slayer",
           "desc": "+P.Atk. contra bestias, criaturas mágicas, gigantes y dragones."
         },
         {
           "name": "Master of Combat",
           "kind": "passive",
           "learn": 78,
+          "icon": "master-of-combat",
           "desc": "+80 de P.Atk. y +5% de CP máximo con espada, mazo, lanza, espadas dobles o puños."
         },
         {
           "name": "Braveheart",
           "kind": "active",
           "learn": 78,
+          "icon": "braveheart",
           "desc": "Recuperás 1.000 de CP de un saque."
         },
         {
           "name": "Sonic Barrier",
           "kind": "active",
           "learn": 79,
+          "icon": "sonic-barrier",
           "desc": "Barrera que te vuelve inmune a golpes, skills y buffs por un momento. Pide carga 5."
         },
         {
           "name": "Symbol of Energy",
           "kind": "active",
           "learn": 80,
+          "icon": "symbol-of-energy",
           "desc": "Planta un símbolo que sube la P.Atk. y la carga de los que estén cerca. Pide Battle Force nivel 2 y consume un Battle Symbol."
         }
       ]

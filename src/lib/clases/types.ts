@@ -14,6 +14,9 @@ export type ClassSkill = {
   max?: number;
   // Funciona distinto del Interlude original.
   custom?: boolean;
+  // Archivo del ícono en public/skills (sin extensión). Dos habilidades con el mismo nombre
+  // pero distinto ícono (Armor Mastery de luchadores y de místicos) llevan el hash en el nombre.
+  icon?: string;
   desc: string;
 };
 

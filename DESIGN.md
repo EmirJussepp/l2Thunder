@@ -250,6 +250,8 @@ Número romano en un recuadro de 40–48 px con borde dorado al 60 % (Cinzel 900
 ### Accordions and Explorers
 `ItemExplorer` combina pestañas, grupos plegables e ítems plegables con su icono de 56 px. El encabezado de cada fila es un botón con chevrón de 16 px que rota 180° en 300 ms; el panel anima el alto con `grid-template-rows` y queda `inert` cuando está cerrado. El nivel de los títulos es configurable para no saltar niveles. "Expandir todo" y "Contraer todo" miden 44 px de alto.
 
+`ClassSkillTree` (guías de clase) usa el mismo plegable por tramo, con filtros de 44 px (`aria-pressed`) y un contador `aria-live`. Cada habilidad lleva su icono: el PNG de 32 px de `public/skills` en un recuadro de 40 px con borde fino y fondo `surface-2`, decorativo (`alt=""`, el nombre está al lado) y con `loading="lazy"`, así que los tramos cerrados no cargan sus imágenes hasta abrirse. Los datos y los iconos se generan desde los textos y artefactos del equipo; no se editan a mano.
+
 ### Navigation
 Header fijo con el escudo de 56 px a la izquierda y un botón de tres líneas finas de 1 px a la derecha (48 px). Al scrollear pasa a fondo semitransparente con desenfoque y un borde inferior. El menú es un panel sobre el lado derecho (ancho completo en celular, hasta 24rem) con los enlaces en Cinzel 900 de 1.5–1.875rem; el activo va dorado. Las redes (Facebook, Discord) van abajo con 44 px de alto.
 

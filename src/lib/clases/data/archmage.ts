@@ -49,24 +49,28 @@ export const archmage: ClassGuide = {
           "name": "Magician's Movement",
           "kind": "passive",
           "learn": 1,
+          "icon": "magicians-movement",
           "desc": "Más velocidad de ataque con túnica puesta."
         },
         {
           "name": "Spellcraft",
           "kind": "passive",
           "learn": 1,
+          "icon": "spellcraft",
           "desc": "Duplica la velocidad de casteo con túnica puesta."
         },
         {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Mana Recovery",
           "kind": "passive",
           "learn": 1,
+          "icon": "mana-recovery",
           "desc": "Más regeneración de MP con túnica puesta."
         },
         {
@@ -74,18 +78,21 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 1,
           "max": 14,
+          "icon": "wind-strike",
           "desc": "El ataque mágico básico de la rama."
         },
         {
           "name": "Self Heal",
           "kind": "active",
           "learn": 1,
+          "icon": "self-heal",
           "desc": "La cura de arranque, sobre uno mismo."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -93,6 +100,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -100,6 +108,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "anti-magic",
           "desc": "+108 de M.Def."
         },
         {
@@ -107,6 +116,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 14,
+          "icon": "armor-mastery-89aa31",
           "desc": "+9,2 de P.Def."
         },
         {
@@ -114,6 +124,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "weapon-mastery",
           "desc": "+79,4 y +45% de P.Atk., +99,3 y +17% de M.Atk. Con arco o pole, -30% de velocidad de casteo y -9 de precisión."
         },
         {
@@ -121,24 +132,28 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 14,
+          "icon": "heal",
           "desc": "Cura directa de 301. Barata y sin tiempo de espera."
         },
         {
           "name": "Cure Poison",
           "kind": "active",
           "learn": 7,
+          "icon": "cure-poison",
           "desc": "Saca el veneno. Cubre todos los venenos que puede tirar un jugador."
         },
         {
           "name": "Shield",
           "kind": "active",
           "learn": 7,
+          "icon": "shield",
           "desc": "+15% de P.Def."
         },
         {
           "name": "Might",
           "kind": "active",
           "learn": 7,
+          "icon": "might",
           "desc": "+15% de P.Atk."
         },
         {
@@ -146,18 +161,21 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 20,
+          "icon": "ice-bolt",
           "desc": "Golpe de hielo que además frena al objetivo."
         },
         {
           "name": "Battle Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "battle-heal",
           "desc": "Misma potencia que Heal pero de casteo rápido: es la de emergencia."
         },
         {
           "name": "Group Heal",
           "kind": "active",
           "learn": 14,
+          "icon": "group-heal",
           "desc": "Cura 241 a cada miembro de la party de una sola vez."
         },
         {
@@ -165,6 +183,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "max": 25,
+          "icon": "vampiric-touch",
           "desc": "Absorbe vida: te cura el 40% del daño que hace."
         },
         {
@@ -173,6 +192,7 @@ export const archmage: ClassGuide = {
           "learn": 14,
           "max": 35,
           "custom": true,
+          "icon": "curse-weakness",
           "desc": "-15% de P.Atk. durante 12 segundos."
         },
         {
@@ -180,6 +200,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -187,6 +208,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -203,6 +225,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 48,
+          "icon": "quick-recovery",
           "desc": "-30% al tiempo de espera de los skills mágicos."
         },
         {
@@ -211,6 +234,7 @@ export const archmage: ClassGuide = {
           "learn": 20,
           "max": 72,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -218,6 +242,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "robe-mastery",
           "desc": "+55,2 de P.Def. con túnica."
         },
         {
@@ -225,6 +250,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "higher-mana-gain",
           "desc": "Cada recarga que recibís rinde +39 de MP."
         },
         {
@@ -232,6 +258,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 68,
+          "icon": "concentration",
           "desc": "Hace mucho más difícil que a un mago le corten el casteo cuando recibe daño."
         },
         {
@@ -240,6 +267,7 @@ export const archmage: ClassGuide = {
           "learn": 20,
           "max": 35,
           "custom": true,
+          "icon": "summon-kat-the-cat",
           "desc": "Invoca a Kat the Cat, servidor de nivel 76 que sabe Master Recharge. Pide 20 Spirit Ore y consume uno cada 4 minutos."
         },
         {
@@ -247,6 +275,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "servitor-heal",
           "desc": "Cura a tu invocación: 936 de potencia."
         },
         {
@@ -254,6 +283,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "aura-burn",
           "desc": "Ataque mágico de corto alcance."
         },
         {
@@ -261,6 +291,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "flame-strike",
           "desc": "Llamarada que prende un área amplia."
         },
         {
@@ -268,6 +299,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "blaze",
           "desc": "Bola de fuego sobre un objetivo."
         },
         {
@@ -276,6 +308,7 @@ export const archmage: ClassGuide = {
           "learn": 20,
           "max": 35,
           "custom": true,
+          "icon": "summon-mew-the-cat",
           "desc": "Invoca a Mew the Cat, servidor de nivel 76 que sabe Mega Storm Strike."
         },
         {
@@ -283,6 +316,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "energy-bolt",
           "desc": "El dardo mágico más barato y más rápido de castear."
         },
         {
@@ -290,6 +324,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 56,
+          "icon": "fast-spell-casting",
           "desc": "+18% de velocidad de casteo."
         },
         {
@@ -297,6 +332,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 74,
+          "icon": "fast-mana-recovery",
           "desc": "+3,4 a la regeneración de MP."
         },
         {
@@ -304,6 +340,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 74,
+          "icon": "sleep",
           "desc": "Duerme a un enemigo 8 segundos. Cualquier daño lo despierta, y una vez despierto es casi imposible volver a dormirlo."
         },
         {
@@ -312,6 +349,7 @@ export const archmage: ClassGuide = {
           "learn": 25,
           "max": 74,
           "custom": true,
+          "icon": "surrender-to-fire",
           "desc": "Le abre la guardia al fuego: -30 de resistencia al fuego y +15 al agua, por 30 segundos."
         },
         {
@@ -319,6 +357,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 35,
+          "icon": "servitor-recharge",
           "desc": "Le devuelve MP a tu invocación."
         },
         {
@@ -327,6 +366,7 @@ export const archmage: ClassGuide = {
           "learn": 25,
           "max": 66,
           "custom": true,
+          "icon": "body-to-mind",
           "desc": "Quemás tu propia carne para rellenar la cabeza: recuperás 296 de MP. En L2Thunder cuesta 1,12 de HP por cada MP, no 6: antes no valía la pena usarlo."
         },
         {
@@ -334,6 +374,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 44,
+          "icon": "resist-wind",
           "desc": "+15 de resistencia al viento."
         },
         {
@@ -341,6 +382,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 30,
           "max": 35,
+          "icon": "corpse-life-drain",
           "desc": "Absorbe la vida de un cadáver para curarte."
         },
         {
@@ -348,12 +390,14 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 35,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
           "name": "Servitor Wind Walk",
           "kind": "active",
           "learn": 35,
+          "icon": "servitor-wind-walk",
           "desc": "+33 de velocidad a la invocación."
         },
         {
@@ -361,6 +405,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 35,
           "max": 74,
+          "icon": "slow",
           "desc": "-30% de velocidad de movimiento."
         },
         {
@@ -368,6 +413,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 35,
           "custom": true,
+          "icon": "curse-chaos",
           "desc": "-12 de precisión durante 15 segundos."
         }
       ]
@@ -385,6 +431,7 @@ export const archmage: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "surrender-to-wind",
           "desc": "Le abre la guardia al viento: -30 de resistencia al viento y +15 a la tierra, por 30 segundos."
         },
         {
@@ -393,6 +440,7 @@ export const archmage: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "curse-fear",
           "desc": "El terror lo agarra y lo hace huir 4 segundos."
         },
         {
@@ -400,6 +448,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "blazing-circle",
           "desc": "Anillo de llamas alrededor tuyo."
         },
         {
@@ -407,6 +456,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "prominence",
           "desc": "Junta el aire de alrededor para armar una bola de fuego enorme."
         },
         {
@@ -414,6 +464,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "aura-flare",
           "desc": "Golpe mágico contra lo que tengas cerca."
         },
         {
@@ -421,6 +472,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 56,
+          "icon": "blazing-skin",
           "desc": "Devuelve daño al que te pega de cerca y suma +5% de P.Def."
         },
         {
@@ -428,6 +480,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "aura-bolt",
           "desc": "La versión mejorada del dardo barato: más potencia por el mismo gasto."
         },
         {
@@ -436,6 +489,7 @@ export const archmage: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "clear-mind",
           "desc": "Más regeneración de MP caminando o parado, y +10% de velocidad de casteo."
         },
         {
@@ -444,6 +498,7 @@ export const archmage: ClassGuide = {
           "learn": 44,
           "max": 70,
           "custom": true,
+          "icon": "sleeping-cloud",
           "desc": "Nube que duerme a hasta 8 enemigos cercanos por 8 segundos. Cualquier daño los despierta."
         },
         {
@@ -452,6 +507,7 @@ export const archmage: ClassGuide = {
           "learn": 48,
           "max": 74,
           "custom": true,
+          "icon": "cancellation",
           "desc": "En L2Thunder no roba buffs: le alarga los tiempos de espera un 20% durante 20 segundos, físicos y mágicos. Nadie te va a vaciar la barra de buffs."
         },
         {
@@ -460,6 +516,7 @@ export const archmage: ClassGuide = {
           "learn": 48,
           "max": 74,
           "custom": true,
+          "icon": "immolation",
           "desc": "Envuelve en llamas a un solo enemigo: 2.348 de daño de fuego en 15 segundos. No puede matarlo."
         },
         {
@@ -467,6 +524,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "rain-of-fire",
           "desc": "Granizo de fuego: sirve contra varios enemigos a la vez."
         },
         {
@@ -474,6 +532,7 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "aura-flash",
           "desc": "Estallido elemental sobre los de alrededor que además les cancela el objetivo. Consume 4 Spirit Ore."
         },
         {
@@ -481,24 +540,28 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 66,
           "custom": true,
+          "icon": "seed-of-fire",
           "desc": "Absorbés la semilla del fuego y el aturdimiento se te quema encima: se puede lanzar incluso aturdido y te libera. +800 de P.Def. y M.Def. por 15 segundos, y habilita el Inferno."
         },
         {
           "name": "Aura Symphony",
           "kind": "active",
           "learn": 68,
+          "icon": "aura-symphony",
           "desc": "Combina dos fuerzas elementales en un golpe grande."
         },
         {
           "name": "Inferno",
           "kind": "active",
           "learn": 70,
+          "icon": "inferno",
           "desc": "Doble golpe de fuego devastador. Requiere una Seed of Fire."
         },
         {
           "name": "Elemental Assault",
           "kind": "active",
           "learn": 72,
+          "icon": "elemental-assault",
           "desc": "Pide fuerza de agua y de viento a la vez, y pega muy fuerte."
         }
       ]
@@ -514,6 +577,7 @@ export const archmage: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
@@ -521,12 +585,14 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu INT."
         },
         {
           "name": "Spell Force",
           "kind": "active",
           "learn": 77,
+          "icon": "spell-force",
           "desc": "Transfiere tu poder mágico a un compañero. Se corta si recibís daño, y es el requisito de Mass Recharge."
         },
         {
@@ -534,12 +600,14 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 77,
           "custom": true,
+          "icon": "fire-vortex",
           "desc": "Vórtice de fuego: hace daño y le baja al enemigo velocidad, ataque, casteo y resistencia al fuego mientras le drena MP durante 12 segundos."
         },
         {
           "name": "Arcane Power",
           "kind": "toggle",
           "learn": 78,
+          "icon": "arcane-power",
           "desc": "Postura: +30% de M.Atk. a cambio de +10% de MP en los skills y un goteo constante."
         },
         {
@@ -547,6 +615,7 @@ export const archmage: ClassGuide = {
           "kind": "passive",
           "learn": 78,
           "custom": true,
+          "icon": "arcane-roar",
           "desc": "+5% de M.Atk., +3% de casteo y +10 de resistencia a los cuatro elementos."
         },
         {
@@ -554,12 +623,14 @@ export const archmage: ClassGuide = {
           "kind": "active",
           "learn": 78,
           "custom": true,
+          "icon": "arcane-chaos",
           "desc": "Corrompe el flujo de maná del enemigo 15 segundos: le drena 320 de MP, le sube 30% el costo de los skills mágicos y hace que los debuffs le entren 30% más seguido."
         },
         {
           "name": "Volcano",
           "kind": "active",
           "learn": 80,
+          "icon": "volcano",
           "desc": "Cadena de golpes de fuego: no te podés mover mientras lo lanzás y consume MP con cada impacto. Pide Spell Force nivel 3 y un Magic Symbol."
         }
       ]

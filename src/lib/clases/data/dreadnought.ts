@@ -49,12 +49,14 @@ export const dreadnought: ClassGuide = {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -63,6 +65,7 @@ export const dreadnought: ClassGuide = {
           "learn": 5,
           "max": 15,
           "custom": true,
+          "icon": "power-strike",
           "desc": "El golpe cargado básico de espada o mazo: 870 de potencia."
         },
         {
@@ -70,6 +73,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 5,
           "max": 15,
+          "icon": "mortal-blow",
           "desc": "El golpe mortal básico de daga."
         },
         {
@@ -77,6 +81,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 5,
           "max": 15,
+          "icon": "power-shot",
           "desc": "El disparo cargado básico: 3.675 de potencia."
         },
         {
@@ -84,6 +89,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 15,
+          "icon": "weapon-mastery",
           "desc": "+8,5% y +4 de P.Atk."
         },
         {
@@ -91,12 +97,14 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 15,
+          "icon": "armor-mastery-9bf297",
           "desc": "Más defensa con equipo pesado, y defensa y evasión con equipo ligero."
         },
         {
           "name": "Relax",
           "kind": "toggle",
           "learn": 5,
+          "icon": "relax",
           "desc": "Sentado, +5 a la regeneración de HP."
         },
         {
@@ -104,6 +112,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -111,6 +120,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -118,6 +128,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -134,6 +145,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 43,
+          "icon": "war-cry",
           "desc": "+25% de P.Atk. por un momento."
         },
         {
@@ -141,6 +153,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "stun-attack",
           "desc": "Mazazo que deja al objetivo aturdido. Mientras dura no se lo puede volver a aturdir."
         },
         {
@@ -148,6 +161,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "boost-hp",
           "desc": "+480 de HP máximo."
         },
         {
@@ -156,6 +170,7 @@ export const dreadnought: ClassGuide = {
           "learn": 20,
           "max": 60,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -163,6 +178,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "polearm-mastery",
           "desc": "+129,3 de P.Atk. con lanza."
         },
         {
@@ -170,6 +186,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "light-armor-mastery-4d45b3",
           "desc": "+81,3 de P.Def. y +6 de evasión con armadura ligera."
         },
         {
@@ -177,6 +194,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "heavy-armor-mastery-a46092",
           "desc": "+79,3 de P.Def. con armadura pesada."
         },
         {
@@ -184,6 +202,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "wild-sweep",
           "desc": "Barrido de lanza que agarra a varios enemigos de adelante: 1.820 de potencia."
         },
         {
@@ -191,6 +210,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 36,
+          "icon": "power-smash",
           "desc": "Golpe fuerte sobre un solo enemigo: 2.180 de potencia."
         },
         {
@@ -198,6 +218,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 36,
+          "icon": "sword-blunt-mastery",
           "desc": "+20,5 de P.Atk. con espada o mazo."
         },
         {
@@ -206,6 +227,7 @@ export const dreadnought: ClassGuide = {
           "learn": 20,
           "max": 74,
           "custom": true,
+          "icon": "vicious-stance",
           "desc": "Postura despiadada: +609 de daño crítico con un goteo continuo de MP."
         },
         {
@@ -213,6 +235,7 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 24,
           "max": 32,
+          "icon": "vital-force",
           "desc": "Sentado recuperás +6,7 de HP y +2,5 de MP por tick."
         },
         {
@@ -220,12 +243,14 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 24,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
           "name": "Accuracy",
           "kind": "toggle",
           "learn": 24,
+          "icon": "accuracy",
           "desc": "Mientras lo tenés activo, +3 de precisión a cambio de un goteo de MP."
         },
         {
@@ -234,12 +259,14 @@ export const dreadnought: ClassGuide = {
           "learn": 28,
           "max": 70,
           "custom": true,
+          "icon": "battle-roar",
           "desc": "Un rugido que te hincha: +35% de HP máximo y te cura esa misma cantidad. Dura 600 segundos."
         },
         {
           "name": "Detect Insect Weakness",
           "kind": "active",
           "learn": 32,
+          "icon": "detect-insect-weakness",
           "desc": "+P.Atk. contra insectos."
         },
         {
@@ -248,6 +275,7 @@ export const dreadnought: ClassGuide = {
           "learn": 36,
           "max": 62,
           "custom": true,
+          "icon": "lionheart",
           "desc": "Tu ánimo no se quiebra: +60 de resistencia a aturdimiento, raíz, sueño y parálisis, y +60% contra el robo de buffs. Dura 30 segundos."
         }
       ]
@@ -264,6 +292,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "whirlwind",
           "desc": "Barrido amplio con lanza que pega a todos los que tengas alrededor: 4.100 de potencia, ignora el escudo."
         },
         {
@@ -271,12 +300,14 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "thunder-storm",
           "desc": "La versión grande del barrido: 6.320 de potencia sobre todo lo que te rodea."
         },
         {
           "name": "Detect Animal Weakness",
           "kind": "active",
           "learn": 40,
+          "icon": "detect-animal-weakness",
           "desc": "+P.Atk. contra animales."
         },
         {
@@ -285,6 +316,7 @@ export const dreadnought: ClassGuide = {
           "learn": 40,
           "max": 74,
           "custom": true,
+          "icon": "focus-attack",
           "desc": "Postura de lanza: +6 de precisión y +30% de daño crítico."
         },
         {
@@ -293,6 +325,7 @@ export const dreadnought: ClassGuide = {
           "learn": 43,
           "max": 74,
           "custom": true,
+          "icon": "howl",
           "desc": "Aullido que baja 10% la P.Atk. a hasta 8 enemigos cercanos durante 15 segundos."
         },
         {
@@ -300,6 +333,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 43,
           "max": 60,
+          "icon": "provoke",
           "desc": "Atrae hacia vos a los monstruos que estén dentro de 900 de distancia."
         },
         {
@@ -307,12 +341,14 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 43,
           "max": 74,
+          "icon": "final-frenzy",
           "desc": "Cuando te baja la vida, sube sola la P.Atk. hasta +213,3."
         },
         {
           "name": "Detect Plant Weakness",
           "kind": "active",
           "learn": 46,
+          "icon": "detect-plant-weakness",
           "desc": "+P.Atk. contra plantas."
         },
         {
@@ -321,18 +357,21 @@ export const dreadnought: ClassGuide = {
           "learn": 46,
           "max": 55,
           "custom": true,
+          "icon": "thrill-fight",
           "desc": "+15 de velocidad y +10% de velocidad de ataque a cambio de -8% de P.Def., durante 5 minutos."
         },
         {
           "name": "Detect Beast Weakness",
           "kind": "active",
           "learn": 52,
+          "icon": "detect-beast-weakness",
           "desc": "+P.Atk. contra bestias."
         },
         {
           "name": "Revival",
           "kind": "active",
           "learn": 55,
+          "icon": "revival",
           "desc": "Te deja la vida llena en una emergencia. Solo se puede usar con 15% de HP o menos."
         },
         {
@@ -340,12 +379,14 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 55,
           "max": 72,
+          "icon": "shock-stomp",
           "desc": "Pisotón que sacude a los de alrededor y les cancela el objetivo."
         },
         {
           "name": "Detect Dragon Weakness",
           "kind": "active",
           "learn": 58,
+          "icon": "detect-dragon-weakness",
           "desc": "+P.Atk. contra dragones."
         },
         {
@@ -354,6 +395,7 @@ export const dreadnought: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "fell-swoop",
           "desc": "+10 de alcance con lanza durante 300 segundos."
         },
         {
@@ -362,6 +404,7 @@ export const dreadnought: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "polearm-accuracy",
           "desc": "Postura de lanza: +4 de precisión con un goteo de 4,2 de MP por segundo a nivel 80."
         },
         {
@@ -370,6 +413,7 @@ export const dreadnought: ClassGuide = {
           "learn": 58,
           "max": 74,
           "custom": true,
+          "icon": "war-frenzy",
           "desc": "Postura que te templa la cabeza: +15% de resistencia al aturdimiento y +20% al sueño, con goteo de MP."
         },
         {
@@ -377,6 +421,7 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 66,
           "max": 74,
+          "icon": "wrath",
           "desc": "Barrido de lanza que además le saca la mitad del CP a los de adelante: 2.700 de potencia."
         }
       ]
@@ -392,12 +437,14 @@ export const dreadnought: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
           "name": "Health",
           "kind": "passive",
           "learn": 76,
+          "icon": "health",
           "desc": "Más resistencia a veneno y sangrado."
         },
         {
@@ -405,12 +452,14 @@ export const dreadnought: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu STR."
         },
         {
           "name": "Eye of Hunter",
           "kind": "active",
           "learn": 77,
+          "icon": "eye-of-hunter",
           "desc": "+P.Atk. contra insectos, plantas y animales, todo junto."
         },
         {
@@ -418,12 +467,14 @@ export const dreadnought: ClassGuide = {
           "kind": "active",
           "learn": 77,
           "custom": true,
+          "icon": "shock-blast",
           "desc": "Onda de choque a distancia con lanza: 3.800 de potencia, les cancela el objetivo, los aturde 3 segundos y les baja 15% las defensas por 10."
         },
         {
           "name": "Battle Force",
           "kind": "active",
           "learn": 77,
+          "icon": "battle-force",
           "desc": "Transfiere tu fuerza a un compañero de party. Se corta si recibís daño, y es el requisito de los símbolos."
         },
         {
@@ -431,36 +482,42 @@ export const dreadnought: ClassGuide = {
           "kind": "toggle",
           "learn": 78,
           "custom": true,
+          "icon": "parry-stance",
           "desc": "Te cubrís con el arma: +25% de defensas a cambio de -20% de velocidad de ataque, -10% de movimiento y -4 de precisión. Consume MP."
         },
         {
           "name": "Earthquake",
           "kind": "active",
           "learn": 78,
+          "icon": "earthquake",
           "desc": "Sacrificás HP para golpear a todo lo que te rodea y cancelarles el objetivo: 5.040 de potencia, ignora el escudo."
         },
         {
           "name": "Eye of Slayer",
           "kind": "active",
           "learn": 78,
+          "icon": "eye-of-slayer",
           "desc": "+P.Atk. contra bestias, criaturas mágicas, gigantes y dragones."
         },
         {
           "name": "Master of Combat",
           "kind": "passive",
           "learn": 78,
+          "icon": "master-of-combat",
           "desc": "+80 de P.Atk. y +5% de CP máximo con espada, mazo, lanza, espadas dobles o puños."
         },
         {
           "name": "Braveheart",
           "kind": "active",
           "learn": 78,
+          "icon": "braveheart",
           "desc": "Recuperás 1.000 de CP de un saque."
         },
         {
           "name": "Symbol of Honor",
           "kind": "active",
           "learn": 80,
+          "icon": "symbol-of-honor",
           "desc": "Planta un símbolo que maximiza la recuperación de HP y CP de los que estén cerca. Pide Battle Force nivel 2 y consume un Battle Symbol."
         }
       ]

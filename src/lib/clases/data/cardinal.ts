@@ -49,24 +49,28 @@ export const cardinal: ClassGuide = {
           "name": "Magician's Movement",
           "kind": "passive",
           "learn": 1,
+          "icon": "magicians-movement",
           "desc": "Más velocidad de ataque con túnica puesta."
         },
         {
           "name": "Spellcraft",
           "kind": "passive",
           "learn": 1,
+          "icon": "spellcraft",
           "desc": "Duplica la velocidad de casteo con túnica puesta."
         },
         {
           "name": "Lucky",
           "kind": "passive",
           "learn": 1,
+          "icon": "lucky",
           "desc": "Evita la penalización por muerte hasta nivel 9."
         },
         {
           "name": "Mana Recovery",
           "kind": "passive",
           "learn": 1,
+          "icon": "mana-recovery",
           "desc": "Más regeneración de MP con túnica puesta."
         },
         {
@@ -74,18 +78,21 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 1,
           "max": 14,
+          "icon": "wind-strike",
           "desc": "El ataque mágico básico de la rama."
         },
         {
           "name": "Self Heal",
           "kind": "active",
           "learn": 1,
+          "icon": "self-heal",
           "desc": "La cura de arranque, sobre uno mismo."
         },
         {
           "name": "Common Craft",
           "kind": "active",
           "learn": 1,
+          "icon": "common-craft",
           "desc": "Permite leer recetas comunes."
         },
         {
@@ -93,6 +100,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 5,
           "max": 70,
+          "icon": "create-common-item",
           "desc": "Fabrica ítems comunes hasta nivel 9."
         },
         {
@@ -100,6 +108,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "anti-magic",
           "desc": "+108 de M.Def."
         },
         {
@@ -107,6 +116,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 14,
+          "icon": "armor-mastery-89aa31",
           "desc": "+9,2 de P.Def."
         },
         {
@@ -114,6 +124,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 7,
           "max": 74,
+          "icon": "weapon-mastery",
           "desc": "+79,4 y +45% de P.Atk., +99,3 y +17% de M.Atk. Con arco o pole, -30% de velocidad de casteo y -9 de precisión."
         },
         {
@@ -121,6 +132,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 35,
+          "icon": "heal",
           "desc": "Cura directa de 301. Barata y sin tiempo de espera."
         },
         {
@@ -128,6 +140,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 58,
+          "icon": "cure-poison",
           "desc": "Saca el veneno. Cubre todos los venenos que puede tirar un jugador."
         },
         {
@@ -135,6 +148,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 25,
+          "icon": "shield",
           "desc": "+15% de P.Def."
         },
         {
@@ -142,6 +156,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 20,
+          "icon": "might",
           "desc": "+15% de P.Atk."
         },
         {
@@ -149,6 +164,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 7,
           "max": 14,
+          "icon": "ice-bolt",
           "desc": "Golpe de hielo que además frena al objetivo."
         },
         {
@@ -156,6 +172,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "max": 35,
+          "icon": "battle-heal",
           "desc": "Misma potencia que Heal pero de casteo rápido: es la de emergencia."
         },
         {
@@ -163,12 +180,14 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "max": 35,
+          "icon": "group-heal",
           "desc": "Cura 241 a cada miembro de la party de una sola vez."
         },
         {
           "name": "Vampiric Touch",
           "kind": "active",
           "learn": 14,
+          "icon": "vampiric-touch",
           "desc": "Absorbe vida: te cura el 40% del daño que hace."
         },
         {
@@ -176,6 +195,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 14,
           "custom": true,
+          "icon": "curse-weakness",
           "desc": "-15% de P.Atk. durante 12 segundos."
         },
         {
@@ -183,6 +203,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 76,
+          "icon": "expertise",
           "desc": "Te deja usar equipo de grados cada vez más altos sin penalización, hasta el grado S."
         },
         {
@@ -190,6 +211,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 52,
           "max": 76,
+          "icon": "divine-inspiration",
           "desc": "Sube la cantidad de buffs que podés tener encima."
         }
       ]
@@ -206,6 +228,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 48,
+          "icon": "quick-recovery",
           "desc": "-30% al tiempo de espera de los skills mágicos."
         },
         {
@@ -214,6 +237,7 @@ export const cardinal: ClassGuide = {
           "learn": 20,
           "max": 72,
           "custom": true,
+          "icon": "boost-mana",
           "desc": "+800 de MP máximo."
         },
         {
@@ -221,6 +245,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 20,
           "max": 74,
+          "icon": "robe-mastery",
           "desc": "+87,4 de P.Def. con túnica."
         },
         {
@@ -229,6 +254,7 @@ export const cardinal: ClassGuide = {
           "learn": 20,
           "max": 74,
           "custom": true,
+          "icon": "light-armor-mastery-4d45b3",
           "desc": "Con armadura ligera: +69,6 de P.Def., +91% de velocidad de casteo, +25% de velocidad de ataque y +20% de recuperación de MP."
         },
         {
@@ -236,6 +262,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 74,
+          "icon": "resurrection",
           "desc": "Revive un cadáver y le devuelve cerca del 20% de la experiencia perdida."
         },
         {
@@ -243,12 +270,14 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "disrupt-undead",
           "desc": "Daño sagrado contra no-muertos. En zonas de undead pega mucho más que Wind Strike."
         },
         {
           "name": "Kiss of Eva",
           "kind": "active",
           "learn": 20,
+          "icon": "kiss-of-eva",
           "desc": "Multiplica por 7 el tiempo que se aguanta bajo el agua."
         },
         {
@@ -256,6 +285,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "concentration",
           "desc": "Hace mucho más difícil que a un mago le corten el casteo cuando recibe daño."
         },
         {
@@ -263,6 +293,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 35,
+          "icon": "acumen",
           "desc": "+23% de velocidad de casteo."
         },
         {
@@ -270,6 +301,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 20,
           "max": 30,
+          "icon": "wind-walk",
           "desc": "+33 de velocidad de movimiento."
         },
         {
@@ -277,6 +309,7 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 56,
+          "icon": "fast-spell-casting",
           "desc": "+18% de velocidad de casteo."
         },
         {
@@ -284,12 +317,14 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 25,
           "max": 74,
+          "icon": "fast-mana-recovery",
           "desc": "+3,4 a la regeneración de MP."
         },
         {
           "name": "Mental Shield",
           "kind": "active",
           "learn": 25,
+          "icon": "mental-shield",
           "desc": "+25% de resistencia a Hold, Sleep, Fear y ataques mentales."
         },
         {
@@ -297,6 +332,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "custom": true,
+          "icon": "holy-weapon",
           "desc": "Bendice el arma de un compañero: +80 de poder sagrado, que se aplica a los golpes normales y a los skills sin elemento propio."
         },
         {
@@ -304,12 +340,14 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 74,
+          "icon": "sleep",
           "desc": "Duerme a un enemigo 8 segundos. Cualquier daño lo despierta, y una vez despierto es casi imposible volver a dormirlo."
         },
         {
           "name": "Focus",
           "kind": "active",
           "learn": 25,
+          "icon": "focus",
           "desc": "+30% de probabilidad de crítico."
         },
         {
@@ -317,12 +355,14 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 25,
           "max": 35,
+          "icon": "dryad-root",
           "desc": "Raíces que inmovilizan al objetivo 6 segundos. No le impiden atacar ni castear, pero sí perseguirte."
         },
         {
           "name": "Resist Wind",
           "kind": "active",
           "learn": 30,
+          "icon": "resist-wind",
           "desc": "+15 de resistencia al viento."
         },
         {
@@ -330,12 +370,14 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 35,
           "max": 74,
+          "icon": "fast-hp-recovery",
           "desc": "+2,7 a la regeneración de HP."
         },
         {
           "name": "Berserker Spirit",
           "kind": "active",
           "learn": 35,
+          "icon": "berserker-spirit",
           "desc": "+16% de P.Atk. y M.Atk., +8% de velocidades, a cambio de -20% de defensas. Es para cuando hay que terminar rápido."
         },
         {
@@ -343,6 +385,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 35,
           "max": 74,
+          "icon": "peace",
           "desc": "Le apacigua la mente al objetivo y le baja las ganas de atacar."
         }
       ]
@@ -359,6 +402,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "might-of-heaven",
           "desc": "Daño sagrado contra no-muertos."
         },
         {
@@ -366,6 +410,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "requiem",
           "desc": "Un réquiem que calma a los no-muertos de alrededor."
         },
         {
@@ -373,6 +418,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 74,
+          "icon": "greater-battle-heal",
           "desc": "Cura rápida de emergencia: 858 de potencia."
         },
         {
@@ -380,6 +426,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 40,
           "max": 68,
+          "icon": "mass-resurrection",
           "desc": "Revive a los miembros caídos de la alianza y les devuelve cerca del 55% de la experiencia."
         },
         {
@@ -387,6 +434,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 62,
+          "icon": "purify",
           "desc": "Saca veneno, sangrado, parálisis y aturdimiento. Es la limpieza amplia."
         },
         {
@@ -394,6 +442,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 74,
+          "icon": "repose",
           "desc": "Le baja las ganas de atacar a un no-muerto."
         },
         {
@@ -401,6 +450,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 44,
           "max": 56,
+          "icon": "restore-life",
           "desc": "Le devuelve el 30% de la vida al objetivo."
         },
         {
@@ -409,6 +459,7 @@ export const cardinal: ClassGuide = {
           "learn": 48,
           "max": 74,
           "custom": true,
+          "icon": "vitalize",
           "desc": "Energía vital que cierra la herida y quema lo que la infecta: cura 780 y además saca veneno y sangrado. Cubre todos los que puede tirar un jugador."
         },
         {
@@ -416,6 +467,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 48,
           "max": 74,
+          "icon": "hold-undead",
           "desc": "Paraliza no-muertos en el acto."
         },
         {
@@ -423,6 +475,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 48,
           "max": 72,
+          "icon": "body-of-avatar",
           "desc": "Sube un 35% el HP máximo de la party y la cura por esa misma cantidad en el acto."
         },
         {
@@ -431,6 +484,7 @@ export const cardinal: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "trance",
           "desc": "Arrastra al objetivo a un trance: dormido 15 segundos, y cualquier daño lo despierta."
         },
         {
@@ -438,6 +492,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 56,
           "max": 74,
+          "icon": "erase",
           "desc": "Manda la invocación del enemigo a otra dimensión. Consume 5 Spirit Ore."
         },
         {
@@ -446,6 +501,7 @@ export const cardinal: ClassGuide = {
           "learn": 56,
           "max": 74,
           "custom": true,
+          "icon": "magical-backfire",
           "desc": "Le retuerce la magia para que todo le cueste el doble de MP durante 10 segundos."
         },
         {
@@ -453,6 +509,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 56,
           "max": 74,
+          "icon": "mana-burn",
           "desc": "Quema 210 de MP del objetivo. Contra un mago o un sanador vale más que cualquier golpe."
         },
         {
@@ -460,6 +517,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 56,
           "max": 74,
+          "icon": "turn-undead",
           "desc": "Los no-muertos huyen al ver tu naturaleza divina. Puede matar de un golpe. Consume 5 Spirit Ore."
         },
         {
@@ -467,6 +525,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 56,
           "max": 74,
+          "icon": "major-heal",
           "desc": "La cura grande sobre un objetivo: 946 de potencia. Consume un Spirit Ore."
         },
         {
@@ -475,6 +534,7 @@ export const cardinal: ClassGuide = {
           "learn": 56,
           "max": 72,
           "custom": true,
+          "icon": "invocation",
           "desc": "Te sentás a meditar y recuperás 1.665 de MP cada 3,3 segundos durante 10: casi 5.000 en total. No podés moverte y te baja la P.Def. mientras dura."
         },
         {
@@ -482,6 +542,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "mana-storm",
           "desc": "Les baja el MP a todos los enemigos cercanos."
         },
         {
@@ -489,6 +550,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 58,
           "max": 74,
+          "icon": "major-group-heal",
           "desc": "La cura grande para toda la party de un saque: 1.170 de potencia. Consume 4 Spirit Ore."
         },
         {
@@ -496,12 +558,14 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 64,
           "custom": true,
+          "icon": "celestial-shield",
           "desc": "Vuelve invulnerable a tu objetivo durante 10 segundos: no se le puede hacer daño, no le entran debuffs y no le pueden robar los buffs."
         },
         {
           "name": "Benediction",
           "kind": "active",
           "learn": 66,
+          "icon": "benediction",
           "desc": "Regenera la vida de toda la party. Solo se puede usar con menos del 25% de tu MP."
         },
         {
@@ -509,6 +573,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 66,
           "max": 74,
+          "icon": "prayer",
           "desc": "Bendice a la party para que las curas que reciba rindan un 12% más."
         }
       ]
@@ -524,12 +589,14 @@ export const cardinal: ClassGuide = {
           "name": "Wisdom",
           "kind": "passive",
           "learn": 76,
+          "icon": "wisdom",
           "desc": "Más resistencia a Hold, Sleep y ataques mentales."
         },
         {
           "name": "Health",
           "kind": "passive",
           "learn": 76,
+          "icon": "health",
           "desc": "Más resistencia a veneno y sangrado."
         },
         {
@@ -537,6 +604,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 76,
           "custom": true,
+          "icon": "balance-life",
           "desc": "Reparte la vida entre todos los de la party: los que están a punto de morir suben y los que están enteros bajan. Salva situaciones que ninguna cura salva."
         },
         {
@@ -544,12 +612,14 @@ export const cardinal: ClassGuide = {
           "kind": "passive",
           "learn": 77,
           "custom": true,
+          "icon": "skill-mastery",
           "desc": "Cada skill que lanzás tiene cerca de un 5% de salir sin tiempo de espera. La probabilidad sube con tu INT."
         },
         {
           "name": "Spell Force",
           "kind": "active",
           "learn": 77,
+          "icon": "spell-force",
           "desc": "Transfiere tu poder mágico a un compañero. Se corta si recibís daño, y es el requisito de Mass Recharge."
         },
         {
@@ -557,6 +627,7 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 77,
           "custom": true,
+          "icon": "divine-protection",
           "desc": "Envuelve al aliado en luz divina: +20 de resistencia sagrada y oscura."
         },
         {
@@ -564,18 +635,21 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 77,
           "custom": true,
+          "icon": "mass-block-shield",
           "desc": "Derriba la guardia de los de alrededor: -10% de P.Def. a hasta 8 enemigos."
         },
         {
           "name": "Arcane Wisdom",
           "kind": "toggle",
           "learn": 78,
+          "icon": "arcane-wisdom",
           "desc": "Mientras lo tenés activo: +10% de velocidad de casteo, +10% de P.Def. y -5% de MP en los skills. Consume 12 de MP cada 3,3 segundos."
         },
         {
           "name": "Divine Lore",
           "kind": "passive",
           "learn": 78,
+          "icon": "divine-lore",
           "desc": "-5% al costo de MP de los skills mágicos."
         },
         {
@@ -583,30 +657,35 @@ export const cardinal: ClassGuide = {
           "kind": "active",
           "learn": 78,
           "custom": true,
+          "icon": "mass-block-wind-walk",
           "desc": "Les pesa las piernas a los de alrededor: -10% de velocidad a hasta 8 enemigos."
         },
         {
           "name": "Cleanse",
           "kind": "active",
           "learn": 78,
+          "icon": "cleanse",
           "desc": "Limpia los debuffs del objetivo. Consume un Einhasad Holy Water."
         },
         {
           "name": "Salvation",
           "kind": "active",
           "learn": 79,
+          "icon": "salvation",
           "desc": "Revive al objetivo con la vida llena y conservando sus buffs. Consume 2 Einhasad Holy Water."
         },
         {
           "name": "Purification Field",
           "kind": "active",
           "learn": 80,
+          "icon": "purification-field",
           "desc": "Planta un símbolo que limpia los debuffs de todos los aliados del área. Pide Spell Force nivel 2 y un Magic Symbol."
         },
         {
           "name": "Miracle",
           "kind": "active",
           "learn": 80,
+          "icon": "miracle",
           "desc": "Planta un símbolo que cura a todos los aliados del área. Pide Spell Force nivel 2 y un Magic Symbol."
         }
       ]
