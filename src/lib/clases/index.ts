@@ -1,12 +1,16 @@
 import type { ClassGuide } from "./types";
 import { adventurer } from "./data/adventurer";
 import { arcanaLord } from "./data/arcana-lord";
+import { archmage } from "./data/archmage";
+import { cardinal } from "./data/cardinal";
 import { dreadnought } from "./data/dreadnought";
 import { duelist } from "./data/duelist";
 import { hellKnight } from "./data/hell-knight";
+import { hierophant } from "./data/hierophant";
 import { phoenixKnight } from "./data/phoenix-knight";
 import { sagittarius } from "./data/sagittarius";
 import { shillienSaint } from "./data/shillien-saint";
+import { soultaker } from "./data/soultaker";
 
 // Orden en el que se listan las guías publicadas (el de "Elegir clase" lo define panorama.ts).
 // Para sumar una clase: agregar su archivo en ./data y una línea acá.
@@ -18,6 +22,10 @@ const GUIDES = [
   adventurer,
   sagittarius,
   arcanaLord,
+  archmage,
+  soultaker,
+  cardinal,
+  hierophant,
   shillienSaint,
 ];
 
