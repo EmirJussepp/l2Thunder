@@ -22,6 +22,9 @@ export default function Footer() {
           <Link href="/guias" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Guías
           </Link>
+          <Link href="/guias/clases" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
+            Clases
+          </Link>
           <Link href="/informacion-de-juego" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Información de juego
           </Link>

@@ -5,9 +5,18 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Crest from "./Crest";
 
-const links = [
+type NavLink = {
+  href: string;
+  label: string;
+  sectionId: string | null;
+  // Rutas que cuelgan de href pero tienen su propia entrada en el menú: ahí no se marca esta.
+  notUnder?: string;
+};
+
+const links: NavLink[] = [
   { href: "/por-que-l2thunder", label: "¿Por qué L2Thunder?", sectionId: null },
-  { href: "/guias", label: "Guías", sectionId: null },
+  { href: "/guias", label: "Guías", sectionId: null, notUnder: "/guias/clases" },
+  { href: "/guias/clases", label: "Clases", sectionId: null },
   { href: "/informacion-de-juego", label: "Información de juego", sectionId: null },
   { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
   { href: "/donar", label: "Donar", sectionId: null },
@@ -67,9 +76,11 @@ export default function Navbar() {
     };
   }, [open]);
 
-  function isActive(link: (typeof links)[number]) {
+  function isActive(link: NavLink) {
     if (link.sectionId === null) {
-      return pathname === link.href || pathname.startsWith(`${link.href}/`);
+      const under = (base: string) => pathname === base || pathname.startsWith(`${base}/`);
+      if (link.notUnder && under(link.notUnder)) return false;
+      return under(link.href);
     }
     return pathname === "/" && activeSection === link.sectionId;
   }
