@@ -22,8 +22,8 @@ async function upsert(dst, table, row) {
 }
 
 const SIG = {
-  DonationPackage: `select count(*)::int n, md5(coalesce(string_agg(id||'|'||slug||'|'||name||'|'||kind::text||'|'||coalesce("priceCoins"::text,'')||'|'||active::text||'|'||array_to_string(perks,'~'), ',' order by id),'')) h from "DonationPackage"`,
-  DonationOrder: `select count(*)::int n, md5(coalesce(string_agg(id||'|'||"packageId"||'|'||"characterName"||'|'||status::text||'|'||"amountArsCents"::text||'|'||coalesce("mpPaymentId",'')||'|'||coalesce("mpPreferenceId",''), ',' order by id),'')) h from "DonationOrder"`,
+  DonationPackage: (w) => `select count(*)::int n, md5(coalesce(string_agg(id||'|'||slug||'|'||name||'|'||kind::text||'|'||coalesce("priceCoins"::text,'')||'|'||active::text||'|'||array_to_string(perks,'~'), ',' order by id),'')) h from "DonationPackage" ${w}`,
+  DonationOrder: (w) => `select count(*)::int n, md5(coalesce(string_agg(id||'|'||"packageId"||'|'||"characterName"||'|'||status::text||'|'||"amountArsCents"::text||'|'||coalesce("mpPaymentId",'')||'|'||coalesce("mpPreferenceId",''), ',' order by id),'')) h from "DonationOrder" ${w}`,
 };
 
 (async () => {
@@ -42,12 +42,14 @@ const SIG = {
     await dst.query("COMMIT");
 
     let ok = true;
+    const ids = { DonationPackage: pk.map((r) => r.id), DonationOrder: ord.map((r) => r.id) };
     for (const t of Object.keys(SIG)) {
-      const a = (await src.query(SIG[t])).rows[0];
-      const b = (await dst.query(SIG[t])).rows[0];
+      const a = (await src.query(SIG[t](""))).rows[0];
+      const b = (await dst.query(SIG[t]("where id = any($1)"), [ids[t]])).rows[0];
+      const total = (await dst.query(`select count(*)::int n from "${t}"`)).rows[0].n;
       const same = a.n === b.n && a.h === b.h;
       if (!same) ok = false;
-      console.log(`${t.padEnd(16)} origen ${a.n} | destino ${b.n} | huella ${same ? "IGUAL" : "DISTINTA"}`);
+      console.log(`${t.padEnd(16)} filas de Neon ${a.n} | esas mismas filas en el VPS ${b.n} | huella ${same ? "IGUAL" : "DISTINTA"} | filas extra solo en el VPS: ${total - b.n}`);
     }
     console.log(ok ? "SINCRONIZACION OK" : "SINCRONIZACION CON DIFERENCIAS");
     process.exitCode = ok ? 0 : 2;
