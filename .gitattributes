@@ -1,0 +1,2 @@
+# Los scripts del VPS tienen que quedar con LF aunque se clonen en Windows.
+*.sh text eol=lf
