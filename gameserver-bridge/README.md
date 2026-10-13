@@ -83,8 +83,15 @@ message, items)` con `date` como `TIMESTAMP DEFAULT CURRENT_TIMESTAMP` (**no** p
 un valor a mano ahí — MySQL en modo estricto rechaza un epoch en milisegundos; se deja
 que la columna se llene sola).
 
-No hace falta tabla de idempotencia propia acá: la web es la que decide qué está
-pendiente (columna `status` de `DonationOrder`), el bridge no guarda estado.
+La web es la que decide qué está pendiente (columna `status` de `DonationOrder`), pero el
+bridge **sí** lleva un registro mínimo: `delivered.json` (junto a `server.js`, o donde diga
+`STATE_FILE`) con los `orderId` que ya insertó en `custom_mail`. Es lo único que evita el
+correo duplicado cuando la confirmación (`/api/bridge/ack`) no llega — un corte de red o un
+500 de la web mientras la base despierta —: la orden queda `PROCESSING`, la web la vuelve a
+ofrecer a los 5 minutos y, sin este registro, el bridge mandaría las coins otra vez. Con él,
+la reconoce, no inserta nada y solo reintenta la confirmación. Si se borra el archivo no pasa
+nada grave: solo se pierde esa protección para las órdenes ya entregadas.
+`/api/bridge/ack` se reintenta 3 veces antes de rendirse, y un 4xx/5xx cuenta como fallo.
 
 ### Dejarlo corriendo
 

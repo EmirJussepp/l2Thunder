@@ -1,4 +1,6 @@
 require("dotenv/config");
+const fs = require("fs");
+const path = require("path");
 const mysql = require("mysql2/promise");
 
 const WEB_BASE_URL = process.env.WEB_BASE_URL;
@@ -44,22 +46,65 @@ async function fetchPending() {
   return data.orders || [];
 }
 
-async function ack(orderId, status, error) {
+// Registro local de las órdenes que YA se insertaron en custom_mail. Sin esto, si el ack no
+// llega (la web devolvió un 5xx, un corte de red) la orden vuelve a ofrecerse a los 5 minutos
+// y el bridge insertaría un segundo correo con las mismas coins.
+const STATE_FILE = process.env.STATE_FILE || path.join(__dirname, "delivered.json");
+
+function loadDelivered() {
   try {
-    await fetch(`${WEB_BASE_URL}/api/bridge/ack`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-Bridge-Secret": BRIDGE_SECRET },
-      body: JSON.stringify({ orderId, status, error }),
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    });
-  } catch (err) {
-    // Si el ack no llega, la orden queda PROCESSING y /pending la vuelve a ofrecer
-    // sola después de un rato (ver STALE_PROCESSING_MS del lado de la web).
-    console.error(`No se pudo mandar el ack de ${orderId}:`, err);
+    return JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
+  } catch {
+    return []; // primera vez, o archivo ilegible: se arranca vacío
   }
 }
 
+const delivered = new Set(loadDelivered());
+
+function markDelivered(orderId) {
+  delivered.add(orderId);
+  try {
+    fs.writeFileSync(STATE_FILE, JSON.stringify([...delivered]));
+  } catch (err) {
+    // El correo ya está insertado: no hay que reportarlo como fallo por no poder anotarlo.
+    console.error(`No se pudo guardar ${STATE_FILE}:`, err);
+  }
+}
+
+const ACK_ATTEMPTS = 3;
+
+// Devuelve true si la web confirmó que recibió el resultado. fetch() solo tira error si se cae
+// la red: un 500 de la web (p. ej. la base despertando) vuelve como respuesta normal, así que
+// hay que mirar res.ok y reintentar.
+async function ack(orderId, status, error) {
+  for (let attempt = 1; attempt <= ACK_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch(`${WEB_BASE_URL}/api/bridge/ack`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Bridge-Secret": BRIDGE_SECRET },
+        body: JSON.stringify({ orderId, status, error }),
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      });
+      if (res.ok) return true;
+      console.error(`Ack de ${orderId}: la web respondió ${res.status} (intento ${attempt}/${ACK_ATTEMPTS})`);
+    } catch (err) {
+      console.error(`Ack de ${orderId}: intento ${attempt}/${ACK_ATTEMPTS} falló:`, err);
+    }
+    if (attempt < ACK_ATTEMPTS) await new Promise((r) => setTimeout(r, 3000 * attempt));
+  }
+  // Si no llega, la orden queda PROCESSING y /pending la vuelve a ofrecer sola después de un
+  // rato (ver STALE_PROCESSING_MS del lado de la web); delivered.json evita que se reenvíe.
+  console.error(`Ack de ${orderId} (${status}) NO llegó: la web la va a volver a ofrecer.`);
+  return false;
+}
+
 async function deliverOrder({ orderId, characterName, coins }) {
+  if (delivered.has(orderId)) {
+    console.log(`Orden ${orderId}: ya estaba entregada, solo se vuelve a confirmar`);
+    await ack(orderId, "DELIVERED");
+    return;
+  }
+
   if (typeof characterName !== "string" || !characterName.trim()) {
     console.error(`Orden ${orderId}: characterName inválido`);
     await ack(orderId, "FAILED", "characterName inválido");
@@ -101,6 +146,7 @@ async function deliverOrder({ orderId, characterName, coins }) {
       ],
     );
 
+    markDelivered(orderId);
     console.log(`Orden ${orderId}: ${coins} Coins of Luck enviados a "${characterName}"`);
     await ack(orderId, "DELIVERED");
   } catch (err) {

@@ -23,9 +23,12 @@ export async function POST(req: NextRequest) {
   let payment;
   try {
     payment = await new Payment(mpClient).get({ id: paymentId });
-  } catch {
-    // MP a veces manda la notificación antes de que el pago esté disponible por API.
-    return NextResponse.json({ received: true });
+  } catch (err) {
+    // MP a veces manda la notificación antes de que el pago esté disponible por API, o la
+    // API tiene un hipo. Si acá devolviéramos 200, MP lo daría por recibido y no volvería a
+    // avisar: un pago aprobado se quedaría sin acreditar para siempre. Con un 5xx reintenta solo.
+    console.error(`Webhook MP: no se pudo leer el pago ${paymentId}`, err);
+    return NextResponse.json({ error: "payment_unavailable" }, { status: 502 });
   }
 
   const orderId = payment.external_reference;
@@ -34,17 +37,25 @@ export async function POST(req: NextRequest) {
   const order = await prisma.donationOrder.findUnique({ where: { id: orderId } });
   if (!order) return NextResponse.json({ received: true });
 
+  // Todos los cambios de estado son compare-and-set (updateMany con el estado en el where):
+  // MP manda notificaciones duplicadas y fuera de orden, y un update pelado podría volver a
+  // PAID una orden que el bridge ya levantó (o pisar una aprobada con un rechazo viejo).
   if (payment.status === "approved") {
-    if (order.status === "PENDING_PAYMENT") {
-      await prisma.donationOrder.update({
-        where: { id: order.id },
-        data: { status: "PAID", mpPaymentId: String(payment.id), paidAt: new Date() },
-      });
-    }
+    // Checkout Pro deja reintentar con otra tarjeta después de un rechazo, y el pago nuevo
+    // llega con el mismo external_reference: por eso también rescatamos una orden FAILED que
+    // nunca tuvo pago. Un FAILED por error del bridge ya tiene mpPaymentId y no entra acá.
+    await prisma.donationOrder.updateMany({
+      where: {
+        id: order.id,
+        OR: [{ status: "PENDING_PAYMENT" }, { status: "FAILED", mpPaymentId: null }],
+      },
+      data: { status: "PAID", mpPaymentId: String(payment.id), paidAt: new Date(), bridgeError: null },
+    });
   } else if (payment.status === "rejected" || payment.status === "cancelled") {
-    if (order.status === "PENDING_PAYMENT") {
-      await prisma.donationOrder.update({ where: { id: order.id }, data: { status: "FAILED" } });
-    }
+    await prisma.donationOrder.updateMany({
+      where: { id: order.id, status: "PENDING_PAYMENT" },
+      data: { status: "FAILED" },
+    });
   }
 
   return NextResponse.json({ received: true });

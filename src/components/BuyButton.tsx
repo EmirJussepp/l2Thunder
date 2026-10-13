@@ -66,7 +66,8 @@ export default function BuyButton({
     return (
       <p className="text-sm text-foreground">
         Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
-        of Luck llegan solos por correo in-game a los pocos segundos de confirmarse.
+        of Luck llegan solos por correo in-game, en unos minutos desde que se confirma el
+        pago.
       </p>
     );
   }
