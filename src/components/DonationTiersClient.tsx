@@ -19,7 +19,8 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-3">
+    // Con una sola caja la tarjeta va centrada y de ancho acotado; con varias, en 3 columnas.
+    <div className={tiers.length === 1 ? "mx-auto grid max-w-md gap-6" : "grid gap-6 sm:grid-cols-3"}>
       {tiers.map((tier) => (
         <div
           key={tier.id}

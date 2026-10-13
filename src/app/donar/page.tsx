@@ -33,9 +33,10 @@ export default function DonarPage() {
           Convertite en Fundador de Thunder
         </h1>
         <p className="mt-4 text-muted">
-          Elegí el VIP (+30% de EXP y de Drop durante 15 días, más un Cofre de armadura de regalo) o una Caja de
-          Skins de la rareza que quieras. Los precios están en Coins of Luck — nunca vendemos
-          daño ni items que te hagan invencible en PvP.
+          Elegí el VIP (+30% de EXP y de Drop durante 15 días, más un Cofre de armadura de regalo) o
+          la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
+          (10%). Los precios están en Coins of Luck — nunca vendemos daño ni items que te hagan
+          invencible en PvP.
         </p>
       </div>
 
@@ -44,7 +45,7 @@ export default function DonarPage() {
       </section>
 
       <section>
-        <h2 className="mb-6 text-center font-display text-2xl font-bold">Cajas de Skins</h2>
+        <h2 className="mb-6 text-center font-display text-2xl font-bold">Caja de Skins</h2>
         <DonationTiers />
       </section>
 

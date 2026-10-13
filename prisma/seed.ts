@@ -14,7 +14,7 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 10 * ARS_PER_COIN * 100,
     coinsGranted: 10,
-    perks: ["Alcanza justo para la Caja Rara o para arrancar a juntar para más"],
+    perks: ["Alcanza para la Caja de Skins (8 Coins) o para arrancar a juntar para más"],
     highlight: false,
   },
   {
@@ -23,7 +23,7 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 25 * ARS_PER_COIN * 100,
     coinsGranted: 25,
-    perks: ["Alcanza para el VIP Thunder o la Caja Épica, con vuelto"],
+    perks: ["Alcanza para el VIP Thunder o la Caja de Skins, con vuelto"],
     highlight: true,
   },
   {
@@ -32,34 +32,43 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 60 * ARS_PER_COIN * 100,
     coinsGranted: 60,
-    perks: ["Alcanza para la Caja Legendaria, con coins de sobra"],
+    perks: ["Alcanza para el VIP Thunder y la Caja de Skins, con coins de sobra"],
     highlight: false,
   },
   {
-    // El slug quedó de cuando se llamaba "Caja Normal": no se cambia porque las órdenes ya
+    // La única caja de la tienda: una skin al azar (Rara 60%, Épica 30%, Legendaria 10%).
+    // El slug quedó de cuando había tres cajas ("Caja Normal"): no se cambia porque las órdenes ya
     // creadas apuntan a este paquete y el seed borra los slugs que no están en la lista.
     slug: "caja-normal",
-    name: "Caja Rara",
+    name: "Caja de Skins",
     kind: "BOX" as const,
-    priceCoins: 4,
-    perks: ["Sale cualquier skin de rareza Rara"],
+    priceCoins: 8,
+    perks: [
+      "60% de probabilidad: skin Rara",
+      "30% de probabilidad: skin Épica",
+      "10% de probabilidad: skin Legendaria",
+    ],
     highlight: false,
   },
   {
+    // Ya no se vende (hay una sola caja): queda desactivada, no borrada, por el historial.
     slug: "caja-epica",
     name: "Caja Épica",
     kind: "BOX" as const,
     priceCoins: 9,
     perks: ["Sale cualquier skin de rareza Épica"],
-    highlight: true,
+    highlight: false,
+    active: false,
   },
   {
+    // Ya no se vende (hay una sola caja): queda desactivada, no borrada, por el historial.
     slug: "caja-legendaria",
     name: "Caja Legendaria",
     kind: "BOX" as const,
     priceCoins: 22,
     perks: ["Sale cualquier skin de rareza Legendaria"],
     highlight: false,
+    active: false,
   },
   {
     slug: "vip-thunder",
