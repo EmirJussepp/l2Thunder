@@ -68,6 +68,10 @@ export async function POST(req: NextRequest) {
 
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
   const isLocal = siteUrl.startsWith("http://localhost");
+  // A dónde avisa Mercado Pago del pago. Si no se define, es el mismo sitio. En el VPS se fija al
+  // host propio de ese servidor (p. ej. https://app.l2thunder.online): así, aunque el dominio
+  // principal se mueva de un lado a otro, cada pago avisa siempre al servidor que lo creó.
+  const webhookBase = (process.env.WEBHOOK_BASE_URL || siteUrl).replace(/\/$/, "");
 
   try {
     const preference = new Preference(mpClient);
@@ -89,7 +93,7 @@ export async function POST(req: NextRequest) {
           failure: `${siteUrl}/donar?checkout=failed`,
         },
         ...(isLocal ? {} : { auto_return: "approved" as const }),
-        notification_url: `${siteUrl}/api/webhooks/mercadopago`,
+        notification_url: `${webhookBase}/api/webhooks/mercadopago`,
       },
     });
 
