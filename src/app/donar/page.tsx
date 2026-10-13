@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import CheckoutBanner from "@/components/CheckoutBanner";
 import DonationTiers from "@/components/DonationTiers";
 import VipPass from "@/components/VipPass";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
@@ -16,6 +18,13 @@ export const metadata: Metadata = {
 export default function DonarPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 pb-20 pt-36">
+      {/* Cómo le fue al pago (Mercado Pago vuelve con ?checkout=...). Va arriba de todo para que
+          se vea apenas vuelve, y en Suspense para que la página siga siendo estática: solo se
+          lee en el navegador. */}
+      <Suspense fallback={null}>
+        <CheckoutBanner />
+      </Suspense>
+
       <div className="mx-auto mb-14 max-w-xl text-center">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Boost, no poder
