@@ -66,9 +66,9 @@ const packages = [
     priceCoins: 10,
     durationDays: 15,
     perks: [
-      "5% de EXP extra durante 15 días",
-      "5% de Drop extra durante 15 días",
-      "1 caja de skin de regalo (rareza al azar: Normal, Épica o Legendaria)",
+      "+30% de EXP durante 15 días",
+      "+30% de Drop durante 15 días",
+      "1 cofre de skin de regalo (puede salir una skin Rara, Épica o Legendaria)",
     ],
     highlight: true,
   },

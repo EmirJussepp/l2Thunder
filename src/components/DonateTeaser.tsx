@@ -11,8 +11,8 @@ export default function DonateTeaser() {
           Convertite en Fundador de L2Thunder
         </h2>
         <p className="max-w-xl text-muted">
-          Comprás Coins of Luck y los usás en lo que quieras: VIP (empujón chico de EXP y
-          Drop, 5%, más una caja de regalo) o Cajas de Skins de la rareza que elijas — nunca
+          Comprás Coins of Luck y los usás en lo que quieras: VIP (+30% de EXP y de Drop
+          durante 15 días, más un cofre de skin de regalo) o Cajas de Skins de la rareza que elijas — nunca
           vendemos daño ni items que te hagan invencible en PvP.
         </p>
         <Link

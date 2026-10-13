@@ -24,7 +24,7 @@ export default function DonarPage() {
           Convertite en Fundador de Thunder
         </h1>
         <p className="mt-4 text-muted">
-          Elegí el VIP (empujón chico de EXP y Drop, 5%, más una caja de regalo) o una Caja de
+          Elegí el VIP (+30% de EXP y de Drop durante 15 días, más un cofre de skin de regalo) o una Caja de
           Skins de la rareza que quieras. Los precios están en Coins of Luck — nunca vendemos
           daño ni items que te hagan invencible en PvP.
         </p>
