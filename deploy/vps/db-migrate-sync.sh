@@ -14,6 +14,13 @@ KEY="${KEY:-$HOME/.ssh/id_ed25519_vps}"
 LPORT="${LPORT:-55432}"
 SSHO=(-o BatchMode=yes -o ConnectTimeout=25 -o ServerAliveInterval=15 -i "$KEY")
 
+# DESPUÉS del cambio de dominio (13/10/2026) la base de producción es la del VPS y Neon quedó vieja:
+# copiar de Neon al VPS PISARÍA los paquetes y precios actuales con los de Neon. Solo se permite a propósito.
+if [ -z "${SOBRESCRIBIR_VPS_CON_NEON:-}" ]; then
+  echo "ABORTO: este script copia Neon -> VPS y pisaría los paquetes/precios actuales del VPS."
+  echo "Ya no se usa después del cambio de dominio. Si de verdad querés hacerlo: SOBRESCRIBIR_VPS_CON_NEON=1 bash deploy/vps/db-migrate-sync.sh"
+  exit 1
+fi
 [ -f .env ] || { echo "Corré esto desde la raíz del repo (no encuentro .env)"; exit 1; }
 SRC_URL="$(grep -E '^DATABASE_URL' .env | head -1 | sed -E 's/^DATABASE_URL *= *//; s/^"//; s/"$//')"
 [ -n "$SRC_URL" ] || { echo "No encuentro DATABASE_URL de Neon en .env"; exit 1; }
