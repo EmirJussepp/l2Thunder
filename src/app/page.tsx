@@ -3,6 +3,7 @@ import PosterBand from "@/components/PosterBand";
 import Features from "@/components/Features";
 import PlaySteps from "@/components/PlaySteps";
 import DonateTeaser from "@/components/DonateTeaser";
+import ClassesTeaser from "@/components/ClassesTeaser";
 
 // Los afiches (src/lib/posters.ts) van intercalados entre las secciones; para
 // cambiar uno de lugar alcanza con mover su <PosterBand />.
@@ -17,6 +18,7 @@ export default function Home() {
       <PosterBand id="pvp" />
       <DonateTeaser />
       <PosterBand id="beta" />
+      <ClassesTeaser />
     </>
   );
 }

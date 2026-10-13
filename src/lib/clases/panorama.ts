@@ -1,12 +1,14 @@
-// "Elegir clase": una línea por clase de tercera, agrupadas por raza. Las que ya tienen guía
-// (están en ./index.ts) se enlazan; el resto muestra "Guía próximamente". Faltan razas por
-// cargar (el panorama que llegó trae 19 de las 31 clases de tercera).
+// "Elegir clase": una línea por clase de tercera, agrupadas por raza, las 31 del Interlude.
+// Las que ya tienen guía (están en ./index.ts) se enlazan; el resto muestra "Guía próximamente".
+// El panorama con rol, arma, fuerte y floja llegó para 19; las otras 12 quedan solo con el
+// nombre hasta que llegue su texto (no se inventa nada). Para completar una: sumarle esos
+// cuatro campos acá.
 export type PanoramaClass = {
   name: string;
-  role: string;
-  weapon: string;
-  strong: string;
-  weak: string;
+  role?: string;
+  weapon?: string;
+  strong?: string;
+  weak?: string;
 };
 
 export type PanoramaGroup = { race: string; classes: PanoramaClass[] };
@@ -72,6 +74,8 @@ export const PANORAMA: PanoramaGroup[] = [
   {
     race: "Elfo Oscuro",
     classes: [
+      { name: "Ghost Hunter" },
+      { name: "Ghost Sentinel" },
       {
         name: "Shillien Saint",
         role: "Sanador de veneno",
@@ -79,7 +83,15 @@ export const PANORAMA: PanoramaGroup[] = [
         strong: "Veneno · curación sostenida · maná de la party",
         weak: "Daño directo · defensa propia",
       },
+      { name: "Shillien Templar" },
+      { name: "Spectral Dancer" },
+      { name: "Spectral Master" },
+      { name: "Storm Screamer" },
     ],
+  },
+  {
+    race: "Enano",
+    classes: [{ name: "Fortune Seeker" }, { name: "Maestro" }],
   },
   {
     race: "Humano",
@@ -161,6 +173,15 @@ export const PANORAMA: PanoramaGroup[] = [
         strong: "Maldiciones · control · daño oscuro",
         weak: "Aguante · daño directo rápido",
       },
+    ],
+  },
+  {
+    race: "Orco",
+    classes: [
+      { name: "Dominator" },
+      { name: "Doomcryer" },
+      { name: "Grand Khavatari" },
+      { name: "Titan" },
     ],
   },
 ];

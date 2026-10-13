@@ -252,6 +252,8 @@ Número romano en un recuadro de 40–48 px con borde dorado al 60 % (Cinzel 900
 
 `ClassSkillTree` (guías de clase) usa el mismo plegable por tramo, con filtros de 44 px (`aria-pressed`) y un contador `aria-live`. Cada habilidad lleva su icono: el PNG de 32 px de `public/skills` en un recuadro de 40 px con borde fino y fondo `surface-2`, decorativo (`alt=""`, el nombre está al lado) y con `loading="lazy"`, así que los tramos cerrados no cargan sus imágenes hasta abrirse. Los datos y los iconos se generan desde los textos y artefactos del equipo; no se editan a mano.
 
+`ClassCard` es la tarjeta de "Elegir clase", y su estética la definió el equipo (es la de su hoja de clases, no se retoca): fondo plano `surface`, borde fino, nombre en Cinzel 19 px dorado oscuro (`accent-2`, subrayado fino, dorado al pasar el mouse), rol y arma en mono 11 px celeste (`accent`), y "Fuerte:" / "Floja:" en una línea cada uno. La página `/guias/clases` la usa sin más (encabezado con filete que se desvanece, título dorado, una sola línea bajo la portada, grupos de raza seguidos sin separadores). La home la reutiliza en `ClassesTeaser` con una tira de cinco iconos de habilidades de tercera clase y "Ver guía →". Las clases sin guía no son enlace y dicen "Guía próximamente".
+
 ### Navigation
 Header fijo con el escudo de 56 px a la izquierda y un botón de tres líneas finas de 1 px a la derecha (48 px). Al scrollear pasa a fondo semitransparente con desenfoque y un borde inferior. El menú es un panel sobre el lado derecho (ancho completo en celular, hasta 24rem) con los enlaces en Cinzel 900 de 1.5–1.875rem; el activo va dorado. Las redes (Facebook, Discord) van abajo con 44 px de alto.
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { classSlug, getClassGuide } from "@/lib/clases";
-import { PANORAMA, PANORAMA_INTRO, type PanoramaClass } from "@/lib/clases/panorama";
+import ClassCard from "@/components/clases/ClassCard";
+import { PANORAMA, PANORAMA_INTRO } from "@/lib/clases/panorama";
 
 export const metadata: Metadata = {
   title: "Elegir clase — Guías de clase",
@@ -9,79 +8,33 @@ export const metadata: Metadata = {
     "Qué hace cada clase de tercera en L2Thunder, en una línea: rol, arma, en qué es fuerte y en qué es floja, con la guía completa de habilidades de cada una.",
 };
 
-function ClassCard({ c }: { c: PanoramaClass }) {
-  const hasGuide = Boolean(getClassGuide(classSlug(c.name)));
-  // Algunas clases se llaman igual que su arma (Duelist: espadas dobles): no repetirlo.
-  const roleLine = c.role === c.weapon ? c.weapon : `${c.role} · ${c.weapon}`;
-
-  const body = (
-    <>
-      <h3 className="font-display text-lg font-bold text-foreground group-hover:text-gold">
-        {c.name}
-      </h3>
-      <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-muted">
-        {roleLine}
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-muted">
-        <strong className="font-semibold text-foreground">Fuerte:</strong> {c.strong}
-      </p>
-      <p className="mt-1 text-sm leading-relaxed text-muted">
-        <strong className="font-semibold text-foreground">Floja:</strong> {c.weak}
-      </p>
-      <span
-        className={`mt-4 inline-block text-xs font-semibold uppercase tracking-widest ${
-          hasGuide ? "text-gold" : "text-muted"
-        }`}
-      >
-        {hasGuide ? "Ver guía →" : "Guía próximamente"}
-      </span>
-    </>
-  );
-
-  if (!hasGuide) {
-    return <div className="card-surface rounded-none p-5">{body}</div>;
-  }
-  return (
-    <Link
-      href={`/guias/clases/${classSlug(c.name)}`}
-      className="card-surface group block rounded-none p-5 transition hover:border-accent/50"
-    >
-      {body}
-    </Link>
-  );
-}
-
+// El estilo de esta página es el de la hoja de clases del equipo: encabezado con el rótulo y su
+// filete que se desvanece, título dorado, una sola línea bajo la portada y los grupos de raza
+// uno detrás del otro, sin separadores.
 export default function ElegirClasePage() {
   return (
     <div className="px-6 pb-24 pt-36">
-      <div className="mx-auto max-w-4xl">
-        <Link
-          href="/guias"
-          className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
-        >
-          ← Guías
-        </Link>
-
-        <div className="mt-6">
-          <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
+      <div className="mx-auto max-w-[860px]">
+        <header className="mb-14 border-b border-border-soft pb-12">
+          <p className="mb-[18px] flex items-center gap-3 font-display text-xs font-bold uppercase tracking-[0.22em] text-accent-2 after:h-px after:flex-1 after:bg-gradient-to-r after:from-accent-2 after:to-transparent after:content-['']">
             L2 Thunder · Guías de clase
           </p>
-          <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">Elegir clase</h1>
-          <p className="mt-2 font-display text-lg font-semibold text-muted">
+          <h1 className="font-display text-[clamp(2.375rem,7vw,3.75rem)] font-bold leading-[1.04] text-gold [text-wrap:balance]">
+            Elegir clase
+          </h1>
+          <p className="mb-[30px] mt-1.5 font-display text-[clamp(1.0625rem,2.6vw,1.3125rem)] font-medium text-muted">
             Qué hace cada una, en una línea
           </p>
-          <p className="mt-6 max-w-[38rem] text-muted">{PANORAMA_INTRO}</p>
-        </div>
+          <p className="max-w-[62ch] text-[19px] leading-[1.62] text-foreground">{PANORAMA_INTRO}</p>
+        </header>
 
         {PANORAMA.map((group) => (
-          <section key={group.race} className="mt-14 border-t border-border-soft pt-14">
-            <h2 className="font-display text-xl font-bold text-foreground">
-              <span aria-hidden="true" className="mr-2 text-accent-2">
-                ✦
-              </span>
+          <section key={group.race}>
+            <h2 className="mb-3.5 mt-1 font-display text-[clamp(1.4375rem,3.4vw,1.8125rem)] font-bold leading-[1.2] text-foreground [text-wrap:balance]">
+              <span aria-hidden="true">✦ </span>
               {group.race}
             </h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mb-2 mt-[26px] grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-[14px]">
               {group.classes.map((c) => (
                 <ClassCard key={c.name} c={c} />
               ))}

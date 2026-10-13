@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SkillIcon from "@/components/clases/SkillIcon";
 import Collapsible from "@/components/informacion/Collapsible";
 import type { ClassSkill, ClassTier, SkillKind } from "@/lib/clases/types";
 
@@ -47,21 +48,7 @@ function Chevron({ open }: { open: boolean }) {
 function SkillRow({ skill }: { skill: ClassSkill }) {
   return (
     <li className="flex gap-3 border-b border-border-soft px-4 py-4 last:border-b-0 sm:gap-4 sm:px-5">
-      {skill.icon && (
-        // Decorativo: el nombre de la habilidad está al lado. Mismo marco que los ítems.
-        <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-border-soft bg-surface-2 p-1">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/skills/${skill.icon}.png`}
-            alt=""
-            width={32}
-            height={32}
-            loading="lazy"
-            decoding="async"
-            className="h-8 w-8"
-          />
-        </span>
-      )}
+      {skill.icon && <SkillIcon icon={skill.icon} className="mt-0.5" />}
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <h3 className="font-display text-sm font-bold text-gold sm:text-base">{skill.name}</h3>
