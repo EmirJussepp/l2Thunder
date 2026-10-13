@@ -2,6 +2,9 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Para correr en el VPS (BUILD_TARGET=vps) se arma una carpeta autosuficiente con
+  // `node server.js`. En Vercel no se usa: ahí queda el build normal.
+  ...(process.env.BUILD_TARGET === "vps" ? { output: "standalone" as const } : {}),
   turbopack: {
     root: path.join(__dirname),
   },
