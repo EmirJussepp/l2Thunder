@@ -6,11 +6,17 @@
 #   - Los servicios nuevos arrancan con límite de memoria y prioridad baja: si falta RAM,
 #     el sistema mata primero a la web, nunca al juego.
 #   - Caddy NO usa el puerto 80 (lo usa el patcher del launcher): pide el certificado por el 443.
+#   - Ubuntu 22.04 no trae Caddy: se baja el binario oficial de GitHub y se verifica su checksum
+#     (así no se agrega ningún repositorio de terceros al sistema).
 set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=l NEEDRESTART_SUSPEND=1
 
 WEB_HOST="${WEB_HOST:-app.l2thunder.online}"
-PKGS="postgresql caddy"
+CADDY_VERSION="${CADDY_VERSION:-2.11.7}"
+PKGS="postgresql"
+
+cleanup() { rm -f /usr/sbin/policy-rc.d; if [ -n "${TMP:-}" ]; then rm -rf "$TMP"; fi; }
+trap cleanup EXIT
 
 [ -e /opt/l2-web/.env.production ] && { echo "Ya existe /opt/l2-web/.env.production: este script es de una sola vez. No sigo."; exit 1; }
 
@@ -21,10 +27,9 @@ if echo "$SIM" | grep -qE '^Remv '; then echo "ABORTO: apt quitaría paquetes:";
 if echo "$SIM" | grep -qE '^Inst [^ ]+ \['; then echo "ABORTO: apt actualizaría paquetes ya instalados:"; echo "$SIM" | grep -E '^Inst [^ ]+ \['; exit 1; fi
 echo "  ok: solo paquetes nuevos, nada que actualizar ni quitar"
 
-echo "== 2/6 Instalación (sin arrancar servicios todavía) =="
+echo "== 2/6 Instalación de PostgreSQL (sin arrancar servicios todavía) =="
 printf '#!/bin/sh\nexit 101\n' > /usr/sbin/policy-rc.d
 chmod +x /usr/sbin/policy-rc.d
-trap 'rm -f /usr/sbin/policy-rc.d' EXIT
 apt-get install -y --no-install-recommends --no-upgrade $PKGS
 rm -f /usr/sbin/policy-rc.d
 
@@ -60,15 +65,22 @@ id l2web >/dev/null 2>&1 || useradd --system --create-home --home-dir /opt/l2-we
 mkdir -p /opt/l2-web/releases
 chown -R l2web:l2web /opt/l2-web
 PGPASS="$(openssl rand -hex 24)"
+if ! runuser -u postgres -- psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='l2web'" | grep -q 1; then
+  runuser -u postgres -- psql -v ON_ERROR_STOP=1 -q -c "CREATE ROLE l2web LOGIN"
+fi
+# La contraseña viaja por stdin (no queda en la lista de procesos).
 runuser -u postgres -- psql -v ON_ERROR_STOP=1 -q <<SQL
-CREATE ROLE l2web LOGIN PASSWORD '$PGPASS';
-CREATE DATABASE l2web OWNER l2web;
-REVOKE ALL ON DATABASE l2web FROM PUBLIC;
+ALTER ROLE l2web PASSWORD '$PGPASS';
 SQL
+if ! runuser -u postgres -- psql -tAc "SELECT 1 FROM pg_database WHERE datname='l2web'" | grep -q 1; then
+  runuser -u postgres -- createdb -O l2web l2web
+fi
+runuser -u postgres -- psql -v ON_ERROR_STOP=1 -q -c "REVOKE ALL ON DATABASE l2web FROM PUBLIC"
 umask 077
 {
   echo "DATABASE_URL=\"postgresql://l2web:${PGPASS}@127.0.0.1:5432/l2web\""
   echo "NEXT_PUBLIC_SITE_URL=\"https://${WEB_HOST}\""
+  echo "WEBHOOK_BASE_URL=\"https://${WEB_HOST}\""
 } > /opt/l2-web/.env.production
 # El secreto del bridge es el mismo que usa el bridge actual: se copia de archivo a archivo, sin mostrarlo.
 BS="$(grep -E '^BRIDGE_SECRET=' /opt/l2thunder-bridge/.env | head -1 | cut -d= -f2-)"
@@ -76,9 +88,28 @@ BS="$(grep -E '^BRIDGE_SECRET=' /opt/l2thunder-bridge/.env | head -1 | cut -d= -
 chown l2web:l2web /opt/l2-web/.env.production
 chmod 600 /opt/l2-web/.env.production
 unset PGPASS BS
+# Se vuelve al umask normal: lo que se crea después (config de Caddy, servicios) tiene que ser legible.
+umask 022
 echo "  /opt/l2-web/.env.production creado (600). Falta MP_ACCESS_TOKEN: lo escribe el dueño, no yo."
 
-echo "== 5/6 Caddy: HTTPS por el 443, sin tocar el puerto 80 =="
+echo "== 5/6 Caddy ${CADDY_VERSION}: binario oficial de GitHub, con checksum verificado =="
+TMP="$(mktemp -d)"
+BASE="https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}"
+ASSET="caddy_${CADDY_VERSION}_linux_amd64.tar.gz"
+curl -fsSL -o "$TMP/$ASSET" "$BASE/$ASSET"
+curl -fsSL -o "$TMP/checksums.txt" "$BASE/caddy_${CADDY_VERSION}_checksums.txt"
+EXPECT="$(grep -E " \*?${ASSET}\$" "$TMP/checksums.txt" | awk '{print $1}' | head -1)"
+case "${#EXPECT}" in 128) ALGO=sha512sum ;; 64) ALGO=sha256sum ;; *) echo "ABORTO: no encuentro el checksum de $ASSET"; exit 1 ;; esac
+ACTUAL="$($ALGO "$TMP/$ASSET" | awk '{print $1}')"
+[ "$EXPECT" = "$ACTUAL" ] || { echo "ABORTO: el checksum de Caddy NO coincide"; exit 1; }
+echo "  checksum ok ($ALGO)"
+tar -xzf "$TMP/$ASSET" -C "$TMP" caddy
+install -m 0755 "$TMP/caddy" /usr/local/bin/caddy
+/usr/local/bin/caddy version
+
+id caddy >/dev/null 2>&1 || useradd --system --home-dir /var/lib/caddy --create-home --shell /usr/sbin/nologin caddy
+mkdir -p /etc/caddy /var/lib/caddy/data /var/lib/caddy/config
+chown -R caddy:caddy /var/lib/caddy
 cat > /etc/caddy/Caddyfile <<EOF
 {
 	# El 80 es del patcher del launcher: Caddy no lo usa. El certificado se pide por el 443 (TLS-ALPN).
@@ -88,20 +119,49 @@ cat > /etc/caddy/Caddyfile <<EOF
 }
 
 ${WEB_HOST} {
+	tls {
+		issuer acme {
+			disable_http_challenge
+		}
+	}
+	# Host de pruebas y de avisos de pago: que los buscadores no lo indexen.
+	header X-Robots-Tag "noindex, nofollow"
 	encode zstd gzip
 	reverse_proxy 127.0.0.1:3001
 }
 EOF
-caddy validate --config /etc/caddy/Caddyfile
-mkdir -p /etc/systemd/system/caddy.service.d
-cat > /etc/systemd/system/caddy.service.d/override.conf <<EOF
+runuser -u caddy -- env XDG_DATA_HOME=/var/lib/caddy/data XDG_CONFIG_HOME=/var/lib/caddy/config \
+  /usr/local/bin/caddy validate --config /etc/caddy/Caddyfile
+cat > /etc/systemd/system/caddy.service <<'EOF'
+[Unit]
+Description=Caddy (HTTPS de la web de L2Thunder)
+After=network-online.target
+Wants=network-online.target
+
 [Service]
+Type=simple
+User=caddy
+Group=caddy
+Environment=XDG_DATA_HOME=/var/lib/caddy/data
+Environment=XDG_CONFIG_HOME=/var/lib/caddy/config
+ExecStart=/usr/local/bin/caddy run --config /etc/caddy/Caddyfile
+ExecReload=/usr/local/bin/caddy reload --config /etc/caddy/Caddyfile --force
+TimeoutStopSec=10s
+LimitNOFILE=65536
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ProtectSystem=full
 MemoryMax=150M
 OOMScoreAdjust=700
 Nice=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-echo "  Caddy queda configurado pero SIN arrancar: se arranca cuando el DNS de ${WEB_HOST} ya apunta acá."
+echo "  Caddy queda instalado pero SIN arrancar: se arranca cuando la web ya está subida."
 
 echo "== 6/6 Firewall: solo se agrega el 443 (las reglas existentes no se tocan) =="
 ufw allow 443/tcp comment 'L2Thunder web HTTPS'

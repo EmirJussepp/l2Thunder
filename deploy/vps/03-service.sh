@@ -19,6 +19,7 @@ Environment=PORT=3001
 Environment=HOSTNAME=127.0.0.1
 ExecStart=/usr/bin/node server.js
 Restart=always
+SuccessExitStatus=143
 RestartSec=5
 MemoryMax=350M
 OOMScoreAdjust=800

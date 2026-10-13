@@ -14,8 +14,9 @@ echo "== Motores de las tablas (MyISAM no se bloquea con --single-transaction) =
 mysql -N -e "SELECT engine, COUNT(*) FROM information_schema.tables WHERE table_schema NOT IN ('mysql','sys','information_schema','performance_schema') GROUP BY engine" || true
 
 echo "== Dump de TODAS las bases MySQL (juego incluido) =="
-mysqldump --all-databases --single-transaction --quick --routines --events --triggers \
-  | gzip -9 > "$D/mysql-all.sql.gz"
+# nice + ionice: prioridad mínima de CPU y de disco, para que el juego ni lo note.
+nice -n 19 ionice -c 3 mysqldump --all-databases --single-transaction --quick --routines --events --triggers \
+  | nice -n 19 gzip -6 > "$D/mysql-all.sql.gz"
 gzip -t "$D/mysql-all.sql.gz"
 if ! zcat "$D/mysql-all.sql.gz" | tail -n 5 | grep -q 'Dump completed'; then
   echo "El dump NO terminó bien: no sigo."; exit 1
