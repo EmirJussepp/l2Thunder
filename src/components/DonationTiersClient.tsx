@@ -19,8 +19,16 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
   }
 
   return (
-    // Con una sola caja la tarjeta va centrada y de ancho acotado; con varias, en 3 columnas.
-    <div className={tiers.length === 1 ? "mx-auto grid max-w-md gap-6" : "grid gap-6 sm:grid-cols-3"}>
+    // Una tarjeta va centrada y angosta, dos van en pareja y tres en tres columnas.
+    <div
+      className={
+        tiers.length === 1
+          ? "mx-auto grid max-w-md gap-6"
+          : tiers.length === 2
+            ? "mx-auto grid max-w-3xl gap-6 sm:grid-cols-2"
+            : "grid gap-6 sm:grid-cols-3"
+      }
+    >
       {tiers.map((tier) => (
         <div
           key={tier.id}
@@ -28,11 +36,11 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
             tier.highlight ? "border-gold/60 ring-1 ring-gold/30" : ""
           }`}
         >
-          {/* La etiqueta flota sobre el borde de la tarjeta: si ocupara lugar adentro, empujaría el
+          {/* La etiqueta (la de la promoción) flota sobre el borde de la tarjeta: si ocupara lugar adentro, empujaría el
               título, el precio y la descripción y las tres tarjetas no quedarían alineadas. */}
           {tier.highlight && (
             <span className="absolute -top-3 left-6 rounded-none bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wide text-background">
-              Más elegido
+              Promoción
             </span>
           )}
           <h3 className="font-display text-xl font-bold">{tier.name}</h3>

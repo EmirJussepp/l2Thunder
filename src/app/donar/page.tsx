@@ -35,8 +35,8 @@ export default function DonarPage() {
         <p className="mt-4 text-muted">
           Elegí el VIP (+30% de EXP y de Drop durante 15 días, más un Cofre de armadura de regalo) o
           la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
-          (10%). Los precios están en Coins of Luck — nunca vendemos daño ni items que te hagan
-          invencible en PvP.
+          (10%), o llevate los dos juntos en promoción. Los precios están en Coins of Luck — nunca vendemos
+          daño ni items que te hagan invencible en PvP.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function DonarPage() {
       </section>
 
       <section>
-        <h2 className="mb-6 text-center font-display text-2xl font-bold">Caja de Skins</h2>
+        <h2 className="mb-6 text-center font-display text-2xl font-bold">Caja de Skins y promoción</h2>
         <DonationTiers />
       </section>
 

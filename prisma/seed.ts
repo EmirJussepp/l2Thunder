@@ -14,7 +14,7 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 10 * ARS_PER_COIN * 100,
     coinsGranted: 10,
-    perks: ["Alcanza para la Caja de Skins (8 Coins) o para arrancar a juntar para más"],
+    perks: ["Alcanza para el VIP o para la Caja de Skins (8 Coins cada uno)"],
     highlight: false,
   },
   {
@@ -23,7 +23,7 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 25 * ARS_PER_COIN * 100,
     coinsGranted: 25,
-    perks: ["Alcanza para el VIP Thunder o la Caja de Skins, con vuelto"],
+    perks: ["Alcanza para el Pack VIP + Caja (14 Coins), con vuelto"],
     highlight: true,
   },
   {
@@ -51,6 +51,20 @@ const packages = [
     highlight: false,
   },
   {
+    // Promoción: VIP + Caja de Skins por 14 Coins en vez de 16. Es un paquete de tipo BOX solo para que
+    // aparezca en la grilla de la tienda (no hay un tipo "pack"); se cobra y se entrega como cualquier otro.
+    slug: "pack-vip-caja",
+    name: "Pack VIP + Caja de Skins",
+    kind: "BOX" as const,
+    priceCoins: 14,
+    perks: [
+      "VIP Thunder: +30% de EXP y de Drop durante 15 días",
+      "Caja de Skins: una skin al azar (Rara 60%, Épica 30%, Legendaria 10%)",
+      "Ahorrás 2 Coins: por separado suman 16",
+    ],
+    highlight: true,
+  },
+  {
     // Ya no se vende (hay una sola caja): queda desactivada, no borrada, por el historial.
     slug: "caja-epica",
     name: "Caja Épica",
@@ -74,7 +88,7 @@ const packages = [
     slug: "vip-thunder",
     name: "VIP Thunder",
     kind: "VIP" as const,
-    priceCoins: 10,
+    priceCoins: 8,
     durationDays: 15,
     perks: [
       "+30% de EXP durante 15 días",
