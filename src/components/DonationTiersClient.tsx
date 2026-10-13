@@ -23,12 +23,14 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
       {tiers.map((tier) => (
         <div
           key={tier.id}
-          className={`card-surface flex flex-col rounded-none p-6 transition hover:border-accent/50 ${
+          className={`card-surface relative flex flex-col rounded-none p-6 transition hover:border-accent/50 ${
             tier.highlight ? "border-gold/60 ring-1 ring-gold/30" : ""
           }`}
         >
+          {/* La etiqueta flota sobre el borde de la tarjeta: si ocupara lugar adentro, empujaría el
+              título, el precio y la descripción y las tres tarjetas no quedarían alineadas. */}
           {tier.highlight && (
-            <span className="mb-3 self-start rounded-none bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold">
+            <span className="absolute -top-3 left-6 rounded-none bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wide text-background">
               Más elegido
             </span>
           )}
@@ -53,7 +55,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
               buttonClassName={
                 tier.highlight
                   ? "btn-impact bg-gold px-5 py-2.5 text-sm text-background hover:brightness-110"
-                  : "rounded-none border border-border-soft px-5 py-2.5 text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent"
+                  : "rounded-none border border-border-soft px-5 py-[11px] text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent"
               }
             />
           </div>

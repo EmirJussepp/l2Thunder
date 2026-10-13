@@ -18,7 +18,9 @@ export default function Crest({
     <span
       className={`relative inline-block ${shine ? "crest-shine" : ""} ${className ?? ""}`}
     >
-      <Image src={SRC[variant]} alt="" fill className="object-contain" priority />
+      {/* El escudo se dibuja de 32 a 112 px de lado: sin `sizes`, Next.js pide la imagen como si
+          ocupara todo el ancho de la pantalla. */}
+      <Image src={SRC[variant]} alt="" fill sizes="112px" className="object-contain" priority />
     </span>
   );
 }
