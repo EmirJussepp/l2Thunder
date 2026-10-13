@@ -14,7 +14,7 @@ const packages = [
     kind: "COIN_PACK" as const,
     priceArsCents: 10 * ARS_PER_COIN * 100,
     coinsGranted: 10,
-    perks: ["Alcanza justo para la Caja Normal o para arrancar a juntar para más"],
+    perks: ["Alcanza justo para la Caja Rara o para arrancar a juntar para más"],
     highlight: false,
   },
   {
@@ -36,11 +36,13 @@ const packages = [
     highlight: false,
   },
   {
+    // El slug quedó de cuando se llamaba "Caja Normal": no se cambia porque las órdenes ya
+    // creadas apuntan a este paquete y el seed borra los slugs que no están en la lista.
     slug: "caja-normal",
-    name: "Caja Normal",
+    name: "Caja Rara",
     kind: "BOX" as const,
     priceCoins: 4,
-    perks: ["Sale cualquier skin de rareza Normal"],
+    perks: ["Sale cualquier skin de rareza Rara"],
     highlight: false,
   },
   {
