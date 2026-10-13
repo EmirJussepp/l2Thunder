@@ -53,3 +53,6 @@ skills-lock.json
 
 # Impeccable: archivos locales de la herramienta de diseño (el sistema de diseño versionado es DESIGN.md)
 /.impeccable
+
+# Caché de la publicación al VPS (paquetes de sharp para Linux)
+deploy/vps/.cache/
