@@ -28,7 +28,8 @@ echo "== 2/5 Armo el paquete (con las imágenes de Linux, sin claves ni binarios
 WORK="$(mktemp -d)"
 STAGE="$WORK/stage"
 cp -a .next/standalone "$STAGE"
-cp -a public "$STAGE/public"
+mkdir -p "$STAGE/public"
+cp -a public/. "$STAGE/public/"   # el contenido, no la carpeta (si no, queda public/public)
 mkdir -p "$STAGE/.next"
 cp -a .next/static "$STAGE/.next/static"
 SHARP_JSON="$STAGE/node_modules/sharp/package.json"
