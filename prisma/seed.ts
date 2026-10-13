@@ -68,7 +68,7 @@ const packages = [
     perks: [
       "+30% de EXP durante 15 días",
       "+30% de Drop durante 15 días",
-      "1 cofre de skin de regalo (puede salir una skin Rara, Épica o Legendaria)",
+      "1 Cofre de armadura de regalo (puede salir una skin Rara, Épica o Legendaria)",
     ],
     highlight: true,
   },
