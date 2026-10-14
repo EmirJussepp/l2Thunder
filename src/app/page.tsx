@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import PosterBand from "@/components/PosterBand";
+import StagedOpening from "@/components/StagedOpening";
 import Features from "@/components/Features";
 import PlaySteps from "@/components/PlaySteps";
 import DonateTeaser from "@/components/DonateTeaser";
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <PosterBand id="interlude" />
+      <StagedOpening />
       <Features />
       <PosterBand id="clases" />
       <PlaySteps />

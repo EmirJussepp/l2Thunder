@@ -10,6 +10,8 @@ export type Poster = {
 };
 
 export const POSTERS = {
+  // Sin uso en la home desde el 14/10: bajo el hero lo reemplazó StagedOpening (apertura
+  // escalonada). Se conserva por si el afiche vuelve a algún lado.
   interlude: {
     src: "/promo/un-interlude-pensado-para-hoy.jpg",
     width: 706,

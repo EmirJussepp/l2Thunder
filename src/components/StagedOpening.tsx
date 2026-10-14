@@ -1,0 +1,39 @@
+import Link from "next/link";
+import StatGrid from "@/components/guias/StatGrid";
+import { OPENING_AS_OF, OPENING_STATS } from "@/lib/apertura";
+
+// Resumen de las reglas de apertura para la home: lo justo para entender el esquema y un
+// camino a la página completa. Reemplaza al afiche "Un Interlude pensado para hoy".
+export default function StagedOpening() {
+  return (
+    <section id="apertura" className="border-t border-border-soft px-6 py-24">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
+          Reglas del servidor
+        </span>
+        <h2 className="font-display text-3xl font-bold sm:text-4xl">Apertura escalonada</h2>
+        <p className="max-w-xl text-muted">
+          No abrimos con todo el contenido desde el primer día. El tope de nivel, el equipo de
+          grado S y los raids épicos entran por etapas, para que la economía y la carrera por el
+          primer nivel máximo no se resuelvan en una semana.{" "}
+          <strong className="font-bold text-foreground">
+            Nada de esto es un error ni un bug.
+          </strong>
+        </p>
+
+        <div className="w-full">
+          <StatGrid stats={OPENING_STATS} />
+        </div>
+
+        <p className="text-xs text-muted">Estado al {OPENING_AS_OF}.</p>
+
+        <Link
+          href="/apertura-escalonada"
+          className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+        >
+          Ver todo el detalle
+        </Link>
+      </div>
+    </section>
+  );
+}
