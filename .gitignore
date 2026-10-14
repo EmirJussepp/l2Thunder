@@ -56,3 +56,7 @@ skills-lock.json
 
 # Caché de la publicación al VPS (paquetes de sharp para Linux)
 deploy/vps/.cache/
+
+# Zips sueltos en la raíz (p. ej. el que se armó para pasarle el bridge al hermano): el código
+# ya está versionado en gameserver-bridge/, y un zip puede arrastrar un .env sin querer.
+/*.zip
