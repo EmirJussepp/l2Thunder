@@ -12,8 +12,7 @@ export default function DonateTeaser() {
         </h2>
         <p className="max-w-xl text-muted">
           Comprás Coins of Luck y los usás en lo que quieras: VIP (+30% de EXP y de Drop
-          durante 15 días, más un Cofre de armadura de regalo) o la Caja de Skins (una skin al azar:
-          Rara, Épica o Legendaria) — nunca vendemos daño ni items que te hagan invencible en PvP.
+          durante 15 días) o la Caja de Skins (una skin al azar: Rara, Épica o Legendaria) — nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>
         <Link
           href="/donar"

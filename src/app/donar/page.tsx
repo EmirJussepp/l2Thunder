@@ -33,8 +33,7 @@ export default function DonarPage() {
           Convertite en Fundador de Thunder
         </h1>
         <p className="mt-4 text-muted">
-          Elegí el VIP (+30% de EXP y de Drop durante 15 días, más un Cofre de armadura de regalo) o
-          la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
+          Elegí el VIP (+30% de EXP y de Drop durante 15 días) o la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
           (10%), o llevate los dos juntos en promoción. Los precios están en Coins of Luck — nunca vendemos
           daño ni items que te hagan invencible en PvP.
         </p>
