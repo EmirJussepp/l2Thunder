@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 export async function getArsPerCoin(): Promise<number | null> {
   const pack = await prisma.donationPackage.findFirst({
     where: { active: true, kind: "COIN_PACK" },
+    orderBy: { slug: "asc" }, // siempre el mismo de referencia; todos tienen el mismo precio por Coin
   });
 
   if (!pack || !pack.priceArsCents || !pack.coinsGranted) return null;

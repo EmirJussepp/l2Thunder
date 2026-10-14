@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import CheckoutBanner from "@/components/CheckoutBanner";
 import DonationTiers from "@/components/DonationTiers";
+import UnitCoins from "@/components/UnitCoins";
 import VipPass from "@/components/VipPass";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
 
@@ -47,6 +48,8 @@ export default function DonarPage() {
         <h2 className="mb-6 text-center font-display text-2xl font-bold">Caja de Skins y promoción</h2>
         <DonationTiers />
       </section>
+
+      <UnitCoins />
 
       <div className="mt-20">
         <AccountLinkExplainer />

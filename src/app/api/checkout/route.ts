@@ -4,6 +4,7 @@ import { mpClient } from "@/lib/mercadopago";
 import { prisma } from "@/lib/prisma";
 import { getArsPerCoin } from "@/lib/economy";
 import { getClientIp, isRateLimited } from "@/lib/rateLimit";
+import { UNIT_COINS_MAX, UNIT_COINS_SLUG } from "@/lib/coins";
 
 const CHARACTER_NAME_RE = /^[a-zA-Z0-9_]{3,40}$/;
 
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Demasiados intentos — esperá un minuto." }, { status: 429 });
   }
 
-  let body: { packageId?: string; characterName?: string };
+  let body: { packageId?: string; characterName?: string; quantity?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -38,6 +39,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Paquete no encontrado" }, { status: 404 });
   }
 
+  // Solo las Coins sueltas llevan una cantidad elegida por el jugador; en el resto se ignora.
+  const isUnitCoins = pkg.kind === "COIN_PACK" && pkg.slug === UNIT_COINS_SLUG;
+  let quantity = 1;
+  if (isUnitCoins) {
+    quantity = Number(body.quantity);
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > UNIT_COINS_MAX) {
+      return NextResponse.json(
+        { error: `Elegí entre 1 y ${UNIT_COINS_MAX} Coins of Luck` },
+        { status: 400 },
+      );
+    }
+  }
+
   let amountArsCents: number;
   let coinsCredited: number;
 
@@ -45,8 +59,8 @@ export async function POST(req: NextRequest) {
     if (!pkg.priceArsCents || !pkg.coinsGranted) {
       return NextResponse.json({ error: "Paquete mal configurado" }, { status: 500 });
     }
-    amountArsCents = pkg.priceArsCents;
-    coinsCredited = pkg.coinsGranted;
+    amountArsCents = pkg.priceArsCents * quantity;
+    coinsCredited = pkg.coinsGranted * quantity;
   } else {
     const arsPerCoin = await getArsPerCoin();
     if (!arsPerCoin || !pkg.priceCoins) {
@@ -78,13 +92,22 @@ export async function POST(req: NextRequest) {
     const result = await preference.create({
       body: {
         items: [
-          {
-            id: pkg.id,
-            title: `L2Thunder — ${pkg.name}`,
-            quantity: 1,
-            unit_price: amountArsCents / 100,
-            currency_id: "ARS",
-          },
+          isUnitCoins
+            ? {
+                // En el comprobante figura "N × Coins of Luck", a precio por unidad.
+                id: pkg.id,
+                title: "L2Thunder — Coins of Luck",
+                quantity,
+                unit_price: (pkg.priceArsCents as number) / 100,
+                currency_id: "ARS",
+              }
+            : {
+                id: pkg.id,
+                title: `L2Thunder — ${pkg.name}`,
+                quantity: 1,
+                unit_price: amountArsCents / 100,
+                currency_id: "ARS",
+              },
         ],
         external_reference: order.id,
         back_urls: {

@@ -9,11 +9,16 @@ export default function BuyButton({
   label,
   buttonClassName,
   fullWidthButton = false,
+  quantity,
+  summary,
 }: {
   packageId: string;
   label: string;
   buttonClassName: string;
   fullWidthButton?: boolean;
+  // Solo para las Coins sueltas: la cantidad elegida y una línea que la resume en la confirmación.
+  quantity?: number;
+  summary?: string;
 }) {
   const [step, setStep] = useState<Step>("closed");
   const [characterName, setCharacterName] = useState("");
@@ -38,7 +43,7 @@ export default function BuyButton({
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ packageId, characterName }),
+        body: JSON.stringify({ packageId, characterName, ...(quantity !== undefined ? { quantity } : {}) }),
       });
       const data = await res.json();
 
@@ -75,6 +80,7 @@ export default function BuyButton({
   if (step === "confirm") {
     return (
       <div className="w-full space-y-3 text-left">
+        {summary && <p className="text-sm font-semibold text-foreground">{summary}</p>}
         <p className="text-sm text-foreground">
           Tu personaje es <span className="font-semibold text-gold">{characterName}</span>
           , ¿confirmás?

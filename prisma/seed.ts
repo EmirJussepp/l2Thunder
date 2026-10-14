@@ -27,6 +27,17 @@ const packages = [
     highlight: true,
   },
   {
+    // Coins sueltas: el jugador elige la cantidad (1 a UNIT_COINS_MAX, ver src/lib/coins.ts) y paga
+    // cantidad × este precio. No es una cantidad fija como los otros packs.
+    slug: "coins-sueltas",
+    name: "Coins of Luck sueltas",
+    kind: "COIN_PACK" as const,
+    priceArsCents: 1 * ARS_PER_COIN * 100,
+    coinsGranted: 1,
+    perks: ["Se compran de a una, en la cantidad que elija el jugador"],
+    highlight: false,
+  },
+  {
     slug: "coins-60",
     name: "60 Coins of Luck",
     kind: "COIN_PACK" as const,
