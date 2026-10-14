@@ -28,6 +28,9 @@ export default function Footer() {
           <Link href="/informacion-de-juego" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Información de juego
           </Link>
+          <Link href="/seguridad" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
+            Seguridad
+          </Link>
           <Link href="/donar" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Donar
           </Link>

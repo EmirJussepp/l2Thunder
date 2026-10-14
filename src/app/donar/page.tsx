@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import CheckoutBanner from "@/components/CheckoutBanner";
 import DonationTiers from "@/components/DonationTiers";
 import UnitCoins from "@/components/UnitCoins";
 import VipPass from "@/components/VipPass";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
+import Callout from "@/components/guias/Callout";
 
 // Los precios casi no cambian — cachear la página evita pegarle a la base en
 // cada visita (cada visitante repetido reusa el render de hasta 60s antes).
@@ -53,6 +55,22 @@ export default function DonarPage() {
 
       <div className="mt-20">
         <AccountLinkExplainer />
+      </div>
+
+      <div className="mx-auto mt-6 max-w-3xl">
+        <Callout title="Tu pago, protegido" variant="info">
+          <p>
+            Pagás en Mercado Pago, donde nosotros nunca vemos los datos de tu tarjeta, y cada pago
+            se confirma directamente con ellos antes de entregar nada.{" "}
+            <Link
+              href="/seguridad"
+              className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground"
+            >
+              Mirá todo lo que cuidamos
+            </Link>
+            .
+          </p>
+        </Callout>
       </div>
     </div>
   );

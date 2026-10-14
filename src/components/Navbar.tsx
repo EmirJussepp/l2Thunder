@@ -19,6 +19,7 @@ const links: NavLink[] = [
   { href: "/guias/clases", label: "Clases", sectionId: null },
   { href: "/informacion-de-juego", label: "Información de juego", sectionId: null },
   { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
+  { href: "/seguridad", label: "Seguridad", sectionId: null },
   { href: "/donar", label: "Donar", sectionId: null },
 ];
 
