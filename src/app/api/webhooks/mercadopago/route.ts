@@ -41,6 +41,25 @@ export async function POST(req: NextRequest) {
   // MP manda notificaciones duplicadas y fuera de orden, y un update pelado podría volver a
   // PAID una orden que el bridge ya levantó (o pisar una aprobada con un rechazo viejo).
   if (payment.status === "approved") {
+    // El pago aprobado tiene que cubrir lo que costaba la orden, en pesos. No debería pasar (el
+    // precio lo fija el servidor al crear la preferencia), pero si algo no cierra preferimos no
+    // acreditar y dejar el motivo anotado en la orden antes que regalar coins. El cupón de MP se
+    // suma por si el descuento lo absorbe Mercado Pago y no el vendedor.
+    const paidCents = Math.round(((payment.transaction_amount ?? 0) + (payment.coupon_amount ?? 0)) * 100);
+    if (payment.currency_id !== "ARS" || paidCents < order.amountArsCents) {
+      console.error(
+        `Webhook MP: el pago ${payment.id} no cubre la orden ${order.id} ` +
+          `(pagó ${paidCents} centavos ${payment.currency_id}, la orden vale ${order.amountArsCents}). No se acredita.`,
+      );
+      await prisma.donationOrder.updateMany({
+        where: { id: order.id, status: "PENDING_PAYMENT" },
+        data: {
+          bridgeError: `Pago ${payment.id} aprobado por MP pero por ${paidCents / 100} ${payment.currency_id}; la orden vale ${order.amountArsCents / 100} ARS. Revisar a mano.`,
+        },
+      });
+      return NextResponse.json({ received: true });
+    }
+
     // Checkout Pro deja reintentar con otra tarjeta después de un rechazo, y el pago nuevo
     // llega con el mismo external_reference: por eso también rescatamos una orden FAILED que
     // nunca tuvo pago. Un FAILED por error del bridge ya tiene mpPaymentId y no entra acá.
@@ -55,6 +74,14 @@ export async function POST(req: NextRequest) {
     await prisma.donationOrder.updateMany({
       where: { id: order.id, status: "PENDING_PAYMENT" },
       data: { status: "FAILED" },
+    });
+  } else if (payment.status === "refunded" || payment.status === "charged_back") {
+    // Reembolso o contracargo: las coins ya pueden estar en el juego y no hay forma automática de
+    // sacarlas. Por ahora solo se deja constancia (en el log y en la orden) para poder actuar.
+    console.error(`ALERTA: el pago ${payment.id} de la orden ${order.id} figura ${payment.status} (orden ${order.status}).`);
+    await prisma.donationOrder.updateMany({
+      where: { id: order.id, mpPaymentId: String(payment.id) },
+      data: { bridgeError: `REVERTIDO por Mercado Pago (${payment.status}). Revisar el personaje ${order.characterName}.` },
     });
   }
 

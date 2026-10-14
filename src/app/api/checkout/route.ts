@@ -14,15 +14,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Demasiados intentos — esperá un minuto." }, { status: 429 });
   }
 
-  let body: { packageId?: string; characterName?: string; quantity?: unknown };
+  let body: { packageId?: unknown; characterName?: unknown; quantity?: unknown };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Body inválido" }, { status: 400 });
   }
+  // JSON válido no es lo mismo que un objeto: `null`, un número o una lista llegarían hasta acá.
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json({ error: "Body inválido" }, { status: 400 });
+  }
 
-  const packageId = body.packageId;
-  const characterName = body.characterName?.trim();
+  // Los campos tienen que ser texto; un número o un objeto en su lugar rompía más abajo con un 500.
+  const packageId = typeof body.packageId === "string" ? body.packageId : undefined;
+  const characterName = typeof body.characterName === "string" ? body.characterName.trim() : undefined;
 
   if (!packageId || !characterName) {
     return NextResponse.json({ error: "Faltan datos" }, { status: 400 });
