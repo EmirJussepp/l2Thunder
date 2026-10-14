@@ -4,6 +4,7 @@ import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import ComparisonTable from "@/components/porque/ComparisonTable";
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
+import { RATES } from "@/lib/rates";
 
 export const metadata: Metadata = {
   title: "¿Por qué L2Thunder?",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "×15", label: "Experiencia" },
+  { value: `×${RATES.xp}`, label: "Experiencia" },
   { value: "×10", label: "Drop" },
   { value: "×4", label: "Adena" },
   { value: "+10", label: "Enchant máx." },
@@ -24,8 +25,9 @@ const ritmoRows = [
     original: "×1. Llegar a 76 es un trabajo de meses.",
     thunder: (
       <>
-        <strong className="font-bold text-gold">×15</strong> en XP y SP, y también en las
-        recompensas de quest.
+        <strong className="font-bold text-gold">×{RATES.xp}</strong> en XP y{" "}
+        <strong className="font-bold text-gold">×{RATES.sp}</strong> en SP. Las recompensas de
+        quest también se multiplican: ×{RATES.quest} en XP y en SP.
       </>
     ),
   },
@@ -208,8 +210,8 @@ const jefes = [
 ];
 
 const eventos = [
-  { name: "Team vs Team", when: "20:00 y 00:00", text: "Dos equipos en la arena del Coliseo, con sus accesos exteriores." },
-  { name: "Capture the Flag", when: "21:30 y 01:30", text: "Instancia propia. Gana el que aguanta, no el que mata más." },
+  { name: "Team vs Team", when: "17:00 y 21:00", text: "Dos equipos en la arena del Coliseo, con sus accesos exteriores." },
+  { name: "Capture the Flag", when: "18:30 y 22:30", text: "Instancia propia. Gana el que aguanta, no el que mata más." },
   { name: "Deathmatch", when: "en rotación", text: "Todos contra todos, sin equipos." },
   { name: "Torneo de Pesca", when: "semanal", text: "Gana el que saca el mejor pescado — la rareza decide, no el azar." },
 ];
@@ -222,7 +224,7 @@ const comodidades = [
   { title: "Quests diarias", text: "Tres por día desde nivel 40, se piden y se entregan desde el Community Board." },
   { title: "El comando .stat", text: "Una ventana con tus estadísticas reales, las que el cliente no te muestra." },
   { title: "Títulos por PvP", text: "Tu cuenta de muertes se ve, y cambia de color a medida que sube." },
-  { title: "Pociones automáticas", text: "HP y CP, opcionales, para que pelear no sea apretar una tecla mil veces." },
+  { title: "Tiendas offline", text: "Armá tu tienda o tu taller de crafteo en una zona de paz y desconectate: queda abierta sin que estés." },
   { title: "Sin penalización en los dyes", text: "Las clases de soporte pueden sumar INT sin resignar nada a cambio." },
   { title: "Comida en la mesa", text: "Sentado, cura HP y MP rápido — una alternativa a gastar pociones." },
   { title: "Pociones con dos minutos de respiro", text: "HP, MP y CP se usan con cabeza, no a repetición: el reuso es de dos minutos." },
@@ -377,7 +379,7 @@ export default function PorQueL2ThunderPage() {
         </div>
 
         <div className="mt-10">
-          <p className="font-display text-lg font-bold text-foreground">Eventos, todos los días</p>
+          <p className="font-display text-lg font-bold text-foreground">Eventos, todos los días (hora de Argentina)</p>
           <div className="card-surface mt-4 overflow-hidden rounded-none">
             {eventos.map((e, i) => (
               <div

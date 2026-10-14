@@ -1,8 +1,10 @@
+import { RATES } from "@/lib/rates";
+
 const rates = [
-  { label: "Experiencia", value: "x15" },
-  { label: "SP", value: "x15" },
-  { label: "Drop", value: "x10" },
-  { label: "Spoil", value: "x10" },
+  { label: "Experiencia", value: `x${RATES.xp}` },
+  { label: "SP", value: `x${RATES.sp}` },
+  { label: "Drop", value: `x${RATES.drop}` },
+  { label: "Spoil", value: `x${RATES.spoil}` },
   { label: "Auto-loot", value: "Sí" },
   { label: "Chronicle", value: "Interlude" },
 ];

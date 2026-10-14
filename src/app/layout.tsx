@@ -6,6 +6,7 @@ import DiscordBanner from "@/components/DiscordBanner";
 import VoteBanner from "@/components/VoteBanner";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import SplashScreen from "@/components/SplashScreen";
+import { RATES } from "@/lib/rates";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +34,7 @@ const inter = Inter({
 });
 
 const description =
-  "L2Thunder: servidor de Lineage II Interlude con rework total de razas, clases y skills. Rates x15/x15/x10/x10, auto-loot, spoil para todas las clases. Beta abierta.";
+  `L2Thunder: servidor de Lineage II Interlude con rework total de razas, clases y skills. Rates x${RATES.xp}/x${RATES.sp}/x${RATES.drop}/x${RATES.spoil}, auto-loot, spoil para todas las clases. Beta abierta.`;
 
 export const metadata: Metadata = {
   title: {
