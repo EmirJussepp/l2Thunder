@@ -58,7 +58,7 @@ const protegido = [
   },
   {
     title: "Contra bots y trampas",
-    text: "Captcha periódico mientras farmeás y un límite de clientes por conexión para frenar bots y multicuentas. Se suma a las reglas anti-flood del servidor, que cortan a quien intenta saturarlo.",
+    text: "Mientras farmeás, cada cierta cantidad de monstruos te aparece un captcha: tenés 20 segundos para resolverlo y, si no llegás o fallás, vas a la cárcel del juego. Hay un límite de 2 cuentas por IP para dificultar bots y multicuentas, y reglas anti-flood que cortan a quien intenta saturar el servidor.",
   },
 ];
 
