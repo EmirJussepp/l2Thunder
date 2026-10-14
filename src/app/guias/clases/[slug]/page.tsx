@@ -32,7 +32,12 @@ export default async function ClassGuidePage({ params }: { params: Promise<{ slu
   const guide = getClassGuide(slug);
   if (!guide) notFound();
 
-  const others = CLASS_GUIDE_SLUGS.filter((s) => s !== guide.slug).map((s) => CLASS_GUIDES[s]);
+  // El subtítulo empieza con la raza ("Elfo Oscuro · tercera clase de..."): al pie se ofrecen las
+  // otras guías de la misma raza, no las treinta.
+  const race = guide.subtitle.split(" · ")[0];
+  const others = CLASS_GUIDE_SLUGS.filter((s) => s !== guide.slug)
+    .map((s) => CLASS_GUIDES[s])
+    .filter((g) => g.subtitle.split(" · ")[0] === race);
 
   return (
     <div className="px-6 pb-24 pt-36">
@@ -71,7 +76,7 @@ export default async function ClassGuidePage({ params }: { params: Promise<{ slu
 
         <section className="mt-14 border-t border-border-soft pt-14">
           <h2 className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            ✦ Otras guías de clase
+            ✦ Otras guías de clase · {race}
           </h2>
           <ul className="mt-4 flex flex-wrap gap-2">
             {others.map((o) => (

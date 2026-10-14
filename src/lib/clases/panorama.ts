@@ -1,8 +1,9 @@
 // "Elegir clase": una línea por clase de tercera, agrupadas por raza, las 31 del Interlude.
 // Las que ya tienen guía (están en ./index.ts) se enlazan; el resto muestra "Guía próximamente".
-// El panorama con rol, arma, fuerte y floja llegó para 19; las otras 12 quedan solo con el
-// nombre hasta que llegue su texto (no se inventa nada). Para completar una: sumarle esos
-// cuatro campos acá.
+// Rol, arma, fuerte y floja: el panorama del equipo llegó para 19 clases. En las otras 12 (las
+// de Orco, Enano y Elfo Oscuro) el arma, lo fuerte y lo flojo salen
+// tal cual de la ficha de su guía, y el rol es una etiqueta corta sacada de la primera frase
+// de esa guía. Si el equipo quiere otra etiqueta, se cambia acá.
 export type PanoramaClass = {
   name: string;
   role?: string;
@@ -74,8 +75,20 @@ export const PANORAMA: PanoramaGroup[] = [
   {
     race: "Elfo Oscuro",
     classes: [
-      { name: "Ghost Hunter" },
-      { name: "Ghost Sentinel" },
+      {
+        name: "Ghost Hunter",
+        role: "Daguero",
+        weapon: "Daga",
+        strong: "Daño por la espalda · golpe mortal · remate",
+        weak: "Aguante · daño en área",
+      },
+      {
+        name: "Ghost Sentinel",
+        role: "Arquero oscuro",
+        weapon: "Arco",
+        strong: "Daño a distancia · postura de francotirador",
+        weak: "Pelea de cerca · aguante",
+      },
       {
         name: "Shillien Saint",
         role: "Sanador de veneno",
@@ -83,15 +96,54 @@ export const PANORAMA: PanoramaGroup[] = [
         strong: "Veneno · curación sostenida · maná de la party",
         weak: "Daño directo · defensa propia",
       },
-      { name: "Shillien Templar" },
-      { name: "Spectral Dancer" },
-      { name: "Spectral Master" },
-      { name: "Storm Screamer" },
+      {
+        name: "Shillien Templar",
+        role: "Tanque de control",
+        weapon: "Espada o mazo y escudo",
+        strong: "Defensa · parálisis · cúbicos · castigo en área",
+        weak: "Daño sostenido · apoyo a la party",
+      },
+      {
+        name: "Spectral Dancer",
+        role: "Bailarín",
+        weapon: "Dos dagas",
+        strong: "Buffs únicos de party · control en área",
+        weak: "Daño propio · defensa",
+      },
+      {
+        name: "Spectral Master",
+        role: "Invocador oscuro",
+        weapon: "Vara",
+        strong: "Invocaciones ofensivas · cúbicos · farmeo solo",
+        weak: "Daño propio · aguante",
+      },
+      {
+        name: "Storm Screamer",
+        role: "Mago de viento",
+        weapon: "Vara",
+        strong: "Cadencia de casteo · daño sostenido · área",
+        weak: "Aguante · pelea de cerca",
+      },
     ],
   },
   {
     race: "Enano",
-    classes: [{ name: "Fortune Seeker" }, { name: "Maestro" }],
+    classes: [
+      {
+        name: "Fortune Seeker",
+        role: "Cazador de botín",
+        weapon: "Mazo o espada",
+        strong: "Botín exclusivo · economía · daño decente",
+        weak: "Apoyo a la party · defensa mágica",
+      },
+      {
+        name: "Maestro",
+        role: "Artesano",
+        weapon: "Mazo",
+        strong: "Fabricación · máquinas de guerra · economía",
+        weak: "Daño propio · movilidad",
+      },
+    ],
   },
   {
     race: "Humano",
@@ -178,10 +230,34 @@ export const PANORAMA: PanoramaGroup[] = [
   {
     race: "Orco",
     classes: [
-      { name: "Dominator" },
-      { name: "Doomcryer" },
-      { name: "Grand Khavatari" },
-      { name: "Titan" },
+      {
+        name: "Dominator",
+        role: "Debuffer",
+        weapon: "Maza",
+        strong: "Debuffs en área · buffs de clan · asedios",
+        weak: "Daño directo · juego en solitario",
+      },
+      {
+        name: "Doomcryer",
+        role: "Buffer",
+        weapon: "Maza",
+        strong: "Buffs de party y clan · CP · invulnerabilidad de grupo",
+        weak: "Daño · curación de HP grande",
+      },
+      {
+        name: "Grand Khavatari",
+        role: "Monje",
+        weapon: "Puños",
+        strong: "Daño a quemarropa · ignora escudos · invulnerabilidad",
+        weak: "Alcance · apoyo a la party",
+      },
+      {
+        name: "Titan",
+        role: "Guerrero",
+        weapon: "Arma a dos manos",
+        strong: "Daño bruto · furia al borde de la muerte",
+        weak: "Defensa · control · aguante si la pelea se estira",
+      },
     ],
   },
 ];
