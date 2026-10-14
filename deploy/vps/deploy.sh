@@ -20,6 +20,19 @@ if [ -z "${ALLOW_DIRTY:-}" ] && [ -n "$(git status --porcelain --untracked-files
 fi
 echo "Publicando $REL (commit $(git rev-parse --short HEAD))"
 
+# Nada con vulnerabilidades altas o críticas en lo que viaja a producción (solo dependencias de
+# runtime). Si hay que publicar igual (un arreglo urgente, un aviso sin parche todavía), SKIP_AUDIT=1.
+if [ -z "${SKIP_AUDIT:-}" ]; then
+  echo "== 0/5 Auditoría de dependencias =="
+  if ! npm audit --omit=dev --audit-level=high >/dev/null 2>&1; then
+    echo "npm audit encontró vulnerabilidades altas o críticas en producción:"
+    npm audit --omit=dev --audit-level=high 2>&1 | grep -E "^[a-z@].*(Severity|[0-9]+\.[0-9]+)|Severity:|fix available" | head -12
+    echo "Actualizá la dependencia (npm audit fix) o, sabiendo lo que hacés, SKIP_AUDIT=1 bash deploy/vps/deploy.sh"
+    exit 1
+  fi
+  echo "  sin vulnerabilidades altas ni críticas"
+fi
+
 echo "== 1/5 Build para el VPS =="
 BUILD_TARGET=vps npm run build 2>&1 | grep -E "Compiled|error|Error|Failed|\([0-9]+/[0-9]+\)" | tail -5
 [ -f .next/standalone/server.js ] || { echo "No se generó .next/standalone/server.js"; exit 1; }
