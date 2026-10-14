@@ -102,7 +102,7 @@ const porQueNoMeDeja = [
 // Lista con viñeta cian, la misma de las tarjetas de compra de /donar.
 function Bullets({ items }: { items: ReactNode[] }) {
   return (
-    <ul className="mt-4 max-w-[38rem] space-y-2 text-muted">
+    <ul className="mx-auto mt-4 max-w-[38rem] space-y-2 text-muted">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-2">
           <span className="mt-1 text-accent">•</span>
@@ -143,8 +143,9 @@ export default function AperturaEscalonadaPage() {
 
       {/* El tope de nivel */}
       <section className="mx-auto mt-24 max-w-5xl">
-        <SectionHeader eyebrow="Nivel máximo" title="El tope de nivel es 75" />
-        <div className="max-w-[38rem] space-y-4 text-muted">
+        {/* Espacio duro entre "es" y "75": en celular el título se parte en dos y no debe quedar el 75 solo. */}
+        <SectionHeader eyebrow="Nivel máximo" title={"El tope de nivel es 75"} />
+        <div className="mx-auto max-w-[38rem] space-y-4 text-center text-muted">
           <p>
             Se puede subir del nivel 1 al 75 con normalidad. El primer cambio de clase sigue
             estando a los 20 y el segundo a los 40, sin cambios.
@@ -163,10 +164,10 @@ export default function AperturaEscalonadaPage() {
           </p>
         </div>
 
-        <h3 className="mt-10 font-display text-lg font-bold text-foreground">
+        <h3 className="mt-10 text-center font-display text-lg font-bold text-foreground">
           Lo que sí llega hasta el final
         </h3>
-        <p className="mt-2 max-w-[38rem] text-muted">
+        <p className="mx-auto mt-2 max-w-[38rem] text-center text-muted">
           La subclase se habilita a nivel 75, justo en el tope, así que es contenido
           perfectamente alcanzable. Arranca en nivel 40 y puede subir hasta 75 como el personaje
           principal. Y con la subclase en 75 también se puede conseguir el Noblesse.
@@ -191,7 +192,7 @@ export default function AperturaEscalonadaPage() {
         />
         <DataTable headers={["Qué", "Dónde", "Estado"]} rows={gradoS} />
 
-        <p className="mt-6 max-w-[38rem] text-muted">
+        <p className="mx-auto mt-6 max-w-[38rem] text-center text-muted">
           Un objeto de grado S sí puede caer de un monstruo: eso no se tocó. Pero no hay forma de
           completarlo. Una armadura S sellada no se puede abrir, un accesorio S sellado tampoco, y
           a un arma S no se le puede poner la capacidad especial.
@@ -207,10 +208,10 @@ export default function AperturaEscalonadaPage() {
           </Callout>
         </div>
 
-        <h3 className="mt-10 font-display text-lg font-bold text-foreground">
+        <h3 className="mt-10 text-center font-display text-lg font-bold text-foreground">
           El grado A está entero
         </h3>
-        <p className="mt-2 max-w-[38rem] text-muted">
+        <p className="mx-auto mt-2 max-w-[38rem] text-center text-muted">
           Todo lo que el grado S tiene cerrado, el grado A lo tiene abierto: las recetas, el libro
           de recetas en el Maestro Artesano, la capacidad especial en las armas, liberar el sello
           de las armaduras y los accesorios, y las espadas duales. El tope real de equipamiento hoy
@@ -227,7 +228,7 @@ export default function AperturaEscalonadaPage() {
         />
         <DataTable headers={["Épico", "Nivel", "Estado"]} rows={epicos} />
 
-        <p className="mt-6 max-w-[38rem] text-muted">
+        <p className="mx-auto mt-6 max-w-[38rem] text-center text-muted">
           La consecuencia directa es que las ocho joyas de boss todavía no se pueden conseguir por
           ninguna vía.
         </p>
@@ -241,10 +242,10 @@ export default function AperturaEscalonadaPage() {
           </Callout>
         </div>
 
-        <h3 className="mt-10 font-display text-lg font-bold text-foreground">
+        <h3 className="mt-10 text-center font-display text-lg font-bold text-foreground">
           Los raids que sí están abiertos
         </h3>
-        <p className="mt-2 max-w-[38rem] text-muted">
+        <p className="mx-auto mt-2 max-w-[38rem] text-center text-muted">
           Todo el resto del contenido de raid funciona con normalidad:
         </p>
         <Bullets items={raidsAbiertos} />

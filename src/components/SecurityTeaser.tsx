@@ -3,7 +3,7 @@ import StatGrid from "@/components/guias/StatGrid";
 
 // Cuatro cifras: con tres, la grilla de 2 columnas del celular deja una celda vacía.
 const stats = [
-  { value: "Vultr", label: "Host profesional", sub: "en São Paulo, solo para L2Thunder" },
+  { value: "Nube", label: "Host profesional", sub: "en São Paulo, solo para L2Thunder" },
   { value: "6 h", label: "Entre copias del juego", sub: "personajes, ítems y cuentas" },
   { value: "100%", label: "De los pagos", sub: "confirmados con Mercado Pago" },
   { value: "HTTPS", label: "En toda la web", sub: "sin excepciones" },

@@ -23,7 +23,7 @@ const stats = [
 const host = [
   {
     title: "Nube profesional",
-    text: "El juego, la web y las bases de datos viven en Vultr, un proveedor de infraestructura en la nube, con red y hardware de nivel profesional.",
+    text: "El juego, la web y las bases de datos viven en la nube de un proveedor de infraestructura especializado, con red y hardware de nivel profesional.",
   },
   {
     title: "En São Paulo",
