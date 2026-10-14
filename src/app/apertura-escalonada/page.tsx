@@ -139,7 +139,6 @@ export default function AperturaEscalonadaPage() {
         <div className="mt-10">
           <StatGrid stats={OPENING_STATS} />
         </div>
-        <p className="mt-3 text-xs text-muted">Estado al {OPENING_AS_OF}.</p>
       </div>
 
       {/* El tope de nivel */}

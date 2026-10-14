@@ -1,6 +1,6 @@
 import Link from "next/link";
 import StatGrid from "@/components/guias/StatGrid";
-import { OPENING_AS_OF, OPENING_STATS } from "@/lib/apertura";
+import { OPENING_STATS } from "@/lib/apertura";
 
 // Resumen de las reglas de apertura para la home: lo justo para entender el esquema y un
 // camino a la página completa. Reemplaza al afiche "Un Interlude pensado para hoy".
@@ -24,8 +24,6 @@ export default function StagedOpening() {
         <div className="w-full">
           <StatGrid stats={OPENING_STATS} />
         </div>
-
-        <p className="text-xs text-muted">Estado al {OPENING_AS_OF}.</p>
 
         <Link
           href="/apertura-escalonada"
