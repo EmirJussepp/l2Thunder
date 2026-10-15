@@ -250,7 +250,7 @@ export default function SailrenBenomFrintezzaPage() {
               <p className="font-display text-base font-bold text-foreground">Cómo entrar</p>
               <p className="mt-3">
                 Hablá con el <strong className="font-semibold text-foreground">Dungeon
-                Keeper</strong>. Hay dos, y salís por el que hayas usado para entrar:
+                Gatekeeper</strong>. Hay dos, y salís por el que hayas usado para entrar:
               </p>
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li>
