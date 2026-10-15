@@ -5,6 +5,7 @@ import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
+import Screenshot from "@/components/guias/Screenshot";
 
 export const metadata: Metadata = {
   title: "Sailren, Benom y Frintezza — Guía",
@@ -371,10 +372,23 @@ export default function SailrenBenomFrintezzaPage() {
                 El canje de Destruction Tombstone
               </p>
               <p className="mt-2 text-sm">
-                El Dungeon Keeper los cambia por cofres de arma: 140 por el cofre de grado A y
-                220 por el de grado S. Los cofres siempre dan algo — arma, Blessed Enchant Weapon
-                o Enchant Armor del grado que corresponda.
+                El Dungeon Gatekeeper de Rune los cambia por cofres de arma: 140 por el cofre de
+                grado A y 220 por el de grado S. Los cofres siempre dan algo — arma, Blessed
+                Enchant Weapon o Enchant Armor del grado que corresponda.
               </p>
+            </div>
+
+            <div className="grid items-start gap-4 sm:grid-cols-2">
+              <Screenshot
+                src="/guias/benom/dungeon-gatekeeper-dialogo.webp"
+                alt="Diálogo del Dungeon Gatekeeper de Rune con las opciones Bajar a la mazmorra, Romper el sello viejo (modo difícil) y Canjear Destruction Tombstone"
+                caption="El Dungeon Gatekeeper de Rune: el mismo que te baja a la mazmorra tiene, al final del diálogo, la opción «Canjear Destruction Tombstone»."
+              />
+              <Screenshot
+                src="/guias/benom/canje-cofre-arma-grado-s.webp"
+                alt="Tienda de canje con el Cofre de Arma Grado S, que cuesta 220 Destruction Tombstone"
+                caption="El Cofre de Arma Grado S cuesta 220 Destruction Tombstone. Al abrirlo siempre sale algo: un arma de grado S o un Blessed Scroll de Enchant."
+              />
             </div>
           </GuideStep>
 
