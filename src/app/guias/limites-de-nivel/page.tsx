@@ -5,6 +5,7 @@ import StatGrid from "@/components/guias/StatGrid";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
 import LevelBands from "@/components/guias/LevelBands";
+import { LEVEL_BANDS, LEVEL_BANDS_CAPTION } from "@/lib/limites-de-nivel";
 
 export const metadata: Metadata = {
   title: "Límites de Nivel — Guía",
@@ -17,12 +18,6 @@ const introStats = [
   { value: "11", label: "Mobs", sub: "para arriba y para abajo" },
   { value: "9", label: "Raid Curse", sub: "por encima del raid" },
   { value: "0", label: "Margen de gracia", sub: "no hay degradado" },
-];
-
-const bandas = [
-  { label: "Raid Curse", cut: 9, note: "sin maldición hasta 8 de diferencia" },
-  { label: "Mobs", cut: 11, note: "cobrás hasta 10 de diferencia" },
-  { label: "Party", cut: 21, note: "cobrás hasta 20 de diferencia" },
 ];
 
 const party: [string, string][] = [
@@ -133,10 +128,7 @@ export default function LimitesDeNivelPage() {
           </div>
 
           <div className="mt-6">
-            <LevelBands
-              bands={bandas}
-              caption="En dorado, la franja donde todavía cobrás. El corte es seco: en el último nivel de la franja cobrás el 100 % y en el siguiente, nada."
-            />
+            <LevelBands bands={LEVEL_BANDS} caption={LEVEL_BANDS_CAPTION} />
           </div>
 
           <p className="mt-6 max-w-[38rem] text-muted">

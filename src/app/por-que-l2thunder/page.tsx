@@ -4,7 +4,9 @@ import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import ComparisonTable from "@/components/porque/ComparisonTable";
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
+import LevelBands from "@/components/guias/LevelBands";
 import { RATES } from "@/lib/rates";
+import { LEVEL_BANDS, LEVEL_BANDS_CAPTION } from "@/lib/limites-de-nivel";
 
 export const metadata: Metadata = {
   title: "¿Por qué L2Thunder?",
@@ -268,15 +270,30 @@ export default function PorQueL2ThunderPage() {
           intro="Las tasas están puestas para que llegues al contenido, no para que lo saltees. Subís rápido, pero el equipo se sigue ganando."
         />
         <ComparisonTable rows={ritmoRows} />
-        <div className="card-surface mt-6 rounded-none border-gold/30 p-5">
-          <p className="brand text-xs font-bold uppercase tracking-widest text-gold">
-            Sin trampa en la letra chica
+      </section>
+
+      {/* Los límites de nivel */}
+      <section className="mx-auto mt-24 max-w-5xl">
+        <SectionHeader
+          eyebrow="Los límites de nivel"
+          title="Hasta dónde cobrás experiencia"
+          intro="El servidor corta la experiencia en tres lugares, cada uno con su propio número, y ninguno avisa: simplemente dejás de cobrar. Acá están los tres, sin letra chica."
+        />
+        <div className="mx-auto max-w-2xl">
+          <LevelBands bands={LEVEL_BANDS} caption={LEVEL_BANDS_CAPTION} />
+          <p className="mt-6 text-center text-sm text-muted">
+            Miden cosas distintas: la party se mide contra el compañero más alto, los mobs contra
+            el bicho y el Raid Curse contra el raid. No hay degradado, el corte es seco, y no se
+            sube a otro llevándolo de la mano en una zona que no le corresponde.
           </p>
-          <p className="mt-2 text-sm text-muted">
-            La diferencia de nivel con el monstruo sigue contando hasta{" "}
-            <strong className="font-semibold text-foreground">11 niveles</strong>: no se sube a
-            otro llevándote de la mano en una zona que no te corresponde.
-          </p>
+          <div className="mt-4 flex justify-center">
+            <Link
+              href="/guias/limites-de-nivel"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-gold underline decoration-gold/40 underline-offset-4 transition hover:decoration-gold"
+            >
+              Ver la guía completa de límites de nivel
+            </Link>
+          </div>
         </div>
       </section>
 

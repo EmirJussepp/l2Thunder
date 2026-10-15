@@ -6,6 +6,7 @@ const features = [
   "Pociones de HP, MP y CP con reuso de dos minutos",
   "Comida: recupera HP y MP rápido mientras estás sentado",
   "Dyes sin penalización — las clases de soporte suman INT sin resignar nada",
+  "Límites de nivel claros: la party cobra hasta 20 niveles de diferencia y los mobs hasta 10",
   "Clases y skills reworkeados cuidando el balance del juego",
   "Buffers reworkeados: ya no hace falta cargar mochila",
   "Life stones con color según su calidad",
