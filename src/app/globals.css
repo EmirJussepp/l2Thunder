@@ -398,6 +398,75 @@ body {
   }
 }
 
+/* ── Escena con personaje ─────────────────────────────────────────────────
+   El personaje flota despacio sobre un resplandor dorado y azul; en los navegadores con "animation-timeline"
+   se desplaza a otra velocidad que el texto al bajar. El fundido de abajo lo hace entrar en la sección sin
+   un corte seco. Con "reducir movimiento" no se mueve nada. */
+.scene-art {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: center;
+  animation: scene-float 7s ease-in-out infinite;
+}
+
+.scene-art::before {
+  content: "";
+  position: absolute;
+  inset: 6% 8% 0;
+  z-index: -1;
+  background: radial-gradient(
+    60% 55% at 50% 55%,
+    rgba(240, 192, 64, 0.16),
+    rgba(108, 200, 255, 0.06) 55%,
+    transparent 75%
+  );
+  filter: blur(12px);
+}
+
+.scene-art img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: min(34rem, 70vh);
+  filter: drop-shadow(0 0 28px rgba(240, 192, 64, 0.18));
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}
+
+@keyframes scene-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .scene-art img {
+    animation: scene-parallax linear both;
+    animation-timeline: view();
+  }
+}
+
+@keyframes scene-parallax {
+  from {
+    transform: translateY(36px) scale(0.98);
+  }
+  to {
+    transform: translateY(-36px) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-art,
+  .scene-art img {
+    animation: none;
+  }
+}
+
 /* Splash de carga (estilo Rockstar): logo con contorno que aparece con un
    glow y se desvanece, tapando el sitio un instante al entrar. */
 .splash-overlay {

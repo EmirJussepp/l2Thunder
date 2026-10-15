@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { DISCORD_URL } from "@/lib/social";
 
-const DISCORD_URL = "https://discord.gg/nNFJVWTbD";
 const DISMISSED_KEY = "l2thunder_discord_banner_dismissed";
 
 export default function DiscordBanner() {

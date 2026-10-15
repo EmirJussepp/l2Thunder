@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Crest from "./Crest";
+import { DISCORD_URL, FACEBOOK_URL } from "@/lib/social";
 
 type NavLink = {
   href: string;
@@ -161,7 +162,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-6 px-8 py-8 text-sm text-muted">
           <a
-            href="https://www.facebook.com/profile.php?id=61589483216047"
+            href={FACEBOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center transition hover:text-gold"
@@ -169,7 +170,7 @@ export default function Navbar() {
             Facebook
           </a>
           <a
-            href="https://discord.gg/nNFJVWTbD"
+            href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center transition hover:text-gold"

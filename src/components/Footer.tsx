@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Crest from "./Crest";
+import { DISCORD_URL } from "@/lib/social";
 
 export default function Footer() {
   return (
@@ -38,7 +39,7 @@ export default function Footer() {
             Donar
           </Link>
           <a
-            href="https://discord.gg/nNFJVWTbD"
+            href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center px-2 hover:text-foreground"

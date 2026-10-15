@@ -2,10 +2,10 @@
 
 import { useSearchParams } from "next/navigation";
 import Callout from "@/components/guias/Callout";
+import { DISCORD_URL } from "@/lib/social";
 
 // Mercado Pago devuelve al jugador a /donar?checkout=success|pending|failed (ver /api/checkout).
 // Sin esto volvía a la página de donar sin ningún mensaje de cómo le fue al pago.
-const DISCORD = "https://discord.gg/nNFJVWTbD";
 
 export default function CheckoutBanner() {
   const status = useSearchParams().get("checkout");
@@ -45,7 +45,7 @@ export default function CheckoutBanner() {
             No se te cobró nada. Podés volver a intentarlo cuando quieras. Si vuelve a fallar,
             escribinos por{" "}
             <a
-              href={DISCORD}
+              href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-gold underline underline-offset-4 hover:text-foreground"

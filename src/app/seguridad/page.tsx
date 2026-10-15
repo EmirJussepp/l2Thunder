@@ -4,8 +4,8 @@ import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import StatGrid from "@/components/guias/StatGrid";
 import Callout from "@/components/guias/Callout";
+import { DISCORD_URL } from "@/lib/social";
 
-const DISCORD_URL = "https://discord.gg/nNFJVWTbD";
 
 export const metadata: Metadata = {
   title: "Seguridad e infraestructura",

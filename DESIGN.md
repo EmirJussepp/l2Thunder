@@ -234,6 +234,12 @@ Un solo sistema, definido en `globals.css` (no se repiten clases de Tailwind en 
 - **Icon** (`.btn-icon`): cuadrado de 44 px sin marco (menú, cerrar); en hover se enmarca en dorado al 40 %.
 - **Movimiento:** con `prefers-reduced-motion` se apagan el destello, la flecha y las transiciones; los estados siguen cambiando de color.
 
+### Riel de redes
+Una columna de botones cuadrados (`.btn-icon` de 44 px, con marco `foreground` al 25 % y fondo `background` al 75 % con desenfoque) pegada al borde derecho y centrada en altura, solo desde 1280 px (más angosto taparía el contenido; en el celular las redes están en el menú y el pie). Solo van las redes que existen (hoy Discord y Facebook): un ícono que no lleva a ningún lado es peor que ninguno. Los links viven en `src/lib/social.ts`. Es una excepción deliberada al marco `border-soft`, porque flota sobre una foto.
+
+### Escena con personaje
+Una sección de la portada con un personaje a un lado y el contenido al otro (`CharacterScene`). La imagen es un WebP o PNG con fondo transparente, decorativa (alt vacío) y de unos 150 a 250 KB; se muestra con un resplandor dorado y azul detrás, un fundido abajo, una flotación lenta de 10 px y, donde el navegador lo soporta, un desplazamiento propio al bajar (`animation-timeline: view()`, CSS puro). Con "reducir movimiento" queda quieta. En el celular el personaje va arriba del texto. Solo en la portada, nunca en las guías ni en Información de juego: son páginas de consulta y el arte les quita densidad. Arte propio de L2Thunder; nunca imágenes de otro servidor.
+
 ### Tabs
 Cinzel 700 en mayúsculas, 44 px de alto. Activa = relleno dorado con texto `background`; inactiva = borde `border-soft` y texto `muted`, con borde dorado al 60 % al pasar el mouse.
 

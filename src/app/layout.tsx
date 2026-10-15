@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DiscordBanner from "@/components/DiscordBanner";
 import VoteBanner from "@/components/VoteBanner";
+import SocialRail from "@/components/SocialRail";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import SplashScreen from "@/components/SplashScreen";
 import { RATES } from "@/lib/rates";
@@ -70,6 +71,7 @@ export default function RootLayout({
         <Footer />
         <DiscordBanner />
         <VoteBanner />
+        <SocialRail />
       </body>
     </html>
   );
