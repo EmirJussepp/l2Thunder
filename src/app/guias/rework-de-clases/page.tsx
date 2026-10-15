@@ -4,6 +4,7 @@ import Link from "next/link";
 import StatGrid from "@/components/guias/StatGrid";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
+import SkillLabel from "@/components/guias/SkillLabel";
 
 export const metadata: Metadata = {
   title: "Rework de Clases — Guía",
@@ -244,6 +245,11 @@ function P({ children }: { children: ReactNode }) {
   return <p className="max-w-[38rem] text-muted">{children}</p>;
 }
 
+// La primera columna de varias tablas es el nombre de una habilidad: si tiene ícono, se muestra al lado.
+function conIconos(rows: readonly (readonly string[])[]) {
+  return rows.map(([first, ...rest]) => [<SkillLabel key={first} name={first} />, ...rest]);
+}
+
 export default function ReworkDeClasesPage() {
   return (
     <div className="px-6 pb-24 pt-36">
@@ -314,7 +320,7 @@ export default function ReworkDeClasesPage() {
           </div>
           <DataTable
             headers={["Skill", "Potencia máxima", "Reuso", "Lo que hace"]}
-            rows={arqueros}
+            rows={conIconos(arqueros)}
           />
         </Seccion>
 
@@ -337,9 +343,9 @@ export default function ReworkDeClasesPage() {
           </div>
           <DataTable
             headers={["Stance", "Probabilidad de blow", "Crítico", "Para quién"]}
-            rows={stances}
+            rows={conIconos(stances)}
           />
-          <DataTable headers={["También", "Detalle"]} rows={dagueros} />
+          <DataTable headers={["También", "Detalle"]} rows={conIconos(dagueros)} />
         </Seccion>
 
         <Seccion id="tanques" title="Tanques">
@@ -354,7 +360,7 @@ export default function ReworkDeClasesPage() {
               4.150 de potencia. Es el golpe que usás siempre.
             </p>
           </div>
-          <DataTable headers={["Skill", "Qué cambió"]} rows={tanques} />
+          <DataTable headers={["Skill", "Qué cambió"]} rows={conIconos(tanques)} />
         </Seccion>
 
         <Seccion id="guerreros" title="Guerreros de fuerza">
@@ -368,9 +374,9 @@ export default function ReworkDeClasesPage() {
           </Callout>
           <DataTable
             headers={["Skill", "Reuso antes", "Reuso ahora", "Detalle"]}
-            rows={guerreros}
+            rows={conIconos(guerreros)}
           />
-          <DataTable headers={["Además", "Detalle"]} rows={duelist} />
+          <DataTable headers={["Además", "Detalle"]} rows={conIconos(duelist)} />
         </Seccion>
 
         <Seccion id="cantores" title="Swordsinger y Bladedancer">
@@ -379,7 +385,7 @@ export default function ReworkDeClasesPage() {
             golpe propio, además de darles Ultimate Defense y la maestría de armadura pesada, que
             antes no tenían.
           </P>
-          <DataTable headers={["Skill", "Qué es"]} rows={cantores} />
+          <DataTable headers={["Skill", "Qué es"]} rows={conIconos(cantores)} />
         </Seccion>
 
         <Seccion id="magos" title="Magos elementales">
@@ -396,7 +402,7 @@ export default function ReworkDeClasesPage() {
               de velocidad de casteo y lo aprenden solo los tres magos elementales.
             </p>
           </div>
-          <DataTable headers={["Skill", "Qué hace ahora"]} rows={magos} />
+          <DataTable headers={["Skill", "Qué hace ahora"]} rows={conIconos(magos)} />
           <Callout title="El CP bloquea el drenaje" variant="warn">
             <p>
               Los skills que absorben vida no curan nada mientras el objetivo tenga CP: primero hay
@@ -417,7 +423,7 @@ export default function ReworkDeClasesPage() {
               dos: el techo es el mismo y cada nivel vale el doble.
             </p>
           </div>
-          <DataTable headers={["Skill", "Qué cambió"]} rows={invocadores} />
+          <DataTable headers={["Skill", "Qué cambió"]} rows={conIconos(invocadores)} />
         </Seccion>
 
         <Seccion id="soporte" title="Soporte y sanación">
@@ -426,7 +432,7 @@ export default function ReworkDeClasesPage() {
             servidor es un debuff de recarga: le alarga los cooldowns al enemigo un 20% durante 20
             segundos. Nadie te va a robar la barra de buffs.
           </P>
-          <DataTable headers={["Skill", "Qué cambió"]} rows={soporte} />
+          <DataTable headers={["Skill", "Qué cambió"]} rows={conIconos(soporte)} />
         </Seccion>
 
         <Seccion id="enanos" title="Enanos">
@@ -441,7 +447,7 @@ export default function ReworkDeClasesPage() {
               Vicious Stance y Acrobatic Move. Perdió Fist Fury, que quedó solo para el Tyrant.
             </p>
           </div>
-          <DataTable headers={["Skill", "Qué cambió"]} rows={enanos} />
+          <DataTable headers={["Skill", "Qué cambió"]} rows={conIconos(enanos)} />
         </Seccion>
 
         {/* Cierre */}

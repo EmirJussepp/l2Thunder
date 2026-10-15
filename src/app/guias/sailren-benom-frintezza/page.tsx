@@ -6,6 +6,7 @@ import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
 import Screenshot from "@/components/guias/Screenshot";
+import ItemLabel from "@/components/guias/ItemLabel";
 
 export const metadata: Metadata = {
   title: "Sailren, Benom y Frintezza — Guía",
@@ -492,7 +493,9 @@ export default function SailrenBenomFrintezzaPage() {
                 de 18.000.000 de adena, y:
               </p>
               <ul className="mt-3 list-disc space-y-2 pl-5">
-                <li>Frintezza&apos;s Necklace, garantizado.</li>
+                <li>
+                  <ItemLabel name="Frintezza's Necklace" />, garantizado.
+                </li>
                 <li>Top-Grade Life Stone nivel 76, garantizada.</li>
                 <li>Piezas selladas de Majestic, Imperial Crusader y Major Arcana.</li>
                 <li>Joyas selladas Tateossian, Phoenix y Majestic.</li>

@@ -1,5 +1,6 @@
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
+import { itemSlug } from "@/lib/items";
 
 // Imágenes de una sección: los archivos de public/<carpeta>/ indexados por su
 // nombre sin extensión (que tiene que coincidir con itemSlug del ítem). Solo se
@@ -17,4 +18,18 @@ export function loadItemImages(folder: string): Record<string, string> {
   } catch {
     return {};
   }
+}
+
+// La imagen de un ítem por su nombre, buscándola en todas las secciones de Información de juego
+// (armaduras, joyas, SA). Sirve para mostrar el ícono de un ítem nombrado en una guía sin repetir
+// el archivo. Devuelve undefined si no hay imagen: el nombre se ve igual, sin ícono.
+const SECTIONS = ["armaduras", "joyas", "sa"] as const;
+
+export function findItemImage(name: string): string | undefined {
+  const slug = itemSlug(name);
+  for (const folder of SECTIONS) {
+    const found = loadItemImages(folder)[slug];
+    if (found) return found;
+  }
+  return undefined;
 }
