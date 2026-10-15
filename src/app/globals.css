@@ -124,21 +124,278 @@ body {
   border: 1px solid var(--border-soft);
 }
 
-/* Botones de "alto impacto" (Jugar, Descargar, Donar, Pagar): simples y
-   planos, estilo Steam/Battle.net — nada de sombra ni elevación, solo el
-   borde que se prende en hover. Mismas esquinas cuadradas que el resto
-   del sitio. No se usa @apply para no repetir esto en cada componente. */
-.btn-impact {
+/* ── Botones ──────────────────────────────────────────────────────────────
+   Un solo sistema para todo lo que se toca. Mismo lenguaje que el resto del
+   sitio: esquinas rectas, oro sobre piedra y nada de sombra de elevación; la
+   "vida" sale de la luz: un degradé fino con filo claro arriba, un destello que
+   barre el botón en hover (el mismo gesto que el brillo del escudo) y un
+   resplandor dorado, no una sombra. Se arma así:
+     .btn + .btn-primary   relleno dorado: la acción principal de la vista
+     .btn + .btn-ghost     borde dorado: la acción secundaria
+     .btn + .btn-outline   borde neutro: lo que acompaña (Corregir, planes sin destacar)
+     .btn-chip             enlace o filtro chico (aria-pressed / aria-selected = activo)
+     .btn-quiet            botón de texto (Expandir todo)
+   Modificadores: .btn-sm (más compacto), .btn-arrow (flecha que se desliza, para
+   enlaces) y .btn-shine (destello ocasional en reposo: solo en el botón principal
+   de una pantalla). No se usa @apply para no repetir esto en cada componente. */
+.btn,
+.btn-chip,
+.btn-quiet {
   border-radius: 0;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.25s ease,
+    transform 0.12s ease;
+}
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.75rem;
   border: 2px solid transparent;
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
   letter-spacing: -0.01em;
-  transition: border-color 0.15s ease, filter 0.15s ease;
+  text-align: center;
 }
 
-.btn-impact:hover {
+.btn-sm {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+}
+
+/* El destello: una franja clara en diagonal que cruza el botón. Va con z-index
+   negativo dentro del contexto de apilado del botón, o sea encima del fondo y
+   debajo del texto. */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent 32%, rgba(255, 255, 255, 0.5) 50%, transparent 68%);
+  transform: translateX(-115%);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+
+.btn:not(:disabled):not([aria-disabled="true"]):hover::before,
+.btn:not(:disabled):not([aria-disabled="true"]):focus-visible::before {
+  transform: translateX(115%);
+}
+
+.btn:not(:disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Principal: dorado con filo claro arriba y un poco más hondo abajo. */
+.btn-primary {
+  color: var(--background);
+  background: linear-gradient(180deg, #f8d36a 0%, var(--gold) 52%, #dcae30 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.btn-primary:not(:disabled):not([aria-disabled="true"]):hover {
   border-color: #ffe28a;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 0 1px rgba(240, 192, 64, 0.35),
+    0 0 26px rgba(240, 192, 64, 0.38);
+}
+
+.btn-primary:not(:disabled):not([aria-disabled="true"]):active {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 14px rgba(240, 192, 64, 0.25);
+}
+
+/* Secundario: borde dorado y fondo apenas tintado; en hover se llena de luz. */
+.btn-ghost {
+  color: var(--gold);
+  background: rgba(240, 192, 64, 0.04);
+  border-color: rgba(240, 192, 64, 0.55);
+}
+
+.btn-ghost::before {
+  background: linear-gradient(100deg, transparent 32%, rgba(240, 192, 64, 0.26) 50%, transparent 68%);
+}
+
+.btn-ghost:not(:disabled):not([aria-disabled="true"]):hover {
+  color: var(--foreground);
+  background: rgba(240, 192, 64, 0.12);
+  border-color: #ffe28a;
+  box-shadow: 0 0 22px rgba(240, 192, 64, 0.18);
+}
+
+/* Neutro: acompaña a un principal sin competir con él. */
+.btn-outline {
+  color: var(--foreground);
+  background: transparent;
+  border-color: var(--border-soft);
+}
+
+.btn-outline::before {
+  background: linear-gradient(100deg, transparent 32%, rgba(240, 192, 64, 0.14) 50%, transparent 68%);
+}
+
+.btn-outline:not(:disabled):not([aria-disabled="true"]):hover {
+  color: var(--gold);
+  background: rgba(240, 192, 64, 0.05);
+  border-color: rgba(240, 192, 64, 0.6);
+}
+
+/* Flecha que se desliza: para los botones que llevan a otra página. */
+.btn-arrow::after {
+  content: "→";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.btn-arrow:hover::after,
+.btn-arrow:focus-visible::after {
+  transform: translateX(4px);
+}
+
+/* Destello ocasional en reposo: un barrido cada tanto, como el brillo del
+   escudo. Solo para el botón principal de la pantalla. */
+.btn-shine::before {
+  animation: btn-shine-sweep 7s ease-in-out 2.5s infinite;
+}
+
+.btn-shine:hover::before,
+.btn-shine:focus-visible::before {
+  animation: none;
+}
+
+@keyframes btn-shine-sweep {
+  0%,
+  72% {
+    transform: translateX(-115%);
+  }
+  92%,
+  100% {
+    transform: translateX(115%);
+  }
+}
+
+/* Chips: enlaces y filtros chicos. El activo se llena de oro; en hover se
+   enciende el filo izquierdo, igual que los avisos. */
+.btn-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.btn-chip:hover {
+  border-color: rgba(240, 192, 64, 0.6);
+  background: rgba(240, 192, 64, 0.06);
+  color: var(--gold);
+  box-shadow: inset 2px 0 0 var(--gold);
+}
+
+.btn-chip[aria-pressed="true"],
+.btn-chip[aria-selected="true"] {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, #f8d36a 0%, var(--gold) 52%, #dcae30 100%);
+  color: var(--background);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Botón de texto: "Expandir todo", "Cerrar". Subrayado que crece en hover. */
+.btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0.5rem calc(50% + 0.85em) / 0 1px;
+}
+
+.btn-quiet:hover,
+.btn-quiet:focus-visible {
+  color: var(--gold);
+  background-size: calc(100% - 1rem) 1px;
+}
+
+/* Botón de ícono (menú, cerrar): cuadrado de 44 px que se enmarca en hover. */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.btn-icon:hover {
+  border-color: rgba(240, 192, 64, 0.4);
+  background: rgba(240, 192, 64, 0.06);
+  color: var(--gold);
+}
+
+/* Foco por teclado: el mismo dorado claro en todo, siempre visible. */
+.btn:focus-visible,
+.btn-chip:focus-visible,
+.btn-quiet:focus-visible,
+.btn-icon:focus-visible {
+  outline: 2px solid #ffe28a;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before {
+    display: none;
+  }
+  .btn,
+  .btn-chip,
+  .btn-quiet,
+  .btn-icon,
+  .btn-arrow::after {
+    transition: none;
+  }
+  .btn:active {
+    transform: none;
+  }
+  .btn-arrow:hover::after,
+  .btn-arrow:focus-visible::after {
+    transform: none;
+  }
 }
 
 /* Splash de carga (estilo Rockstar): logo con contorno que aparece con un

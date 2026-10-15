@@ -33,7 +33,7 @@ export default function SecurityTeaser() {
 
         <Link
           href="/seguridad"
-          className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+          className="btn btn-primary btn-arrow"
         >
           Cómo cuidamos tu cuenta
         </Link>

@@ -163,11 +163,7 @@ export default function ItemExplorer({
               aria-selected={active}
               aria-controls={`${idPrefix}-panel`}
               onClick={() => setTabId(t.id)}
-              className={`rounded-none border px-5 py-3 font-display text-sm font-bold uppercase tracking-widest transition ${
-                active
-                  ? "border-gold bg-gold text-background"
-                  : "border-border-soft text-muted hover:border-gold/60 hover:text-foreground"
-              }`}
+              className="btn-chip px-5 font-display font-bold uppercase tracking-widest"
             >
               {t.label}
             </button>
@@ -194,14 +190,14 @@ export default function ItemExplorer({
               <button
                 type="button"
                 onClick={expandAll}
-                className="inline-flex min-h-11 items-center px-2 text-muted transition hover:text-gold"
+                className="btn-quiet"
               >
                 Expandir todo
               </button>
               <button
                 type="button"
                 onClick={collapseAll}
-                className="inline-flex min-h-11 items-center px-2 text-muted transition hover:text-gold"
+                className="btn-quiet"
               >
                 Contraer todo
               </button>

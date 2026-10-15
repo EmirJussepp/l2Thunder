@@ -68,7 +68,7 @@ export default function DiscordBanner() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-none bg-gold px-4 text-xs font-semibold text-background transition hover:brightness-110"
+            className="btn btn-primary btn-sm shrink-0 whitespace-nowrap"
           >
             Unirme
           </a>
@@ -76,7 +76,7 @@ export default function DiscordBanner() {
             type="button"
             onClick={dismiss}
             aria-label="Cerrar"
-            className="flex h-11 w-11 shrink-0 items-center justify-center text-muted transition hover:text-foreground"
+            className="btn-icon h-11 w-11 shrink-0 text-base"
           >
             ×
           </button>
@@ -87,7 +87,7 @@ export default function DiscordBanner() {
             type="button"
             onClick={dismiss}
             aria-label="Cerrar"
-            className="absolute right-1 top-1 flex h-11 w-11 items-center justify-center text-muted transition hover:text-foreground"
+            className="btn-icon absolute right-1 top-1 h-11 w-11 text-base"
           >
             ×
           </button>
@@ -102,7 +102,7 @@ export default function DiscordBanner() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="mt-4 block rounded-none bg-gold px-4 py-2 text-center text-sm font-semibold text-background transition hover:brightness-110"
+            className="btn btn-primary btn-sm mt-4 w-full"
           >
             Unirme al Discord
           </a>

@@ -27,7 +27,7 @@ export default function StagedOpening() {
 
         <Link
           href="/apertura-escalonada"
-          className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+          className="btn btn-primary btn-arrow"
         >
           Ver todo el detalle
         </Link>

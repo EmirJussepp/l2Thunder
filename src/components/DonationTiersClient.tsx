@@ -63,8 +63,8 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
               fullWidthButton
               buttonClassName={
                 tier.highlight
-                  ? "btn-impact bg-gold px-5 py-2.5 text-sm text-background hover:brightness-110"
-                  : "rounded-none border border-border-soft px-5 py-[11px] text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent"
+                  ? "btn btn-primary btn-sm"
+                  : "btn btn-outline btn-sm"
               }
             />
           </div>

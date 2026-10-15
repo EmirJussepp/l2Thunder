@@ -46,7 +46,7 @@ export default function ClassesTeaser() {
         <div className="mt-12 text-center">
           <Link
             href="/guias/clases"
-            className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+            className="btn btn-primary btn-arrow"
           >
             Ver todas las clases
           </Link>

@@ -125,7 +125,7 @@ export default function UnitCoinsClient({
           fullWidthButton
           quantity={qty}
           summary={`Vas a comprar ${coinsLabel(qty)} por ${priceFormatter.format(total)}.`}
-          buttonClassName="btn-impact bg-gold px-5 py-2.5 text-sm text-background hover:brightness-110"
+          buttonClassName="btn btn-primary btn-sm"
         />
       </div>
     </div>

@@ -206,6 +206,7 @@ Plano y tonal. La profundidad sale de capas de color: fondo (#08090f) → superf
 Las únicas "luces" del sistema son decorativas y están cada una en su lugar: el brillo dorado y cian del título del hero, el halo del logo en la pantalla de carga, las brasas que suben, y el desenfoque del header al hacer scroll y del fondo del menú.
 
 ### Shadow Vocabulary
+- **Resplandor de los botones** (`box-shadow: 0 0 26px rgba(240,192,64,0.38)` en hover de `.btn-primary`, y 0.18 en `.btn-ghost`): es luz, no altura. Solo en hover y solo en botones.
 - **Brillo del título** (`text-shadow: 0 0 24px rgba(240,192,64,0.4), 0 0 48px rgba(108,200,255,0.2)`): solo el `h1` del hero.
 - **Velo del menú** (`bg-black/70` con `backdrop-blur-sm`): detrás del panel lateral abierto. El panel suma `shadow-2xl`.
 - **Header al scrollear** (`bg-background/85` con `backdrop-blur-md` y borde inferior): cuando la página baja del tope.
@@ -215,15 +216,23 @@ Las únicas "luces" del sistema son decorativas y están cada una en su lugar: e
 
 ## Shapes
 
-Esquinas rectas en todo el sitio (`rounded-none`, 0 px): tarjetas, botones, pestañas, tablas, iconos, imágenes y badges. Los bordes son de 1 px en `border-soft`; los botones principales tienen un borde de 2 px transparente que se enciende en dorado claro al pasar el mouse. La única excepción deliberada a "bordes parejos" es el aviso: un filete de 2 px a la izquierda más un tinte del 6 % del mismo color, que dice de qué tipo es. Los iconos de ítem van en recuadros cuadrados de 56 px con borde fino; los afiches y capturas, en un marco de tarjeta.
+Esquinas rectas en todo el sitio (`rounded-none`, 0 px): tarjetas, botones, pestañas, tablas, iconos, imágenes y badges. Los bordes son de 1 px en `border-soft`; los botones (`.btn`) llevan un borde de 2 px que se enciende en dorado claro al pasar el mouse. La única excepción deliberada a "bordes parejos" es el aviso: un filete de 2 px a la izquierda más un tinte del 6 % del mismo color, que dice de qué tipo es. Los iconos de ítem van en recuadros cuadrados de 56 px con borde fino; los afiches y capturas, en un marco de tarjeta.
 
 ## Components
 
 ### Buttons
-- **Shape:** cuadrado (0 px), `padding: 12px 28px` en el hero y 8px 16px en las tarjetas compactas.
-- **Primary** (`.btn-impact`): relleno oro, texto `background`, Inter 700. Es plano a propósito, al estilo de los botones de Steam o Battle.net: sin sombra ni elevación.
-- **Hover / Focus:** el borde transparente de 2 px pasa a #ffe28a en 150 ms y el relleno sube a `brightness(1.1)`. El foco es el del navegador; no se quita.
-- **Ghost:** borde de 1 px dorado, texto dorado y Geist seminegrita; al pasar el mouse el borde se hunde a `border-soft` y el texto pasa a `foreground`.
+Un solo sistema, definido en `globals.css` (no se repiten clases de Tailwind en cada botón). Todo es cuadrado (0 px), de 44 px o más de alto táctil y con Inter 700 en los botones de acción. La "vida" sale de la luz, no de la altura: un filo claro arriba, un destello que cruza el botón y un resplandor dorado en hover. Nunca una sombra de caja.
+- **Primary** (`.btn .btn-primary`): relleno oro con degradé fino (`#f8d36a` → `gold` → `#dcae30`), texto `background`, filo claro de 1 px adentro arriba y borde transparente de 2 px. Es la acción principal de la pantalla: una por vista.
+- **Hover / Focus:** el borde pasa a #ffe28a, aparece un resplandor dorado (`0 0 26px` al 38 %, un halo de luz, no elevación) y un destello en diagonal cruza el botón de punta a punta en 0,7 s. Al presionar baja 1 px y el resplandor se apaga. El foco por teclado es un contorno de 2 px en #ffe28a a 3 px de distancia, en todos los botones. Deshabilitado: 55 % de opacidad y sin efectos.
+- **Ghost** (`.btn-ghost`): mismo tamaño que el principal, borde dorado al 55 %, fondo dorado al 4 %, texto dorado; en hover el fondo sube al 12 %, el borde pasa a #ffe28a y el texto a `foreground`. Es la acción secundaria.
+- **Outline** (`.btn-outline`): borde `border-soft` y texto `foreground`; en hover pasa a dorado. Acompaña a un principal sin competir (los planes no destacados de /donar, "Corregir"). Nunca cian: el cian es de información.
+- **Flecha** (`.btn-arrow`): una `→` que se desliza 4 px en hover. Solo en los botones que llevan a otra página, no en descargas ni en pagos.
+- **Destello en reposo** (`.btn-shine`): un barrido cada 7 s, el mismo gesto del brillo del escudo. Solo en el botón principal de la portada; con "reducir movimiento" se apaga.
+- **Tamaños:** por defecto `12px 28px` y 16 px de texto; `.btn-sm` (`8px 18px`, 14 px) para las tarjetas y el banner.
+- **Chip** (`.btn-chip`): enlaces y filtros chicos. Borde `border-soft`, texto `muted`; en hover borde dorado al 60 %, tinte dorado al 6 % y un filo dorado de 2 px a la izquierda (el mismo que usan los avisos). Activo (`aria-pressed` / `aria-selected`) = relleno oro como el principal.
+- **Quiet** (`.btn-quiet`): botón de texto en mayúsculas espaciadas ("Expandir todo"); en hover pasa a dorado y se dibuja un subrayado que crece.
+- **Icon** (`.btn-icon`): cuadrado de 44 px sin marco (menú, cerrar); en hover se enmarca en dorado al 40 %.
+- **Movimiento:** con `prefers-reduced-motion` se apagan el destello, la flecha y las transiciones; los estados siguen cambiando de color.
 
 ### Tabs
 Cinzel 700 en mayúsculas, 44 px de alto. Activa = relleno dorado con texto `background`; inactiva = borde `border-soft` y texto `muted`, con borde dorado al 60 % al pasar el mouse.
@@ -277,7 +286,8 @@ El escudo con el relámpago es el único elemento de marca. Aparece grande en el
 - **Do** respetar la jerarquía de títulos: `h1` → `h2` → `h3`, sin saltos.
 
 ### Don't:
-- **Don't** usar esquinas redondeadas, sombras de caja ni elevación en el contenido.
+- **Don't** usar esquinas redondeadas, sombras de caja ni elevación en el contenido (el resplandor dorado de los botones en hover es luz y es la única excepción).
+- **Don't** escribir a mano las clases de un botón (`bg-gold px-7 py-3 ...`): usar `.btn` con `.btn-primary`, `.btn-ghost`, `.btn-outline`, `.btn-chip`, `.btn-quiet` o `.btn-icon`. Más de un `.btn-primary` por pantalla le quita jerarquía al principal.
 - **Don't** bajar la opacidad del texto secundario (`text-muted/60`, `/70`): falla el contraste.
 - **Don't** poner texto funcional por debajo de 11 px ni frases por debajo de 12 px.
 - **Don't** usar Cinzel en párrafos ni oro en texto corrido, y no sumar una quinta familia tipográfica.

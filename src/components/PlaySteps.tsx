@@ -45,7 +45,7 @@ export default function PlaySteps() {
                     href={CLIENT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-impact bg-gold px-4 py-2 text-sm text-background hover:brightness-110"
+                    className="btn btn-primary btn-sm"
                   >
                     Descargar cliente (3.99 GB)
                   </a>
@@ -53,7 +53,7 @@ export default function PlaySteps() {
                     href={LAUNCHER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-none border border-gold px-4 py-2 text-sm font-semibold text-gold transition hover:border-border-soft hover:text-foreground"
+                    className="btn btn-ghost btn-sm"
                   >
                     Descargar launcher
                   </a>

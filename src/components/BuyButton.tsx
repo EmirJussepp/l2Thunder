@@ -97,7 +97,7 @@ export default function BuyButton({
             type="button"
             onClick={() => setStep("form")}
             disabled={loading}
-            className="flex-1 border border-border-soft px-3 py-2 text-sm text-muted hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
+            className="btn btn-outline btn-sm flex-1"
           >
             Corregir
           </button>
@@ -105,7 +105,7 @@ export default function BuyButton({
             type="button"
             onClick={handleConfirm}
             disabled={loading}
-            className={`${buttonClassName} flex-1 disabled:cursor-not-allowed disabled:opacity-60`}
+            className={`${buttonClassName} flex-1`}
           >
             {loading ? "Redirigiendo…" : "Sí, es correcto"}
           </button>

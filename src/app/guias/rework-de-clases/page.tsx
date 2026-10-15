@@ -281,7 +281,7 @@ export default function ReworkDeClasesPage() {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
-                    className="block border border-border-soft px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted transition hover:border-gold/60 hover:text-gold"
+                    className="btn-chip text-xs uppercase tracking-wider"
                   >
                     {s.label}
                   </a>

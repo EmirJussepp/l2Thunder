@@ -83,7 +83,7 @@ export default async function ClassGuidePage({ params }: { params: Promise<{ slu
               <li key={o.slug}>
                 <Link
                   href={`/guias/clases/${o.slug}`}
-                  className="inline-flex min-h-11 items-center border border-border-soft px-4 text-sm font-semibold text-muted transition hover:border-gold/60 hover:text-gold"
+                  className="btn-chip"
                 >
                   {o.name}
                 </Link>
@@ -92,7 +92,7 @@ export default async function ClassGuidePage({ params }: { params: Promise<{ slu
             <li>
               <Link
                 href="/guias/clases"
-                className="inline-flex min-h-11 items-center border border-gold px-4 text-sm font-semibold text-gold transition hover:border-border-soft hover:text-foreground"
+                className="btn btn-ghost btn-sm"
               >
                 Elegir clase
               </Link>

@@ -288,13 +288,13 @@ export default function AperturaEscalonadaPage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/#jugar"
-            className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+            className="btn btn-primary btn-arrow"
           >
             Cómo empezar
           </Link>
           <Link
             href="/por-que-l2thunder"
-            className="rounded-none border border-gold px-7 py-3 font-semibold text-gold transition hover:border-border-soft hover:text-foreground"
+            className="btn btn-ghost btn-arrow"
           >
             ¿Por qué L2Thunder?
           </Link>

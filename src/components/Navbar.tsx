@@ -104,7 +104,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className="flex h-12 w-12 items-center justify-center text-foreground transition hover:text-gold"
+            className="btn-icon h-12 w-12 text-foreground"
           >
             <span className="relative block h-3 w-6">
               <span

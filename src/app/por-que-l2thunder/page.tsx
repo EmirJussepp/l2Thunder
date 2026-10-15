@@ -459,7 +459,7 @@ export default function PorQueL2ThunderPage() {
             href={CLIENT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+            className="btn btn-primary"
           >
             Descargar cliente (3.99 GB)
           </a>
@@ -467,7 +467,7 @@ export default function PorQueL2ThunderPage() {
             href={LAUNCHER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-none border border-gold px-7 py-3 font-semibold text-gold transition hover:border-border-soft hover:text-foreground"
+            className="btn btn-ghost"
           >
             Descargar launcher
           </a>

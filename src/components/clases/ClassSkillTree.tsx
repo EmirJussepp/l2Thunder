@@ -95,8 +95,7 @@ export default function ClassSkillTree({ tiers }: { tiers: ClassTier[] }) {
     });
   }
 
-  const textButton =
-    "inline-flex min-h-11 items-center px-2 text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold";
+  const textButton = "btn-quiet";
 
   return (
     <div>
@@ -109,11 +108,7 @@ export default function ClassSkillTree({ tiers }: { tiers: ClassTier[] }) {
               type="button"
               aria-pressed={active}
               onClick={() => setFilterId(f.id)}
-              className={`inline-flex min-h-11 items-center gap-2 rounded-none border px-4 text-sm font-semibold transition ${
-                active
-                  ? "border-gold bg-gold text-background"
-                  : "border-border-soft text-muted hover:border-gold/60 hover:text-foreground"
-              }`}
+              className="btn-chip"
             >
               {f.label}
               <span className={active ? "text-background" : "text-muted"}>
@@ -131,7 +126,7 @@ export default function ClassSkillTree({ tiers }: { tiers: ClassTier[] }) {
               <a
                 href={`#tramo-${t.id}`}
                 onClick={() => open(t.id)}
-                className="inline-flex min-h-11 items-center border border-border-soft px-3 text-xs font-semibold uppercase tracking-wider text-muted transition hover:border-gold/60 hover:text-gold"
+                className="btn-chip px-3 text-xs uppercase tracking-wider"
               >
                 {t.name}
               </a>

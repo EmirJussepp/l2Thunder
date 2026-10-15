@@ -36,13 +36,13 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#jugar"
-            className="btn-impact bg-gold px-7 py-3 text-background hover:brightness-110"
+            className="btn btn-primary btn-arrow btn-shine"
           >
             Jugar la beta
           </Link>
           <Link
             href="/donar"
-            className="rounded-none border border-gold px-7 py-3 font-semibold text-gold transition hover:border-border-soft hover:text-foreground"
+            className="btn btn-ghost btn-arrow"
           >
             Apoyar el proyecto
           </Link>
