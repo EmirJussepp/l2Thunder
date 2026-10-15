@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Fondo de la portada: las cinco razas en el campo de batalla, en bucle. La imagen de respaldo (el primer
 // cuadro del video, 124 KB) se ve de inmediato y es lo que cuenta para la velocidad de carga; el video
-// (5,8 MB) empieza recién cuando la página terminó de cargar y entra en fundido sobre la imagen. No se
+// (1,9 MB) empieza recién cuando la página terminó de cargar y entra en fundido sobre la imagen. No se
 // carga con "reducir movimiento" ni con ahorro de datos o conexión lenta, y se pausa cuando el hero sale de
 // la pantalla. Es decorativo (sin sonido, aria-hidden).
 export default function HeroVideo({ className = "" }: { className?: string }) {
