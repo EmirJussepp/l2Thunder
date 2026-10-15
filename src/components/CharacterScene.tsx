@@ -35,8 +35,10 @@ export default function CharacterScene({
         }`}
       >
         <SceneArt className={`scene-art ${right ? "lg:order-2" : ""}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={p.src} width={p.w} height={p.h} alt="" loading="lazy" decoding="async" />
+          <span className="scene-img">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={p.src} width={p.w} height={p.h} alt="" loading="lazy" decoding="async" />
+          </span>
         </SceneArt>
         <div className={`min-w-0 ${right ? "lg:order-1" : ""}`}>{children}</div>
       </div>
