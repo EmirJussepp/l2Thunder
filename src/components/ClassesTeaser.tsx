@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ClassCard from "@/components/clases/ClassCard";
+import RaceLineup from "@/components/RaceLineup";
 import { classSlug, getClassGuide } from "@/lib/clases";
 import { PANORAMA, type PanoramaClass } from "@/lib/clases/panorama";
 
@@ -27,9 +28,9 @@ export default function ClassesTeaser() {
   );
 
   return (
-    <section className="border-t border-border-soft px-6 py-24">
+    <section className="relative overflow-hidden border-t border-border-soft px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">Elegí tu clase</h2>
           <p className="mt-4 text-muted">
             Treinta y una clases de tercera, todas pensadas para rendir. Mirá qué hace cada una y
@@ -37,7 +38,9 @@ export default function ClassesTeaser() {
           </p>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-[14px]">
+        <RaceLineup />
+
+        <div className="mt-14 grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-[14px]">
           {featured.map((c) => (
             <ClassCard key={c.name} c={c} icons={signatureIcons(c.name)} cta />
           ))}

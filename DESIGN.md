@@ -193,7 +193,7 @@ Una paleta de noche azulada con una sola voz cálida: el oro del relámpago. Los
 
 Un contenedor central de lectura (56rem, `max-w-4xl`) para guías, información de juego y la home; uno ancho (72rem, `max-w-6xl`) para los tres pasos de "Cómo empezar", /donar y el pie. Gutter lateral fijo de 24 px (`px-6`; el header usa 40 px desde 640 px). Las páginas internas arrancan con `pt-36` (144 px) para librar el header fijo de ~104 px y cierran con `pb-24`.
 
-El ritmo vertical es de pocos pasos: 96 px entre secciones de la home (`py-24`), 48–64 px alrededor de cada afiche, 56 px entre bloques de una guía (`mt-14 border-t border-border-soft pt-14`), 24 px de separación en grillas de tarjetas (`gap-6`, 1 / 2 / 3 columnas en móvil / `sm` / `lg`). Dentro de bloques: 12–16 px entre párrafos (`space-y-3`/`space-y-4`).
+El ritmo vertical es de pocos pasos: 80–112 px entre secciones de la home (`py-20 sm:py-28`), 56 px entre bloques de una guía (`mt-14 border-t border-border-soft pt-14`), 24 px de separación en grillas de tarjetas (`gap-6`, 1 / 2 / 3 columnas en móvil / `sm` / `lg`). Dentro de bloques: 12–16 px entre párrafos (`space-y-3`/`space-y-4`).
 
 Primero celular. Las tablas pasan de grilla a pila de "etiqueta + valor" por debajo de 640 px; las tarjetas de 5 columnas pasan a 2. Nada puede generar scroll horizontal a 390 px. Los breakpoints son los de Tailwind (640, 768, 1024, 1280). Todo elemento interactivo mide 44 px de alto como mínimo.
 
@@ -238,7 +238,7 @@ Un solo sistema, definido en `globals.css` (no se repiten clases de Tailwind en 
 Una columna de botones cuadrados (`.btn-icon` de 44 px, con marco `foreground` al 25 % y fondo `background` al 75 % con desenfoque) pegada al borde derecho y centrada en altura, solo desde 1280 px (más angosto taparía el contenido; en el celular las redes están en el menú y el pie). Solo van las redes que existen (hoy Discord y Facebook): un ícono que no lleva a ningún lado es peor que ninguno. Los links viven en `src/lib/social.ts`. Es una excepción deliberada al marco `border-soft`, porque flota sobre una foto.
 
 ### Escena con personaje
-Una sección de la portada con un personaje a un lado y el contenido al otro (`CharacterScene`). La imagen es un WebP o PNG con fondo transparente, decorativa (alt vacío) y de unos 150 a 250 KB; se muestra con un resplandor dorado y azul detrás, un fundido abajo, una flotación lenta de 10 px y, donde el navegador lo soporta, un desplazamiento propio al bajar (`animation-timeline: view()`, CSS puro). Con "reducir movimiento" queda quieta. En el celular el personaje va arriba del texto. Solo en la portada, nunca en las guías ni en Información de juego: son páginas de consulta y el arte les quita densidad. Arte propio de L2Thunder; nunca imágenes de otro servidor.
+La portada lleva un personaje por sección (`CharacterScene`), alternando de lado, con la información de cada sección al otro lado: Apertura escalonada (Orco), Características (Elfo), Cómo empezar (Humano), Fundador (Enano) y Seguridad (Elfo oscuro). La de Clases lleva las cinco razas juntas (`RaceLineup`, el enano más bajo). Las imágenes son WebP con fondo transparente en `public/personajes`, decorativas (alt vacío), a la mayor calidad que da el original (WebP al 95 %, sin achicar), de 85 a 135 KB y con carga diferida. Cada una se muestra con un resplandor dorado y azul, un marco en rombo que gira muy lento y un fundido abajo; flota 10 px en un ciclo de 7 s, se desplaza a otra velocidad que el texto al bajar (`animation-timeline: view()`, CSS puro) y acompaña al mouse con un movimiento corto (`SceneArt`, solo con mouse y sin "reducir movimiento"). En el celular el personaje va arriba del texto. Solo en la portada: nunca en las guías ni en Información de juego, que son páginas de consulta y el arte les quita densidad. Arte propio de L2Thunder; nunca imágenes de otro servidor. Para sumar o cambiar un personaje: `Desktop\L2Thunder-herramientas-clases\personajes\quitar-fondo.js` (quita el fondo verde de la ilustración y exporta el WebP) y se registra en `src/lib/personajes.ts`.
 
 ### Tabs
 Cinzel 700 en mayúsculas, 44 px de alto. Activa = relleno dorado con texto `background`; inactiva = borde `border-soft` y texto `muted`, con borde dorado al 60 % al pasar el mouse.
@@ -272,8 +272,8 @@ Número romano en un recuadro de 40–48 px con borde dorado al 60 % (Cinzel 900
 ### Navigation
 Header fijo con el escudo de 56 px a la izquierda y un botón de tres líneas finas de 1 px a la derecha (48 px). Al scrollear pasa a fondo semitransparente con desenfoque y un borde inferior. El menú es un panel sobre el lado derecho (ancho completo en celular, hasta 24rem) con los enlaces en Cinzel 900 de 1.5–1.875rem; el activo va dorado. Las redes (Facebook, Discord) van abajo con 44 px de alto.
 
-### Posters and Screenshots
-Los afiches de la home van a 896 px de ancho (3:2) en un marco de tarjeta, sin recompresión y sin ampliarse más de ~1.3× su tamaño real. Las capturas del juego en las guías usan `Screenshot`: marco de tarjeta y pie de 12 px. Todo texto que viva dentro de una imagen se repite en el `alt`.
+### Screenshots
+La portada ya no lleva afiches: cada sección lleva un personaje (ver Escena con personaje). Las capturas del juego en las guías usan `Screenshot`: marco de tarjeta y pie de 12 px. Todo texto que viva dentro de una imagen se repite en el `alt`.
 
 ### Crest (signature)
 El escudo con el relámpago es el único elemento de marca. Aparece grande en el hero con un destello diagonal cada 4 s (`crest-shine`), a 56 px en el header y a 32 px en el pie. No se recolorea ni se redibuja.
@@ -298,6 +298,6 @@ El escudo con el relámpago es el único elemento de marca. Aparece grande en el
 - **Don't** poner texto funcional por debajo de 11 px ni frases por debajo de 12 px.
 - **Don't** usar Cinzel en párrafos ni oro en texto corrido, y no sumar una quinta familia tipográfica.
 - **Don't** hacer una tabla de `div`s a mano: usar `DataTable` o sus variantes, que ya traen los roles.
-- **Don't** ampliar un afiche o una captura más de ~1.3× su tamaño original; si hace falta más grande, hay que pedir la imagen en mayor resolución.
+- **Don't** ampliar una captura más de ~1.3× su tamaño original; si hace falta más grande, hay que pedir la imagen en mayor resolución.
 - **Don't** agregar elementos fijos abajo en la pantalla sin revisar antes el stack de votos (`bottom-4`, ~78 px) y la barra de Discord (`bottom-28`).
 - **Don't** abrir imágenes en otra pestaña ni en un visor sin botón de cerrar: en el celular no hay cómo volver.

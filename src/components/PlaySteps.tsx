@@ -1,3 +1,4 @@
+import CharacterScene from "@/components/CharacterScene";
 import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
 
 const steps = [
@@ -20,49 +21,53 @@ const steps = [
 
 export default function PlaySteps() {
   return (
-    <section id="jugar" className="border-t border-border-soft bg-surface/40 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">Cómo empezar</h2>
-          <p className="mt-4 text-muted">
-            Estamos en beta: podés entrar ya mismo a testear el server.
-          </p>
-        </div>
+    <CharacterScene id="jugar" personaje="humano" side="left" band>
+      <div>
+        <h2 className="font-display text-3xl font-bold sm:text-4xl">Cómo empezar</h2>
+        <p className="mt-4 text-muted">
+          Estamos en beta: podés entrar ya mismo a testear el server.
+        </p>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <ol className="mt-10">
           {steps.map((s) => (
-            <div
-              key={s.step}
-              className="card-surface rounded-none p-6 text-center transition hover:border-accent/50"
-            >
-              <span className="font-display text-3xl font-black text-accent">{s.step}</span>
-              <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted">{s.description}</p>
+            <li key={s.step} className="flex gap-5">
+              <div className="flex flex-col items-center">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-gold/40 bg-gold/10 font-display text-xl font-black text-gold">
+                  {s.step}
+                </span>
+                {s.step !== String(steps.length) && (
+                  <span aria-hidden="true" className="mt-2 w-px flex-1 bg-gradient-to-b from-gold/40 to-border-soft" />
+                )}
+              </div>
+              <div className="min-w-0 flex-1 pb-9">
+                <h3 className="font-display text-lg font-bold">{s.title}</h3>
+                <p className="mt-1 text-sm text-muted">{s.description}</p>
 
-              {s.step === "1" && (
-                <div className="mt-4 flex flex-col gap-2">
-                  <a
-                    href={CLIENT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm"
-                  >
-                    Descargar cliente (3.99 GB)
-                  </a>
-                  <a
-                    href={LAUNCHER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-ghost btn-sm"
-                  >
-                    Descargar launcher
-                  </a>
-                </div>
-              )}
-            </div>
+                {s.step === "1" && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <a
+                      href={CLIENT_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-sm"
+                    >
+                      Descargar cliente (3.99 GB)
+                    </a>
+                    <a
+                      href={LAUNCHER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-ghost btn-sm"
+                    >
+                      Descargar launcher
+                    </a>
+                  </div>
+                )}
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
-    </section>
+    </CharacterScene>
   );
 }

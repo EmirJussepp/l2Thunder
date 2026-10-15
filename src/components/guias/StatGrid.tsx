@@ -12,8 +12,13 @@ const SM_COLS: Record<number, string> = {
   6: "sm:grid-cols-3 lg:grid-cols-6",
 };
 
-export default function StatGrid({ stats }: { stats: Stat[] }) {
-  const cols = SM_COLS[stats.length] ?? "sm:grid-cols-3";
+// compact: para una columna angosta (junto a un personaje): 2 o 3 columnas, nunca 4 a 6.
+export default function StatGrid({ stats, compact = false }: { stats: Stat[]; compact?: boolean }) {
+  const cols = compact
+    ? stats.length >= 5
+      ? "sm:grid-cols-3"
+      : "sm:grid-cols-2"
+    : (SM_COLS[stats.length] ?? "sm:grid-cols-3");
 
   return (
     <div

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CharacterScene from "@/components/CharacterScene";
 
 const features = [
   "Títulos de colores según la cantidad de PvP",
@@ -19,18 +20,16 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="border-t border-border-soft px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <div className="max-w-2xl">
-          <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            Características
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
-            Todo lo que suma, de un vistazo
-          </h2>
-        </div>
+    <CharacterScene personaje="elfo" side="right">
+      <div>
+        <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
+          Características
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
+          Todo lo que suma, de un vistazo
+        </h2>
 
-        <ul className="mt-10 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+        <ul className="mt-8 space-y-3">
           {features.map((f) => (
             <li key={f} className="flex gap-3 text-sm text-muted">
               <span className="mt-0.5 shrink-0 text-gold">✦</span>
@@ -39,13 +38,10 @@ export default function Features() {
           ))}
         </ul>
 
-        <Link
-          href="/por-que-l2thunder"
-          className="mt-10 inline-block text-sm text-muted underline decoration-border-soft underline-offset-4 transition hover:text-gold"
-        >
+        <Link href="/por-que-l2thunder" className="btn btn-ghost btn-sm btn-arrow mt-10">
           Ver el detalle completo
         </Link>
       </div>
-    </section>
+    </CharacterScene>
   );
 }

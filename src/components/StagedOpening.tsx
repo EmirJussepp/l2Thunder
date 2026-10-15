@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CharacterScene from "@/components/CharacterScene";
 import StatGrid from "@/components/guias/StatGrid";
 import { OPENING_STATS } from "@/lib/apertura";
 
@@ -6,8 +7,8 @@ import { OPENING_STATS } from "@/lib/apertura";
 // camino a la página completa. Reemplaza al afiche "Un Interlude pensado para hoy".
 export default function StagedOpening() {
   return (
-    <section id="apertura" className="border-t border-border-soft px-6 py-24">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+    <CharacterScene id="apertura" personaje="orco" side="left">
+      <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Reglas del servidor
         </span>
@@ -22,16 +23,13 @@ export default function StagedOpening() {
         </p>
 
         <div className="w-full">
-          <StatGrid stats={OPENING_STATS} />
+          <StatGrid stats={OPENING_STATS} compact />
         </div>
 
-        <Link
-          href="/apertura-escalonada"
-          className="btn btn-primary btn-arrow"
-        >
+        <Link href="/apertura-escalonada" className="btn btn-primary btn-arrow">
           Ver todo el detalle
         </Link>
       </div>
-    </section>
+    </CharacterScene>
   );
 }

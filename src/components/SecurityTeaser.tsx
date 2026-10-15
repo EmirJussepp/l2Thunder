@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CharacterScene from "@/components/CharacterScene";
 import StatGrid from "@/components/guias/StatGrid";
 
 // Cuatro cifras: con tres, la grilla de 2 columnas del celular deja una celda vacía.
@@ -13,8 +14,8 @@ const stats = [
 // trabajo de seguridad y lleva a /seguridad, donde está el detalle.
 export default function SecurityTeaser() {
   return (
-    <section className="border-t border-border-soft px-6 py-24">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+    <CharacterScene personaje="elfo-oscuro" side="left">
+      <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Antes de abrir
         </span>
@@ -28,16 +29,13 @@ export default function SecurityTeaser() {
         </p>
 
         <div className="w-full">
-          <StatGrid stats={stats} />
+          <StatGrid stats={stats} compact />
         </div>
 
-        <Link
-          href="/seguridad"
-          className="btn btn-primary btn-arrow"
-        >
+        <Link href="/seguridad" className="btn btn-primary btn-arrow">
           Cómo cuidamos tu cuenta
         </Link>
       </div>
-    </section>
+    </CharacterScene>
   );
 }
