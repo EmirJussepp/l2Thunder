@@ -9,6 +9,7 @@ import { dreadnought } from "./data/dreadnought";
 import { duelist } from "./data/duelist";
 import { elementalMaster } from "./data/elemental-master";
 import { evasSaint } from "./data/evas-saint";
+import { evasTemplar } from "./data/evas-templar";
 import { fortuneSeeker } from "./data/fortune-seeker";
 import { ghostHunter } from "./data/ghost-hunter";
 import { ghostSentinel } from "./data/ghost-sentinel";
@@ -48,6 +49,7 @@ const GUIDES = [
   // Elfo
   elementalMaster,
   evasSaint,
+  evasTemplar,
   moonlightSentinel,
   mysticMuse,
   swordmuse,
