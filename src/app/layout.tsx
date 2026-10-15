@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cinzel, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DiscordBanner from "@/components/DiscordBanner";
+import CommunityPopup from "@/components/CommunityPopup";
 import VoteBanner from "@/components/VoteBanner";
 import SocialRail from "@/components/SocialRail";
 import ParticlesBackground from "@/components/ParticlesBackground";
@@ -69,7 +69,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <DiscordBanner />
+        <CommunityPopup />
         <VoteBanner />
         <SocialRail />
       </body>

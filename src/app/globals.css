@@ -575,6 +575,43 @@ body {
   }
 }
 
+/* ── Aviso de comunidad ───────────────────────────────────────────────────
+   El velo (solo en pantallas anchas) aparece en fundido y la tarjeta sube y se agranda un poco hasta su lugar.
+   Con "reducir movimiento" aparece sin moverse. */
+.popup-veil {
+  animation: popup-fade 0.35s ease-out both;
+}
+
+.popup-card {
+  animation: popup-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes popup-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup-card {
+    animation: popup-fade 0.2s ease-out both;
+  }
+}
+
 /* Splash de carga (estilo Rockstar): logo con contorno que aparece con un
    glow y se desvanece, tapando el sitio un instante al entrar. */
 .splash-overlay {

@@ -7,8 +7,8 @@
 // en vez de enlazarlo: con el formato grande (728x90) las listas de bloqueo de
 // anuncios (Brave, uBlock, AdBlock) lo ocultaban por el tamaño en el nombre del
 // archivo, y un archivo propio no depende de ninguna lista ni del otro sitio.
-// El stack completo mide ~78px de alto (40 + 8 + 30): si cambia, ajustar el
-// bottom del DiscordBanner en modo compacto para que siga por encima.
+// El stack completo mide ~78px de alto (40 + 8 + 30): si cambia, revisar que el aviso de
+// comunidad en el celular (CommunityPopup, pegado abajo) no lo tape de forma molesta.
 export default function VoteBanner() {
   return (
     <div className="fixed bottom-4 left-4 z-40 flex flex-col items-center gap-2">
