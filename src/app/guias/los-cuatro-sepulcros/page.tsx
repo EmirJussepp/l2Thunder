@@ -5,6 +5,7 @@ import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
+import ItemText from "@/components/guias/ItemText";
 import WindowClock from "@/components/guias/WindowClock";
 
 export const metadata: Metadata = {
@@ -229,7 +230,7 @@ export default function LosCuatroSepulcrosPage() {
                     sep,
                     g,
                     <CoordChip key={coord}>{coord}</CoordChip>,
-                    caliz,
+                    <ItemText key={caliz} text={caliz} />,
                   ])}
                 />
               </div>
@@ -301,7 +302,10 @@ export default function LosCuatroSepulcrosPage() {
               </p>
 
               <div className="mt-4">
-                <DataTable headers={["Categoría", "Objetos"]} rows={loot} />
+                <DataTable
+                  headers={["Categoría", "Objetos"]}
+                  rows={loot.map(([cat, objetos]) => [cat, <ItemText key={cat} text={objetos} />])}
+                />
               </div>
             </div>
 

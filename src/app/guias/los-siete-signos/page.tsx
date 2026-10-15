@@ -4,6 +4,7 @@ import StatGrid from "@/components/guias/StatGrid";
 import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
+import ItemText from "@/components/guias/ItemText";
 import CoordChip from "@/components/guias/CoordChip";
 
 export const metadata: Metadata = {
@@ -220,7 +221,14 @@ export default function LosSieteSignosPage() {
             <div>
               <p className="font-display text-base font-bold text-foreground">Los tres colores</p>
               <div className="mt-3">
-                <DataTable headers={["Piedra", "Vale", "Dónde cae"]} rows={piedras} />
+                <DataTable
+                  headers={["Piedra", "Vale", "Dónde cae"]}
+                  rows={piedras.map(([piedra, vale, donde]) => [
+                    <ItemText key={piedra} text={piedra} />,
+                    vale,
+                    donde,
+                  ])}
+                />
               </div>
               <p className="mt-3">
                 Ese número es a la vez el puntaje que le suma a tu bando y la Adena Antigua que

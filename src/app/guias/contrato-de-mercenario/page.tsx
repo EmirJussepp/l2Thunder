@@ -4,6 +4,7 @@ import StatGrid from "@/components/guias/StatGrid";
 import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
+import ItemList from "@/components/guias/ItemList";
 import CoordChip from "@/components/guias/CoordChip";
 import SkillLevelTable, { type SkillRow } from "@/components/guias/SkillLevelTable";
 
@@ -165,6 +166,10 @@ export default function ContratoDeMercenarioPage() {
               los veinticinco almacenes del mundo. La primera ranura cuesta 10 Destruction
               Tombstone y cada una siguiente sale más cara.
             </p>
+
+            <ItemList
+              items={[{ name: "Destruction Tombstone", note: "— con esto se pagan las ranuras" }]}
+            />
 
             <DataTable headers={["Ranura", "Destruction Tombstone", "Acumulado"]} rows={ranuras} />
 

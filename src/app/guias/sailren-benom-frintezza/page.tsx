@@ -7,6 +7,8 @@ import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
 import Screenshot from "@/components/guias/Screenshot";
 import ItemLabel from "@/components/guias/ItemLabel";
+import ItemList from "@/components/guias/ItemList";
+import ItemText from "@/components/guias/ItemText";
 
 export const metadata: Metadata = {
   title: "Sailren, Benom y Frintezza — Guía",
@@ -220,11 +222,19 @@ export default function SailrenBenomFrintezzaPage() {
               </div>
             </div>
 
-            <p>
-              <strong className="font-semibold text-foreground">Qué deja: </strong>
-              4.569.144 de experiencia, y de botín: Sealed Draconic Leather Armor y sus partes,
-              Angel Slayer y sus hojas, y Enchant Weapon S.
-            </p>
+            <div>
+              <p>
+                <strong className="font-semibold text-foreground">Qué deja: </strong>
+                4.569.144 de experiencia, y de botín:
+              </p>
+              <ItemList
+                items={[
+                  { name: "Sealed Draconic Leather Armor", note: "y sus partes" },
+                  { name: "Angel Slayer", note: "y sus hojas" },
+                  { name: "Scroll: Enchant Weapon (Grade S)", label: "Enchant Weapon S" },
+                ]}
+              />
+            </div>
 
             <p className="text-xs text-muted">
               Si el intento fracasa perdés el Gazkh, pero no las 24 horas: conseguís otro y
@@ -330,7 +340,7 @@ export default function SailrenBenomFrintezzaPage() {
                   <div className="mt-3">
                     <Callout title="Llevá la soga antes de bajar" variant="warn">
                       <p>
-                        El Rope of Magic: A-Grade se vende en varias tiendas. Que la lleve más de
+                        El <ItemLabel name="Rope of Magic: A-Grade" /> se vende en varias tiendas. Que la lleve más de
                         uno: si el que la tiene está muerto en ese momento, la ventana se pierde
                         igual.
                       </p>
@@ -355,7 +365,12 @@ export default function SailrenBenomFrintezzaPage() {
             <div>
               <p className="font-display text-base font-bold text-foreground">Qué deja</p>
               <div className="mt-3">
-                <DataTable headers={["Premio", "Normal", "Difícil"]} rows={benomLoot} />
+                <DataTable headers={["Premio", "Normal", "Difícil"]} rows={benomLoot.map(([premio, normal, dificil]) => [
+                    <ItemText key={premio} text={premio} />,
+                    normal,
+                    dificil,
+                  ])}
+                />
               </div>
               <p className="mt-4">
                 Y el Triol&apos;s Warlock, si lo matás, deja 5.000.000 de adena y de 2 a 5
@@ -377,6 +392,12 @@ export default function SailrenBenomFrintezzaPage() {
                 grado A y 220 por el de grado S. Los cofres siempre dan algo — arma, Blessed
                 Enchant Weapon o Enchant Armor del grado que corresponda.
               </p>
+              <ItemList
+                items={[
+                  { name: "Cofre de Arma Top Grado A", note: "140 Destruction Tombstone" },
+                  { name: "Cofre de Arma Grado S", note: "220 Destruction Tombstone" },
+                ]}
+              />
             </div>
 
             <div className="grid items-start gap-4 sm:grid-cols-2">
@@ -496,10 +517,33 @@ export default function SailrenBenomFrintezzaPage() {
                 <li>
                   <ItemLabel name="Frintezza's Necklace" />, garantizado.
                 </li>
-                <li>Top-Grade Life Stone nivel 76, garantizada.</li>
-                <li>Piezas selladas de Majestic, Imperial Crusader y Major Arcana.</li>
-                <li>Joyas selladas Tateossian, Phoenix y Majestic.</li>
-                <li>Blessed Scroll of Resurrection y manuscritos de Divine Inspiration.</li>
+                <li>
+                  <ItemText text="Top-Grade Life Stone" /> nivel 76, garantizada.
+                </li>
+                <li>
+                  Piezas selladas de Majestic, Imperial Crusader y Major Arcana.
+                  <ItemList
+                    items={[
+                      { name: "Sealed Majestic Plate Armor" },
+                      { name: "Sealed Imperial Crusader Breastplate" },
+                      { name: "Sealed Major Arcana Robe" },
+                    ]}
+                  />
+                </li>
+                <li>
+                  Joyas selladas Tateossian, Phoenix y Majestic.
+                  <ItemList
+                    items={[
+                      { name: "Sealed Tateossian Necklace" },
+                      { name: "Sealed Phoenix Necklace" },
+                      { name: "Sealed Majestic Necklace" },
+                    ]}
+                  />
+                </li>
+                <li>
+                  <ItemText text="Blessed Scroll of Resurrection" /> y manuscritos de Divine
+                  Inspiration.
+                </li>
               </ul>
             </div>
 

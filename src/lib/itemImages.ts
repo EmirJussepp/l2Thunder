@@ -20,10 +20,10 @@ export function loadItemImages(folder: string): Record<string, string> {
   }
 }
 
-// La imagen de un ítem por su nombre, buscándola en todas las secciones de Información de juego
-// (armaduras, joyas, SA). Sirve para mostrar el ícono de un ítem nombrado en una guía sin repetir
+// La imagen de un ítem por su nombre, buscándola en public/items (los íconos originales del cliente) y
+// en las secciones de Información de juego (armaduras, joyas, SA). Sirve para mostrar el ícono de un ítem nombrado en una guía sin repetir
 // el archivo. Devuelve undefined si no hay imagen: el nombre se ve igual, sin ícono.
-const SECTIONS = ["armaduras", "joyas", "sa"] as const;
+const SECTIONS = ["items", "armaduras", "joyas", "sa"] as const;
 
 export function findItemImage(name: string): string | undefined {
   const slug = itemSlug(name);

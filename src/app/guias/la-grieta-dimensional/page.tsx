@@ -5,6 +5,7 @@ import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
+import ItemText from "@/components/guias/ItemText";
 
 export const metadata: Metadata = {
   title: "La Grieta Dimensional — Guía",
@@ -257,7 +258,13 @@ export default function LaGrietaDimensionalPage() {
               sala —un 50% más largo que el de una sala normal— para bajarlo.
             </p>
 
-            <DataTable headers={["Escalón", "Además de su propio drop"]} rows={anakazelLoot} />
+            <DataTable
+              headers={["Escalón", "Además de su propio drop"]}
+              rows={anakazelLoot.map(([escalon, drop]) => [
+                escalon,
+                <ItemText key={escalon} text={drop} />,
+              ])}
+            />
 
             <Callout title="Propio de L2Thunder" variant="custom">
               <p>
@@ -287,7 +294,13 @@ export default function LaGrietaDimensionalPage() {
           </div>
 
           <div className="mt-4 max-w-2xl">
-            <DataTable headers={["Cuesta", "Te llevás"]} rows={tombstoneCambio} />
+            <DataTable
+              headers={["Cuesta", "Te llevás"]}
+              rows={tombstoneCambio.map(([cuesta, premio]) => [
+                cuesta,
+                <ItemText key={premio} text={premio} />,
+              ])}
+            />
           </div>
 
           <p className="mt-4 max-w-[38rem] text-sm text-muted">
