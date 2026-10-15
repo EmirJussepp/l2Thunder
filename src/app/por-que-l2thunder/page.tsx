@@ -288,10 +288,10 @@ export default function PorQueL2ThunderPage() {
           </p>
           <div className="mt-4 flex justify-center">
             <Link
-              href="/guias/limites-de-nivel"
+              href="/por-que-l2thunder/limites-de-nivel"
               className="inline-flex min-h-11 items-center text-sm font-semibold text-gold underline decoration-gold/40 underline-offset-4 transition hover:decoration-gold"
             >
-              Ver la guía completa de límites de nivel
+              Ver el detalle completo de los límites de nivel
             </Link>
           </div>
         </div>

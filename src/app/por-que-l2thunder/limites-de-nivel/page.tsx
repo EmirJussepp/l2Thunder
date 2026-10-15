@@ -8,7 +8,7 @@ import LevelBands from "@/components/guias/LevelBands";
 import { LEVEL_BANDS, LEVEL_BANDS_CAPTION } from "@/lib/limites-de-nivel";
 
 export const metadata: Metadata = {
-  title: "Límites de Nivel — Guía",
+  title: "Límites de Nivel",
   description:
     "Desde qué diferencia de nivel dejás de ganar experiencia en la party y contra los mobs, cuándo salta el Raid Curse y por qué bajar de nivel no te deja conservar los skills.",
 };
@@ -102,16 +102,16 @@ export default function LimitesDeNivelPage() {
     <div className="px-6 pb-24 pt-36">
       <div className="mx-auto max-w-4xl">
         <Link
-          href="/guias"
+          href="/por-que-l2thunder"
           className="-my-3 inline-flex min-h-11 items-center text-xs font-semibold uppercase tracking-widest text-muted transition hover:text-gold"
         >
-          ← Guías
+          ← ¿Por qué L2Thunder?
         </Link>
 
         {/* Intro */}
         <div className="mt-6">
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            Guía de sistema · Todos los niveles
+            Características · Todos los niveles
           </p>
           <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">Límites de Nivel</h1>
           <p className="mt-2 font-display text-lg font-semibold text-muted">

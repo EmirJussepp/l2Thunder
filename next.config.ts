@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
   },
   // No anunciar qué framework corre atrás: no es un secreto, pero tampoco hay por qué regalarlo.
   poweredByHeader: false,
+  // La guía de límites de nivel pasó de Guías a Características: la dirección vieja sigue funcionando.
+  async redirects() {
+    return [
+      {
+        source: "/guias/limites-de-nivel",
+        destination: "/por-que-l2thunder/limites-de-nivel",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     // La política de contenido. Next incrusta scripts en línea para hidratar las páginas, así que
     // 'unsafe-inline' hace falta en script-src (sin eval). Lo que sí queda cerrado: nada de

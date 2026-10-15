@@ -71,13 +71,6 @@ const guides = [
     subtitle: "Qué hace cada una, en una línea",
     text: "El panorama de las clases de tercera y, de cada una, el árbol completo de habilidades por nivel, con lo que cambia respecto del Interlude original.",
   },
-  {
-    href: "/guias/limites-de-nivel",
-    level: "Guía de sistema · Todos los niveles",
-    title: "Límites de Nivel",
-    subtitle: "Desde qué diferencia dejás de ganar experiencia",
-    text: "Dónde corta la experiencia la party, los mobs y el Raid Curse, por qué no hay degradado y qué pasa con tus skills si bajás de nivel.",
-  },
 ];
 
 export default function GuiasPage() {

@@ -1,7 +1,8 @@
 import type { Band } from "@/components/guias/LevelBands";
 
 // Los tres cortes de experiencia por diferencia de nivel. Los usan la guía completa
-// (/guias/limites-de-nivel) y el resumen del detalle de Características (/por-que-l2thunder):
+// (/por-que-l2thunder/limites-de-nivel) y el resumen del detalle de Características
+// (/por-que-l2thunder):
 // si el servidor cambia un número, se cambia acá y las dos páginas quedan iguales.
 export const LEVEL_BANDS: Band[] = [
   { label: "Raid Curse", cut: 9, note: "sin maldición hasta 8 de diferencia" },
