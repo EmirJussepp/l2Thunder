@@ -95,25 +95,6 @@ body {
   }
 }
 
-.hero-bg-animate {
-  animation: hero-bg-zoom 20s ease-in-out infinite alternate;
-}
-
-@keyframes hero-bg-zoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg-animate {
-    animation: none;
-  }
-}
-
 .brand {
   font-family: var(--font-display), Georgia, serif;
   letter-spacing: 0.18em;
@@ -555,6 +536,42 @@ body {
   .scene-art img,
   .scene-mini {
     animation: none;
+  }
+}
+
+/* ── Hero con video ───────────────────────────────────────────────────────
+   El velo oscurece el cielo de arriba (para que se lea el logo) y el suelo de abajo (para la cuenta regresiva y
+   los botones) y deja ver a los personajes en el medio; abajo se funde con el fondo de la página. En el celular
+   el video va en el flujo y solo se funde en los bordes. */
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: none;
+}
+
+.hero-video {
+  z-index: -2;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+}
+
+@media (min-width: 768px) {
+  .hero-video {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero-veil {
+    display: block;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 9, 15, 0.9) 0%,
+      rgba(8, 9, 15, 0.35) 26%,
+      rgba(8, 9, 15, 0) 48%,
+      rgba(8, 9, 15, 0.45) 78%,
+      #08090f 100%
+    );
   }
 }
 

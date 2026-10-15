@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Vision from "@/components/Vision";
 import StagedOpening from "@/components/StagedOpening";
 import Features from "@/components/Features";
 import PlaySteps from "@/components/PlaySteps";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Vision />
       <StagedOpening />
       <Features />
       <PlaySteps />
