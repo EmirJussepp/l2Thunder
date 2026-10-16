@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { getArsPerCoin } from "@/lib/economy";
 import { UNIT_COINS_MAX, UNIT_COINS_SLUG } from "@/lib/coins";
 import UnitCoinsClient from "./UnitCoinsClient";
 
@@ -6,10 +7,12 @@ import UnitCoinsClient from "./UnitCoinsClient";
 // responde (el aviso de mantenimiento ya lo muestra DonationTiers), no se dibuja nada.
 export default async function UnitCoins() {
   let pkg;
+  let referencia: number | null = null;
   try {
     pkg = await prisma.donationPackage.findFirst({
       where: { slug: UNIT_COINS_SLUG, kind: "COIN_PACK", active: true },
     });
+    referencia = await getArsPerCoin();
   } catch (err) {
     console.error("UnitCoins: no se pudo leer la base", err);
     return null;
@@ -22,6 +25,7 @@ export default async function UnitCoins() {
       <UnitCoinsClient
         packageId={pkg.id}
         pesosPerCoin={pkg.priceArsCents / pkg.coinsGranted / 100}
+        referencePesos={referencia ? referencia / 100 : null}
         max={UNIT_COINS_MAX}
       />
     </section>

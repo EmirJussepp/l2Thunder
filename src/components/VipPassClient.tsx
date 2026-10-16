@@ -36,7 +36,7 @@ export default function VipPassClient({ vip }: { vip: VipView | null }) {
         <div className="shrink-0 md:w-72">
           <BuyButton
             packageId={vip.id}
-            label={`Activar ${vip.name}`}
+            label={`Comprar ${vip.name}`}
             buttonClassName="btn btn-primary md:w-auto"
           />
         </div>

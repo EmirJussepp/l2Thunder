@@ -23,10 +23,13 @@ function coinsLabel(n: number) {
 export default function UnitCoinsClient({
   packageId,
   pesosPerCoin,
+  referencePesos,
   max,
 }: {
   packageId: string;
   pesosPerCoin: number;
+  // Lo que sale cada Coin dentro del VIP y las Cajas: la aclaración de abajo solo va si la suelta cuesta más.
+  referencePesos?: number | null;
   max: number;
 }) {
   const [text, setText] = useState("1");
@@ -52,10 +55,12 @@ export default function UnitCoinsClient({
           <span className="mt-1 text-accent">•</span>
           <span>Llegan por correo in-game al personaje que elijas</span>
         </li>
-        <li className="flex items-start gap-2">
-          <span className="mt-1 text-accent">•</span>
-          <span>Por unidad valen un poco más que dentro del VIP o de la Caja</span>
-        </li>
+        {referencePesos != null && pesosPerCoin > referencePesos && (
+          <li className="flex items-start gap-2">
+            <span className="mt-1 text-accent">•</span>
+            <span>Por unidad valen un poco más que dentro del VIP o de la Caja</span>
+          </li>
+        )}
       </ul>
 
       <div className="mt-5">

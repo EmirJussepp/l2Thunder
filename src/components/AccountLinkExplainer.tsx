@@ -1,3 +1,5 @@
+import { NPC_DONACIONES, NPC_DONACIONES_LUGARES } from "@/lib/donaciones";
+
 const steps = [
   {
     step: "1",
@@ -15,6 +17,11 @@ const steps = [
     title: "Te llega por correo in-game",
     description:
       "Cuando confirmamos el pago, tu personaje recibe un correo con los Coins of Luck. Tiene que estar online para recibirlo — si no, te espera hasta que entres.",
+  },
+  {
+    step: "4",
+    title: "Canjealos en el juego",
+    description: `Hablá con ${NPC_DONACIONES}, en ${NPC_DONACIONES_LUGARES}. Ahí cambiás tus Coins por el VIP Thunder (8), la Caja de Skins (8) o el Pack VIP + Caja (14).`,
   },
 ];
 
@@ -42,6 +49,11 @@ export default function AccountLinkExplainer() {
       </ol>
 
       <p className="mt-6 border-t border-border-soft pt-4 text-xs text-muted">
+        El VIP dura 15 días, vale para todos los personajes de tu cuenta, no se transfiere y no afecta a la party.
+        Con el comando <span className="font-mono text-foreground">.premium</span> ves cuándo vence.
+      </p>
+
+      <p className="mt-3 text-xs text-muted">
         Dejá espacio libre en el inventario antes de donar — si está lleno, el correo
         no se puede entregar.
       </p>

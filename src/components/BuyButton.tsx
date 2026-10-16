@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { DISCORD_URL } from "@/lib/social";
+import { NPC_DONACIONES, NPC_DONACIONES_LUGARES } from "@/lib/donaciones";
 
 type Step = "closed" | "form" | "confirm" | "submitted";
 
@@ -86,7 +87,8 @@ export default function BuyButton({
         <p className="text-sm text-foreground">
           Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
           of Luck llegan solos por correo in-game, en unos minutos desde que se confirma el
-          pago, siempre que tu personaje esté conectado.
+          pago, siempre que tu personaje esté conectado. Después las canjeás con {NPC_DONACIONES}, en{" "}
+          {NPC_DONACIONES_LUGARES}.
         </p>
         <p className="text-xs text-muted">
           ¿Pasaron más de 10 minutos con tu personaje conectado, o te equivocaste con el
