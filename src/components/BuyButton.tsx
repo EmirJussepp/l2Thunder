@@ -1,8 +1,21 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
+import { DISCORD_URL } from "@/lib/social";
 
 type Step = "closed" | "form" | "confirm" | "submitted";
+
+// El aviso del nombre del personaje: es el error que más caro sale, porque el pago se hace igual y las
+// Coins no llegan si ese personaje no existe. Mismo molde que los avisos de "cuidado" (filete rosa a la
+// izquierda, tinte del 6 %), en tamaño compacto para entrar en la tarjeta.
+function NameWarning({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="border-l-2 border-danger/60 bg-danger/[0.06] p-3">
+      <p className="brand text-xs font-bold uppercase tracking-widest text-danger">{title}</p>
+      <div className="mt-1.5 space-y-1.5 text-xs leading-relaxed text-muted">{children}</div>
+    </div>
+  );
+}
 
 export default function BuyButton({
   packageId,
@@ -69,11 +82,26 @@ export default function BuyButton({
 
   if (step === "submitted") {
     return (
-      <p className="text-sm text-foreground">
-        Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
-        of Luck llegan solos por correo in-game, en unos minutos desde que se confirma el
-        pago.
-      </p>
+      <div className="w-full space-y-3 text-left">
+        <p className="text-sm text-foreground">
+          Se abrió Mercado Pago en una pestaña nueva — completá el pago ahí. Los Coins
+          of Luck llegan solos por correo in-game, en unos minutos desde que se confirma el
+          pago, siempre que tu personaje esté conectado.
+        </p>
+        <p className="text-xs text-muted">
+          ¿Pasaron más de 10 minutos con tu personaje conectado, o te equivocaste con el
+          nombre?{" "}
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground"
+          >
+            Escribinos por Discord
+          </a>{" "}
+          con el comprobante de Mercado Pago y lo revisamos.
+        </p>
+      </div>
     );
   }
 
@@ -81,14 +109,21 @@ export default function BuyButton({
     return (
       <div className="w-full space-y-3 text-left">
         {summary && <p className="text-sm font-semibold text-foreground">{summary}</p>}
-        <p className="text-sm text-foreground">
-          Tu personaje es <span className="font-semibold text-gold">{characterName}</span>
-          , ¿confirmás?
+        <p className="text-sm text-foreground">Las Coins of Luck van a llegar a este personaje:</p>
+        {/* En letra monoespaciada y espaciada para que se distingan la I mayúscula, la l minúscula y el 1,
+            y el 0 de la O: son los errores de tipeo más comunes con los nombres del juego. */}
+        <p
+          translate="no"
+          className="break-all border border-gold/40 bg-gold/[0.06] px-3 py-2 font-mono text-lg font-bold tracking-[0.18em] text-gold"
+        >
+          {characterName}
         </p>
-        <p className="text-xs text-muted">
-          Ahí llegan los Coins of Luck — si está mal escrito, no hay forma de corregirlo
-          después del pago.
-        </p>
+        <NameWarning title="Revisalo letra por letra">
+          <p>
+            Si ese personaje no existe, el pago se acredita igual en Mercado Pago pero las
+            Coins no llegan. Compará con el nombre que ves en el juego, sobre tu personaje.
+          </p>
+        </NameWarning>
 
         {error && <p className="text-xs text-danger">{error}</p>}
 
@@ -130,23 +165,33 @@ export default function BuyButton({
     <form onSubmit={handleContinue} className="w-full space-y-3 text-left">
       <label className="block text-xs text-muted">
         Nombre de tu personaje en el juego
+        {/* Sin espacios (los nombres no los llevan: pegar uno con espacio de más rompía el formulario) y sin el
+            autocorrector ni la mayúscula automática del teclado del celular, que cambian el nombre. */}
         <input
           value={characterName}
-          onChange={(e) => setCharacterName(e.target.value)}
+          onChange={(e) => setCharacterName(e.target.value.replace(/\s/g, ""))}
           required
           minLength={3}
           maxLength={40}
           pattern="[a-zA-Z0-9_]{3,40}"
           placeholder="tu_personaje"
           autoFocus
-          className="mt-1 w-full border border-border-soft bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-gold"
+          autoComplete="off"
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+          translate="no"
+          className="mt-1 w-full border border-border-soft bg-background px-3 py-2 font-mono text-sm text-foreground outline-none focus:border-gold"
         />
       </label>
 
-      <p className="text-xs text-muted">
-        Tiene que ser el personaje exacto (no la cuenta) — ahí llegan los Coins of Luck
-        por correo in-game. Revisá que esté bien escrito.
-      </p>
+      <NameWarning title="Es el personaje, no la cuenta">
+        <p>
+          Escribilo igual que lo ves en el juego, sobre tu personaje: ahí llegan las Coins of
+          Luck por correo. Ojo con la I mayúscula y la l minúscula, y con el 0 y la O.
+        </p>
+        <p>Si ese personaje no existe, el pago se acredita igual pero las Coins no llegan.</p>
+      </NameWarning>
 
       <button type="submit" className={`${buttonClassName} w-full`}>
         Continuar

@@ -2,7 +2,8 @@ const steps = [
   {
     step: "1",
     title: "Escribí el nombre exacto de tu personaje",
-    description: "No tu cuenta — el personaje que va a recibir los Coins of Luck.",
+    description:
+      "No tu cuenta — el personaje que va a recibir los Coins of Luck, igual que se ve en el juego (cuidado con la I mayúscula y la l minúscula, y con el 0 y la O). Si el personaje no existe, el pago igual se acredita y las Coins no llegan.",
   },
   {
     step: "2",
