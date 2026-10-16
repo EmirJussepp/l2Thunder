@@ -3,7 +3,7 @@ import Link from "next/link";
 import Crest from "@/components/Crest";
 import SectionHeader from "@/components/porque/SectionHeader";
 import ComparisonTable from "@/components/porque/ComparisonTable";
-import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
+import { CLIENT_MEGA_URL, CLIENT_URL, LAUNCHER_MEGA_URL, LAUNCHER_URL } from "@/lib/downloads";
 import LevelBands from "@/components/guias/LevelBands";
 import { RATES } from "@/lib/rates";
 import { LEVEL_BANDS, LEVEL_BANDS_CAPTION } from "@/lib/limites-de-nivel";
@@ -472,6 +472,18 @@ export default function PorQueL2ThunderPage() {
             Descargar launcher
           </a>
         </div>
+
+        <p className="mt-4 text-xs text-muted">
+          ¿Drive no te deja bajar? Probá con Mega:{" "}
+          <a href={CLIENT_MEGA_URL} target="_blank" rel="noopener noreferrer" className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground">
+            cliente
+          </a>{" "}
+          ·{" "}
+          <a href={LAUNCHER_MEGA_URL} target="_blank" rel="noopener noreferrer" className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground">
+            launcher
+          </a>
+          .
+        </p>
 
         <Link
           href="/donar"

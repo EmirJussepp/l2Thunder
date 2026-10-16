@@ -1,5 +1,5 @@
 import CharacterScene from "@/components/CharacterScene";
-import { CLIENT_URL, LAUNCHER_URL } from "@/lib/downloads";
+import { CLIENT_MEGA_URL, CLIENT_URL, LAUNCHER_MEGA_URL, LAUNCHER_URL } from "@/lib/downloads";
 
 const steps = [
   {
@@ -62,6 +62,20 @@ export default function PlaySteps() {
                       Descargar launcher
                     </a>
                   </div>
+                )}
+
+                {s.step === "1" && (
+                  <p className="mt-3 text-xs text-muted">
+                    ¿Drive no te deja bajar? Probá con Mega:{" "}
+                    <a href={CLIENT_MEGA_URL} target="_blank" rel="noopener noreferrer" className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground">
+                      cliente
+                    </a>{" "}
+                    ·{" "}
+                    <a href={LAUNCHER_MEGA_URL} target="_blank" rel="noopener noreferrer" className="text-accent underline decoration-border-soft underline-offset-4 transition hover:text-foreground">
+                      launcher
+                    </a>
+                    .
+                  </p>
                 )}
               </div>
             </li>
