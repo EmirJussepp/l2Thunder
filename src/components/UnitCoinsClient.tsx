@@ -52,6 +52,10 @@ export default function UnitCoinsClient({
           <span className="mt-1 text-accent">•</span>
           <span>Llegan por correo in-game al personaje que elijas</span>
         </li>
+        <li className="flex items-start gap-2">
+          <span className="mt-1 text-accent">•</span>
+          <span>Por unidad valen un poco más que dentro del VIP o de la Caja</span>
+        </li>
       </ul>
 
       <div className="mt-5">
