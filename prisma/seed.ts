@@ -4,8 +4,10 @@ import { PrismaClient } from "../src/generated/prisma/client";
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-// 1 Coin of Luck = $1.000 ARS, precio plano (sin descuento por volumen)
-const ARS_PER_COIN = 1000;
+// 1 Coin of Luck = $1.200 ARS (desde el 16/10/2026; antes $1.000), precio plano (sin descuento por volumen).
+// El seed NO se corre en producción (borra los slugs que no están en la lista y hay órdenes que los usan): el
+// precio vigente se cambia con un UPDATE sobre los COIN_PACK, y VIP y Cajas lo siguen solos (priceCoins × tasa).
+const ARS_PER_COIN = 1200;
 
 const packages = [
   {
