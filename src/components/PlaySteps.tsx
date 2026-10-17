@@ -25,7 +25,7 @@ export default function PlaySteps() {
       <div>
         <h2 className="font-display text-3xl font-bold sm:text-4xl">Cómo empezar</h2>
         <p className="mt-4 text-muted">
-          Estamos en beta: podés entrar ya mismo a testear el server.
+          Ya estamos online: seguí estos pasos y entrás a jugar.
         </p>
 
         <ol className="mt-10">

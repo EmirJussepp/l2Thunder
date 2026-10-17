@@ -31,7 +31,7 @@ export default function Hero() {
 
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link href="#jugar" className="btn btn-primary btn-arrow btn-shine">
-            Jugar la beta
+            Jugar ahora
           </Link>
           <Link href="/donar" className="btn btn-ghost btn-arrow">
             Apoyar el proyecto

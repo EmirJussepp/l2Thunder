@@ -35,7 +35,7 @@ const inter = Inter({
 });
 
 const description =
-  `L2Thunder: servidor de Lineage II Interlude con rework total de razas, clases y skills. Rates x${RATES.xp}/x${RATES.sp}/x${RATES.drop}/x${RATES.spoil}, auto-loot, spoil para todas las clases. Beta abierta.`;
+  `L2Thunder: servidor de Lineage II Interlude con rework total de razas, clases y skills. Rates x${RATES.xp}/x${RATES.sp}/x${RATES.drop}/x${RATES.spoil}, auto-loot, spoil para todas las clases. Abierto desde el 16 de octubre de 2026.`;
 
 export const metadata: Metadata = {
   title: {

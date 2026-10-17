@@ -7,7 +7,7 @@ import { DiscordIcon, FacebookIcon } from "@/components/SocialIcons";
 import { DISCORD_URL, FACEBOOK_URL } from "@/lib/social";
 
 // Aviso de comunidad: una tarjeta que invita a Discord y a Facebook. No salta apenas se entra (taparía el video
-// de la portada y el botón de "Jugar la beta", y Google penaliza en el celular los carteles que tapan la pantalla
+// de la portada y el botón de "Jugar ahora", y Google penaliza en el celular los carteles que tapan la pantalla
 // al llegar): aparece a los 15 segundos o cuando se baja de la primera pantalla, lo que pase primero. Se muestra
 // una sola vez y se acuerda que se cerró (14 días; 60 si entraron a una red). Nunca en /donar, donde se paga.
 // En pantallas anchas es un modal centrado con velo; en el celular, una tarjeta baja pegada abajo que no tapa la
@@ -160,7 +160,7 @@ export default function CommunityPopup() {
         </div>
 
         <p className="mx-auto mt-3 hidden max-w-xs text-sm text-muted md:block">
-          Novedades de la apertura, soporte y la gente con la que vas a jugar: todo pasa ahí
+          Novedades del servidor, soporte y la gente con la que vas a jugar: todo pasa ahí
           primero.
         </p>
 
