@@ -387,7 +387,7 @@ export const spectralMaster: ClassGuide = {
           "learn": 35,
           "max": 56,
           "icon": "mighty-servitor",
-          "desc": "+15% de P.Atk. a la invocación durante 20 minutos."
+          "desc": "+15% de P.Atk. a la invocación durante 2 horas."
         },
         {
           "name": "Slow",
