@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Crest from "./Crest";
-import { DISCORD_URL } from "@/lib/social";
+import { DISCORD_URL, DRAGONES_NEGROS_VOTE_URL } from "@/lib/social";
+import { HOPZONE_VOTE_URL } from "@/lib/hopzone";
 
 export default function Footer() {
   return (
@@ -46,20 +47,46 @@ export default function Footer() {
           >
             Discord
           </a>
-          <a
-            href="https://l2.hopzone.net/es/lineage2/details/107612/L2THUNDER.ONLINE"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center px-2 hover:text-foreground"
-          >
+          <Link href="/votar" className="inline-flex min-h-11 items-center px-2 hover:text-foreground">
             Votar
-          </a>
+          </Link>
           <span className="inline-flex min-h-11 cursor-not-allowed items-center px-2 italic">Foro (próximamente)</span>
         </div>
 
         <p className="text-xs text-muted">
           © {new Date().getFullYear()} L2Thunder. No afiliado con NCSoft.
         </p>
+      </div>
+
+      {/* Los banners oficiales de los rankings: HopZone exige el suyo visible en el sitio para mantener el
+          listado. El badge de Dragones Negros es un archivo propio en public/ (con el formato grande de 728x90
+          las listas de bloqueo de anuncios lo ocultaban por el tamaño en el nombre del archivo). */}
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-6 pb-10">
+        <a
+          href={DRAGONES_NEGROS_VOTE_URL}
+          target="_blank"
+          rel="noopener"
+          className="block transition hover:brightness-110"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/dragones-negros-voto.png"
+            alt="Votá por nosotros en Dragones Negros"
+            title="Dragones Negros - Ranking de servidores privados"
+            width={150}
+            height={40}
+          />
+        </a>
+        <a href={HOPZONE_VOTE_URL} target="_blank" rel="noopener noreferrer" className="block">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://l2.hopzone.net/assets/img/banners/vote_banners/simple_banner_3.png"
+            alt="Vote for L2THUNDER.ONLINE"
+            title="L2.HOPZONE.NET – Lineage 2 Servers ranking"
+            width={140}
+            height={30}
+          />
+        </a>
       </div>
     </footer>
   );

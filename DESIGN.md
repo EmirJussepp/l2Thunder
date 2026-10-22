@@ -197,7 +197,7 @@ El ritmo vertical es de pocos pasos: 80–112 px entre secciones de la home (`py
 
 Primero celular. Las tablas pasan de grilla a pila de "etiqueta + valor" por debajo de 640 px; las tarjetas de 5 columnas pasan a 2. Nada puede generar scroll horizontal a 390 px. Los breakpoints son los de Tailwind (640, 768, 1024, 1280). Todo elemento interactivo mide 44 px de alto como mínimo.
 
-Hay capas fijas que no son contenido y no se tocan sin revisar el conjunto: el header (z-120), los badges de voto abajo a la izquierda (`bottom-4 left-4`, unos 78 px de alto), el riel de redes a la derecha (solo desde 1280 px) y, cuando aparece, el aviso de comunidad (z-90).
+Hay capas fijas que no son contenido y no se tocan sin revisar el conjunto: el header (z-120), el botón "¡Votá aquí!" abajo a la izquierda (`bottom-4 left-4`, 44 px de alto; lleva a /votar y no se muestra ahí), el riel de redes a la derecha (solo desde 1280 px) y, cuando aparece, el aviso de comunidad (z-90).
 
 ## Elevation & Depth
 
@@ -308,5 +308,5 @@ El escudo con el relámpago es el único elemento de marca. Aparece grande en el
 - **Don't** usar Cinzel en párrafos ni oro en texto corrido, y no sumar una quinta familia tipográfica.
 - **Don't** hacer una tabla de `div`s a mano: usar `DataTable` o sus variantes, que ya traen los roles.
 - **Don't** ampliar una captura más de ~1.3× su tamaño original; si hace falta más grande, hay que pedir la imagen en mayor resolución.
-- **Don't** agregar elementos fijos abajo en la pantalla sin revisar antes el stack de votos (`bottom-4`, ~78 px) y el aviso de comunidad (`CommunityPopup`, que en el celular va pegado abajo).
+- **Don't** agregar elementos fijos abajo en la pantalla sin revisar antes el botón de votar (`bottom-4 left-4`, 44 px) y el aviso de comunidad (`CommunityPopup`, que en el celular va pegado abajo).
 - **Don't** abrir imágenes en otra pestaña ni en un visor sin botón de cerrar: en el celular no hay cómo volver.
