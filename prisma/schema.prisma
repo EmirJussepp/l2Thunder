@@ -65,3 +65,29 @@ model DonationOrder {
   @@index([characterName])
   @@index([status])
 }
+
+enum VoteClaimStatus {
+  PENDING // voto verificado en HopZone, esperando que el bridge lo levante
+  PROCESSING // el bridge lo levantó en /api/bridge/pending (con lease/timeout, igual que las órdenes)
+  DELIVERED // el bridge mandó el Amuleto de Votación por correo in-game
+  FAILED // no se entregó (personaje inexistente, cuenta con amuleto reciente, error del bridge)
+}
+
+// Reclamo del Amuleto de Votación: el jugador vota en HopZone y lo reclama en /votar. La web verifica
+// el voto por IP con la API de HopZone y el bridge lo entrega por correo. Un FAILED no cuenta para el
+// límite de tiempo: si se equivocó de nombre puede reclamar de nuevo.
+model VoteClaim {
+  id            String          @id @default(cuid())
+  characterName String
+  ip            String
+  votedAt       DateTime? // cuándo votó según HopZone (si lo informa): impide reclamar dos veces el mismo voto
+  status        VoteClaimStatus @default(PENDING)
+  bridgeError   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  deliveredAt   DateTime?
+
+  @@index([ip, createdAt])
+  @@index([characterName, createdAt])
+  @@index([status])
+}

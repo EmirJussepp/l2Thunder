@@ -22,6 +22,7 @@ const links: NavLink[] = [
   { href: "/apertura-escalonada", label: "Apertura escalonada", sectionId: null },
   { href: "/#jugar", label: "Cómo jugar", sectionId: "jugar" },
   { href: "/seguridad", label: "Seguridad", sectionId: null },
+  { href: "/votar", label: "Votar", sectionId: null },
   { href: "/donar", label: "Donar", sectionId: null },
 ];
 
