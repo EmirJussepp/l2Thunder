@@ -26,8 +26,7 @@ export default function VotarPage() {
       <GuideStep n="I" title="Votá en HopZone y en Dragones Negros">
         <p>
           Los dos votos nos ayudan a subir en los rankings donde nos encuentran los jugadores nuevos. Se abren en
-          pestañas aparte. Votá desde la misma conexión (la misma IP) con la que vas a reclamar: si votás con los datos
-          del celular y reclamás desde la PC con wifi, el voto no se reconoce.
+          pestañas aparte: dejá esta página abierta mientras votás y volvé a ella para reclamar.
         </p>
         <p className="flex flex-wrap gap-3">
           <a href={HOPZONE_VOTE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">

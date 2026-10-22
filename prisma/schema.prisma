@@ -91,3 +91,17 @@ model VoteClaim {
   @@index([characterName, createdAt])
   @@index([status])
 }
+
+// Respaldo del reclamo cuando la IP no coincide con la que vio HopZone (conexiones que cambian de IP según el
+// sitio al que se entra). Al abrir /votar se anota cuántos votos tenía HopZone; al reclamar, si el total subió y
+// quedan votos sin cobrar desde ese momento, el reclamo vale. Cada reclamo consume un voto, así que nunca se
+// entregan más amuletos que votos reales.
+model VoteTicket {
+  id         String    @id @default(cuid())
+  ip         String
+  startTotal Int // votos totales de HopZone cuando se abrió la página
+  createdAt  DateTime  @default(now())
+  usedAt     DateTime?
+
+  @@index([createdAt])
+}

@@ -28,6 +28,25 @@ function parseHopzoneTime(value: unknown): number | null {
   return Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6]));
 }
 
+// Votos totales del servidor en HopZone. Sirve para el respaldo del reclamo (ver VoteTicket en el schema).
+export async function getHopzoneTotal(): Promise<{ ok: true; total: number } | { ok: false; error: string }> {
+  const token = process.env.HOPZONE_TOKEN;
+  if (!token) return { ok: false, error: "HOPZONE_TOKEN no está configurado" };
+
+  const url = new URL("https://api.hopzone.net/lineage2/votes");
+  url.searchParams.set("token", token);
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS), cache: "no-store" });
+    if (!res.ok) return { ok: false, error: `HopZone respondió ${res.status}` };
+    const data: unknown = await res.json();
+    const total = data && typeof data === "object" ? (data as Record<string, unknown>).totalvotes : undefined;
+    if (typeof total !== "number" || !Number.isFinite(total)) return { ok: false, error: "HopZone: sin totalvotes" };
+    return { ok: true, total };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
 export async function checkHopzoneVote(ip: string): Promise<HopzoneResult> {
   const token = process.env.HOPZONE_TOKEN;
   if (!token) return { ok: false, error: "HOPZONE_TOKEN no está configurado" };

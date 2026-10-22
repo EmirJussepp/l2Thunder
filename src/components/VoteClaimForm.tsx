@@ -11,6 +11,8 @@ type Phase =
   | { kind: "message"; tone: "info" | "danger"; text: string };
 
 const POLL_EVERY_MS = 4_000;
+// Un ticket vale una hora en el servidor; en la pestaña se reutiliza un poco menos para no mandar uno vencido.
+const TICKET_REUSE_MS = 50 * 60 * 1000;
 // El bridge levanta los pendientes cada pocos segundos; pasado esto lo damos por "en cola" y le decimos
 // al jugador que lo mire en el juego en vez de dejarlo esperando en la pantalla.
 const POLL_GIVE_UP_MS = 4 * 60 * 1000;
@@ -27,6 +29,37 @@ export default function VoteClaimForm() {
   const [characterName, setCharacterName] = useState("");
   const [phase, setPhase] = useState<Phase>({ kind: "form" });
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // El ticket que anota la web al abrirse esta página: es el respaldo para quien entra a HopZone con una IP
+  // distinta de la que ve la web. Se guarda en la pestaña para no pedir uno nuevo en cada recarga.
+  const ticketId = useRef<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    try {
+      const saved = JSON.parse(sessionStorage.getItem("voteTicket") ?? "null");
+      if (saved && typeof saved.id === "string" && Date.now() - saved.at < TICKET_REUSE_MS) {
+        ticketId.current = saved.id;
+        return;
+      }
+    } catch {
+      // sin sessionStorage (modo privado): se pide uno nuevo
+    }
+    fetch("/api/vote/start", { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled || typeof data.ticketId !== "string") return;
+        ticketId.current = data.ticketId;
+        try {
+          sessionStorage.setItem("voteTicket", JSON.stringify({ id: data.ticketId, at: Date.now() }));
+        } catch {
+          // idem
+        }
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -73,7 +106,7 @@ export default function VoteClaimForm() {
       const res = await fetch("/api/vote/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ characterName }),
+        body: JSON.stringify({ characterName, ticketId: ticketId.current }),
       });
       const data = await res.json();
 
@@ -85,7 +118,7 @@ export default function VoteClaimForm() {
         setPhase({
           kind: "message",
           tone: "danger",
-          text: "Todavía no encontramos tu voto desde esta conexión. Votá en HopZone y en Dragones Negros, esperá un minuto y probá de nuevo. Tiene que ser la misma red (la misma IP) desde la que reclamás ahora.",
+          text: "Todavía no encontramos tu voto. Votá en HopZone y en Dragones Negros dejando abierta esta página, esperá un minuto y probá de nuevo. Si ya votaste antes de abrirla, recargá la página y reclamá apenas puedas votar de nuevo.",
         });
         return;
       }
