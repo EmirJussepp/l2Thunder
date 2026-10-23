@@ -105,7 +105,7 @@ export default function GuiasPage() {
             <Link
               key={g.href}
               href={g.href}
-              className="card-surface group block rounded-none p-6 transition hover:border-accent/50"
+              className="card-surface group flex flex-col rounded-none p-6 transition hover:border-accent/50"
             >
               <p className="text-[11px] font-semibold uppercase tracking-widest text-accent-2">
                 {g.level}
@@ -115,7 +115,9 @@ export default function GuiasPage() {
               </h2>
               <p className="mt-1 text-sm font-semibold text-muted">{g.subtitle}</p>
               <p className="mt-3 text-sm leading-relaxed text-muted">{g.text}</p>
-              <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-widest text-gold">
+              {/* mt-auto lo empuja al pie de la tarjeta: las de un mismo renglón miden lo mismo y así
+                  "Ver guía" queda a la misma altura aunque el texto de cada una tenga otro largo. */}
+              <span className="mt-auto self-start pt-4 text-xs font-semibold uppercase tracking-widest text-gold">
                 Ver guía →
               </span>
             </Link>
