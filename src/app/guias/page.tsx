@@ -65,6 +65,13 @@ const guides = [
     text: "El primer cambio a nivel 20 sin quest, los libros que se compran en la iglesia hasta el 40, la quest de Ascalon, el drop de libros de ahí en adelante y el tercer cambio a nivel 76.",
   },
   {
+    href: "/guias/la-subclase",
+    level: "Guía de sistema · Nivel 75+",
+    title: "La Subclase",
+    subtitle: "Las dos misiones para poder elegir una segunda clase",
+    text: "Fate’s Whisper y Mimir’s Elixir paso a paso: los cuatro raid bosses que vuelven cada 8 a 11 horas, el cuchillo, los 984 cristales y los ingredientes del elixir.",
+  },
+  {
     href: "/guias/clases",
     level: "Guías de clase · Tercera clase",
     title: "Elegir clase",
