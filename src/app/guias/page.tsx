@@ -72,6 +72,13 @@ const guides = [
     text: "Fate’s Whisper y Mimir’s Elixir paso a paso: los cuatro raid bosses que vuelven cada 8 a 11 horas, el cuchillo, los 984 cristales y los ingredientes del elixir.",
   },
   {
+    href: "/guias/partes-de-recipe",
+    level: "Guía de sistema · Nivel 68+",
+    title: "Partes de Recipe",
+    subtitle: "Las recetas al 100% de las armas de grado A",
+    text: "Dos misiones repetibles en Wall of Argos, cien piezas por entrega y un canje con Gimli: cómo juntar las Recipe Part y elegir la receta al 100% de tu arma.",
+  },
+  {
     href: "/guias/clases",
     level: "Guías de clase · Tercera clase",
     title: "Elegir clase",
