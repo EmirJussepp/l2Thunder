@@ -21,7 +21,7 @@ const steps = [
   {
     step: "4",
     title: "Canjealos en el juego",
-    description: `Hablá con ${NPC_DONACIONES}, en ${NPC_DONACIONES_LUGARES}. Ahí cambiás tus Coins por el VIP Thunder (8), la Caja de Skins (8) o el Pack VIP + Caja (14).`,
+    description: `Hablá con ${NPC_DONACIONES}, en ${NPC_DONACIONES_LUGARES}. Ahí cambiás tus Coins por el VIP Thunder (8), la Caja de Skins (8), el Pack VIP + Caja (14) o la habilitación de la Subclase (10).`,
   },
 ];
 
@@ -51,6 +51,11 @@ export default function AccountLinkExplainer() {
       <p className="mt-6 border-t border-border-soft pt-4 text-xs text-muted">
         El VIP dura 15 días, vale para todos los personajes de tu cuenta, no se transfiere y no afecta a la party.
         Con el comando <span className="font-mono text-foreground">.premium</span> ves cuándo vence.
+      </p>
+
+      <p className="mt-3 text-xs text-muted">
+        La Subclase se habilita para el personaje que la canjea (no para toda la cuenta) y se pide después a un Village
+        Master desde nivel 75: reemplaza a las misiones Fate’s Whisper y Mimir’s Elixir.
       </p>
 
       <p className="mt-3 text-xs text-muted">

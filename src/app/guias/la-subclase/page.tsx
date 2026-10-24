@@ -7,6 +7,7 @@ import DataTable from "@/components/guias/DataTable";
 import CoordChip from "@/components/guias/CoordChip";
 import ItemLabel from "@/components/guias/ItemLabel";
 import ItemList from "@/components/guias/ItemList";
+import { NPC_DONACIONES, NPC_DONACIONES_LUGARES } from "@/lib/donaciones";
 
 export const metadata: Metadata = {
   title: "La Subclase — Guía",
@@ -135,6 +136,19 @@ export default function LaSubclasePage() {
               <p>
                 El chequeo se saltea entero: un personaje noble pide la subclase sin hacer ninguna
                 de las dos.
+              </p>
+            </Callout>
+
+            <Callout title="Propio de L2Thunder · el atajo con Coins" variant="custom">
+              <p>
+                Si no querés hacer las dos misiones, <strong className={strong}>{NPC_DONACIONES}</strong> —en{" "}
+                {NPC_DONACIONES_LUGARES}— te habilita la subclase por{" "}
+                <strong className={gold}>10 Coins of Luck</strong>. Le deja a tu personaje Fate’s Whisper y Mimir’s
+                Elixir como terminadas, que es lo que revisa el Village Master.
+              </p>
+              <p>
+                Vale para ese personaje (no para toda la cuenta) y no te da las recompensas de las misiones: ni el arma de
+                grado A ni el pergamino. Seguís necesitando nivel 75 para pedirla.
               </p>
             </Callout>
 
