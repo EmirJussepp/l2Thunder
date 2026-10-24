@@ -110,6 +110,7 @@ export default function BuyButton({
   if (step === "confirm") {
     return (
       <div className="w-full space-y-3 text-left">
+        <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">Confirmá tu compra</p>
         {summary && <p className="text-sm font-semibold text-foreground">{summary}</p>}
         <p className="text-sm text-foreground">Las Coins of Luck van a llegar a este personaje:</p>
         {/* En letra monoespaciada y espaciada para que se distingan la I mayúscula, la l minúscula y el 1,
@@ -144,7 +145,7 @@ export default function BuyButton({
             disabled={loading}
             className={`${buttonClassName} flex-1`}
           >
-            {loading ? "Redirigiendo…" : "Sí, es correcto"}
+            {loading ? "Redirigiendo…" : "Confirmar y pagar"}
           </button>
         </div>
       </div>

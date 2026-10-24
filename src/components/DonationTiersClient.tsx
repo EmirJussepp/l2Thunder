@@ -60,6 +60,7 @@ export default function DonationTiersClient({ tiers }: { tiers: TierView[] }) {
             <BuyButton
               packageId={tier.id}
               label={`Elegir ${tier.name}`}
+              summary={`Vas a comprar ${tier.name} por ${tier.priceLabel}${tier.subLabel ? ` (${tier.subLabel})` : ""}.`}
               fullWidthButton
               buttonClassName={
                 tier.highlight
