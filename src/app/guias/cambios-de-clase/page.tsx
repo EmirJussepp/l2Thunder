@@ -103,11 +103,15 @@ export default function CambiosDeClasePage() {
             </p>
           </GuideStep>
 
-          <GuideStep n="III" title="Nivel 40 — segundo cambio, la quest de Ascalon">
+          <GuideStep n="III" title="Nivel 35 al 40 — segundo cambio, la quest de Ascalon">
             <p>
-              Al llegar a 40 te espera la quest de Ascalon, el instructor de segundo cambio.
-              Cumplirla te da experiencia y adena — la adena alcanza para equiparte bien de
-              entrada — más un cupón para canjear un arma de grado C shadow.
+              Desde el nivel 35 podés empezar la quest de Ascalon, el instructor de segundo
+              cambio, en Giran. Cumplirla te da experiencia y adena — la adena alcanza para
+              equiparte bien de entrada — más un cupón para canjear un arma de grado C shadow.
+            </p>
+            <p>
+              Al terminarla recibís la Mark of Champion: con nivel 40 y la Mark, el segundo
+              cambio se hace en el maestro de tu gremio.
             </p>
 
             <div className="grid gap-4 sm:grid-cols-2">

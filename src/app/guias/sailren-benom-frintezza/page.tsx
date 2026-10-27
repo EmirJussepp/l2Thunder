@@ -141,7 +141,7 @@ export default function SailrenBenomFrintezzaPage() {
               <p className="font-display text-base font-bold text-foreground">Cómo entrar</p>
               <p className="mt-3">
                 Hablá con la <strong className="font-semibold text-foreground">Shilen&apos;s
-                Stone Statue</strong> en el Wall of Argos —{" "}
+                Stone Statue</strong> en la tierra de los dinosaurios —{" "}
                 <CoordChip>9914, −24803, −3771</CoordChip>. Hace falta un{" "}
                 <strong className="font-semibold text-gold">Gazkh</strong>, y hay dos maneras de
                 conseguirlo:
