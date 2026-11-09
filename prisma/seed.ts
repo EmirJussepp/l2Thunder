@@ -73,7 +73,7 @@ const packages = [
     kind: "BOX" as const,
     priceCoins: 14,
     perks: [
-      "VIP Thunder: +30% de EXP y de Drop durante 15 días",
+      "VIP Thunder: EXP y SP ×20, drop ×13 y spoil ×10 durante 15 días",
       "Caja de Skins: una skin al azar (Rara 60%, Épica 30%, Legendaria 10%)",
       "Ahorrás 2 Coins: por separado suman 16",
     ],
@@ -106,8 +106,9 @@ const packages = [
     priceCoins: 8,
     durationDays: 15,
     perks: [
-      "+30% de EXP durante 15 días",
-      "+30% de Drop durante 15 días",
+      "EXP y SP ×20 (sin VIP, ×15) durante 15 días",
+      "Drop ×13 (sin VIP, ×10) y un 30% más de cantidad",
+      "Spoil ×10 (sin VIP, ×8) y un 30% más de cantidad",
     ],
     highlight: true,
   },

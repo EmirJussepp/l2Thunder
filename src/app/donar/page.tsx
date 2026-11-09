@@ -7,6 +7,7 @@ import UnitCoins from "@/components/UnitCoins";
 import VipPass from "@/components/VipPass";
 import AccountLinkExplainer from "@/components/AccountLinkExplainer";
 import Callout from "@/components/guias/Callout";
+import { VIP_RATES } from "@/lib/rates";
 
 // Los precios casi no cambian — cachear la página evita pegarle a la base en
 // cada visita (cada visitante repetido reusa el render de hasta 60s antes).
@@ -36,7 +37,7 @@ export default function DonarPage() {
           Convertite en Fundador de Thunder
         </h1>
         <p className="mt-4 text-muted">
-          Elegí el VIP (+30% de EXP y de Drop durante 15 días) o la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
+          Elegí el VIP (EXP y SP ×{VIP_RATES.xp}, drop ×{VIP_RATES.drop} y spoil ×{VIP_RATES.spoil} durante 15 días) o la Caja de Skins: una skin al azar que puede ser Rara (60%), Épica (30%) o Legendaria
           (10%), o llevate los dos juntos en promoción. Los precios están en Coins of Luck: pagás en pesos, te llegan por correo in-game y las canjeás con el NPC
           Thunder, en Giran o en Talking Island. Con 10 Coins también habilitás la subclase de tu personaje, sin hacer las dos misiones. Nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>

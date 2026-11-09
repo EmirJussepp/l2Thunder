@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CharacterScene from "@/components/CharacterScene";
+import { VIP_RATES } from "@/lib/rates";
 
 export default function DonateTeaser() {
   return (
@@ -12,7 +13,7 @@ export default function DonateTeaser() {
           Convertite en Fundador de L2Thunder
         </h2>
         <p className="max-w-xl text-muted">
-          Comprás Coins of Luck y los usás en lo que quieras: VIP (+30% de EXP y de Drop
+          Comprás Coins of Luck y los usás en lo que quieras: VIP (EXP y SP ×{VIP_RATES.xp}, drop ×{VIP_RATES.drop} y spoil ×{VIP_RATES.spoil}
           durante 15 días) o la Caja de Skins (una skin al azar: Rara, Épica o Legendaria) — nunca vendemos daño ni items que te hagan invencible en PvP.
         </p>
         <Link href="/donar" className="btn btn-primary btn-arrow">

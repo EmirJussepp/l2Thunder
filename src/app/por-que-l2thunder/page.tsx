@@ -38,8 +38,9 @@ const ritmoRows = [
     original: "×1. Farmear una pieza puede llevar días.",
     thunder: (
       <>
-        <strong className="font-bold text-gold">×10</strong> de probabilidad, y lo mismo en
-        spoil. La adena cae con ×2 de chance y ×4 de cantidad.
+        <strong className="font-bold text-gold">×{RATES.drop}</strong> de probabilidad, y{" "}
+        <strong className="font-bold text-gold">×{RATES.spoil}</strong> en spoil. La adena cae con
+        ×2 de chance y ×4 de cantidad.
       </>
     ),
   },
