@@ -39,7 +39,7 @@ const apartados = [
   {
     href: "/informacion-de-juego/sa",
     title: "Special Abilities (SA)",
-    subtitle: "Guía de armas de grado C, B y A",
+    subtitle: "Armas de grado C, B y A, y el grado S que viene",
     text: "Qué cristal usar, cómo subirlo, cuánto cuesta, dónde se aplica y qué hace cada SA.",
     folder: "sa",
     featured: ["Stormbringer", "Kris", "Tallum Blade", "Dasparion's Staff"],

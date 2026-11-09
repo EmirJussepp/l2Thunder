@@ -1,6 +1,6 @@
 import type { ItemEntry } from "./items";
 
-export type SaTab = "c" | "b" | "a";
+export type SaTab = "c" | "b" | "a" | "s";
 export type SaGrip = "one" | "two";
 
 export type SaData = Record<SaTab, Record<SaGrip, ItemEntry[]>>;
@@ -9,6 +9,7 @@ export const SA_TABS: { id: SaTab; label: string; emptyText: string }[] = [
   { id: "c", label: "Grado C", emptyText: "Sin ejemplos cargados." },
   { id: "b", label: "Grado B", emptyText: "Sin ejemplos cargados." },
   { id: "a", label: "Grado A", emptyText: "Sin ejemplos cargados." },
+  { id: "s", label: "Grado S", emptyText: "Sin ejemplos cargados." },
 ];
 
 export const SA_GRIPS: { id: SaGrip; label: string }[] = [
@@ -22,6 +23,7 @@ export const SA_GRIPS: { id: SaGrip; label: string }[] = [
 // que es como lo muestra el cliente por defecto; el nombre en español, entre paréntesis en la primera línea.
 // Las imágenes van en public/sa/ con el nombre del arma en minúsculas y con guiones (stormbringer.png).
 const PVP = "Aumenta el daño infligido en PvP (+5% contra jugadores) en las tres opciones";
+const S_CERRADO = "Todavía no se puede aplicar: la receta del grado S se anuncia cuando se abra";
 
 export const saWeapons: SaData = {
   c: {
@@ -140,6 +142,72 @@ export const saWeapons: SaData = {
           "Cristal azul → Acumen: Casting Spd. +15%",
           "Pide un cristal de etapa 11, 147 Gemstone A y nada de adena",
           PVP,
+        ],
+      },
+    ],
+  },
+  s: {
+    one: [
+      {
+        name: "Forgotten Blade",
+        tag: "Haste · Health · Focus",
+        bonuses: [
+          "Espada de una mano",
+          "Cristal rojo → Haste: Atk. Spd. +12%",
+          "Cristal verde → Health: Max HP +25%",
+          "Cristal azul → Focus: Crit. Rate +90",
+          PVP,
+          S_CERRADO,
+        ],
+      },
+      {
+        name: "Angel Slayer",
+        tag: "Critical Damage · Bluff · Haste",
+        bonuses: [
+          "Daga",
+          "Cristal rojo → Critical Damage: Crit. Damage +425",
+          "Cristal verde → Bluff: chance de girar al objetivo con un golpe crítico",
+          "Cristal azul → Haste: Atk. Spd. +12%",
+          PVP,
+          S_CERRADO,
+        ],
+      },
+      {
+        name: "Basalt Battlehammer",
+        tag: "Focus · Health · Servitor Sharing",
+        bonuses: [
+          "Arma contundente de una mano",
+          "Cristal rojo → Focus: Crit. Rate +90",
+          "Cristal verde → Health: Max HP +25%",
+          "Cristal azul → Servitor Sharing: P. Atk. +25%, M. Atk. +12%; tu servitor recibe lo mismo",
+          PVP,
+          S_CERRADO,
+        ],
+      },
+    ],
+    two: [
+      {
+        name: "Heaven's Divider",
+        tag: "Haste · Health · Focus",
+        bonuses: [
+          "Espada de dos manos",
+          "Cristal rojo → Haste: Atk. Spd. +12%",
+          "Cristal verde → Health: Max HP +25%",
+          "Cristal azul → Focus: Crit. Rate +90",
+          PVP,
+          S_CERRADO,
+        ],
+      },
+      {
+        name: "Imperial Staff",
+        tag: "Empower · Acumen · Servitor Sharing",
+        bonuses: [
+          "Bastón de dos manos",
+          "Cristal rojo → Empower: M. Atk. +32%",
+          "Cristal verde → Acumen: Casting Spd. +15%",
+          "Cristal azul → Servitor Sharing: P. Atk. +25%, M. Atk. +12%; tu servitor recibe lo mismo",
+          PVP,
+          S_CERRADO,
         ],
       },
     ],

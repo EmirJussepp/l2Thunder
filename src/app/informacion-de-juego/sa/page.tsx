@@ -14,7 +14,7 @@ import { loadItemImages } from "@/lib/itemImages";
 export const metadata: Metadata = {
   title: "Special Abilities (SA) — Información de juego",
   description:
-    "Guía completa de los SA de las armas: qué cristal usar, cómo subirlo, cuánto cuesta cada grado, dónde se aplica y se saca, y qué hace cada SA con los valores reales del servidor.",
+    "Guía completa de los SA de las armas de grado C, B y A, y lo que ya está listo del grado S: qué cristal usar, cómo subirlo, cuánto cuesta, dónde se aplica y se saca, y qué hace cada SA con los valores reales del servidor.",
 };
 
 const introStats = [
@@ -217,7 +217,7 @@ export default function SaPage() {
         {/* Intro */}
         <div className="mt-6">
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            Guía de sistema · Armas de grado C, B y A
+            Guía de sistema · Armas de grado C, B y A, y el grado S que viene
           </p>
           <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">Special Abilities</h1>
           <p className="mt-2 font-display text-lg font-semibold text-muted">
@@ -341,7 +341,8 @@ export default function SaPage() {
             <p>
               Algunas armas con sus tres opciones y su costo, para que veas cómo se combina todo.
               Elegí un grado, abrí una mano o dos manos y tocá cada arma. Los valores son los reales
-              del servidor.
+              del servidor. El grado S todavía no se puede aplicar, pero sus opciones ya están
+              definidas: mirá la pestaña Grado S.
             </p>
 
             <ItemExplorer
@@ -355,9 +356,9 @@ export default function SaPage() {
               headingLevel={3}
             />
 
-            <Callout title="Las de grado A suman daño en PvP" variant="info">
+            <Callout title="Las de grado A y S suman daño en PvP" variant="info">
               <p>
-                Todas las opciones de las armas de grado A agregan además un +5% de daño contra
+                Todas las opciones de las armas de grado A y S agregan además un +5% de daño contra
                 jugadores. Es el renglón Increases damage inflicted during PvP del tooltip. Las de B
                 y C no lo llevan.
               </p>
@@ -529,22 +530,60 @@ export default function SaPage() {
               </p>
             </Callout>
 
-            <Callout title="El grado S está cerrado" variant="info">
+          </GuideStep>
+
+          <GuideStep n="VIII" title="Grado S: lo que ya está y lo que falta">
+            <p>
+              Las armas de grado S todavía no se abren, y por eso hoy no se les puede poner un SA:
+              el Blacksmith of Mammon dice que los secretos del grado S todavía no le fueron
+              revelados. Cuándo se abre el grado S está en{" "}
+              <Link
+                href="/apertura-escalonada"
+                className="text-accent underline underline-offset-2 hover:text-gold"
+              >
+                Apertura escalonada
+              </Link>
+              .
+            </p>
+
+            <div className="space-y-3">
+              <h3 className={subtitulo}>Lo que ya está definido</h3>
+              <ul className="list-disc space-y-2 pl-5">
+                <li>
+                  Las armas S tienen sus tres opciones por color, igual que las demás: Forgotten
+                  Blade, Basalt Battlehammer, Imperial Staff, Angel Slayer, Dragon Hunter Axe, Saint
+                  Spear, Demon Splinter, Heaven&apos;s Divider, Arcana Mace y Draconic Bow. Cinco
+                  están en la pestaña Grado S de las armas de ejemplo.
+                </li>
+                <li>
+                  Son los mismos SA de la tabla de arriba, con los mismos valores, y todos suman el
+                  +5% de daño en PvP.
+                </li>
+                <li>
+                  El Blacksmith of Mammon ya está preparado para sacar el SA de estas armas, gratis,
+                  igual que en las otras.
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className={subtitulo}>Lo que falta definir</h3>
               <p>
-                Hoy no se le puede poner SA a un arma de grado S: Mammon todavía no conoce sus
-                secretos. Se habilita junto con el grado S, y lo vamos a anunciar. Ver{" "}
-                <Link
-                  href="/apertura-escalonada"
-                  className="text-accent underline underline-offset-2 hover:text-gold"
-                >
-                  Apertura escalonada
-                </Link>
-                .
+                La receta: qué etapa de cristal, cuántas Gemstone S y cuánto cobra Mammon para
+                ponerle el SA a un arma S. Eso se decide y se anuncia cuando se abra el grado S.
+              </p>
+            </div>
+
+            <Callout title="La etapa 13 existe, pero hoy nada la pide" variant="info">
+              <p>
+                El cristal llega hasta la etapa 13, y esa última etapa sólo la suben los jefes más
+                fuertes: Antharas, Valakas, Scarlet van Halisha, Ember y Anakazel, todos cerrados
+                hoy. Ninguna receta de las armas C, B y A la usa.
               </p>
             </Callout>
           </GuideStep>
 
-          <GuideStep n="VIII" title="Si algo no sale" last>
+          <GuideStep n="IX" title="Si algo no sale" last>
             <DataTable headers={["Qué pasa", "Qué hacer"]} rows={problemas} />
 
             <Callout title="Propio de L2Thunder" variant="custom">
