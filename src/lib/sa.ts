@@ -23,7 +23,6 @@ export const SA_GRIPS: { id: SaGrip; label: string }[] = [
 // que es como lo muestra el cliente por defecto; el nombre en español, entre paréntesis en la primera línea.
 // Las imágenes van en public/sa/ con el nombre del arma en minúsculas y con guiones (stormbringer.png).
 const PVP = "Aumenta el daño infligido en PvP (+5% contra jugadores) en las tres opciones";
-const S_CERRADO = "Todavía no se puede aplicar: la receta del grado S se anuncia cuando se abra";
 
 export const saWeapons: SaData = {
   c: {
@@ -157,7 +156,6 @@ export const saWeapons: SaData = {
           "Cristal verde → Health: Max HP +25%",
           "Cristal azul → Focus: Crit. Rate +90",
           PVP,
-          S_CERRADO,
         ],
       },
       {
@@ -169,7 +167,6 @@ export const saWeapons: SaData = {
           "Cristal verde → Bluff: chance de girar al objetivo con un golpe crítico",
           "Cristal azul → Haste: Atk. Spd. +12%",
           PVP,
-          S_CERRADO,
         ],
       },
       {
@@ -181,7 +178,17 @@ export const saWeapons: SaData = {
           "Cristal verde → Health: Max HP +25%",
           "Cristal azul → Servitor Sharing: P. Atk. +25%, M. Atk. +12%; tu servitor recibe lo mismo",
           PVP,
-          S_CERRADO,
+        ],
+      },
+      {
+        name: "Arcana Mace",
+        tag: "Acumen · Magic Critical · Mana Up",
+        bonuses: [
+          "Maza de una mano",
+          "Cristal rojo → Acumen: Casting Spd. +15%",
+          "Cristal verde → Magic Critical: M. Crit. Rate +300%",
+          "Cristal azul → Mana Up: Max MP +30%, MP Regen +15%",
+          PVP,
         ],
       },
     ],
@@ -195,7 +202,6 @@ export const saWeapons: SaData = {
           "Cristal verde → Health: Max HP +25%",
           "Cristal azul → Focus: Crit. Rate +90",
           PVP,
-          S_CERRADO,
         ],
       },
       {
@@ -207,7 +213,50 @@ export const saWeapons: SaData = {
           "Cristal verde → Acumen: Casting Spd. +15%",
           "Cristal azul → Servitor Sharing: P. Atk. +25%, M. Atk. +12%; tu servitor recibe lo mismo",
           PVP,
-          S_CERRADO,
+        ],
+      },
+      {
+        name: "Dragon Hunter Axe",
+        tag: "Anger · Health · Haste",
+        bonuses: [
+          "Hacha de dos manos",
+          "Cristal rojo → Anger: P. Atk. +15%, Max HP −15%",
+          "Cristal verde → Health: Max HP +25%",
+          "Cristal azul → Haste: Atk. Spd. +12%",
+          PVP,
+        ],
+      },
+      {
+        name: "Saint Spear",
+        tag: "Health · Skill Power · Haste",
+        bonuses: [
+          "Lanza",
+          "Cristal rojo → Health: Max HP +25%",
+          "Cristal verde → Skill Power: daño de habilidades físicas +15%",
+          "Cristal azul → Haste: Atk. Spd. +12%",
+          PVP,
+        ],
+      },
+      {
+        name: "Draconic Bow",
+        tag: "Skill Power · Focus · Critical Slow",
+        bonuses: [
+          "Arco",
+          "Cristal rojo → Skill Power: daño de habilidades físicas +15%",
+          "Cristal verde → Focus: Crit. Rate +90",
+          "Cristal azul → Critical Slow: Speed −30% al objetivo con un golpe crítico",
+          PVP,
+        ],
+      },
+      {
+        name: "Demon Splinter",
+        tag: "Focus · Health · Critical Stun",
+        bonuses: [
+          "Puños duales",
+          "Cristal rojo → Focus: Crit. Rate +90",
+          "Cristal verde → Health: Max HP +25%",
+          "Cristal azul → Critical Stun: chance de aturdir 3 segundos con un golpe crítico",
+          PVP,
         ],
       },
     ],

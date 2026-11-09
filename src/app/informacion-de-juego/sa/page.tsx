@@ -14,7 +14,7 @@ import { loadItemImages } from "@/lib/itemImages";
 export const metadata: Metadata = {
   title: "Special Abilities (SA) — Información de juego",
   description:
-    "Guía completa de los SA de las armas de grado C, B y A, y lo que ya está listo del grado S: qué cristal usar, cómo subirlo, cuánto cuesta, dónde se aplica y se saca, y qué hace cada SA con los valores reales del servidor.",
+    "Guía completa de los SA de las armas de grado C, B y A, y cómo prepararte para el grado S: qué cristal usar, cómo subirlo, cuánto cuesta, dónde se aplica y se saca, y qué hace cada SA con los valores reales del servidor.",
 };
 
 const introStats = [
@@ -341,8 +341,8 @@ export default function SaPage() {
             <p>
               Algunas armas con sus tres opciones y su costo, para que veas cómo se combina todo.
               Elegí un grado, abrí una mano o dos manos y tocá cada arma. Los valores son los reales
-              del servidor. El grado S todavía no se puede aplicar, pero sus opciones ya están
-              definidas: mirá la pestaña Grado S.
+              del servidor. El grado S todavía no se abre: en su pestaña ves qué SA trae cada arma
+              con cada color, para que elijas con tiempo.
             </p>
 
             <ItemExplorer
@@ -532,11 +532,10 @@ export default function SaPage() {
 
           </GuideStep>
 
-          <GuideStep n="VIII" title="Grado S: lo que ya está y lo que falta">
+          <GuideStep n="VIII" title="Grado S: cómo prepararte">
             <p>
-              Las armas de grado S todavía no se abren, y por eso hoy no se les puede poner un SA:
-              el Blacksmith of Mammon dice que los secretos del grado S todavía no le fueron
-              revelados. Cuándo se abre el grado S está en{" "}
+              Cuando se abra el grado S vas a poder ponerles un SA a tus armas S, igual que a las
+              de grado A: una opción por cada color de cristal. Cuándo se abre está en{" "}
               <Link
                 href="/apertura-escalonada"
                 className="text-accent underline underline-offset-2 hover:text-gold"
@@ -545,40 +544,23 @@ export default function SaPage() {
               </Link>
               .
             </p>
+            <p>
+              Ya podés ver qué trae cada arma S con cada color. Están las diez: Forgotten Blade,
+              Basalt Battlehammer, Imperial Staff, Angel Slayer, Dragon Hunter Axe, Saint Spear,
+              Demon Splinter, Heaven&apos;s Divider, Arcana Mace y Draconic Bow. Son los mismos SA de
+              la tabla de arriba, con los mismos valores, y todos suman el +5% de daño en PvP. Las
+              encontrás en la pestaña Grado S de las armas de ejemplo.
+            </p>
 
-            <div className="space-y-3">
-              <h3 className={subtitulo}>Lo que ya está definido</h3>
-              <ul className="list-disc space-y-2 pl-5">
-                <li>
-                  Las armas S tienen sus tres opciones por color, igual que las demás: Forgotten
-                  Blade, Basalt Battlehammer, Imperial Staff, Angel Slayer, Dragon Hunter Axe, Saint
-                  Spear, Demon Splinter, Heaven&apos;s Divider, Arcana Mace y Draconic Bow. Cinco
-                  están en la pestaña Grado S de las armas de ejemplo.
-                </li>
-                <li>
-                  Son los mismos SA de la tabla de arriba, con los mismos valores, y todos suman el
-                  +5% de daño en PvP.
-                </li>
-                <li>
-                  El Blacksmith of Mammon ya está preparado para sacar el SA de estas armas, gratis,
-                  igual que en las otras.
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className={subtitulo}>Lo que falta definir</h3>
+            <Callout title="Para ir adelantando" variant="info">
               <p>
-                La receta: qué etapa de cristal, cuántas Gemstone S y cuánto cobra Mammon para
-                ponerle el SA a un arma S. Eso se decide y se anuncia cuando se abra el grado S.
+                Podés empezar ya la quest de los cristales y subir uno del color que te sirva: las
+                etapas 1 a 10 se hacen con monstruos comunes. No lo pases de la etapa 10 hasta que
+                publiquemos acá qué etapa pide el grado S, porque el cristal no baja de etapa.
               </p>
-            </div>
-
-            <Callout title="La etapa 13 existe, pero hoy nada la pide" variant="info">
               <p>
-                El cristal llega hasta la etapa 13, y esa última etapa sólo la suben los jefes más
-                fuertes: Antharas, Valakas, Scarlet van Halisha, Ember y Anakazel, todos cerrados
-                hoy. Ninguna receta de las armas C, B y A la usa.
+                El costo exacto, con la etapa del cristal, las Gemstone S y lo que cobra el
+                Blacksmith of Mammon, se publica en esta guía el día que se abra el grado S.
               </p>
             </Callout>
           </GuideStep>
