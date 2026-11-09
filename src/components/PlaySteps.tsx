@@ -10,7 +10,8 @@ const steps = [
   {
     step: "2",
     title: "Creá tu cuenta",
-    description: "Es autocuenta: poné el usuario y contraseña que quieras en la pantalla de login del launcher y se crea sola.",
+    description:
+      "Es autocuenta: poné el usuario y contraseña que quieras en la pantalla de login del launcher y se crea sola. Anotalos bien: si te equivocás al escribir el usuario se crea otra cuenta vacía (sin tus personajes), y con 5 contraseñas mal seguidas se bloquea tu conexión por 15 minutos.",
   },
   {
     step: "3",
