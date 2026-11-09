@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ItemExplorer from "@/components/informacion/ItemExplorer";
 import StatGrid from "@/components/guias/StatGrid";
 import GuideStep from "@/components/guias/GuideStep";
 import Callout from "@/components/guias/Callout";
 import DataTable from "@/components/guias/DataTable";
-import { SA_GRIPS, SA_WEAPON_TYPES, saWeapons } from "@/lib/sa";
-import { loadItemImages } from "@/lib/itemImages";
 
 export const metadata: Metadata = {
   title: "SA Reworkeados — Información de juego",
   description:
-    "Qué da cada Special Ability hoy en L2Thunder y qué se cambió: los tres SA nuevos, los que se rehicieron, los 27 dados de baja y ejemplos de armas con sus stats.",
+    "Qué se cambió en los Special Abilities de L2Thunder: los tres SA nuevos, los que se rehicieron con sus valores de hoy y los 27 dados de baja.",
 };
 
 const introStats = [
-  { value: "414", label: "Armas con SA", sub: "variantes vivas" },
+  { value: "127", label: "Armas con SA", sub: "grados C, B y A" },
   { value: "3", label: "Opciones por arma", sub: "una por cristal" },
   { value: "3", label: "SA nuevos", sub: "no existían en retail" },
   { value: "27", label: "SA dados de baja", sub: "rotos u obsoletos" },
@@ -37,7 +34,7 @@ const rehechos: [string, string, string][] = [
   [
     "Anger",
     "6 skills, casi todos sumaban P. Atk. plano",
-    "P. Atk. +20% a una mano, +15% a dos manos. Max HP −15% en las dos",
+    "P. Atk. +15% y Max HP −15%, igual en una mano que en dos",
   ],
   [
     "Empower",
@@ -48,14 +45,14 @@ const rehechos: [string, string, string][] = [
   [
     "Critical Stun",
     "Caía siempre al piso de acierto; el grado C superaba al A",
-    "Acierta de verdad, y la diferencia va por grado: S 35, A 30, B 25, C 20",
+    "Una sola chance base, 30%, igual en todos los grados, y aturde 3 segundos",
   ],
   [
     "Mortal Strike",
     "El cliente prometía entre 40% y 50%",
     "Blows +15% de acierto, que es lo que siempre dio",
   ],
-  ["Haste / Acumen", "Valores dispersos por grado", "Atk. Spd. +8% / Casting Spd. +15%"],
+  ["Haste / Acumen", "Valores dispersos por grado", "Atk. Spd. +12% / Casting Spd. +15%"],
 ];
 
 const strong = "font-semibold text-foreground";
@@ -74,17 +71,24 @@ export default function SaReworkeadosPage() {
         {/* Intro */}
         <div className="mt-6">
           <p className="brand text-xs font-bold uppercase tracking-widest text-accent-2">
-            Guía de sistema · Armas de grado C en adelante
+            Guía de sistema · Armas de grado C, B y A
           </p>
           <h1 className="brand mt-3 text-4xl font-black sm:text-5xl">SA Reworkeados</h1>
           <p className="mt-2 font-display text-lg font-semibold text-muted">
-            Special Abilities: qué da cada SA hoy, y qué se cambió para llegar acá
+            Special Abilities: qué se cambió para llegar a lo que hay hoy
           </p>
           <p className="mt-6 max-w-[38rem] text-muted">
             Un Soul Crystal le agrega una habilidad permanente a un arma. El catálogo venía con
             valores inventados, gradientes al revés y una docena de SA que no hacían absolutamente
             nada. Se rehizo entero: hoy cada arma base tiene exactamente tres opciones y todas
-            funcionan.
+            funcionan. Para ponerle un SA a tu arma, con qué cristal y cuánto cuesta, mirá la{" "}
+            <Link
+              href="/informacion-de-juego/sa"
+              className="text-gold underline underline-offset-2 hover:text-foreground"
+            >
+              guía de Special Abilities
+            </Link>
+            .
           </p>
 
           <div className="mt-8">
@@ -96,20 +100,21 @@ export default function SaReworkeadosPage() {
         <div className="mt-16">
           <GuideStep n="I" title="Cómo funciona">
             <p>
-              Llevás el arma base y un Soul Crystal al Blacksmith y te devuelve la variante con el
-              SA puesto. El cristal define cuál de las tres opciones te toca, y el color del
-              cristal es el color con el que vas a ver el texto en el tooltip del arma.
+              Llevás el arma base y un Soul Crystal al herrero y te devuelve la variante con el SA
+              puesto. El color del cristal define cuál de las tres opciones te toca, y es el color
+              con el que vas a ver el texto en el tooltip del arma.
             </p>
             <p>
-              Pasando el mouse por un arma base vas a ver el bloque Available Soul Crystals con las
-              tres opciones, cada una pintada del color de su cristal. En una variante que ya tiene
-              el SA puesto, vas a ver solamente el suyo, con los valores reales.
+              Pasando el mouse por un arma base vas a ver las tres opciones, cada una pintada del
+              color de su cristal. En una variante que ya tiene el SA puesto, vas a ver solamente el
+              suyo, con los valores reales.
             </p>
 
             <Callout title="Se puede deshacer" variant="info">
               <p>
-                El mismo Blacksmith revierte la operación y te devuelve el arma base. Los SA de
-                grado A y S salen del Blacksmith of Mammon; los de C y B, de los herreros comunes.
+                El Blacksmith of Mammon saca el SA de cualquier arma, gratis, y te devuelve el arma
+                base con su encantamiento; el cristal se pierde. Los SA de grado A también se ponen
+                ahí; los de C y B, en los herreros de los pueblos.
               </p>
             </Callout>
           </GuideStep>
@@ -180,8 +185,8 @@ export default function SaReworkeadosPage() {
 
             <Callout title="Ninguna arma quedó sin SA" variant="custom">
               <p>
-                Las 165 afectadas recibieron otro del catálogo vigente. Si tenías una de esas
-                armas, seguís teniéndola y ahora hace algo.
+                Las armas afectadas recibieron otro del catálogo vigente: hoy las 127 armas tienen
+                tres opciones y todas hacen algo.
               </p>
             </Callout>
           </GuideStep>
@@ -206,7 +211,7 @@ export default function SaReworkeadosPage() {
               <p className="mt-2">
                 Los SA que se disparan al golpear —Critical Stun, Bluff, Critical Slow— primero
                 tiran si el arma intenta lanzarlo y después si el efecto entra contra la resistencia
-                del objetivo. Un SA con 20% de chance no aturde el 20% de las veces: bastante
+                del objetivo. Un SA con 30% de chance no aturde el 30% de las veces: bastante
                 menos.
               </p>
             </div>
@@ -238,22 +243,16 @@ export default function SaReworkeadosPage() {
             </Callout>
           </GuideStep>
 
-          <GuideStep n="VI" title="Armas con su SA" last>
+          <GuideStep n="VI" title="Dónde ver las armas con su SA" last>
             <p>
-              Algunas armas con el SA ya puesto, con los valores que muestra el tooltip. Elegí un
-              tipo de arma, abrí una mano o dos manos y tocá cada arma.
+              Las armas de ejemplo, el costo de cada tramo, los herreros y cómo se sube el cristal
+              están en la guía de Special Abilities.
             </p>
-
-            <ItemExplorer
-              idPrefix="sa"
-              tabsLabel="Tipo de arma"
-              tabs={SA_WEAPON_TYPES}
-              groups={SA_GRIPS}
-              data={saWeapons}
-              images={loadItemImages("sa")}
-              noun={{ one: "arma", many: "armas", groupEmpty: "Sin armas cargadas." }}
-              headingLevel={3}
-            />
+            <p>
+              <Link href="/informacion-de-juego/sa" className="btn btn-ghost btn-arrow">
+                Ver la guía de SA
+              </Link>
+            </p>
 
             <Callout title="Propio de L2Thunder" variant="custom">
               <p>

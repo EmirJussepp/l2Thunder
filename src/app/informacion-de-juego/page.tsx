@@ -6,7 +6,7 @@ import { itemSlug } from "@/lib/items";
 export const metadata: Metadata = {
   title: "Información de juego",
   description:
-    "Datos del servidor L2Thunder para consultar mientras jugás: armaduras, joyas y los SA reworkeados de las armas.",
+    "Datos del servidor L2Thunder para consultar mientras jugás: armaduras, joyas y la guía de los Special Abilities de las armas.",
 };
 
 const apartados = [
@@ -37,12 +37,20 @@ const apartados = [
     ],
   },
   {
+    href: "/informacion-de-juego/sa",
+    title: "Special Abilities (SA)",
+    subtitle: "Guía de armas de grado C, B y A",
+    text: "Qué cristal usar, cómo subirlo, cuánto cuesta, dónde se aplica y qué hace cada SA.",
+    folder: "sa",
+    featured: ["Stormbringer", "Kris", "Tallum Blade", "Dasparion's Staff"],
+  },
+  {
     href: "/informacion-de-juego/sa-reworkeados",
     title: "SA Reworkeados",
-    subtitle: "Guía de Special Abilities",
-    text: "Qué da cada SA hoy, qué se cambió y ejemplos de armas con sus stats.",
+    subtitle: "Qué se cambió en los SA",
+    text: "Los tres SA nuevos, los que se rehicieron y los 27 que se dieron de baja.",
     folder: "sa",
-    featured: ["Basalt Battlehammer", "Imperial Staff"],
+    featured: [],
   },
 ];
 
