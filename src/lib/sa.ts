@@ -1,4 +1,5 @@
 import type { ItemEntry } from "./items";
+import { saGradoA } from "./saGradoA";
 
 export type SaTab = "c" | "b" | "a" | "s";
 export type SaGrip = "one" | "two";
@@ -17,11 +18,11 @@ export const SA_GRIPS: { id: SaGrip; label: string }[] = [
   { id: "two", label: "Dos manos" },
 ];
 
-// Ejemplos de armas con sus tres opciones de SA, uno por tipo de arma y por tramo de costo. Los valores salen
-// del servidor (multisell del herrero y skills de cada variante) y se contrastaron con el tooltip del cliente.
-// No es el catálogo entero: cada arma base trae las tres opciones en su propio tooltip. El nombre va en inglés,
-// que es como lo muestra el cliente por defecto; el nombre en español, entre paréntesis en la primera línea.
-// Las imágenes van en public/sa/ con el nombre del arma en minúsculas y con guiones (stormbringer.png).
+// Armas con sus tres opciones de SA. Grado A y grado S van completos (34 y 10 armas); B y C son ejemplos, uno por
+// tipo de arma y por tramo de costo. Los valores salen del servidor (multisell del herrero y skills de cada variante)
+// y se contrastaron con el tooltip del cliente. El nombre va en inglés, que es como lo muestra el cliente por
+// defecto; el nombre en español, entre paréntesis en la primera línea. Las imágenes van en public/sa/ con el
+// nombre del arma en minúsculas y con guiones (stormbringer.png). El grado A está en saGradoA.ts.
 const PVP = "Aumenta el daño infligido en PvP (+5% contra jugadores) en las tres opciones";
 
 export const saWeapons: SaData = {
@@ -103,48 +104,7 @@ export const saWeapons: SaData = {
       },
     ],
   },
-  a: {
-    one: [
-      {
-        name: "Tallum Blade",
-        tag: "Rsk. Focus · Haste · Focus",
-        bonuses: [
-          "Espada de una mano (en el cliente en español: Hoja de Tallum)",
-          "Cristal rojo → Rsk. Focus: Crit. Rate +130 con menos del 60% de HP",
-          "Cristal verde → Haste: Atk. Spd. +12%",
-          "Cristal azul → Focus: Crit. Rate +90",
-          "Pide un cristal de etapa 11 y Gemstone A: 147 para el rojo y el azul, 157 para el verde. No cobra adena",
-          PVP,
-        ],
-      },
-      {
-        name: "Dark Legion's Edge",
-        tag: "Critical Damage · Health · Rsk. Focus",
-        bonuses: [
-          "Espada de una mano (en el cliente en español: Filo de la Legión Oscura)",
-          "Cristal rojo → Critical Damage: Crit. Damage +425",
-          "Cristal verde → Health: Max HP +25%",
-          "Cristal azul → Rsk. Focus: Crit. Rate +130 con menos del 60% de HP",
-          "Pide un cristal de etapa 12 y Gemstone A: 157 para el rojo y el azul, 140 para el verde. No cobra adena",
-          PVP,
-        ],
-      },
-    ],
-    two: [
-      {
-        name: "Dasparion's Staff",
-        tag: "Mana Up · Magic Critical · Acumen",
-        bonuses: [
-          "Bastón de dos manos (en el cliente en español: Bastón de Dasparion)",
-          "Cristal rojo → Mana Up: Max MP +30%, MP Regen +15%",
-          "Cristal verde → Magic Critical: M. Crit. Rate +300%",
-          "Cristal azul → Acumen: Casting Spd. +15%",
-          "Pide un cristal de etapa 11, 147 Gemstone A y nada de adena",
-          PVP,
-        ],
-      },
-    ],
-  },
+  a: saGradoA,
   s: {
     one: [
       {

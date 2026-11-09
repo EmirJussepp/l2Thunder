@@ -337,12 +337,12 @@ export default function SaPage() {
             </Callout>
           </GuideStep>
 
-          <GuideStep n="IV" title="Armas de ejemplo">
+          <GuideStep n="IV" title="Qué trae cada arma">
             <p>
-              Algunas armas con sus tres opciones y su costo, para que veas cómo se combina todo.
-              Elegí un grado, abrí una mano o dos manos y tocá cada arma. Los valores son los reales
-              del servidor. El grado S todavía no se abre: en su pestaña ves qué SA trae cada arma
-              con cada color, para que elijas con tiempo.
+              Elegí un grado, abrí una mano o dos manos y tocá tu arma: ves qué SA da con cada color
+              de cristal y lo que pide. Del grado A están las 34 armas; del grado S, las diez, aunque
+              todavía no se abre, para que elijas con tiempo; de los grados B y C hay ejemplos, uno
+              por tipo de arma. Los valores son los reales del servidor.
             </p>
 
             <ItemExplorer
@@ -549,7 +549,7 @@ export default function SaPage() {
               Basalt Battlehammer, Imperial Staff, Angel Slayer, Dragon Hunter Axe, Saint Spear,
               Demon Splinter, Heaven&apos;s Divider, Arcana Mace y Draconic Bow. Son los mismos SA de
               la tabla de arriba, con los mismos valores, y todos suman el +5% de daño en PvP. Las
-              encontrás en la pestaña Grado S de las armas de ejemplo.
+              encontrás en la pestaña Grado S de «Qué trae cada arma».
             </p>
 
             <Callout title="Para ir adelantando" variant="info">
