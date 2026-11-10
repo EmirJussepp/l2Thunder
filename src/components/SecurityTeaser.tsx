@@ -14,7 +14,7 @@ const stats = [
 // trabajo de seguridad y lleva a /seguridad, donde está el detalle.
 export default function SecurityTeaser() {
   return (
-    <CharacterScene personaje="elfo-oscuro" side="left">
+    <CharacterScene personaje="elfo-oscuro" side="right">
       <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Antes de abrir

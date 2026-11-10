@@ -665,3 +665,446 @@ body {
     filter: drop-shadow(0 0 14px rgba(240, 192, 64, 0.7));
   }
 }
+
+/* ── Por qué elegir L2Thunder (carrusel de rombos de la portada) ──────────────
+   Cada razón es un rombo (un cuadrado girado 45°, con el contenido girado de vuelta). El elegido va al centro y
+   grande; los vecinos, más chicos, más bajos y más apagados. La posición de cada uno la calcula el componente
+   (--x, --y, --s, --op, --z); acá solo se dibuja y se anima. --w es el ancho del rombo central y --k achica las
+   distancias en el celular. El tiempo del avance automático lo marca la barrita (.why-progress): cuando termina
+   su animación pasa a la siguiente razón; con data-pausado queda quieta. Con "reducir movimiento" no se anima
+   nada ni avanza solo. */
+.why {
+  --w: 14rem;
+  --k: 1;
+  --why-ms: 7s;
+}
+
+@media (max-width: 639px) {
+  .why {
+    --w: 10.5rem;
+    --k: 0.65;
+  }
+}
+
+.why-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 36% at 50% 30%, rgba(240, 192, 64, 0.12), transparent 72%),
+    radial-gradient(60% 40% at 50% 100%, rgba(108, 200, 255, 0.06), transparent 72%);
+}
+
+.why-bg::before,
+.why-bg::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(240, 192, 64, 0.09);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.why-bg::before {
+  width: min(52rem, 130vw);
+}
+
+.why-bg::after {
+  width: min(34rem, 96vw);
+  border-color: rgba(240, 192, 64, 0.14);
+}
+
+.why-stage {
+  position: relative;
+  height: calc(var(--w) + 4.5rem);
+  margin-top: 2.5rem;
+  touch-action: pan-y;
+}
+
+.why-tablist {
+  position: absolute;
+  inset: 0;
+}
+
+.why-item {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--w);
+  margin-left: calc(var(--w) / -2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform-origin: 50% calc(var(--w) / 2);
+  transform: translate(calc(var(--x) * var(--k)), calc(var(--y) * var(--k))) scale(var(--s));
+  opacity: var(--op);
+  z-index: var(--z);
+  transition:
+    transform 0.75s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.5s ease,
+    color 0.4s ease;
+}
+
+.why-item[data-lejos="true"] {
+  pointer-events: none;
+}
+
+/* En pantallas angostas los rombos del segundo escalón quedarían bajo las flechas: se ven solo tres. */
+@media (max-width: 1023px) {
+  .why-item[data-d="2"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.why-item:focus-visible {
+  outline: none;
+}
+
+.why-item[aria-selected="true"] {
+  color: var(--gold);
+}
+
+.why-diamond {
+  position: relative;
+  display: block;
+  width: var(--w);
+  height: var(--w);
+  flex: none;
+}
+
+.why-ring,
+.why-frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* El rombo exterior, fino, con los cuatro adornos en las puntas. */
+.why-ring {
+  width: calc(var(--w) / 1.4142);
+  border: 1px solid rgba(240, 192, 64, 0.28);
+  transition: border-color 0.4s ease;
+}
+
+.why-ring i {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--accent-2);
+  transform: translate(-50%, -50%);
+  transition:
+    background-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.why-ring i:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+.why-ring i:nth-child(2) {
+  left: 100%;
+  top: 0;
+}
+.why-ring i:nth-child(3) {
+  left: 100%;
+  top: 100%;
+}
+.why-ring i:nth-child(4) {
+  left: 0;
+  top: 100%;
+}
+
+.why-frame {
+  width: calc(var(--w) / 1.4142 * 0.86);
+  overflow: hidden;
+  border: 2px solid rgba(240, 192, 64, 0.5);
+  background: radial-gradient(circle at 50% 36%, #1f2e63, var(--surface) 72%);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.6s ease;
+}
+
+/* El contenido va girado de vuelta y agrandado para llenar el rombo entero. */
+.why-inner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform: rotate(-45deg) scale(1.4142);
+}
+
+.why-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.why-emblem {
+  width: 44%;
+  height: 44%;
+  color: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(240, 192, 64, 0.55));
+}
+
+.why-item:not([aria-selected="true"]):hover .why-frame {
+  border-color: rgba(240, 192, 64, 0.9);
+}
+
+.why-item:focus-visible .why-frame {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.why-item[aria-selected="true"] .why-frame {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 1px rgba(240, 192, 64, 0.25),
+    0 0 44px rgba(240, 192, 64, 0.38),
+    inset 0 0 30px rgba(240, 192, 64, 0.18);
+}
+
+.why-item[aria-selected="true"] .why-ring {
+  border-color: rgba(240, 192, 64, 0.65);
+  animation: why-ring 4.5s ease-in-out infinite;
+}
+
+.why-item[aria-selected="true"] .why-ring i {
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(240, 192, 64, 0.8);
+}
+
+@keyframes why-ring {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.045);
+  }
+}
+
+.why-cap {
+  max-width: var(--w);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.why-arrow {
+  position: absolute;
+  top: calc(var(--w) / 2);
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 4.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-2);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    color 0.2s ease,
+    transform 0.25s ease;
+}
+
+.why-arrow svg {
+  width: 1.9rem;
+  height: 2.5rem;
+}
+
+.why-arrow:hover,
+.why-arrow:focus-visible {
+  color: var(--gold);
+}
+
+.why-arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.why-arrow-prev {
+  left: 0;
+}
+
+.why-arrow-next {
+  right: 0;
+}
+
+.why-arrow-prev:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.why-arrow-next:hover {
+  transform: translateY(-50%) translateX(4px);
+}
+
+/* En el celular las flechas van a los lados del nombre del rombo central, para no tapar a los vecinos; los
+   nombres de los vecinos se esconden (a esa escala no se leen y las flechas los pisarían). */
+@media (max-width: 639px) {
+  .why-item:not([aria-selected="true"]) .why-cap {
+    opacity: 0;
+  }
+  .why-arrow {
+    top: calc(var(--w) + 0.6rem);
+  }
+  .why-arrow-prev {
+    left: calc(50% - 8.5rem);
+  }
+  .why-arrow-next {
+    right: calc(50% - 8.5rem);
+  }
+}
+
+.why-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 44rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  animation: why-in 0.6s ease both;
+}
+
+.why-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.why-text {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.why-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.why-chip {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(240, 192, 64, 0.35);
+  background: rgba(240, 192, 64, 0.08);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+@keyframes why-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.why-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.why-progress {
+  width: 9rem;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(240, 192, 64, 0.18);
+}
+
+.why-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  transform-origin: left;
+  animation: why-fill var(--why-ms) linear forwards;
+}
+
+.why[data-pausado="true"] .why-progress > span {
+  animation-play-state: paused;
+}
+
+@keyframes why-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.why-pause {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.why-pause svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.why-pause:hover,
+.why-pause:focus-visible {
+  color: var(--gold);
+}
+
+.why-pause:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-item {
+    transition: none;
+  }
+  .why-item[aria-selected="true"] .why-ring {
+    animation: none;
+  }
+  .why-panel {
+    animation: none;
+  }
+  .why-timer .why-progress,
+  .why-pause {
+    display: none;
+  }
+}

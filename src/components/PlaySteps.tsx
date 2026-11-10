@@ -22,7 +22,7 @@ const steps = [
 
 export default function PlaySteps() {
   return (
-    <CharacterScene id="jugar" personaje="humano" side="left" band>
+    <CharacterScene id="jugar" personaje="humano" side="right" band>
       <div>
         <h2 className="font-display text-3xl font-bold sm:text-4xl">Cómo empezar</h2>
         <p className="mt-4 text-muted">

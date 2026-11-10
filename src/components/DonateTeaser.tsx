@@ -4,7 +4,7 @@ import { VIP_RATES } from "@/lib/rates";
 
 export default function DonateTeaser() {
   return (
-    <CharacterScene personaje="enano" side="right">
+    <CharacterScene personaje="enano" side="left">
       <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
         <span className="rounded-none border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
           Servidor sostenido por la comunidad
