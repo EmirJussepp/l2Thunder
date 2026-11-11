@@ -107,8 +107,8 @@ const packages = [
     durationDays: 15,
     perks: [
       "EXP y SP ×20 (sin VIP, ×15) durante 15 días",
-      "Drop ×13 (sin VIP, ×10) y un 30% más de cantidad",
-      "Spoil ×10 (sin VIP, ×8) y un 30% más de cantidad",
+      "Drop ×13 (sin VIP, ×10) y un 50% más de cantidad",
+      "Spoil ×10 (sin VIP, ×8) y un 50% más de cantidad",
     ],
     highlight: true,
   },
